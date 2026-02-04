@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>range</title>
+
+	<style>
+		#red {
+			outline-color: none;
+		}
+
+		section {
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+</head>
+<body>
+
+	<section>
+		<input oninput="foo()" id="red" type="range">
+		<input oninput="foo()" id="green" type="range">
+		<input oninput="foo()" id="blue" type="range">
+	</section>
+
+
+	<script>
+		
+		//
+
+		function foo() {
+			let r = document.querySelector('#red').value;
+			let g = document.querySelector('#green').value;
+			let b = document.querySelector('#blue').value;
+			console.log("b", b);
+
+			document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+
+		}
+
+
+
+
+	</script>
+</body>
+</html>

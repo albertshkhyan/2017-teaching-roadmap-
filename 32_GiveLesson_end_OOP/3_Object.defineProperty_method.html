@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+/*
+
+Destructor - ը OOP-ում class-ի մեթոդ է, որը նախատեսված է օբյեկտների հատկությունը փոփոփխելու համար։
+descriptor-ները թույլ են տալիս կարգավորել օբյեկտի հատկությունները։
+
+Дестру́ктор — специальный метод класса, служащий для деинициализации объекта (например освобождения памяти).
+
+деинициализации - ապաակտիվացնել, հիշողությունը ազատել
+
+⚫ Դեսկրիպտորների տեսակները
+		◼ configurable ( կարգավորումը ), defaul false - եթե  true է չի թույլատրում որ տվյալ օբյետի հատկությունը փոփոխության ենթարկել և ջնջել։
+		◼ enumerable ( թվարկված [էնյումըրբլ] ), defaul false  - 
+		◼ value,  defaul undefined - 
+		◼ writable, defaul false ( գրված ) - 
+		◼ get - 
+		◼ set - 
+
+
+?? writable  - по умолчанию false; если не верно, свойство доступно только для чтения; попытка записи игнорируется без ошибок *!
+
+??  enumerable  - по умолчанию false; если true, он будет повторен в for (var i в theObject); если false, он не будет повторяться, но все еще доступен как общедоступный
+
+
+
+
+
+Syntax
+	Object.defineProperty(obj, prop, descriptor)
+	Параметры
+		obj
+			Объект, на котором определяется свойство.
+		prop
+			Имя определяемого или изменяемого свойства.
+		descriptor {...}
+			Дескриптор определяемого или изменяемого свойства.
+		
+
+
+*/
+
+let user1 = {
+	name : "Valod",
+	sname : "Valodyan",
+	gender : 'male',
+	// _password : function() {
+	// 	let parol = 1234;
+	// 	return parol;
+	// }
+		get _password() {
+		let parol = 1234;
+		return parol;
+	}
+
+}
+
+
+// console.log("user1._password()", user1._password);
+// console.log(user1._password());//user1._password is not a function
+
+let user2 = {
+	name : "Gagik",
+	sname : "Gagikyan"
+
+}
+
+
+
+user2.__proto__ = user1;
+
+console.log('user2.gender ',user2.gender);//male -> ասյինքն Object.definePropert-ի շնորհիվ կարելիա նենց անել, որ կենկրետ ինչ-որ հատկություն ժառանգի համար հասանելի չլինի, Իսկ նոր ու հին ստանդարտով getter-ներով չիլինի դա անել։
+
+console.log("user2._password", user2._password);//չպետքա հասանելի լինի բայց հասանելիա user2-ի համաի, այս խնդիր կարելիա վերացնել Object.definePropert-ով։
+Object.definePropert(user1,_password, {
+	__proto__: null
+});//_password is not defined 
+// console.log("user2._password", user2._password);//_password is not defined 
+
+
+// console.log(user2._password);
+	</script>
+</body>
+</html>

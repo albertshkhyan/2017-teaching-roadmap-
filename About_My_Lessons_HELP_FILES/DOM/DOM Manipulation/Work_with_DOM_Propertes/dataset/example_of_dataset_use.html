@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VOTE list</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+
+<body class="bg-warning">
+
+  <section class="container">
+    <h1 class="text-center display-4" >yntroxneri cucak <span id="us_length"></span> mard</h1>
+
+    <div class="row">
+      <input id="add_in" type="text" class="col-10">
+      <button class="col-2 btn btn-info" onclick="add()">Add</button>
+    </div>
+
+    <table class="table table-hover" >
+     <thead>
+      <tr>
+        <th>anun</th>
+        <th>azganun</th>
+        <th>yntrel te voch</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+<!--       <tr>
+          <td>Valod</td>
+          <td>Valodyan</td>
+          <td>ayo <input type="checkbox"></td>
+          <td><button class="btn-danger">X</button></td>
+        </tr>
+
+      <tr>
+          <td>Ani</td>
+          <td>Araqelyan</td>
+          <td>voch <input type="checkbox"></td>
+          <td><button class="btn-danger">X</button></td>
+        </tr> -->
+
+
+
+      </tbody>
+    </table>
+  </section>
+
+
+
+
+
+  <script>
+    
+    var id = 0;
+    var users =[
+    {
+      name:'valod',
+      sname:'valodyan',
+      check:true,
+      id: ++id
+    },
+
+    {
+      name:'ani',
+      sname:'araqelyan',
+      check:false,
+      id: ++id
+    },
+    {
+      name:'narek',
+      sname:'sargsyan',
+      check:true,
+      id: ++id
+    }
+
+    ];
+
+
+    console.log("users", users);
+
+
+
+
+    var us_length =document.querySelector('#us_length');
+    var tbody = document.querySelector('tbody');
+  // tbody.innerHTML += '<tr><td></td></tr>';//hni vra e avleacnum
+  function user_show(){
+    us_length.innerText = users.length;
+    tbody.innerHTML="";//Սա դատարկում ենք որ նորից չտպի արդեն հին user-ի տվյալները։
+    for(var i = 0; i<users.length; ++i){
+      tbody.innerHTML += `<tr>
+      <td>${users[i].name}</td>
+      <td>${users[i].sname}</td>
+      <td>
+      <input type="checkbox" class="check"  ${ (users[i].check) ? 'checked':'' } oninput="check_f(event)">
+      <span>${ (users[i].check) ? 'ayo':'voch' }</span>
+      </td>
+      <td><button class="btn btn-danger" onclick="btn_close(this)" data-id="${users[i].id}">X</button></td>
+      </tr>`;
+
+
+
+      console.log("users[i].check", users[i].check);
+    }
+
+  };
+user_show();//սենց պարտադիր պիտի լինի  
+
+        //Իսկ հիմա մեր ավլեացրածները պետք է ավելանան։
+        var inp = document.querySelector('#add_in');
+        function add(){
+          var val = inp.value.split(' ');
+            // for (var v =0; v<users.length; ++v){
+              if(val.length == 2 && val[1] !=''){// && val[0] != ''
+                users.push({
+                  name: val[0],
+                  sname: val[1],
+                  check: false,
+                  id: ++id
+                });
+         // tbody.innerHTML +=users[0].name;
+         user_show();
+       }
+ /*
+val.length == 2 - սա նրա համար է որ համ անուն և ազգանուն լինի
+&& val[1] !='' - իսկ սա նրա համար է որ օգտվողը դատարկ ազգանուն չդնի
+*/
+
+        inp.value="";//որ հետո մեր add արած նոր անուն ազագանունը մաքրվի 
+      }
+
+/////////////////////// For button close //////////////////////
+/*
+dataset - HTMLElement.dataset հատկությունը թույլ է տալիս կարդալ թեգի data ատրիբուտը, ինչպես նաև փոխել այն։
+console.log(t.dataset);//output - DOMStringMap {id: "2"}
+  t.dataset.id - որ իմանա որ տարրի id -ն է։
+*/
+      function btn_close(t){
+        for(var k = 0; k<users.length; ++k){//որ բելոր data ատրբուտների վրայով անցին որ համընկածը գտնի
+          if(t.dataset.id == users[k].id){
+            users.splice(k,1);
+            console.log(users);
+            user_show();
+          }
+
+        }
+
+/////////////////////////////////////////////////////
+      }
+//e = Event {isTrusted: true, type: "input", target: input.check, currentTarget: input.check, eventPhase: 2, …}
+function check_f(e){
+	e.target.nextElementSibling.innerText = (e.target.checked)? "ayo" : "voch";// Ամեն թեգի ատտրբուտները պահվումա event object-ի մեջ, target հատկության մեջ։
+  //target - ը մեր input checkbox-ն է( input.check):
+
+  //nextElementSibling: span;
+    //nextElementSibling այս հատկությունը Event object-ի հատկություն է, որը իր հորթին գնվում է target-ի մեջ(այլ կերպ ասած target-ի մեթոդ է)։
+  }
+/*
+Свойство nextElementSibling возвращает элемент, следующий сразу за указанным элементом, на том же уровне дерева.
+  sibling - միևնույն ծնողը ունեցող երեխեքը։
+
+  >e.target.nextElementSibling : span
+    innerText
+    */
+
+// /*----------------------------*/
+
+
+/*
+
+<input type="checkbox" class="check"  ${ (users[i].check) ? 'checked':'' } oninput="check_f(event)"> - եթե մեր input-ը ayo է թող ավելանա checked  ատրբուտը, այսինքն նշված։
+    oninput Event
+      oninput իրադարձությունը կատարվում է այն ժամանակ երբ input-ի կամ textarea-արժեքը փոխվումա։
+        /!\ նման է onchange event-ին:
+
+oninput="check_f(event)" - այս իրադարձությունը կկատարվի երբ արժեքը փոխվի։
+    e.target.nextElementSibling.innerText = (e.target.checked)? "ayo" : "voch";
+
+    */
+
+  </script>
+</body>
+</html>

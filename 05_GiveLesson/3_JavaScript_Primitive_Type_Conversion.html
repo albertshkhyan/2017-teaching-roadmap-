@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<i></i>
+
+
+	<script>
+		////
+
+		/*
+			⚫
+			◼ Ծրագրավորման լեզուները կարելիա 2 մասի բաժանել`
+					1.static type - դա երբ որ փոփոխականի տիպը չի կարելի փոխել
+					2.dynamic type - դա երբ որ փոփոխականի տիպը կարելիա փոխել
+
+				static type-ը օրինակի վրա, c++`
+					string str = 'hello';
+					str = 123;❌
+
+
+				⚠ Js-ը dynamic type է
+					var str = 'hello';
+					str = 123;✔
+
+⚫Պրիմիտիվ տվյալի տեսաները ձևափոխելու կա 3 եղանաակ՝
+ Всего есть три преобразования:
+	◼ Строковое преобразование։ String(value). - Փոխակերպումը string-ի
+
+	◼ Численное преобразование։ Number(value) - Փոխակերպումը number-ի
+
+	◼ Преобразование к логическому значению։ Boolean(value) - Փոխակերպումը Boolean-ի
+
+		*/
+
+/* ************** Converting String ************** */
+//// ⚫ Գլոբալ ֆունկցաին String () կարող  փոխել number-ը, boolean-ը string-ի: 
+
+
+// String(false)      // returns "false"
+// String(true)       // returns "true"
+
+// //// toString() does the same.
+// false.toString()   // returns "false"
+// true.toString()    // returns "true"
+
+// /*------------------*/
+// var x = 321;
+// console.log('String(x) ', String(x));  // returns a string from a number variable x -> '321'
+
+// console.log('String(123) ',String(123));// returns a string from a number literal 123 -> '123'
+
+
+// console.log('String(100 + 23) ',String(100 + 23));//returns a string from a number from an expression -> '123'
+
+// //👍 String մեթոդը համրժեք է toString() մեթոդին
+// x.toString();
+// (123).toString();
+// (100 + 23).toString();
+
+
+
+// alert( true + "test" ); // "truetest"
+// alert( "123" + undefined ); // "123undefined"
+
+
+
+
+
+
+
+
+
+
+
+/* ********** Converting  Numbers ********* */
+
+
+
+// Number("3.14")    // returns 3.14
+
+// Number(" ")       // returns 0 
+// console.log("Number() - ", Number(""));//// returns 0
+
+// Number("99 88")   // returns NaN
+
+
+
+// var a = +"3.14"; // 3.14
+// var a = Number("3.14"); // 3.14, тот же эффект
+
+
+// alert( +true ); // 1
+// alert( +false ); // 0
+
+
+// alert( "1" == true );//true
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ********** Converting Boolean to Numbers ********* */
+// Логическое преобразование
+
+////👁‍🗨 what is show
+// if(-1) {
+// 	alert('hello');
+// }
+// console.log(Boolean('true'));//return boolean true
+
+
+
+// console.log(Boolean(0));//false
+// console.log(Boolean(null));//false
+// console.log(Boolean(undefined));//false
+// console.log(Boolean(-1));//մինուս թիվը կտա true
+
+
+/////// ⚠ does the same
+// console.log(!!0);//false
+// console.log(!!null);//false
+// console.log(!!undefined);//false
+// console.log(!!-1);//true
+
+//// js-ում  "0" ի տարբերություն php-ի true է։
+// alert( !!"0" ); // true
+// alert( !!" " ); // любые непустые строки, даже из пробелов - true!
+
+
+
+
+
+// // ⚠ Հիմնականում այս գլոբալ մեթոդները չեն օգտագործվում, իրանց փոխարեն կարելիա ավելա կարճ ու հարմար գրելաձևով գրել
+// String('hello') 👎
+// Number('3.14') 👎
+// Boolean(-1) 👎
+
+// 'hello'.toString()  - 👍 , +''
+// +'3.14' , or parseInt, parserFloat - 👍
+// !!-1 👍
+
+
+
+
+
+// let str = 10;
+// // console.log(String(str));
+// let ten = str.toString();
+
+
+
+// console.log(Number(true));
+// console.log(Number('109'));
+
+// let x = +'10';
+// console.log("x", x);
+// console.log("x", x);
+
+
+
+
+// if('hello') {
+// 	alert('barev')
+// }
+// console.log(Boolean(''));
+
+// console.log(!!'hello');
+
+	</script>
+</body>
+</html>

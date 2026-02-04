@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		/**/
+	section{
+		width: 100%;
+		height: 100vh;
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		justify-content: center;
+		-ms-align-items: center;
+		align-items: center;
+	}
+
+		main{
+			width: 300px;
+			height: 300px;
+			border:1px solid;
+			border-radius: 50%;
+		}
+
+		.dialLines {
+			width: 5px;
+			height: 15px;
+			background:red;
+			position: absolute;
+			left: 50%;
+			transform-origin:50% 150px;
+		}
+
+
+		/*
+		
+			.dialLines {
+		width: 3px;
+		height: 10px;
+		background: yellow;
+		position: absolute;
+		left: calc(50% - 1.5px);
+
+		transform-origin: 50% 150px;
+	}
+
+
+		*/
+	</style>
+</head>
+<body>
+
+
+<section>
+	<main>
+		<!-- <div class="dialLines"></div> -->
+	</main>
+
+</section>
+
+	<script>
+		//
+
+
+let tm = document.querySelector('section main');
+for(let i = 0; i < 60; ++i) {
+let cdl = document.createElement('div');
+cdl.className = 'dialLines';
+tm.appendChild(cdl);
+// let allDl = document.querySelectorAll('.dialLines');
+let allDl = document.getElementsByClassName('dialLines');
+
+
+// console.log("allDl[3]", allDl[59]);
+allDl[i].style.transform = `rotate(${i*6 + 'deg'})`;
+}
+
+
+
+
+
+// for(let i = 0; i < 60; ++i) {
+// 	let clock = document.querySelector('#clock');
+// 	let dialLines = document.getElementsByClassName('dialLines');
+// 	clock.innerHTML += `<div class="dialLines"></div>`;
+// 	dialLines[i].style = `transform:rotate(${i * 6}deg)`;
+// }
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

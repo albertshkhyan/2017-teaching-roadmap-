@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body class="bg-warning">
+	<section class="container">
+		<h1 class="text-center display-4">yntroxneri cucakum <span id="us_length"></span> mard</h1>
+		<div class="row">
+			<input type="text" class="col-10" id="add_inp">
+			<button class="col-2 btn btn-info" onclick="add()">Add</button>
+		</div>
+		<table class="table table-hover mt-5">
+			<thead>
+				<tr>
+					<td>Anun</td>
+					<td>Azganun</td>
+					<td>yntrel e / chi yntel</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</section>
+
+
+
+
+
+	<script>
+		"use strict"
+		var id = 0;
+		var users = [
+			{
+				name: "Valod",
+				sname: "Valodyan",
+				check: true,
+				id: ++id
+			},
+			{
+				name: "Gagik",
+				sname: "Hakobyan",
+				check: false,
+				id: ++id,
+			},
+			{
+				name: "Anna",
+				sname: "Simonyan",
+				check: true,
+				id: ++id
+			}
+		];
+		
+
+		var us_length = document.querySelector("#us_length");
+
+		
+
+		var tbody = document.querySelector("tbody");
+		
+		function user_show(){
+			us_length.innerText = users.length;
+			tbody.innerHTML = ""
+			for(var i = 0; i < users.length; i++){
+				tbody.innerHTML += `<tr>
+									<td>${users[i].name}</td>
+									<td>${users[i].sname}</td>
+									<td>
+										
+										<input type="checkbox" ${ (users[i].check)? "checked" : "" } oninput="check(event)">
+										<span>${ (users[i].check)? "ayo" : "voch" }</span>
+									</td>
+									<td>
+										<button onclick="cl(this)" data-id="${users[i].id}" class="btn btn-danger">X</button>
+									</td>
+								</tr>`;
+			}
+
+		}
+
+		user_show()
+
+		var inp = document.querySelector("#add_inp");
+
+		function add(){
+			var val = inp.value.split(" ");
+			if(val.length == 2 && val[1] != ""){
+				users.push({
+					name: val[0],
+					sname: val[1],
+					check: false,
+					id: ++id
+				})
+				inp.value = "";
+				user_show();
+			}
+			console.log(users)
+
+		}
+
+		function cl(t){
+			for(var j = 0; j < users.length; ++j){
+				if(t.dataset.id == users[j].id){
+					users.splice(j,1);
+					user_show()
+				}
+			}
+			console.log(users);
+		}
+
+
+		function check(e){
+			e.target.nextElementSibling.innerText = (e.target.checked)? "ayo" : "voch";
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+	</script>
+
+
+</body>
+</html>

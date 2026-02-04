@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		//
+
+
+
+		// var parent = {
+		// 	get: function fn() {
+		// 		return this.val;
+		// 	},
+		// 	val: 42
+		// };
+
+
+		// var childExtendParent = Object.create(parent);//
+		// console.log("childExtendParent - ", childExtendParent);
+		// childExtendParent.get = function fn2() {
+		// 	return this.val + '!!';
+		// };
+
+		// document.write("Parent object: " + parent.get());
+		// document.write("<br />Child object: " + childExtendParent.get());
+
+
+		// console.log("parent", parent);
+
+
+
+		/*****************************************/
+
+//Պոլիմորֆիզմը նույն օբյեկտը տարբեր միջավայրերում իրեն տարբեր կերպ դրսեվորելու հատկություննը։
+// 		let person1 = {
+// 			name : 'Jon',
+// 			sname : 'Doe',
+// 			walk : function() {
+// 				console.log('person1 is walking');
+// 			}
+// 		}
+
+// 		let person2 = {
+// 			walk : function() {
+// 				console.log('person2 is walking');
+// 			}
+// 		}
+
+// 		person2.__proto__ = person1;
+// 		// console.log(person2.name);//Jon -> ժառանգականություն կատարվեց
+
+
+// /*--------------------------------------
+// 		person2.__proto__ = person1;
+// console.log("person2 - ", person2);
+// Output 
+// 		person2__proto__:
+// 		 name: "Jon"sname: 
+// 		 "Doe"walk: ƒ ()
+// 		 		__proto__: Object
+// --------------------------------------*/
+
+// person1.walk();//person1 is walking
+// person2.walk();//person2 is walking
+
+
+
+
+</script>
+</body>
+</html>

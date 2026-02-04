@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+// function Baz() {
+//     // стек вызовов: `baz`
+//     // поэтому наша точка вызова — глобальная область видимости
+
+//     console.log( this.constructor.name + ' ' +"baz" );
+// }
+
+
+// function Bar() {
+//     // стек вызовов: `baz` -> `bar`
+//     // поэтому наша точка вызова в `baz`
+
+//     console.log(this.constructor.name + ' ' + "bar" );
+// }
+
+// function Foo() {
+//     // стек вызовов: `baz` -> `bar` -> `foo`
+//     // поэтому наша точка вызова в `bar`
+
+//     console.log(this.constructor.name + ' ' + "foo" );
+// }
+
+
+
+// let bar = new Bar();
+// let foo = new Foo();
+// let baz = new Baz();
+
+function foo() {
+ console.log(this.a);//this-ը ցույցա տալու obj-ն
+}
+
+let obj1 = {
+ a : 2,
+ foo:foo
+
+}
+
+let bar = obj1.foo;
+var a = 10;
+// let a = 10;//undefined
+bar();   //Default binding
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>title</title>
+</head>
+<body>
+		<button onclick="getUsers()">request to server and get users</button>
+
+		<ul id="list">
+	
+		</ul>
+
+		
+		
+	
+
+
+	<script>
+
+
+function getUsers() {
+
+	let promise = fetch('https://jsonplaceholder.typicode.com/users');
+	// console.log('promise', promise);
+
+	promise.then(function(getResponse) {
+		console.log(getResponse);
+		let readResponse = getResponse.json();//
+		// console.log(readResponse);
+		return readResponse;
+	})
+	.then(function(arrOfUsers) {
+		// console.log(arrOfUsers);
+		let getUl = document.querySelector('#list');
+
+		let newArr = arrOfUsers.map((item)=> {
+			// console.log(item);
+			return `<li>${item.id}, ${item.name}, ${item.email}</li>`;
+		})
+		// console.log(newArr);
+		getUl.insertAdjacentHTML('afterbegin', newArr.join(' '));
+
+
+	})
+	
+
+}
+
+
+
+/////////////////////////////////////////
+
+// async function foo(){}
+// console.log(foo());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function getUsers() {
+let promise = await fetch('https://jsonplaceholder.typicode.com/users');
+// console.log('promise', promise);
+let arrOfUsers = await promise.json();
+// console.log(readResponse);
+
+let getUl = document.querySelector('#list');
+
+let newArr = arrOfUsers.map((item)=> {
+	// console.log(item);
+	return `<li>${item.id}, ${item.name}, ${item.email}</li>`;
+})
+// console.log(newArr);
+getUl.insertAdjacentHTML('afterbegin', newArr.join(' '));
+
+
+
+}
+
+
+
+
+	</script>
+</body>
+</html>

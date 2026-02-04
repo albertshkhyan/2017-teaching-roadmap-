@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table with timer</title>
+</head>
+<body>
+
+
+	<script>
+		var a=0;
+		var b=0;
+		var tablerow;
+		var tabledata;
+		function f(){
+			if(a==0){
+				document.write('<table>');
+			}
+
+			if(b==0){
+				document.write('<tr>');
+			}
+
+
+			b++
+			a++;
+
+			document.write('<td style="width:50px; height:50px; border:2px solid;">'+a+'</td>');
+
+			if(b==10){
+				document.write('</tr>');
+				b=0;
+			}
+// b=0;
+
+
+if(a==100){
+	document.write('</table>');
+	clearInterval(set);
+}
+
+}
+var set=setInterval(f,100);
+
+</script>
+</body>
+</html>

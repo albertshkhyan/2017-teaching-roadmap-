@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+
+		/*Function-constructor
+			Js-ը մեզ տրամադրումա նոր օբյեկտներ սարքելու ձև, որ ավելի ճկունա, ավելիա լայն հնարավորթություններա տալիս։ Դա constructor-ներն են։
+			
+		*/
+
+		// Example how wOrking simple object\
+		//how following is example working
+
+		// let auto = {
+		// 	marka : 'BMW',
+		// 	color : 'red',
+		// 	weight: '1.5t'
+
+		// }
+		/*
+⚠ Սովորական օբյեկտի հնարավորությունները սահմանափակա, Ի՞նչու
+			Որովհետև մենք միանգամից օբյեկտ ենք ստեղծում, բայց կարանք դրա փոխարեն ստեղծենք << պլան >>, որի հիման վրա ստեղծենք լիքը օբյեկտներ, ու ես տարբերակումն կոդի ծավալը ահագին նվազումա։
+
+		*/
+
+
+
+ 
+
+/*
+Ձևակերպում 1
+⚫ constructor-ը դա ֆունկցիա է, ուրիշ ծրագրավորման լեզուներում ասում են class:  Constructor-ը նախատեսվածա նույն հատկություններով և մեթոդներով մի քանի օբյեկտներ ստեղծելու համար, իսկ constructor-ից օբյեկտ ստանալու համար պետքա օգտագործել new օպերատորը։ 
+⚠ constructor ֆունկիցաների անունները միշտ գրվումա մեծատառով, որ մնացած ֆունկցիաներից տարբորվի։ Օրինակ՝
+*/
+
+// var x1 = new Object();    // A new Object object
+// var x2 = new String();    // A new String object
+// var x3 = new Number();    // A new Number object
+// var x4 = new Boolean();   // A new Boolean object
+// var x5 = new Array();     // A new Array object
+// var x6 = new RegExp();    // A new RegExp object
+// var x7 = new Function();  // A new Function object
+// var x8 = new Date(); 		// // A new Date object
+
+/*
+Syntax of constructor
+
+		function Person() { // code }
+
+*/
+/* ------------ name of constructor -------------- */
+
+/* 
+constructor-ը դա ֆունկիցա է որպեսզի ուրիշ ֆունկցիաներից constructor ֆունկցիան տարբերվի, իր անունը գրվում է մեծատառով։ Օրինակ՝
+
+function Auto() {
+	...
+}
+*/
+
+ /* ---------------- The this Keyword ---------------- 
+
+ ⚠ Կոնտրուկտերի մեջ this-ը արժեք չունի, այն արժեք կստանա երբ մենք մեր constructor ֆունկցիան սարքեն օբյեկտ։
+
+ ⚠ JavaScript-ում ինչին, որ ասում են this ուրեմն ետի օբյեկտա։Այսինքն this-ը արժեքը միշտ օբյեկտա, մենակ եթե չի գտնում որ օբյեկտի վրա հղվի ետ ժամանակա undefiend:
+
+⚠ Note that this is not a variable. It is a keyword. You cannot change the value of this.
+
+------------ property  of  contructor --------------
+
+constructor-ի հատկությունները և մեթոդները  գրվում են this բանալի բառով, օրինակ՝ this.marka = ...
+
+*/
+
+
+// function Kran(m, e, c) {
+// 	this.marka = m;
+// 	this.engine = e;
+// 	this.color = c;
+// 	this.start = function() {
+// 		console.log(this.marka + ' xodi yngav');
+// 		go();
+		
+// 	}
+// ////ինչպես Ժառանգել private function-ը
+// 	// let go = function() {
+// 	// 	console.log(this.marka + ' avton gnac');
+		
+// 	// }
+
+// 	// ///1 variant
+// 	// let go = function() {
+// 	// 	console.log(this.marka + ' avton gnac');
+// 	// }.bind(this);
+
+// 	///// 2 variant
+// 	let go = () => {
+// 		console.log(this.marka + ' avton gnac');
+		
+// 	}
+
+
+// 	/////// 3 variant
+
+// 	// let t = this;
+// 	// go = function () {
+// 	// 	console.log(t.marka  + ' avton gnac');
+// 	// }
+	
+
+
+// }
+
+
+// function Bmw(mk,eg,cl, four_chair) {
+// 	Kran.call(this, mk, eg, cl);
+// 	this.nstatex = four_chair;
+// }
+
+
+// let kran = new Kran('CAT', 4.1 , 'yello');
+// let bmw = new Bmw('Bmw', 'v8', 'yellow', 4)
+
+// bmw.start();
+
+
+// let user = {
+// 	name : 'Valod',
+// 	acount1 : {
+// 		siteName : 'facebook',
+// 		acount2 : {
+// 			siteName : 'ok',
+// 			// info : function() {
+// 			// 	console.log('valody gtnvuma ' + this.siteName);
+				
+// 			// }
+
+// 			info : () => {
+// 				console.log('valody gtnvuma ' + this.siteName);
+// 			}
+// 		}
+// 	}
+// }
+
+// user.acount1.acount2.info();
+
+
+
+let user = {
+	name : 'Valod',
+	sname : 'Valodyan',
+	// sayHi : function() {
+	// 	console.log(this.name +  ' ' + this.sname);
+		
+	// }
+  
+
+}
+
+user.sayHi();
+
+
+
+
+
+
+
+
+
+
+
+// // Person.hairColor = 'black';
+
+// // // console.log('Person', Person);
+// // // console.log('Person', typeof Person);//function
+// // // console.log('Person', typeof Person);//function
+// // // console.log(Person.firstName);//մենք օբյեկտի մեջից պետքա կանչենք հատկությունը ոչ թե class-ի։
+
+// let person1 = new Person('Valod','Valodyan', 25, 'blue');
+// // console.log(person1.firstName);//
+// // console.log(person1.hairColor);////undefined
+// // console.log(Person.hairColor);////black
+
+// /* Եթե ուզում ենք ընենց հատկություններ տալ, որ մենակ մեր օբյեկտի մեջ լինի՝ */
+// person1.weight = '70kg';
+
+
+
+
+/*
+Why we use this
+
+⚠ եթե մեթոդը կամ հատկությունը class-ի մեջ իրա this-ը չունի ուրեմն այն կդառնա սովորական var-ով հայտարարված փոփոխականն,
+ այլ կերպ ասած գլոբալ
+*/
+
+
+// function Auto(m,c) {
+// 	this.marka = m;
+// 	this.color = c;
+// 	// this.go = function() {
+// 	// 	console.log(this.marka + ' avton gnac!');
+// 	// }
+// 	go = function() {
+// 		// console.log(this);
+// 		console.log('avton gnac');
+// 		// return 'hello';
+// 	}//window globala object metod
+// 	// model = 'm5';////window globala object property, like var
+
+
+// }
+
+// let auto = new Auto('bmw', 'red');
+// // console.log(	model);//m5
+// console.log(go());//undefined + avton gnac որովհետև ոչ մի բան չի վերադարձնում go ֆունկցիան
+
+/*--------------------------------------------------------------------------*/ 
+
+// go = function() {
+// 		// console.log(this);
+// 		console.log('avton gnac');
+// 	}
+// 	go();//միայն 'avton gnac' առանաց undefined
+
+/*
+⚠ մենք հատկությունները this-ով ենք գրում, որ հետագայում ուրիշ օբյեկտները կարանա հասանելիություն ստանան իրենց հանդեպ նույննել մեթոդները։ Այլ կերպ ասած, որ բոլորր հատկությունները և մեթոդները public լինեն։
+
+ -------------- methods of contructor -------------- 
+*/
+
+
+// function Person(first, last, age, eye) {
+//   this.firstName = first;
+//   this.lastName = last;
+//   this.age = age;
+//   this.eyeColor = eye;
+//   this.getFullName = function() {
+// 		return  firstName + ' ' + lastName;
+//   }
+// }
+
+/*
+ ⚠instance - դա constructor-ից ստացած օբյեկտնա։
+
+------------------------- instance of constructor -> new -------------------------------------
+//⚫ class-ից ստացված օբյեկտին նաև ասում են, class-ի instance(օրինակ), այսինքն class-ից ստացված օբյեկտի օրինակ։ 
+(instance - բնօրինակ)
+//⚠ Որպեսզի constructor-ը օբյեկտ սարքեն պետքա իրան new անենք։
+🔰 constructor սարքելուց հետո, պետքա սարքել իրա instance-ը (экземпляр, копия, օրինակ)։ Օրինակ՝
+*/
+// const person1 = new Person();b
+// const person2 = new Person();b
+
+
+
+
+/*
+ -------------------------- instanceof օպերատոր -------------------------- 
+
+⚫ instanceof օպերատորը ստուգումա թե մեր օբյեկտը որ constructor-իցա ստեղծվել։
+*/
+
+// function Person(first, last, age, eye) {
+//   this.firstName = first;
+//   this.lastName = last;
+//   this.age = age;
+//   this.eyeColor = eye;
+//   this.getFullName = function() {
+// 		return  firstName + ' ' + lastName;
+//   }
+// }
+
+// const person1 = new Person('Valod','Valodyan', 20, 'blue');
+// const person2 = new Person('Vaxarhak', 'Vaxarhakyan', 24, 'green');
+
+// console.log("person1", person1);
+// console.log("person2", person2);
+
+// console.log(person1 instanceof Person);//true -> person1 ստեղծվելա Person կոնստրուկտորով։
+
+
+
+
+////Task - ավելացնել նոր հատկություն և մեթոդ մեր constructor-ի մեջ։
+
+// function Person(first, last, age, eye) {
+//   this.firstName = first;
+//   this.lastName = last;
+//   this.age = age;
+//   this.eyeColor = eye;
+//   this.getFullName = function() {
+// 		return  firstName + ' ' + lastName;
+//   };
+// }
+
+// Person.nationality = 'Armenia';
+// /*
+// Person ֆունկցիայի մեջ ավելացավ  հատկությունը, իսկ օբյեկների մեջ ավելացավ -> __proto__.contructor-ի մեջ։
+// Person.prototype.constructor
+// 		Person.nationality = 'Armenia'
+
+// */
+// console.log('nationality' in Person);//true
+
+
+// const person1 = new Person('Valod','Valodyan', 20, 'blue');
+// const person2 = new Person('Vaxarhak', 'Vaxarhakyan', 24, 'green');
+
+// console.log('nationality' in person1.constructor);//true
+
+
+// console.log(Person.nationality);//Armenia
+// console.log("Person", Person);
+// console.log("person1", person1);//Person {firstName: "Valod", lastName: "Valodyan", age: 20, eyeColor: "blue", getFullName: ƒ}
+
+
+
+
+
+
+
+
+/*
+ --------------------- abstract constructor --------------------- ???? դեռ չասել
+
+//⚠without new
+*/
+
+
+
+
+// function Auto(m,c) {
+// 	this.marka = m;
+// 	this.color = c;
+// }
+
+// // console.log('Auto', Auto);
+
+
+// let auto = new Auto('bmw', 'red');
+// console.log(auto instanceof Auto);
+
+
+// console.log(new Boolean instanceof Boolean);
+// console.log('auto', auto);
+// console.log(auto.color);
+
+
+	</script>
+</body>
+</html>

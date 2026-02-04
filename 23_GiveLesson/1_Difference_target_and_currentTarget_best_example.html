@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		form, form div {
+			border:1px solid;
+			padding: 20px;
+			text-align: center;	
+			max-width: 500px
+		}
+	</style>
+</head>
+
+<form action="">outer
+	<div>inner</div>
+</form>
+<body>
+	<script>
+		//targetэто то, что вы на самом деле нажали
+		//⚫target - դա են տարրնամ, որի պատճատով առաջացելա տվյալ event-ը։
+
+//currentTargetэто элемент, к которому вы фактически привязали событие. Это никогда не изменится.
+
+//⚫currentTarget - դա են տարրնա որի վրա դրվածա տվյալ event-ը։
+let frm = document.querySelector('form');
+frm.addEventListener('click', function(e) {
+	// alert('hello');
+	alert('e.currentTarget - '+ e.currentTarget.tagName);
+	alert('e.target - '+  e.target.tagName);
+	// alert('this.tagName - '  + this.tagName);//???
+	e.target.style.backgroundColor = 'red';
+});
+
+///// this-ը միշտ parent-նա։
+
+///// Not this example use true or false because only one event 
+	//Чтобы поймать событие на стадии перехвата, нужно использовать третий аргумент addEventListener:
+			//Если аргумент true, то событие будет перехвачено по дороге вниз. -> click on p(inner box) -> form, div, p
+			// Если аргумент false, то событие будет поймано при всплытии. click on p(inner box) -> p, div, form
+
+/*Explanation
+
+Մենք event տվել ենք միայն form տարրին, բայց div-ի վրա ել click անելուց աշխատում event-ը։
+
+*/
+
+
+
+	</script>
+</body>
+</html>

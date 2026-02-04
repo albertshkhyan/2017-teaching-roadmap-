@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //
+        // function* range(start, end) {
+        //     let current = start;
+
+        //     while(start <= end) {
+        //         yield start++;      
+        //         let a = 10;
+        //         a++         
+        //     }
+
+            // if(start <= end) {
+            //     yield start++;               
+            // }
+        // }
+
+        // console.log(range(1,10).next());//1 😥😂
+        // console.log(range(1,10).next());//1 😥😂
+        // console.log(range(1,10).next());//1 😥😂
+        // console.log(range(1,10).next());//1 😥😂
+
+
+
+        //working 😆
+        //end-ից հետելա ցուցադրում
+        // function* range(start, end) {
+        //     let current = start;
+        //     while(start <= end) {
+        //         yield current++;
+        //     }
+        // }
+
+        // let iter = range(5,10);
+        // console.log(iter.next().value);//5
+        // console.log(iter.next().value);//6
+        // console.log(iter.next().value);//7
+        // console.log(iter.next().value);//8
+        // console.log(iter.next().value);//9
+        // console.log(iter.next().value);//10
+        // console.log(iter.next().value);//11
+
+
+        /*+++++++++++How to fix+++++++++++*/
+
+        // function* range(start, end) {
+        //     while(start <= end) {
+        //         yield start++;
+        //     }
+        // }
+
+        // let iter = range(5,10);
+        // console.log(iter.next().value);//5
+        // console.log(iter.next().value);//6
+        // console.log(iter.next().value);//7
+        // console.log(iter.next().value);//8
+        // console.log(iter.next().value);//9
+        // console.log(iter.next().value);//10
+        // console.log(iter.next().value);//undefined
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+        ////working
+        // let current = 1;
+        // function* range() {
+        //         yield current++;
+        // }
+
+        // console.log(range().next());//1
+        // console.log(range().next());//2
+
+
+        //????
+        // function* range(start, end) {
+        //     let current = start;
+        //     while(start <= end) {
+        //         yield current++;
+
+        //     }
+        // }
+
+        // console.log(range(5,10).next());
+        // console.log(range(5,10).next());
+
+
+        //// working
+        // function* generateSequence(start, end) {
+        //     for (let i = start; i <= end; i++) {
+        //         yield i;
+        //     }
+
+        // }
+
+        // // Используем оператор … для преобразования итерируемого объекта в массив
+        // // let sequence = [...generateSequence(2, 5)];//[2, 3, 4, 5]
+        // // console.log(sequence); // 2, 3, 4, 5
+
+        // let iter = generateSequence(10, 15);
+        // console.log(iter.next());
+        // console.log(iter.next());
+        // console.log(iter.next());
+        
+
+    </script>
+</body>
+
+</html>

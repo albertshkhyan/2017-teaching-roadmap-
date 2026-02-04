@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+</head>
+<body>
+	
+
+
+	<script>
+		//
+
+		/*
+		Ouptut
+		*
+		**
+		***
+		****
+		*****
+		*/
+		//0 1 կապ չունի
+		// for(var i = 1; i <= 5; ++i) {
+		// 	for(var j = 1; j <= i; ++j){	
+		// 		document.write('*');
+		// 	}
+		// 	document.write('<br>');
+		// } 
+		
+		// for(var i = 0; i <= 5; ++i) {
+		// 	for(var j = 0; j < i+1; ++j) {
+		// 		document.write('<span style="color:red;">*</span>');
+		// 	}
+		// 	document.write('<br>');
+		// }
+
+
+
+/*Ամփոփքւմ
+	decrement -ը որնա - Փոփոխականի արժեքին 1-ով պակասեցնելու գործողություննա։
+
+	pstfic and prefix incremetn
+		x++ - հաջորդ քայլի համարա փոխում արժեքը
+		++x - տվյալ պահինա փոխում արժեքը
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////// window.parseInt(), parseFloat(), Number ////////////////////////////
+/*
+parseInt-ը փորձումա առաջին պառամետրը  սարքի ամբողջ թիվ, parseInt ֆունկցիան կարա վերադարձնումա միայն 2 արժեքը թիվը,որը կարացավ վերլուծի կամ NaN, որը որ չկարացավ։
+------------------------------
+	/!\ parseInt  ֆուկցիան կարողանումա տարբեր թվային համկերգերի հետ աշխատել,ըստ default-ի 10-րդական համկարգովա աշխատում։
+		// var n = parseInt(0xF, 10);//15 - 16ական համակարգը սարքւմա տասնորդական
+		--------------------------------
+
+*/
+
+//#parseInt -ը փոխակերպումա է string - ի մեջի թիվը ու սարքումա number
+// var int = parseInt(12);
+// console.log(typeof int);//number
+
+
+//#Եթե թիվը չի ստացվում փոխակերպել կամ եթե թիվ չկա ապա կվերադարցնի NaN
+// var n = parseInt();
+// var n = parseInt('a');//NaN
+// console.log("n", n);//NaN 
+
+
+
+//# վերադարցնում է ամբողջ թիվ (բացասկան թվերնել են ամբողջ), մնացորդները չի վերադարցնում
+// var n = parseInt(1.20);//1
+// var n = parseInt('1.20');//1
+// var n = parseInt('-10');//-10 
+
+//#string-ը նույնպես փոխակերվումա number-ի, բայց՝
+// /!\ string-ը պիտի սկսվի թվից
+// var str = '10 hat gndak';
+// var intNum = parseInt(str);
+// console.log("intNum", intNum);//10
+
+// var str = 'hat 10 gndak';
+// var intNum = parseInt(str);
+// console.log("intNum", intNum);//NaN
+
+
+
+/////////////////// parseFloat() ///////////////////////
+
+
+//parseFloat() ֆունկցիան թույլ է տալիս փոխակերպել թվերը նաև մնացորդները
+
+// var str = '15.7 gram';
+// var nf = parseFloat(str);
+// console.log("nf", nf);
+//parseFloat - ը կվեկալի 15.7 - ը, իսկ parseInt-ը մենակ 15-ը 
+// /!\ Կետից հետո ինչքան թիվ կա սաղ վեկալումա
+
+
+/////////////////// Number() ֆունկցիա /////////////////
+
+
+// var bool = true;
+// var res = Number(bool);
+// console.log("res", res);//1
+
+// var str = '1';
+// // var str = '1 kg';//NaN
+// var res = Number(str);
+// console.log("res", res);//1
+
+//Ի տարբերություն parsInt - ի Number-ը չի վերադարձնի թիվ եթե string-ի մեփ տեքստ կա։
+// /!\ parseInt - ը ավելի ուժեղա n=Number() -ից
+
+// var bool = true;
+// var n = parseInt(bool);
+// console.log("n", n);//NaN - parseInt-ը boolean ը չի կարում number սարքի։
+
+
+/********************************************************************************/
+
+
+// Number.prototype.toFixed method - Number ի մեթոդ է։
+// toFixed() - ը ասում թե քանի հատ մնացորդ պիտի վեկալի ամբողջ թվից հետո։ Ու կլորացնումա կամ դեպի վերեվ կամ դեպի ներքեվ, և վերադարձնում string, ասյինքն number -ը սարքումա string:
+
+// var n = 3.14766489478646513464;
+// var pi = n.toFixed(2);//3.15
+// console.log(typeof pi);//string
+
+
+//toFixed() մեթոդը նաև կլորացնումա Math.round() -ի նման։
+// var n = 3.14266489478646513464;//3.14
+// var n = 3.14766489478646513464;////3.15
+// var pi = Number(parseFloat(n).toFixed(2));
+// console.log(pi);
+
+
+//Եթե ուզում ենք հենց 3․14 ցույց տա՝
+
+// var n = 3.14766489478646513464;////3.15
+// var pi = Number(parseFloat(n).toFixed(2));
+// console.log(pi);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*================= ֆունկցիայի ու մոթոդի տարբերությունը ==================*/
+
+// # ֆունկիցան օբյեկտից կախված չի, իսկ մեթոդը կախվածություն ունի օբյեկտից, այսինքն մեթոդը առանց օբյեկտ չի աշխատի։
+
+//#ֆունկիցայի օրինակ
+// /!\ ֆունկցիա գրելուց պաարտադիր իրա օբյեկտը նշվի։
+// alert()
+// prompt()
+// confirm()
+
+// parseInt()
+// parseFloat()
+// Number()
+			// console.log(Number('10'));
+
+
+//#Մեթոդի օրինակ
+
+// log() - առանց console օբյեկտի չի աշխատի
+// write() - առանց console օբյեկտի չի աշխատի
+// array.prototypes methods -> pop,push,shif,unshift,splice,reverse,sort
+
+
+
+
+/*====================Const wit javascript====================*/
+
+// var GUYN = '#ff0000';
+// var ANUN1 = 'Narek';
+
+
+
+
+
+	</script>
+
+</body>
+</html>

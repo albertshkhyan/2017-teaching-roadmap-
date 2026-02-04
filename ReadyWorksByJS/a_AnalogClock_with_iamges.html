@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Analog Clock</title>
+
+
+	<style>
+
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+
+	
+/* ----------slaqner-------------- */
+
+
+
+
+
+	#clock img{
+		width: 70%;
+		height: 300px;
+	}
+
+
+	#for_center{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	html,#forInnerHeight,#for_center{
+		height: 100%;
+	}
+/*
+	* #for_center - 
+
+	* body - երբ որ body-ին տալիս ենք  height: 100%; այն վեկալումա window.innerHeight, ու եթե մենք #for_center -ից դուրս ուրժշ թեգ հայտարարենք body-ի կոնտեքստում չի լինի։
+
+*/
+	
+/* -----------------JAM----------------- */
+
+#clock{
+	width: 500px;
+	height: 500px;
+	background-image: url(images/clock_PNG6657.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+
+
+
+	position: relative;
+}
+
+#clock img{
+	position: absolute;
+	top: 100px;
+	left: 80px;
+
+
+
+	/*margin:-200px 0px 0px -200px;*/
+}
+
+	</style>
+</head>
+<body>
+	
+<div id="forInnerHeight">
+<div id="for_center">
+	<div id="clock">
+		<img id="hour_hand" src="images/hand_hour_clock.png" alt="hour_hand">
+		<img id="min_hand" src="images/minute_hand3.png" alt="minute_hand">
+		<img id="sec_hand" src="images/second_hand.png" alt="second_hand">
+	</div>
+</div>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, molestias.</p>
+
+
+
+	<script>
+
+		// setInterval(function clock(){
+
+		// var hour = document.querySelector('#hour_hand');
+		// var min = document.querySelector('#min_hand');
+		// var sec = document.querySelector('#sec_hand');
+
+		// 	var d = new Date();
+
+		// 	var h = d.getHours()+1;//0-23
+		// 	var m =d.getMinutes();
+		// 	var s = d.getSeconds();
+
+		// 	var hDeg = (h*30) + (0.5 + m); //jamy mek 30 asticchan teqvum e, 30 / 60m
+		// 	var mDeg = m*6 + (0.1 * s); //amen ropen mek 6 astichan gnum e aj, 6/60
+		// 	var sDeg = s * 6; //360 / 60
+
+		// 	hour.style = 'transform:rotate('+hDeg+'deg);'
+		// 	min.style = 'transform:rotate('+mDeg+'deg);'
+		// 	sec.style = 'transform:rotate('+sDeg+'deg);'
+
+		// 	// setTimeout(clock,1000);
+
+		// },1000);
+		
+
+			setInterval(function clock(){
+
+		var hour = document.querySelector('#hour_hand');
+		var min = document.querySelector('#min_hand');
+		var sec = document.querySelector('#sec_hand');
+
+			var d = new Date();
+
+			var h = d.getHours()+1;//0-23
+			var m =d.getMinutes();
+			var s = d.getSeconds();	
+
+			var hDeg = (h*30); //jamy mek 30 asticchan teqvum e, 30 / 60m
+			var mDeg = m*6; //amen ropen mek 6 astichan gnum e aj, 6/60
+			var sDeg = s * 6; //360 / 60
+
+			hour.style = 'transform:rotate('+hDeg+'deg);'
+			min.style = 'transform:rotate('+mDeg+'deg);'
+			sec.style = 'transform:rotate('+sDeg+'deg);'
+			
+			// setTimeout(clock,1000);
+
+		},1000);
+
+/*
+
+# Մեր ստեղծած ժամը իսկական ժամի նման չի աշխատում։ Իսկական ժամում 1վրկ-ում բոլոր սլաքներնել պտտվում են։
+	* Վարկյանի սլաքը 1 վրկ-ում - (1sec/60) * 360deg = 6 deg
+	* Րոպեի սլաքը 1 վրկ-ում - (1sec/60) * 6deg = 0,1deg
+	* ժամի սլաքը 1 վրկ-ում - (1sec/60) * 0,1deg = 0,0017deg
+
+	/!\ 60 -ը դա 1 աստիճանը 60 հավասար մասերի բաժանած,ինչու 60 որովհետեվ 1րոպեն 60 վրկ․ է,
+	1ժամը = 60րոպե։
+
+--- Որպեսզի 1 վարկյանում բոլոր սլաքները պտտվեն ---
+պետք է  ավելացնել(+) տվյալ սլաքի աստիճանը,  ավելի արագս սլաքով։ Օրինակ`
+/!\ Վարկյանինը պեքտ րի ավելացնել 
+
+let t_sec = 6*d.getSeconds();
+let t_min = 6* ( d.getMinutes() + (1/60) *d.getSeconds() ) ;
+let hour = 30* ( d.getHours() + (1/60) *d.getMinutes() ) ;
+* Րոպեինը ավելացնել վարկյանով
+* Ժամինը ավելացնել րեպեվ
+
+
+*/
+	</script>
+</body>
+</html>

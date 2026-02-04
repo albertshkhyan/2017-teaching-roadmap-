@@ -1,0 +1,125 @@
+body{
+	background: linear-gradient(rgb(92,185,193),rgb(62,154,225),rgb(131,9,225));
+	height: 1000px;
+}
+#tb{
+	width: 480px;
+	margin: 0 auto;
+}
+.td{
+	font-size: 20px;
+	border-radius: 50%;
+	background-color: rgba(103,94,228,0.6);
+	color: rgb(0,0,139);
+	width: 40px;
+	height: 37px;
+	text-align: center;
+	padding: 5px;
+	box-shadow: 4px 4px 15px black;
+}
+.tdd{
+	background-color: rgba(56,190,240,0.6);
+	z-index: 1000;
+
+}
+
+.tdd:hover{
+	box-shadow: 3px 3px 15px rgb(15,170,190);
+	cursor: pointer;
+}
+.nshvac{
+	background-color: rgb(20,228,255); 
+	box-shadow: 2px 2px 30px aqua;
+	text-shadow: 1px 1px 20px black;
+}
+
+.pat{
+	background-color: rgb(74,111,211);
+}
+.chisht{
+	transition: 1s;
+	background-color: aqua;
+	box-shadow: 5px 5px 15px black;
+	z-index: 1001;
+	transform: rotateY(360deg)scale(1.2);
+	text-shadow: 1px 1px 14px black;
+}
+#miavor{
+
+	font-size: 50px;
+	text-shadow: 3px 3px 5px blue;
+	color: aqua;
+	text-align: center;
+}
+
+
+#y{
+	width: 500px;
+	height: 50px;
+	margin: 0 auto;
+	padding: 5px;
+	border-radius: 40px;
+	margin-top: 20px;
+	position: relative;
+	left: -300px;
+	animation-name: y;
+	animation-duration: 2s;
+	animation-delay: 4s;
+	animation-fill-mode: forwards;
+}
+#p{
+	width: 500px;
+	height: 50px;
+	border-radius: 40px;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding: 5px;
+	position: relative;
+	left: 300px;
+	animation-name: y;
+	animation-duration: 2s;
+	animation-delay: 4s;
+	animation-fill-mode: forwards;
+}
+@keyframes y{
+	to{
+		left: 0px;
+		box-shadow: 5px 5px 30px black;
+		background-color: rgba(77,77,77,0.2);
+	}
+}
+.taky{
+	width: 50px;
+	background-color: rgb(20,228,255);
+	border-radius: 50%;
+	float: left;
+	text-align: center;
+	font-size: 30px;
+	box-shadow: 3px 3px 10px black;
+	padding: 8px 0;
+}
+.takp{
+		width: 50px;
+	background-color: rgb(74,111,211);
+	border-radius: 50%;
+	float: left;
+	text-align: center;
+	font-size: 30px;
+	box-shadow: 3px 3px 10px black;
+	padding: 8px 0;
+}
+#but{
+
+	margin: 0 auto;
+
+	width: 200px;
+	display: none;
+}
+#but>button{
+	text-align: center;
+	font-size: 30px;
+	background-color: rgb(91,183,194);
+
+		box-shadow: 4px 4px 15px black;
+			border-radius: 20px;
+}

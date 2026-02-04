@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+</head>
+<body>
+
+
+	<script>
+		//for of - ը անցնում միայն իրտարցվող օբյեկտների վրայով։
+
+		//for of -> of - из, ի , (ամբողջ մի մասը)
+		//for of-ը անցնումա բոլոր իտերացվող օբյեկտների վրայով
+		// մենք սովարկան ցիկլը անցնումա զանգվածի յուրաքնչյուր ինդեքսի՛(of) վրայով։
+
+/////// for in -ի և for of-ի տարբերությունը ////////////
+// var arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+// for (var key in arr) {
+//   console.log(key); // 0 1 2 3 4 5
+// }
+// // for of ը իտերացիայի ժամանակ անցնումա արժեքների վրայաով, իսկ  for in-ը բանալիների վրայով։
+// for (let value of arr) {
+//   console.log(value); // 'a' 'b' 'c' 'd' 'e' 'f'
+// }
+
+///////////////////////
+
+
+let superNatural = {
+	actors : ['jared Padeleck', 'Jason Ackiles', 'Mark Shepard', 'Misha Collins'],
+	charecter : ['Sam Winchester', 'Dean Winchester', 'Crowley', 'Castiel'],
+	season : 12
+}
+
+for(let key in superNatural.actors) {
+	// console.log(superNatural[key]);//Array(4)[]
+	// console.log(Array.isArray(superNatural[key]));
+
+	console.log('for in - ', superNatural.actors[key]);//superNatural is not iterable
+
+	//Ասոցացվող օբյեկները իտերացվող չեն
+
+}
+
+
+
+/*
+Array(4)
+	true
+
+Array(4)
+	true
+
+12
+	false
+*/
+
+/////// /!\ for in -ելա կարելիանցնել զանգված տարրերի ու իդնեքսների վրայով, Օրինակ՝ ///////////
+
+// let arr = ['jared Padeleck', 'Jason Ackiles', 'Mark Shepard', 'Misha Collins'];
+// for(let key in arr) {
+// 	// console.log(key);//0,1,2,3,4
+// 	// console.log(arr[key]);//'jared Padeleck', 'Jason Ackiles', 'Mark Shepard', 'Misha Collins'
+// }
+//////////////////////////
+
+
+for(let key of superNatural) {
+	// console.log(superNatural[key]);//Array(4)[]
+	// console.log(Array.isArray(superNatural[key]));
+
+	console.log('for of - ', superNatural[key]);//
+
+}
+
+	</script>
+	
+</body>
+</html>

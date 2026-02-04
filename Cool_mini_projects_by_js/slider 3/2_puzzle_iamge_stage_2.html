@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <style>
+        body{
+            margin: 0;
+        }
+        #forCenter {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+
+        .containOfImg {
+            width: 700px;
+            height: 500px;
+            outline: 1px solid red;
+        }
+
+        .containOfImg div img{
+            width: 700px;
+            height: 500px;
+            position: relative;
+        }
+
+        .containOfImg div {
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            outline: 1px solid red;
+            float: left;
+            position: relative;
+
+        }
+
+        /* .containOfImg div:nth-child(2) img {
+            left: -100px;
+        } */
+
+    
+    </style>
+</head>
+
+<div id="wrapper">
+    <div id="forCenter">
+        <div class="containOfImg">
+            <!-- <div>
+                <img src="../IMAGES_and_ICON/640x480/img (1).jpg" alt="">
+            </div> -->
+            <!-- <div>
+                <img src="../IMAGES_and_ICON/640x480/img (1).jpg" alt="">
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+<body>
+    <script>
+        let contOfDivAndImg = document.querySelector('.containOfImg');
+
+
+/*
+
+
+
+*/
+        for(let i = 0; i < 10; ++i) {
+            for(let j = 0; j < 14; ++j) {
+                let createDiv = document.createElement('div');
+                let createImg = document.createElement('img');
+                contOfDivAndImg.appendChild(createDiv);
+                 createDiv.appendChild(createImg);
+                 createImg.src = '../../IMAGES_and_ICON/640x480/img (1).jpg';
+
+                 createImg.style.top = -i * 50 + 'px';
+                 createImg.style.left = -j * 50 + 'px';
+
+
+
+            }
+
+        }
+
+
+        /*
+        * ցիկլը պիտի սկսի 0-ից
+        * ցիկլի մեջ ցիկլա պետք՝
+            արտաքին ցիկլը - կարելի ասել tr ներնա
+            ներքին ցիկլը - կարելիա ասել td ներնա
+               ⚠ արտաքին ցիկլը նաև նկարին top տալու համարա, իսկ ներքինը left-ը։
+
+        * FIXME  Remind
+            դիվը և այդ դիվի մեջ նկարը ստեղծել ցիկլի մեջ, որ ստեղծի ու ավելացնի ամեն մի քայլին։
+        *
+        *
+        
+        */
+
+        
+        
+        </script>
+</body>
+
+</html>

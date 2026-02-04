@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tasks</title>
+</head>
+<body>
+	
+
+	<script>
+		//
+
+
+// Take out the number of squares
+
+// var p = +prompt('qarakusineri gumary');
+// var i = 0;
+// while()
+
+
+
+/*==================201.Հաշվել և արտածել թվի թվանշանների քանակը ==========================*/
+
+// var n=+prompt("Enter number");
+// var q=0;
+// while(n!=0){
+// n=(n-n%10)/10;//verjin tvanshany pokumentq u increment enq anum
+
+// q++; 
+// }
+// alert(q);
+
+// /*====================202.Հաշվել և արտածել թվի թվանշանների գումարը ==================== */
+
+// var n=+prompt("Enter number");
+// var g=0;
+// while(n!=0){//menak n ashxatuma  - while(n!=0) ???????????, tvery gumarel irar
+// g=n+n%10;// g 1 iteraciayio jamanak darav - 2
+// n=(n-n%10)/10;//n 1 iteraciayi jamank darav -2
+
+
+// // x=x+10
+// // n=n
+// }alert(g);
+
+
+/*====================203.Հաշվել և արտածել թվի թվանշանների արտադրյալը ==================== */
+
+// var n=+prompt("Enter number");
+// var g=1;
+// while(n!=0){
+
+// g=g*(n%10);//skzbum bazmapatkumna anum
+// n=(n-n%10)/10;
+
+// }alert(g);//working
+
+
+
+
+
+
+/*============204.Արտածել թվի թվանշանների քանակը՝ աջից ձախ հաջորդականությամբ============*/
+// var n=+prompt("Enter number");
+// while(n!=0){
+// document.writeln(n%10);
+
+// n=(n-n%10)/10;
+
+// }
+//verjiny pokuma dnuma u el ete verjiny pokacy iran eli petq chi 
+
+
+
+/*=====207. Արտածել true, եթե թվի թվանշանների մեջ կա 2 թվանշանը, հակառակ դեպքում false=====*/
+//break el bacatrel
+// var n=+prompt("Enter number");
+// // var k=false;//kap chuni ka texy kara lini '2 chka'
+// var k = '2 chka';
+// while(n!=0){
+// 	if(n%10==2){
+// 		k=true;break;//aranc break el kashxati
+// 	}
+// n=(n-n%10)/10;
+
+// }alert(k);//working
+//verjiny pokum enq u hamematum enq erkusi het, ete erkus chi verjiny , heto petqa naxaverjiny stugenq isk naxaverjiny hamematelu hamar petqa verjiny pokenq qcenq mez el et petq chi 
+
+
+
+
+	
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------------------*/
+
+	// var p = +prompt('ete tvi tvanshanny nunyne');
+
+	// var a = p % 10;//3
+	// var b = (p % 100 - a)/10;//2
+	// var c = (((p % 1000 - a)/10)-b)/10;
+
+	// if(a == b && b == c){
+	// 	alert('true');
+	// }
+	// else{
+	// 	alert('false - nuyny che');
+	// }
+
+/*
+if p = 1234
+a = 4 - a-ն փոկումա ամենա վերջինը, կապ չունի քանի նիշանոց թիվա
+b = 3 - b-ն ել փոկումա նախավեռջինը, կապ չունի քանի նիշանոց թիվա
+c = 2 - 
+/!\ Վերջին երքնա մենակ իրար հետ համեմատում, օրինակ`
+	123444 - կտա true 
+	*/
+
+
+//// varaint1 -> false
+
+let n = +prompt('Enter number');
+let x = n % 10;
+let rez;
+while(n!=0) {
+	if(x == n%10) {
+		rez = true
+	}
+	else {
+		rez = false;break;
+	}
+
+	n = (n - n % 10) / 10;
+}
+console.log(rez);//
+
+//// varaint 2 -> ✔
+// let n = +prompt('Enter number');
+// let x = n % 10;
+// let rez = true;
+// while(n!=0) {
+// 	if(x != n%10) {
+// 		rez = false
+// 	}
+// 	n = (n - n % 10) / 10;
+// }
+// console.log(rez);//
+
+
+
+
+
+//Դժվար խնդիր
+
+/* ================= with whiel ================= */
+//Թվային շարք, որի ամեն հաջորդ թիվը նախորդ երկուսի գումարնա։
+// var i = 0;
+
+// var back = 0;
+// var next = 1;
+
+// var fib = 0;//ֆիբենչիի ամենա սկզբի թիվը
+
+// while(i < 10) {
+// 	fib = back + next;
+// 	back = next;
+// 	next = fib;
+// 	document.write(i + ' = ' + fib + '<br>');
+// 	i++;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=*/
+
+	/*fibonacci task -1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ... */
+//enter if fibonacci number is true
+// var n=+prompt('Enter number') , k=false;
+// var f1=1;
+// var f2=1;
+// var f3=f1+f2;
+
+// if(f1==n){//is finonacci numer
+// 	k=true;
+// }
+// else{
+// 	while(f<=n){//>=0
+// 		f3=f1+f2;
+
+// 		if(f3==n){
+// 			k=true;break;
+// 			f1=f2;
+// 			f2=f3;
+// 			f3=f1+f2;
+// 		}
+// 	}
+// }
+// alert(k);
+
+
+
+// var fib = [1,2];
+// for(let i = fib.length; i)
+
+
+//fibonacci number list - 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987
+
+// var k = 0;
+// var j = 1;
+// var fib = 0;//fib - ը ցուցադրումա նախորդ երկուսի գումարը
+
+// for(var i = 0; i < 10; i++ ) {
+// 	fib = j + k;
+// 	j = k;
+// 	k = fib;
+// 	document.write(i + ' = ' +  fib + '<br>');
+
+// }
+
+
+/*
+/!\ Սկզբում դնում ենք 0, որ առաջին ֆիբոնաչի թիվը ցուցադրվի  0 + 1 = 1
+j - ի մեջ պահվումա նախանցած ֆիբոնաչի թիվը։
+fib - ի մեջ պահվում հաջորդ ֆիբոնաչի թիվը։
+
+Ինչու ենք j = k իսկ k = fib ?
+
+Որ ամեն հաջորդ ֆիբոնաչի թիվը ճիշտ ցուցադրվի, օրինակ՝
+
+*/
+
+
+
+
+</script>
+</body>
+</html>

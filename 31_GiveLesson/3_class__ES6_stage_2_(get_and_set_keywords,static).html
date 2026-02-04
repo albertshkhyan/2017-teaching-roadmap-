@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+// class__ES6_stage_2_(static,extend,get_and_set,super).html
+
+/* ➕➕➕➕➕➕ body of class and create methods ➕➕➕➕➕➕ */
+//// ⚠ clss-ի մեջ կեդը աշխատումա use strict ռեժիմի տակ։
+
+
+
+/* ----- constructor method in class ----- */
+////🔰 constructor մեթոդը նախատեսված է class-ի instance-ին հատկություններ տալու համար։
+//// ⚠ class-ի մեջ միայն պետքա 1 constructor մեթոդ լինի, ավել լինելու դեպքում կտա SyntaxError
+//// В конструкторе может быть использовано ключевое слово super, чтобы вызвать конструктор родительского класса.
+
+// class Auto {
+// 	constructor (m,c) {
+// 		this.marka = m;
+// 		this.color = c;
+// 	}
+
+// 	// go() {//մեթոդ
+
+// 	// }
+
+// }
+
+/* ++++++++++++++++ methods in class ++++++++++++++++ */
+////⚠ մեթոդները չեն գրվում constructor մեթոդի մեջ։
+/*
+◼ Եթե մեթոդը constructor-ի մեջ չի գրվում կհասկացվի, որպես՝
+	Auto.prototype.go = function() {
+	console.log('avton gnac');
+	}
+*/
+// class Auto {
+// 	constructor(m, c) {
+// 		this.marka = m;
+// 		this.color = c;
+
+// }
+
+// 	go() {
+// 		console.log('avton gnac');
+// 	}
+
+// }
+
+// let auto = new Auto('BMW', 'red');
+// console.log("auto", auto);
+
+// auto.go();
+
+/*----------------------------*/
+
+
+/*------------ private method ---------------*/
+////es6-ի class-ներում private չկա
+////⚠private not accses getter and setter with new standart
+// class Auto {
+// 	constructor(m,c, p) {
+// 		this.marka = m;
+// 		this.color = c;
+// 		let _parol = p;
+// 	}
+
+// 	get getParol() {
+// 		return _parol;
+// 	}
+
+// 	set setParol(value) {
+// 		return _parol = value;
+// 	}
+// }
+
+// let auto = new Auto('BMW', 'red',1234);
+
+// console.log("auto.getParol", auto.getParol);//_parol is not defined
+
+
+
+
+
+
+
+
+/* +++++++++++++ getter and setter in Es6 +++++++++++++ */
+
+/*
+getter-ը ֆունկիան կարդալու համար պետքի չի կանչել auto.go()❌ : կտա Error: is not a function -> auto.go✔
+*/
+
+// class Auto {
+//   constructor(e) {
+//     this.engine = e;
+//   }
+  
+//   get showPower() {
+//     return this.engine;//this-ը պառտադիր նշել
+//   }
+
+//   set changePower(p) {
+// 		return this.engine = p;
+//   }
+
+
+// }
+
+// const auto = new Auto(1.8);
+
+// console.log(auto.showPower);
+// // auto.changePower(2.8);//auto.changePower is not a function
+
+// auto.changePower = 123;//setter-ի սենց են արժեք տալիս նոր ստանդարտով, քանի որ իրանք հատկություն են
+// console.log("auto", auto);
+
+// console.log(auto.showPower);//working setter
+
+
+
+
+
+
+
+
+
+
+
+////⚠ Es6-ում getter և setter մեթոդները private հատկությունները չեն գտնում
+class Auto {
+  constructor(e) {
+    this.marka = m;
+  }
+  
+  get showPower() {
+    return engine;//this-ը պառտադիր նշել
+  }
+
+  set changePower(p) {
+		return engine = p;
+  }
+
+
+}
+
+const auto = new Auto(1.8);
+
+console.log(auto.showPower);
+
+
+
+
+
+/*+++++++++++++++++++static method+++++++++++++++++++*/
+/*
+⚫ static մեթոդը թույլա տալիս մեթոդը կանչել առանց new անելու։ 
+	⚠static մեթոդը չի կարա կանչվի clasս-ի instance-ից։
+	static մեթոդ ստեղծելու համար գրում ենք սովորկան մեթոդ, ուղղակի մեթոդի անունից առաջ դնում ենք static բանալի բառը։
+*/
+
+////////Task
+
+////Այնպես անել, որ static մեթոդը արտածի մեր մեքենայի marak-ն և color-ը։
+// class Auto {
+// 	constructor(m,c) {
+// 		this.marka = m;
+// 		this.color = c;
+// 	}
+// 	static go(obj) {
+// 		// console.log(this.marka);//undefined
+// 		console.log(obj.marka + ' ' + obj.color);//working -> BMW red
+// 	}
+// }
+
+// let auto = new Auto('BMW', 'red');
+// Auto.go(auto);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ++++++++++++++ class-ների ժառանգականություն extends and super +++++++++++++ */
+//⚠ extends-ը js-ում համարժեքա Object.create-ին
+// class Animal {//Abstract class
+// 	constructor(n) {
+// 		this.name = n;
+// 	}
+
+// }
+
+// //Dog.prototype = Object.create(Animal);//__proto__: Animal	
+// class Dog extends Animal{
+// 	walk() {
+// 		console.log(this.name + ' is walking');
+// 	}
+// }
+
+// let dog = new Dog('buldog');
+// dog.walk();//bulog is walking
+
+// console.log("dog", dog);
+
+
+
+
+
+
+
+
+/*++++++ keyword +++++++*/
+/*
+Ծնող class-ին դիմելու համար պետքա օգտագործել super բանալի բառը։
+super-ը համարժեք է call, apply-ին։
+
+
+Ключевое слово super используется для вызова функций, принадлежащих родителю объекта
+
+*/
+
+// constructor(n,s,l){
+// 		//useri construcotiry dnum e 
+// 		super(n,s);
+// 		this.level = l;
+
+// 	}
+
+
+/*************************** SUPER *******************************/
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/* ⚫ Եթե class-ը ժառանգումա մեկ ուրիշ class-ից ու բացի ժառանգվող հատկություններից ուզում ենք մեր class-ը ունենա իր սեփական հատկությունները ապա այդ դեպքում super-ը պարտադիր է գրել:
+
+⚠ Ձևակերպում 2 - Որդի կլասսի կոնստրուկտորը իրա this-ը չի հասկանա եթե super() չկանչենք
+
+⚠ Առանց extends super() մեթոդը չի կաշխատի։
+
+
+
+*/
+
+// class AbstAuto {
+//   constructor(m,c,e) {
+//     this.model = m;
+//     this.color = c;
+//     this.engine = e;
+//   }
+
+//   go() {
+//     console.log(this.marka + ' avton gnac');
+//   }
+// }
+
+
+// class Kran {
+//   constructor(md,cl,en, kh) {
+//     super();
+//     // this.kranHeight = kh;
+//   }
+// }
+
+// let kran = new Kran('CAT', 'yellow', 4.8, '40m');
+// console.log("kran", kran);
+// console.log("kran.model", kran.model);//CAT
+// kran.go();
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+///// private հատկություն - երբ որ հատկությունը հասանելիա միայն կլասսի համար։
+
+
+// class Person {
+// 	#_private;
+// 	constructor(parol) {
+// 		this.#_private = parol;
+// 	}
+// }
+
+
+// let person = new Person(1234);
+// console.log("person", person);
+// console.log("person.#_private", person._private);
+
+
+
+
+
+
+
+////// ⚠ ինկապսուլացիա class-ները մոդուլներովա լինում միայն անել
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> slider with oop </title>
+
+	<style>
+		img{
+			width: 500px;
+			height: 500px;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<button id="left">left</button>
+	<img src="" alt="" id="img">
+	<button id="right">right</button>
+
+	<script>
+		//
+
+
+
+
+var left = document.querySelector('#left');
+var right = document.querySelector('#right');
+var img = document.querySelector('#img');
+
+function Slider(arr,l,r,img){//arr,l,r,img tags
+	this.arr = arr;
+	this.img = img;
+	this.left = l;
+	this.right = r;
+	this.left.onclick = function(){
+		var k = this.arr.pop();
+		this.arr.unshift(k);
+		this.soruce();
+	}.bind(this);
+	this.right.onclick = function(){
+		var k = this.arr.shift();
+		this.arr.push(k);
+		this.soruce();
+	}.bind(this);
+
+	this.soruce = function(){
+		img.src = this.arr[0];
+
+	}
+	this.soruce();	
+
+}
+
+var arr = [
+
+	'../../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/640x480/img (1).jpg',
+	'../../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/640x480/img (2).jpg',
+	'../../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/640x480/img (3).jpg',
+	'../../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/640x480/img (4).jpg',
+
+];
+
+
+
+
+
+var slider = new Slider(arr,left,right,img);
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

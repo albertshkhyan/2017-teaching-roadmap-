@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+	<style>
+		* {
+			margin: 0;
+		}
+
+		.menuIcon {
+			width: 30px;
+			height: 30px;
+			/*font-size: 40px;*/
+		}
+
+		.mainMenuIcon {
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			font-size: 40px;
+
+		}
+
+		button {
+			border: none;
+			outline-color: gray;
+		}
+
+		button:hover {
+			cursor: pointer;
+		}
+
+		#sidebarLeft {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			/*display: inline-block;*/
+			background: #2c3e50;
+			width: 0px;
+			overflow: hidden;
+			/*display: none;*/
+			height: 100vh;
+			position: absolute;
+
+			transition: 0.5s;
+
+			position: relative;
+		}
+
+		#sidebarLeft>li>a {
+			text-decoration: none;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			color: white;
+
+		}
+
+		.sidebar_icons {
+			/* outline: 1px solid #000; */
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+		}
+
+		#sidebarLeft>button {
+			position: absolute;
+			right: 0px;
+			color: rgb(85, 85, 85);
+			font-size: 20px;
+			font-weight: bold;
+			border: none;
+			/* outline-color: gray; */
+			margin: 5px;
+			background-color: transparent;
+
+		}
+
+		#fire_img {
+			width: 40px;
+			height: 40px;
+			/* outline: 1px solid; */
+			position: absolute;
+			top: 30px;
+		}
+
+		#sidebarLeft>button:hover {
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<main>
+
+
+		<button onclick="whenClickMainMenu()">
+			<i class="fas fa-bars mainMenuIcon"></i>
+		</button>
+		<ul id="sidebarLeft">
+			<button onclick="closeNavMenu()">X</button>
+
+			<li> <i class="fas fa-home sidebar_icons"></i> <a href="#"> ԳԼԽԱՎՈՐ</a></li>
+			<li>
+				<i class="fas fa-gamepad sidebar_icons"></i>
+				<a href="#">
+					CodeBattle
+					<!-- <img src="../Profite_educational_center_JS/profite_copy/Tesakan_JavaScript/javascript_tesakan_nyuter_gunavor_files/fire_gif_logo.gif"
+					alt=""> -->
+					<img id="fire_img"
+						src="../../../..//Profite_educational_center_JS/profite_copy/Tesakan_JavaScript/javascript_tesakan_nyuter_gunavor_files/fire_gif_logo.gif"
+						alt="">
+				</a>
+			</li>
+			<li> <i class="fas fa-book sidebar_icons"></i> <a href="#"> ԳԼԽԴԱՍԱԳՐՔԵՐ</a></li>
+			<li> <i class="fas fa-briefcase sidebar_icons"></i> <a href="#"> ՏՆԱՅԻՆ ԱՇԽԱՏԱՆՔ</a></li>
+			<li> <i class="fas fa-poll-h sidebar_icons"></i> <a href="#"> ՔՆՆՈՒԹՅԱՆ ԱՐԴՅՈՒՆՔՆԵՐ</a></li>
+			<li> <i class="fas fa-play-circle sidebar_icons"></i> <a href="#"> ՎԻԴԵՈ ԴԱՍԵՐ</a></li>
+			<li> <i class="fas fa-tasks sidebar_icons"></i> <a href="#"> ՏԵՍԱԿԱՆ ՆՅՈՒԹ</a></li>
+		</ul>
+
+
+	</main>
+
+
+	<script>
+
+		//
+		let btn = document.querySelector('button');
+		let sideBarNav = document.querySelector('ul');
+		function whenClickMainMenu() {
+			// btn.style.display = 'none';
+			btn.style = 'position:absolute;';
+			sideBarNav.style = `
+			width:300px;
+
+			`;
+
+
+		}
+
+		function closeNavMenu() {
+			btn.style.display = 'block';
+			sideBarNav.style = `
+			width:0px;
+			`;
+		}
+
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+
+	<script>
+		/**/
+
+//squre with stars
+//// այս տարբերակը աշխատելու համար պետքա tr -ների և td-ների քանակը նույնը լինի, Օրինակ 10x10
+		// for(let i = 0; i < 20; ++i) {
+		// 	for(let j = 0; j < 30; ++j) {
+		// 		if(j > 0 && j < 29 && i > 0 && i < 19) {
+		// 			document.write('&nbsp;&nbsp;&nbsp;');
+		// 		}
+		// 		else document.writeln('*');
+		// 		}
+		// 			document.write('<br>');
+		// 	}
+
+
+		/*----------------------------------------*/
+
+////շեղանկյուն
+let r = true, n, midl,l = 1;
+do{
+  n = +prompt("Մուտքագրեք որևէ կենտ տիվ");
+  (n < 0 || n%2===0 || Number.isNaN(n) )? r = false: r = true;
+}while(!r)
+midl = n/2 +0.5;
+for(let i = 1,k = 0; i <= n; i++, k++){
+    if(i === midl+1) k = midl;
+    if(i > midl) k = k - 2;
+    for(let j = 1; j <= n; j++){
+    if(j < midl - k || j > midl + k) document.write("&nbsp;&nbsp;");
+    else document.write("*");
+  }
+  document.write("</br>");
+
+//   if(i === midl-1) {
+//     while(l < midl){
+//     document.write('&nbsp;&nbsp;');
+//     l++;
+//     }
+//   }
+}
+
+
+
+/****************** piramida with stars *********************/
+
+// let r = true, n, midl,l = 1;
+// do{
+//   n = +prompt("Մուտքագրեք որևէ կենտ տիվ");
+//   (n < 0 || n%2===0 || Number.isNaN(n) )? r = false: r = true;
+// }while(!r)
+// midl = n/2 +0.5;
+// for(let i = 1,k = 0; i <= midl; i++, k++){
+//     for(let j = 1; j <= n; j++){
+//     if(j < midl - k || j > midl + k) document.write("&nbsp;&nbsp;");
+//     else document.write("*");
+//   }
+//   document.write("</br>");
+// //   if(i == midl-1) {
+// //     while(l < midl){
+// //     document.write('&nbsp;&nbsp;');
+// //     l++;
+// //     }
+// //   }
+// }
+
+
+
+/************** W with Stars ****************/
+
+// let r = true, n, midl,l = 1;
+// midl = n/2 +0.5;
+// for(let i = 1; i < 5; i++){
+//   for(let j = 1; j <= 13; j++){
+//     if(j <= 4  ){
+//       if(j !== i ) document.write("&nbsp;&nbsp;");
+//       else document.write("*");
+//     }
+//     else if(j < 8 ){
+//       if(j === 8-i ) document.write("*");
+//       else document.write("&nbsp;&nbsp;");
+//     }else if(j <= 10 ){
+//       if(j !== 6 + i ) document.write("&nbsp;&nbsp;");
+//       else document.write("*");
+//     }else {
+//       if(j === 14 - i ) document.write("*");
+//       else document.write("&nbsp;&nbsp;");
+//     }
+//   }
+//   document.write("</br>");
+// }
+		</script>
+	</body>
+	</html>

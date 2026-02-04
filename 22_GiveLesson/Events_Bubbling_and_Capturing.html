@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bubbling and capturing events</title>
+
+	<style>
+
+	#wrapper {
+		/*width: 100%;*/
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		background-color: rgb(204, 255, 255);
+	}
+
+	.line {
+		width: 100%;
+		border: 1px solid #000;
+		margin: 100px 0px;
+	}
+	.outer, .middle, .inner{
+		max-width: 500px;
+		margin: 10px;
+		border: 1px solid red;
+		text-align: center;
+	}
+	/* body * - body-ի մեջի, բոլոր ժառանգներին */
+
+	.p1 {
+		font-size: 30px;
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	}
+	#bubbling2 h1{
+		color:red;
+		/*background-color: red;*/
+		text-align: center;
+	}
+	#bubbling2 p {
+		color:red;
+	}
+	#bubbling  h1{
+		width: 100%;
+		height: 40px;
+		font-weight: bold;
+		font-size: 25px;
+		background:red;
+		border: 4px dotted #000;	
+		box-sizing: border-box;
+		color: white;
+		text-align: center;
+	}
+	#bubbling  h1  > span {
+		border-bottom: 2px solid white;
+
+	}
+
+	#bubbling p{
+		font-size: 40px;
+	}
+	#bubbling:first-child {
+		color:red;
+	}
+	#bubbling  p:last-child{
+		color:orange;
+	}
+	#bubbling  p:last-child:first-letter {
+		color:red;
+		font-size: 40px;
+	}
+
+	#bubbling {
+		position: relative;
+	}
+	#txt_bubbling {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;	
+		left:0;
+	}
+	#bg_bubbling {
+		width: 100%;
+		height: 400px;
+		background-image: url(../../IMAGES_and_ICON/raznoye/buble_float.jpg);
+		opacity: 0.8;
+		background-size:cover ;
+		z-index: 999;
+	}
+
+	/* *********** Capturing ************ */
+
+	#capturing form,
+	#capturing form div,
+	#capturing form div p {
+		border: 10px solid darkblue;
+		padding: 30px;
+		text-align: center;
+		box-sizing: border-box;
+	}
+	/*#capturing form div  {
+		background-color: yellow;
+	}
+	*/
+
+
+	#capturing h1 {
+		width: 100%;
+		height: 500px;
+		text-align: center;
+		font-variant: small-caps;
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		color: red;
+		line-height: 500px;
+		background-image: url(../../IMAGES_and_ICON/raznoye/Capturing.jpg);
+		background-size: 100% 100%;
+	}
+	#capturing  .p1 span {
+		color:red;
+		text-decoration: underline;
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	}
+
+	#capturing > .p2::first-Letter {
+		font-size: 40px;
+		color:red;
+
+	}
+
+	#capturing > .p2 {
+		color:blue;
+		margin: 0;	
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	}
+
+	#capturing > img {
+		width: 50%;
+		height:500px;
+	}
+
+
+	#imageOfDive {
+		width: 100%;
+		height: 500px;
+		background-image: url(../../IMAGES_and_ICON/raznoye/pogrujeniyegif.gif);
+		background-repeat: no-repeat;
+		background-size: cover;
+		text-align: center;
+		line-height: 500px;
+		color: tomato;	
+		font-variant: small-caps;
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		font-size: 40px;
+
+
+	}
+
+	#stopPrpg form,
+	#stopPrpg form div,
+	#stopPrpg form div p {
+		border: 3px solid tomato;
+		text-align: center;
+		padding: 30px;
+	}
+	#stopPrpg h1 {
+		text-align: center;
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	}
+
+	#stopPrpg .p1{
+		color:blue;
+	}
+
+	#stopPrpg .p2{
+		color:blue;
+		font-style: italic;
+		color:tomato;
+		font-size: 18px;
+	}
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="bubbling">
+			<div id="bg_bubbling"></div>
+			<div id="txt_bubbling">
+				<h1> <span>Bubbling(պղպջակ) and Capturing</span></h1>
+				<p >
+					Այս 2 տերմինները տարբեր ձևեր են, որոնք նկարագրում են event-ի կատարման հերթականություննը։
+				</p>
+				<p>⚠ Պարտադիր նույն event-ը պետքա լինի եթե parent տարրին տվածա ondblclick իսկ child-ին onclick շղթայական կապով չի հելնի վերեվ ( bubbling չի լինի )</p>
+			</div>
+		</div>
+
+		<div id="bubbling2">
+			<h1>Всплытие, bubbling </h1>
+			<p class="p0">
+				Bubbling - ը դա Event Propagation - ի տեսակա, որի հետևանքվ առաջին հերթին<i>իրադարձությունը</i> կատարվումա ժառանգ տարրի վրա, հետո իրա ծնողի, հետո ծնողի ծնողի վրա ու մինչև հասնի html, document, window:
+			</p>
+			<p class="p1">Երբ event( իրադարձություն ) է կատարվում, առաջին հերթին event-ը կատարվումա  են տարրի վրա, որի պատճառով առաջացելա է տվյալ իադարձությունը ( target )։ Իսկ հետո event-ը կատարվումա իր ծնողի վրա, ու ըտենց ծնողների շղթայական կապով բարձրանումա վերեվ։ Այս երևույթը կոչվումա bubbling:</p>
+			<img src="../../IMAGES_and_ICON/raznoye/bubbling2.gif" alt="">
+			<p>⚠Համարյա բոլոր event-նորը bubbling են լինում։</p>
+			<p>Բայց focus event-ը չի լինում bubbling:</p>
+
+		</div>
+
+		<form class="outer box" onclick="alert('form')">FORM
+			<div class="middle box" onclick="alert('div')">DIV
+				<p class="inner box" onclick="alert('p')">P</p>
+			</div>
+		</form>
+
+		<div id="stopPrpg">
+			<h1>stopPropagation() method</h1>
+			<p class="p1"><strong>stopPropagation մեթոդը </strong> - դադարեցնում է event-ի bubbling կամ capturing լինելը։</p>
+			<p class="p2">Ինչպես դադրաեցնել bubbling-ը կամ capturing-ը՝</p>
+			<form>FORM
+			<div>DIV
+				<p>P</p>
+			</div>
+		</form>
+		</div>
+
+		<div id="bubbling3">
+			<h1>e.target ( թիրախային տարր )</h1>
+			<p>target հատկությունը ցույցա տալիս թե որ տարրի պատճառովա առաջացել տվյալ իրդարձությունը։</p>
+			<p>⚠ target-ը bubbling - չի ենթարկվում, մենք կոնկրետ իմանում ենք թե որ տարրի պատճառով իրդարձությունը առաջացել։</p>
+			<a href="https://codepen.io/vikas-parashar/full/WZxrYX/">currentTarget vs target</a>
+			<dl>
+				<dt>target</dt>
+				<dd>target հատկությունը ետի են տարրնա, որի պատճառով առաջացելա տվյալ event-ը։</dd>
+
+			</dl>
+			<form class="outer box" onclick="foo(event)">FORM
+				<div class="middle box" onclick="foo(event)">DIV
+					<p class="inner box" onclick="foo(event)">P</p>
+				</div>
+			</form>
+		</div>
+
+
+</div>
+
+
+	
+
+
+
+	<div class="line"></div>
+
+
+
+
+	<!-- captureing -->
+	<div id="capturing">
+		<div id="
+		">
+			Event Propagation
+		</div>
+		<p class="p1">
+			<span>event propagation(распространение событий, event-ի տարածում)</span>  - event propagation-ը դա նկարագրումա  event-ը ինչ հերթականությամբա կատարվում(<i> ներքեվից վերեվ և վերեվից ներքեվ</i> )։ <br><strong>Capturing</strong> հասկացողությունը ի հայտ է եկել  DOM - ի նոր ստանդարտում։ Մինչև նոր ստանդարտա կար միայն <b><i>bubbling</i></b> 
+		</p>
+		<h1>Capturing</h1>
+		<form>FORM
+			<div>DIV
+				<p>P</p>
+			</div>
+		</form>
+		<p class="p2">⚠ capturing -ը կարա կատարվի միայն addEventListenr-ով։</p>
+		<img src="../../IMAGES_and_ICON/raznoye/capruting2.png" alt="captur example">
+	</div>
+</div>
+
+
+
+</body>
+
+<script>
+		//
+
+
+/*Бублинг и захват событий ( Բաբլինգ և իրադարձության բռնում )
+
+bubbling -ը և capturing-ը սրանք տարածման(լող տալու, floating) 2 ձևեր են 
+		Example of bubling and capuring -> https://codepen.io/karolis/pen/YqNWpm?editors=1010
+
+		*/
+
+
+
+		/////////////// capturing
+
+	//Чтобы поймать событие на стадии перехвата, нужно использовать третий аргумент addEventListener:
+			//Если аргумент true, то событие будет перехвачено по дороге вниз.
+			// Если аргумент false, то событие будет поймано при всплытии.
+
+			let takeElems = document.querySelectorAll('#capturing form,#capturing form div, #capturing form p');
+
+
+			for(let i = 0; i < takeElems.length; ++i) {
+				takeElems[i].addEventListener('click', function(){
+					console.log('hello');
+					
+					alert(takeElems[i].tagName);
+			});//false -> p, div, form | true -> form, div, p
+
+			}
+
+			//false - ի ժամանակ bubbling է կատարվում։
+			//true - ի ժամանակ capturing է կատարվում։
+
+			/******************* stope propogation ***********************/
+
+			let prpgElems = document.querySelectorAll('#stopPrpg form, #stopPrpg form div, #stopPrpg form p ');
+			prpgElems[0].addEventListener('click', clickOnForm);
+			function clickOnForm() {
+				alert('FORM');
+				event.stopPropagation();
+			}
+
+			prpgElems[1].addEventListener('click', clickOnDiv);
+			function clickOnDiv() {
+				alert('DIV');
+				event.stopPropagation();
+
+			}
+			prpgElems[2].addEventListener('click', clickOnP);
+			function clickOnP() {
+				alert('P');
+				event.stopPropagation();
+			}
+
+
+		</script>
+	</body>
+	</html>

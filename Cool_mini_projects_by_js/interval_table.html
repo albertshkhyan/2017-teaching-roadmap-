@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+
+		var m=1;
+		var p=0;
+		function fu(){
+			if(m==1){
+				document.write("<table border='l'>");
+			}
+			if(p==0){
+				document.write("<tr>");
+			}
+			document.write(`<td style='width:50px; height:50px; border:2px solid black'>${ m }</td>`);
+			p++;
+			m++;
+			if(p==10){
+				document.write("</tr>");
+				p=0;
+			}
+			if(m==101){
+				document.write("</table>");
+				clearInterval(set);
+			}
+
+		}
+
+		var set=setInterval(fu,50);
+
+
+
+
+
+		// var r,g,b;
+		// var m=1;
+		// var p=0;
+		// function fu(){
+		// 	if(m==1){
+		// 		document.write("<table border='l'>");
+		// 	}
+		// 	if(p==0){
+		// 		document.write("<tr>");
+		// 	}
+		// 	r=Math.floor(Math.random()*255);
+		// 	g=Math.floor(Math.random()*255);
+		// 	b=Math.floor(Math.random()*255);
+		// 	document.write(`<td style='width:50px; height:50px; background-color:rgb(${r},${g},${b})'>${ m }</td>`);
+		// 	p++;
+		// 	m++;
+		// 	if(p==10){
+		// 		document.write("</tr>");
+		// 		p=0;
+		// 	}
+		// 	if(m==101){
+		// 		document.write("</table>");
+		// 		clearInterval(set);
+		// 	}
+
+		// }
+
+		// var set=setInterval(fu,100);
+	</script>
+
+
+
+
+	
+</body>
+</html>

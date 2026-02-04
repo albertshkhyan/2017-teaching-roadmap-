@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	/*սրա խնդիրը ենա որբ lens-ը փոքրացնում ենք ճիշտ չի ցուցադրվում */
+		#nkari_div{
+			width: 400px;
+			height: 270px;
+			background-image: url(lion.jpg);
+			background-size: 100%;/*height-ը պետք չի տալ*/
+			background-repeat: no-repeat;
+		}
+
+		#poqr_div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			position: relative;
+		}
+		
+		#zoom{
+			width: 400px;
+			height: 400px;
+			/*margin-top: 50px;*/
+			overflow: hidden;
+
+		}
+		#zoom>img{
+			position: relative;
+			width: 1600px;/* (e.pageX-50)*5 ->  */
+			/*height: 100%;*/
+
+		}
+	</style>
+</head>
+<body>
+	<div id="nkari_div" onmousemove="cursor(event)">
+		<div id="poqr_div"></div>
+	</div>
+	<div id="zoom">
+		<img src="lion.jpg">
+	</div>
+
+<script src="script.js"></script>
+</body>
+</html>

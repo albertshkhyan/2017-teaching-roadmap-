@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this in dom</title>
+
+	<style>
+		
+		div, p {
+			border: 1px solid #000;
+			padding: 30px;
+		}
+
+	</style>
+</head>
+<body>
+
+
+<!-- <div onclick="foo(this)"> -->
+
+
+<div>
+	<p></p>
+</div>
+
+	<script>
+		////
+////with onclick this
+		// function foo(t) {
+		// 	console.log(t);//վերադարձնումա մեզ հենց <div onclick="foo(this)"></div> տարրը
+		// }
+
+
+/********************************/
+
+let takeElem1 = document.querySelector('div');
+let takeElem2 = document.querySelector('div p');
+
+takeElem1.addEventListener('click', foo);
+// takeElem2.addEventListener('click', foo);
+// function foo(e) {
+// console.log(e.currentTarget.tagName);
+// }
+///with this ? 
+/////Մեծամասնության դեպքերում currentTarget == this - ին (https://api.jquery.com/event.currentTarget/), Ըստ jquery - ի դոկումենտացիայի համձայն։
+function foo(e) {
+// console.log(this);
+// if(e.currentTarget == this) {
+// 	console.log('hello');
+// }
+
+// e.currentTarget = e.target;
+// if(e.currentTarget == e.target){
+// console.log(e.currentTarget.tagName);//չփոխվեց currentTarget-ը։
+// }
+
+////jquery documentation - ի դոկումենտացիայի համձայն - Մեծամասնության դեպքերում this-ի և e.currentTarget-ի միջև տարբերություն չկա բայց խորուրդա տրվում currentTarget օգտագործել
+// console.log(e.currentTarget == e.target);//identy result
+// console.log(this == e.target);//identy result
+// console.log(this === e.currentTarget);//true
+
+
+}
+
+
+	</script>
+</body>
+</html>

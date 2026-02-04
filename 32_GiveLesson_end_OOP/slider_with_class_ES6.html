@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+
+	<style>
+		img {
+			width: 40%;
+			height: 400px;
+		}
+	</style>
+</head>
+<body>
+
+<button id="left">&lt;&lt;</button>
+	<img src="../../IMAGES_and_ICON/640x480/img (1).jpg" alt="">
+<button id="right">&gt;&gt;</button>
+	<script>
+		//
+
+
+		class Slider {
+			constructor(l,img,r,arrOfImg) {
+				this.left = l;
+				this.image = img;
+				this.right = r;
+				this.imgArr = arrOfImg;
+				this.left.addEventListener('click', this.previous.bind(this));
+				this.right.addEventListener('click', this.next.bind(this))
+			}
+			previous() {
+				let last = this.imgArr.pop();
+				this.imgArr.unshift(last);
+				image.src = this.imgArr[0];
+			}
+			next() {
+				let first = this.imgArr.shift();
+				this.imgArr.push(first);
+				image.src = this.imgArr[0];
+			}
+		}
+
+		let left = document.querySelector('#left');
+		let image = document.querySelector('img');
+		let right = document.querySelector('#right');
+
+
+		let arr = [
+		'../../IMAGES_and_ICON/640x480/img (1).jpg',
+		'../../IMAGES_and_ICON/640x480/img (2).jpg',
+		'../../IMAGES_and_ICON/640x480/img (3).jpg',
+		'../../IMAGES_and_ICON/640x480/img (4).jpg',
+
+		];
+
+
+		let slider = new Slider(left, image, right,arr);
+		console.log("slider", slider);
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>random colors </title>
+</head>
+<body>
+	
+	
+
+
+	<script>
+		/*===============random colors on the screen==================*/
+
+// 		setInterval(function f(){
+// 	var r = Math.round(Math.random()*255);
+//     var g = Math.round(Math.random()*255);
+//     var b = Math.round(Math.random()*255);
+//     var l=Math.abs(Math.round(Math.random()*window.innerWidth-(30)));//Որ ներքեվը sroll - ի չունենա
+//     var t=Math.abs(Math.round(Math.random()*window.innerHeight-(30)));
+// 	// document.write("<div style='width:10px; height:10px; position:absolute; top:"+t+"; left:"+l+";  background-color:rgb("+r+","+g+","+b+");'></div>");
+
+// 	document.write(`<div style="
+
+// 	width:30px; 
+// 	height:30px;
+// 	 background:rgb(${r}, ${g}, ${b});
+// 	 position:absolute;
+// 	 top:${t};
+// 	 left:${l};
+// 	 "></div>`)
+
+// },5);
+
+/*-------------------------------------------------*/
+
+
+
+//////// տարբեր գույնի  div-երի քանակը հենց հասնի 100 կանգնի ///////
+////# variant 1
+// for(let i = 0; i < 50; ++i) {
+// 	setTimeout(function() {
+// 		var r = Math.round(Math.random()*255);
+// 		var g = Math.round(Math.random()*255);
+// 		var b = Math.round(Math.random()*255);
+// 		var l=Math.abs(Math.round(Math.random()*window.innerWidth-(30)));
+// 		var t=Math.abs(Math.round(Math.random()*window.innerHeight-(30)));
+// 		document.write(`<div style="
+// 			width:30px; 
+// 			height:30px;
+// 			background:rgb(${r}, ${g}, ${b});
+// 			position:absolute;
+// 			top:${t};
+// 			left:${l};
+// 			"></div>`);
+// 	},i*100);
+
+// }
+
+/*-------------------------------------------------*/
+
+//////// տարբեր գույնի  div-երի քանակը հենց հասնի 100 կանգնի ///////
+////# variant 2
+
+let qanak = 1;
+let stop = setInterval(function f(){
+	var r = Math.round(Math.random()*255);
+    var g = Math.round(Math.random()*255);
+    var b = Math.round(Math.random()*255);
+    var l=Math.abs(Math.round(Math.random()*window.innerWidth-(30)));
+    var t=Math.abs(Math.round(Math.random()*window.innerHeight-(30)));
+
+    if(qanak <= 100) {
+	document.write(`<div style="
+	width:30px; 
+	height:30px;
+	 background:rgb(${r}, ${g}, ${b});
+	 position:absolute;
+	 top:${t};
+	 left:${l};
+	 "></div>`);
+	}
+	else if(qanak == 10) {
+		clearInterval(stop);
+	}
+	qanak++;
+
+
+},100);
+
+
+
+/*-------------------------------------------------*/
+
+
+</script>
+</body>
+</html>

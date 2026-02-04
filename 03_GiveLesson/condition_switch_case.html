@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>switch_case</title>
+</head>
+<body>
+	
+
+
+
+	<script>
+
+
+
+// confirm();
+// prompt();
+
+
+
+
+
+
+
+		
+/* +++++++++++ switch paymanakan operator ++++++++++++*/
+// ⚠ switch case-ը ավելիա արագա է աշխատում քան if-ը
+
+//switch - ը ինքը իրանով մի քանի if երիա փոխարինում
+/*
+if else - ը ոնցա աշխատում հենց առաջին true գտավ ետա կատարում։
+Օրինակ
+*/
+// if(null) {
+// 	alert('hi');
+// }
+// else if('') {
+// 	alert('hi');
+// }
+// else if(7) {
+// 	alert('hi - 7');//սա կկատարվի, բայց հաջորդնելա ճիշտ
+// }
+// else if(true) {
+// 	alert('hi = true');
+// }
+// //Բայց եթե ուզում ենք բոլոր ճիշտ պայմանները կատարվեն
+// if(null) {
+// 	alert('hi');
+// }
+// else if('') {
+// 	alert('hi');
+// }
+// else if(7) {
+// 	alert('hi - 7');
+// }
+
+// if(true) {
+// 	alert('hi = true');
+// }
+
+//switch
+
+// var tari = +prompt('greq nekayis tarin');
+// switch(tari) {
+// case tari  > 2019 : alert('mec e ');//sxal e 
+// }
+
+//////switch - ի num փոփոխականը  խիստ է համեմատվում '10' === 10
+// var num = '10'
+// switch(num){
+// 	case 10 : alert('num tas e');
+// }
+
+
+///////////Հենց առաջին ճիշտ պայմանը գտավ, իրանից հաջորդող պայմաններնելա սկսում ցուցադրել ու կապ չունի ետ պայմանը ճւշտա թե սխալ
+// var num = 10;
+// switch(num){
+// 	case 1 : alert('num tas e');// 1 === 10
+// 	case 2 : alert('num tas e');
+// 	case 10 : alert('num tas e + case 10');
+// 	case 9 : alert('num tas e');
+// 	case 4 : alert('num tas e');
+// 	case 8 : alert('num tas e');
+// }
+
+
+////////// Եթե ուզում ենք առաջին ճիշտը գնելուց հետ դուրս գա դնում ենք break բանալի բառը։
+// var num = 10;
+// switch(num){
+// 	case 1 : alert('num tas e');// 1 === 10
+// 	case 2 : alert('num tas e');
+// 	case 10 : alert('num tas e + case 10');break;
+// 	case 9 : alert('num tas e');
+// 	case 10 : alert('num tas e + case 10.2');
+// 	case 8 : alert('num tas e');
+// }
+
+///////////vor amisn e hima
+// var amis = prompt('hima vor amsina?', '');
+// switch(amis) {
+// 	case 'hunvar' : alert('chste e hima hunvar e' );break;
+// 	case 'petravar' : alert('sxal e hima petravar che');break;
+// 	case 'mart' : alert('sxal e hima mart che');break;
+// 	case 'april' : alert('sxal e hima april che');break;
+// 	case 'mayis' : alert('sxal e hima mayis che');break;
+// 	case 'hunis' : alert('sxal e hima hunis che');break;
+// 	case 'hulis' : alert('sxal e hima hulis che');break;
+// 	case 'ogostos' : alert('sxal e hima ogostos che');break;
+// 	case 'september' : alert('sxal e hima september che');break;
+// 	case 'hoktember' : alert('sxal e hima hoktember che');break;
+// 	case 'dektember' : alert('sxal e hima dektember che');break;
+
+// 	default : alert('anhayt e - ' + amis);
+// }
+//////// Տարբերությունը /////////////////
+// if(amis === 'hunvar') {
+// 	 alert('chste e hima hunvar e' );
+// }
+// else if(amis === 'petravar') {
+// 	 alert('sxal e hima petravar che');
+// }
+// else if(amis === 'petravar') {
+// 	 alert('sxal e hima petravar che');
+// }
+// else if(amis === 'petravar') {
+// 	 alert('sxal e hima petravar che');
+// }
+// else if(amis === 'petravar') {
+// 	 alert('sxal e hima petravar che');
+// }
+// else if(amis === 'petravar') {
+// 	 alert('sxal e hima petravar che');
+// }
+// else if(amis === 'petravar') {
+// 	 alert('sxal e hima petravar che');
+// }
+// else if(amis === 'petravar') {
+// 	 alert('sxal e hima petravar che');
+// }
+// else if(amis === 'petravar') {
+// 	 alert('sxal e hima petravar che');
+// }
+// else if(amis === 'petravar') {
+// 	 alert('sxal e hima petravar che');
+// }
+// else {
+// 	alert('anhayt e - ' + amis);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////Task - շաբաթվա օրեր - teranry operator-ով։
+// մւոտքագրել թիվ ցույց տա ետ թվին համապատասխան շաբաթվա օրը՝
+
+// let week = +prompt('Enter number of weeks');
+// switch(week) {
+// 	case 1 : alert('monday');break;
+// 	case 2 : alert('twesday');break;
+// 	case 3 : alert('wensday');break;
+// 	case 4 : alert('thursday');break;
+// 	case 5 : alert('friday');break;
+// 	case 6 : alert('suturday');break;
+// 	case 7 : alert('sunday');break;
+
+// 	default :  nalert('Error');
+// }
+
+
+		
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>reg exp 1</title>
+</head>
+<body>
+	
+
+	<script>
+		// regular expressions - Регулярные выражения – мощный способ поиска и замены для строк.
+		//Կանոնավոր ատրահայտություններ, մեթոդ serach()
+		//Կանոնավոր ատրահայտություններ - ը նախատեղված են ինչ-որ տեքստային մաս փնտրելու ետ մասը փոխարինելու համար։
+
+		/*
+
+		/!\ կանոնավոր արտահայտությունը պետքա լինի 2 հատ back - slash -ի արանքում։ /some reg exp/
+		/!\ search() - ը դա String.prototype-ի  մեթոդ է, որը վերադարցնում է են ինդեքսը, որտեղ որ գտնվումա է ետ բառը։
+
+		*/
+		//Օրինակ՝
+
+		// var str = 'Lorem ipsum dolor sit amet.';
+		// var regexp = /ipsum/;
+		// console.log(str.search(regexp));//6
+
+		// # Նաև ցույցա տալիս search() մեթոդը կա այդ բառի համնկնումը, օրինակ՝
+
+		// var str = 'Lorem ipsum dolor sit amet.';
+		// var regexp = /ipsu/;
+		// console.log(str.search(regexp));//6
+
+		// # Չգնելու դեպքում search() մեթոդը վերադարցնումա -1, Օրինակ՝
+
+		// var str = 'Lorem ipsum dolor sit amet.';
+		// var regexp = /ipsumi/;
+		// console.log(str.search(regexp));//-1  _-_ քանի, ոչ imsumi բառ չկա մեր str-ի մեջ
+
+
+		// # Եթե ցանկանում ենք փնտրել, որևէ թիվ   \d
+		// Այս պարագայում միայն մեկ թվանշան է փնտրում
+		// \d - ֆլագը փնտորւմա 0-9 թվանշանները
+		// var str = 'Agent007';
+		// var regexp = /\d/;
+		// console.log(str.search(regexp));//5 -> քանի որ 5-րդ ինդքսի տակ կա թվանշան
+
+
+		// # Եթե օրիակ ցանկանում ենք փնտերլ 4 թիվ, օրինակ՝
+
+		// var str = 'I was born in 1996';
+
+		// var regexp = /\d\d\d\d/;
+		// // var str = 'I was born in 199';// -1 - քանի որ 4 թիվ չկա
+		// console.log(str.search(regexp));
+
+		// # Բայց հնարավորա որ մեզի պեքտ լինի միլոն գնտել
+		// var str = '1000000 years ago';
+		// var regexp = /\d{7}/;//0
+		// // var regexp = /\d{8}/;//-1
+		// console.log(str.search(regexp));
+
+		// # Օրինակ, եթե ցանկանում ենք նշել որ թվանաշանը ուզում ենք փնտերլ սկզբում, այսինքն պիտի 0 իդնեքսի տակ թվանշան լինի որ դրական պատասխան ստանանք
+			// var str = '1000000 years ago';
+		// var regexp = /^\d{7}/;//0
+		// var str = 'years ago 1000000 ';
+		// var regexp = /^\d{7}/;//-1
+		// console.log(str.search(regexp));
+
+		// # Իսկ եթե ուզում ենք վերջում փնտրել -> $
+		// var str = 'years ago 1000000';
+		// var str = 'years ago 1000000 ';//-1
+		// var regexp = /\d{7}$/;//10 -> այսինքն վերջին  7-անիշ թիվը սկսումա 10-րդ ինդեքսից
+		// console.log(str.search(regexp));
+
+
+
+	</script>
+</body>
+</html>

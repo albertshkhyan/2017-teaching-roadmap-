@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		/**/
+
+
+		form, div, p {
+			padding: 30px;
+			border: 1px solid #000;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+	<form action="">FORM
+		<div>DIV
+			<p>P</p>
+		</div>
+	</form>
+	<script>
+		//
+
+
+///////// cikloi mej grel style obyekt
+
+// console.log(document.styleSheets[0].cssRules[0].style);//Եթե head -ի style թեգի մեջ ոճային կանոն չկա գրած կտա Error -> Cannot read property 'style' of undefined
+
+/*----------------------------------------------------*/
+// let elems = document.querySelectorAll('form, div, p');
+// console.log("elems", elems);
+
+	// elems[0].style = `
+	// 			padding: 30px;
+	// 			border: 1px solid #000;
+	// 			text-align: center;
+	// `;
+
+
+//// ⚠ Իսկ հենց js-ի style-ի պարունկաությունը գտնվումա ownerNode: style -ի մեջ։ - > ownerNode: style
+
+	/*----------------------------------------------------*/
+
+
+// console.log(document.styleSheets[0].cssRules[0].style);//պիտի պարտադիր ոճային կանոն գրած լինի style թեգի մեջ որ տվյալ ուղղությունը աշխատի -> document.styleSheets[0].cssRules[0]
+// ⚠ cssRules օբյեկտը հենց style թեգի մեջի պարունակություննա ցուցադրում
+
+//իսկ script-ում գրած style-ը տենալու համար պետքա նշել տարրը՝
+// console.log(elems[0].style);
+
+
+
+
+/* Ինչպես ջնջել style թեգի մեջից ոճային կանոն */
+
+
+//Օրինակ ուզեւմ են ջնջել p -ի border-ը՝
+let elems = document.querySelectorAll('form, div, p');
+
+elems[2].style.border = `none`;
+
+// console.log("document.styleSheets[0]", document.styleSheets[0]);
+
+// console.log(document.styleSheets[0].cssRules[0].cssText);//form, div, p { padding: 30px; border: 1px solid rgb(0, 0, 0); text-align: center; }
+
+
+//deleteRule -ը ջնջումա ցելիս սելեկտերը
+
+// document.styleSheets[0].deleteRule(0);//form,div,p սելեկտերը ջնջեց
+
+
+	</script>
+</body>
+</html>

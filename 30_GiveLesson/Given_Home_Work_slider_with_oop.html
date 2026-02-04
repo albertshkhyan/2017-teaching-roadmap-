@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+
+	<style>
+		img{
+			width: 400px;
+			height: 400px;
+		}
+	</style>
+</head>
+<body>
+
+
+
+	<button id="left">left</button>
+	<img src="" alt="image" id="img">
+	<button id="right">right</button>
+
+	<script>
+		//
+
+		/*How create a slider using OOP 
+		1. առաջին հերթին ստեղծել HTML-ում  2 հատ button և մեջտեղնել մի հատ img
+				⚠ Don't give the buttons onclick attribute
+				⚠ Don't give source on img
+				🔰 Մենք ուղղակի պետքա js-ով կպնենք մեր button-ներին և img թեգին։
+
+		2․ Ստեղծել զ/ծ և այդ զանգվածի մեջ պահել img-ի source-ները (նկարների հասցեները)
+
+		
+		3․ Մենք արդեն կպանք button-ներին և img թեգին, դրանից հետո ստեղծինք զանգված ու մեջ պահեցինք նկարների հասցեները։ 👌 Իսկ հիմա պետքա ստեղծել պոտենցիալ constructor-ի instance-ը։ Եվ այդ պետենցիալ constructor-ի պառամետրերին փոխանցել մեր button-ները, img թեգը և նկարների զանգվածը։
+
+			🔰 var auto = new Slider(arr,left,right,img);
+
+
+		4. 😁😊 Իսկ հիմա ստեղծել մեր constructor-ը, constructor-ի մեջ ստեղծել մեր button-ների, img թեգի և նկարների զանգվածի համար հատկություններ և այդ հատկությունների արժեքը կլնինի այն ինչը մենք փոխանցեցինք instece-ով։
+
+			🔰 function Slider(arr,l,r,img){
+				this.arr = arr;
+				this.img = img;
+				this.left = l;
+				this.right = r;
+			}
+			
+			var auto = new Slider(arr,left,right,img);
+
+
+
+			5.Իսկ հետո մեր ձախ և աջ կոճակներին տալիս ենք onclick event-ը, 
+					🔰 ձախ կոճակը սեղմելուց կաշխատի this.left.onclick = function(){...}
+					🔰 աջ կոճակը սեղմելուց կաշխատի this.right.onclick = function(){...}
+				⚠ մենք onclick տալիս ենք մեր this.left և this.right հատկություններին։
+
+				Բայց մինչև click -անելը պետքա առաջին նկարը ցուցադրվի, դրա համար կստեղծենք մի հատ նոր մեթոդ, որը մեր img հատկությանը կտա src։
+				this.source= function(){
+					img.src = this.arr[0];
+				}
+			
+			⚠ constructor-ի վերջում կկանչենք մեր source() մեթոդը, որ մինչև click անելը առաջին նկարը ցույց տա։
+
+
+
+			6․ whe we using bind  method with left and right property?
+			Առանց bind()-ի՝
+				this.left.onclick = function(){
+						var k = this.arr.pop();
+						this.arr.unshift(k);
+						this.soruce();
+				};
+
+				Առանց bind(this) -ի this-ը դառնումա button#left ???
+					Մենք ասում ենք button#left օբյեկտի մեջի arr հատկությունը, բայց մեր ձախ կոճակը arr հատկություն չունի։ arr հատկությունը Slider constructor-ի մեջա։
+
+				why bind(this);
+					Մենք որ մեթոդ ենք կանչում մենք ասում ենք, թե որ օբյեկտի մեջից կանչվի ետ մեթոդը օրինակ այստեղ մենք ասում ենք որ մեթոդը կանչվի auto օբյեկտի մեջից, երբ մենք ենք կանչում մեթոդը this-ի կոնտեքստը նշելը հեշտա լավ բա որ մենք չենք կանչում ետ ժամանակ ոնց this տալ
+						function Slider(n,s,a,w){
+								this.name = n;
+								this.sname = s;
+								this.age = a;
+								this.weight = w;
+								this.walk = function(){
+									console.log(this.constructor.name + ' - ' + this.name);
+								};
+
+							}
+
+
+							var auto = new Slider('Valod','Valodyan',23,'70kg');
+							👁‍🗨 auto.walk();//Slider - Valod - this-ի կոնտեքստը նշելը հեշտա
+							👁‍🗨 walk();// ReferenceError: walk is not defined
+
+	
+var auto = new Slider('Valod','Valodyan',23,'70kg');
+auto.walk();//Slider - Valod
+walk();// ReferenceError: walk is not defined
+
+				
+			 7. When click left button
+			 		Ձախ click-ի ժամանակ կմիանա մեր construcotr-ի left հատկությանը տված onclick event-ը, որը՝
+			 			◼ փոկումա arr-ի վերջին նկարի src-ին -> var k = this.arr.pop()
+			 			◼ և ավելացնումա սկզբում —> this.arr.unshift(k);
+			 			⚠ Ավալացավ ամենա սկզբում ասյինքն 0 ինդեքսի տակ, ինչքան մենք ձախ click նոր նկարը լինելու 0 ինդեքսի տակ։
+
+			 			⚠ Զանգվածի մեջ նկարների հասցեն փոխվեց, ու ետ փոխված հասցեն մենք պետքա տանք մեր img-ին։ Դրա համար կկանչենք source() մեթոդը։
+
+
+
+				8. When click left button
+						Աջ click-ի ժամանակ առաջին նկարը փոկումա դնումա վերջ։
+						Առաջինը երբ հանումա տեղից 2-րդ նկարնա իրա տեղը նկնում։
+						⚠ աջ click-ի ժամանակ ել ամեն հաջորդ նկարը 0 ինդեքսի տակ է։
+
+				*/
+
+
+function Slider(arr,l,r,img){//arr,l,r,img tags
+	this.arr = arr;
+	this.img = img;
+	this.left = l;
+	this.right = r;
+	this.left.onclick = function(){
+		var k = this.arr.pop();
+		this.arr.unshift(k);
+		this.soruce();
+	}.bind(this);
+	this.right.onclick = function(){
+		var k = this.arr.shift();
+		this.arr.push(k);
+		this.soruce();
+	}.bind(this);
+
+	this.soruce= function(){
+		img.src = this.arr[0];
+
+	}
+	this.soruce();
+
+}
+
+var left = document.querySelector('#left');
+var right = document.querySelector('#right');
+var img = document.querySelector('#img');
+
+var arr = [
+'../../../IMAGES_and_ICON/smallBeautyImages/img1.jpg',
+'../../../IMAGES_and_ICON/smallBeautyImages/img2.jpg',
+'../../../IMAGES_and_ICON/smallBeautyImages/img3.jpg',
+'../../../IMAGES_and_ICON/smallBeautyImages/img4.jpg'
+];
+var auto = new Slider(arr,left,right,img);
+
+
+</script>
+</body>
+</html>

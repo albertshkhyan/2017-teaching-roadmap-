@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+
+	<style>
+
+	#containerCalculator{
+		width: 25%;
+		
+	}
+
+	#buttons{
+
+	}
+
+#reult {
+	width: 100%;
+	height: 50px;
+	outline:1px solid grey;
+}
+#reult:hover {
+	box-shadow: 3px 3px 3px inset #777777,
+							-3px -3px 3px inset #777777;
+	cursor: pointer;
+}
+
+#operator_panel {
+	width: 100%;
+	margin: 10px 0;
+}
+
+#operator_panel > div {
+	width: 80px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	text-align: center;
+	background-color: #FF4566;
+}
+#operator_panel > div:hover {
+outline:1px solid black;
+cursor: pointer;
+}
+
+
+.numbers {
+	width: 100%;
+	margin: 10px 0;
+
+}
+
+#NumberLeftPanel {
+	/*width: 25%;*/
+	/*display: inline-block;*/
+}
+
+.numbers > div{
+	width: 80px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	text-align: center;
+	background-color: #00A8B2;
+}
+
+.numbers > div:hover {
+	outline:1px solid black;
+	cursor: pointer;
+}
+
+.equal {
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	background-color: #79AD22;
+	display: inline-block;
+}
+
+.equal:hover {
+	cursor: pointer;
+	outline:1px solid black;
+
+
+}
+
+	</style>
+</head>
+<body>
+
+	<div id="containerCalculator">
+		<div id="reult"></div>
+
+		<div id="buttons">
+			<div id="operator_panel">
+				<div>+</div>
+				<div>-</div>
+				<div>&times;</div>
+				<div>&divide;</div>
+			</div>
+			<div id="NumberLeftPanel">	
+				<div class="numbers">
+					<div>7</div>
+					<div>8</div>
+					<div>9</div>
+				</div>
+
+
+			<div class="numbers">
+					<div>4</div>
+					<div>5</div>
+					<div>6</div>
+				</div>
+
+
+			<div class="numbers">
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+				</div>
+
+
+
+			<div class="numbers">
+					<div>0</div>
+					<div>.</div>
+					<div id="clear">C</div>
+				</div>
+		<div class="equal" id="result"> = </div>
+
+		</div>
+
+	</div>
+	</div>
+	<script>
+		//
+
+
+
+	</script>
+</body>
+</html>

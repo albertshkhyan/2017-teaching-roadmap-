@@ -1,0 +1,78 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+		/*
+			//Object.create problem
+
+			//oop slider
+
+		//getter and setter new standart
+		//static metod an property - difference between instance and a class method 
+		//Kran-i xndiry anel irar het
+		//class-ov anel Krani-i xndiry
+	
+
+		*/
+
+
+
+/*++++++++++++ Problem in last lesson ++++++++++++*/
+
+
+		// let obj = {
+		// 	a : 3
+		// }
+
+		// obj = Object.create(null);//ես դեպքում դատարկումա մեր obj ամբողջությամբ
+		// console.log("obj", obj);
+
+
+/*----------------------------------------*/
+
+		// let obj = {
+		// 	a : 3
+		// }
+
+		// obj.__proto__ = Object.create(null);
+		// console.log("obj", obj);//obj-ն proto չունի
+
+		/*Output
+			>{a: 3}
+					a: 3
+					__proto__:
+							No propertie
+
+		*/
+
+
+		/*+++++++++++++++inherit with Object.create()+++++++++++++++*/
+
+
+		let obj1 = {
+			a : 3
+		}
+
+		let obj2 = {
+
+		}
+
+		obj2.__proto__ = Object.create(obj1);//working
+		console.log("obj2 - ", obj2);
+		console.log(obj2.a);
+
+
+		/**/
+	</script>
+</body>
+</html>

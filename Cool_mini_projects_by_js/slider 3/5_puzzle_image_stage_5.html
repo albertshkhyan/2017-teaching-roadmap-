@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rotate effect of puzzle image</title>
+
+
+    <style>
+    body{
+        margin: 0;
+    }
+    #wrapper main {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    main .containOfimages {
+        width: 700px;
+        height: 500px;
+        border: 1px solid red;
+    }
+
+    main .containOfimages div img {
+        width: 700px;
+        height: 500px;
+        position: relative;
+    }
+
+    main .containOfimages div {
+        width: 50px;
+        height: 50px;
+        outline: 1px solid red;
+        overflow: hidden;
+        float: left;
+        position: relative;
+        /* transform: rotate() */
+    }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <main>
+            <div class="containOfimages">
+                <!-- <div>
+                    <img src="../../IMAGES_and_ICON/640x480/img (1).jpg" alt="">
+                </div> -->
+            </div>
+        </main>
+        <button onclick="randomPuzzle()"> NEXT </button>
+
+    </div>
+    <script>
+    //
+
+    let cOimages = document.querySelector('.containOfimages');
+
+    let arrOfImages = [
+        '../../IMAGES_and_ICON/640x480/img (1).jpg'
+    ];
+
+
+        for(let i = 0; i < 10; ++i) {
+            for(let j = 0; j < 14; ++j ) {
+                let createDiv = document.createElement('div');
+                let createImg = document.createElement('img');
+                cOimages.appendChild(createDiv);
+                createDiv.appendChild(createImg);
+                createImg.src = arrOfImages[0];
+                createImg.style.top = -i * 50 + 'px';
+                createImg.style.left = -j * 50 + 'px';
+            }
+        }
+
+
+
+        
+        
+        let takeCreateDiv = document.querySelectorAll('.containOfimages div');
+        let randomPuzzle = () => {
+            for(let i = 0; i < takeCreateDiv.length; ++i) {
+                takeCreateDiv[i].style = `
+                transition:1.5s;
+                top:${ Math.round(Math.random()*300 - 100) + 'px' };
+                left:${ Math.round(Math.random()*500 - 300) + 'px' };
+
+                `;
+                // takeCreateDiv[i].style.top = Math.round(Math.random()*300)+"px";
+
+
+
+            // takeCreateDiv[i].style = `transform:rotate(360deg); `;
+            // div[i].style.transform = "rotate(360deg)";
+
+                // setTimeout(function st() {
+
+
+                // },1500);
+            }
+
+
+            
+        }
+
+
+        /*FIXME 
+        * click - Ի ժամանակ դիվերը պետքա ուղղակի 360 աստիճան պտտվեն ոչ թե անվերջ, 
+            անվերջ պտտվելու համար ետ վախտ նոր փոփոխական է պետքա։
+
+        * div - երին կպնել դրսից։
+
+        * transition-ը պետքա որ պլավնի գնան գան դիվերը։
+        
+        
+        */
+
+    
+
+
+    
+    
+    </script>
+</body>
+</html>

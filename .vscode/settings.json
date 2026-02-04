@@ -1,0 +1,12 @@
+{
+    // "auto-comment-blocks.singleLineBlockOnEnter": true,
+    "workbench.colorCustomizations": {
+        "statusBar.debuggingBackground": "#19A119",
+        "statusBar.noFolderBackground": "#19A119",
+        "statussBar.prominentBackground": "#19A119",
+        "tab.unfocusedActiveBorder": "#fff0",
+        "activityBar.background": "#2C2E28",
+        "titleBar.activeBackground": "#3E4138",
+        "titleBar.activeForeground": "#FAFBFA"
+    }
+}

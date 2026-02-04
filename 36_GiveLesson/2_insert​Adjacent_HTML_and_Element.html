@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+</head>
+<body>
+
+
+	<p id="prg">
+		paragraph
+		<p></p>
+	</p>
+    <script>
+        
+/*
+
+        
+database լինումա 2 տեսակի, 
+1․մեկը JSON-ով։ - noSql
+2․աղուսակներով է պահվում , mySql
+Sql-ը առանձին լեզու է, բայց ծրագրավորմա ժն լեզու չի
+
+
+
+mvc - ստրուկտուրա  է, 
+
+m -> model - database-ի հատ աշխատելու համար , server -> dataBase
+
+v -> view - html,css
+
+c - output անելու համար
+
+*/
+
+
+///// շաբաթվա օրեր - teranry operator-ով։
+
+
+
+
+
+/******************************************************/
+
+/*
+
+
+insert Adjacent Element - մտցրեք հարակից տարրը, вставить соседний элемент
+
+Syntax of insertBefore
+    Node.insertBefore();
+
+Syntax of insertAdjacentHTML
+    element.insertAdjacentHTML(position, text);
+    
+
+
+
+
+* 'afterbegin'
+* 'afterend'
+* 'beforebegin'
+* 'beforeend'
+*/
+
+// prg.innerHTML = `<h1>Hello</h1>`;
+
+// let a = prg.innerHTML = `
+// <h1>
+// 	Hello ($) k
+// <p>Doche ($) Gabana</p>
+// <p>(<)</p>
+// <p>(>)</p>
+
+// </h1>`;
+// console.log(a);
+
+
+// const content = prg.innerHTML = `<h1>Hello</h1>`; 
+// prg.innerHTML =  `<h4>Hello</h4>`;
+// prg.innerHTML =  `<h4>Hello</h4>`;
+/*---------------------------------------------*/
+// let cd = document.createElement('h4');
+// let ctn = document.createTextNode('hello');
+// cd.appendChild(ctn);
+// prg.insertAdjacentElement('afterend', cd);//prg- ից դուրս , փակվողից հետո է ավլեացնում
+
+// prg.insertAdjacentElement('afterend', '<h4>hello</h4>');// Failed to execute 'insertAdjacentElement' on 'Element' 👎
+// prg.insertAdjacentHTML('afterend', '<h4>hello</h4>');// working correct 👍
+
+
+
+// --------------------------------------
+
+// prg.insertAdjacentHTML('afterend', '<h4>Hello</h4>');//prg- ից դուրս , փակվողից հետո է ավլեացնում
+// prg.insertAdjacentHTML('beforebegin', '<h4>Hello</h4>');//prg- ից դուրս , բացվողից հետո է ավլեացնում
+
+// prg.insertAdjacentHTML('afterbegin', '<h4>Hello</h4>');// prg- ի մեջ ամենա վերևը <
+// prg.insertAdjacentHTML('beforeend', '<h4>Hello</h4>');//prg -ի մեջ ամենա ներքևը >
+
+// console.log("content", content);
+
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> Простой калькулятор</title>
+</head>
+<body>
+	
+	<input type="number" id="p1" placeholder="Enter number"><br><br>
+	<input type="number" id="p2" placeholder="Enter number"><br><br>
+	<button id="plus">+</button>
+	<button id="minus">-</button>
+	<button id="multi">*</button>
+	<button id="dvs">/</button>
+	<hr>
+	<p id="res">Result</p>
+
+
+
+
+	<script>
+
+
+		/*
+		+ addition 
+		- subtraction
+		* multiplication
+		 / division
+
+		*/
+
+		var plus = document.querySelector('#plus');
+		var minus = document.querySelector('#minus');
+		var multi = document.querySelector('#multi');
+		var dvs = document.querySelector('#dvs');
+		plus.addEventListener('click',addition);
+		minus.addEventListener('click',subtraction);
+		multi.addEventListener('click',multiplication);
+		dvs.addEventListener('click', division);
+
+		
+		
+	function addition(){
+		var p1,p2;
+
+		p1=document.querySelector('#p1').value;//exaple "7a"
+		// p1=parseInt(p1);//parseInt  ենք անում որ սենց գումարում անի - p1+p2
+
+		p2=document.querySelector('#p2').value;
+		// p2=parseInt(p2);//parseInt  ենք անում որ սենց գումարում անի - p1+p2
+
+		document.querySelector('#res').innerHTML = +p1 + +p2;
+		
+
+
+	}
+
+	function subtraction(){
+		var p1,p2;
+
+		p1=document.querySelector('#p1').value;
+		p2=document.querySelector('#p2').value;
+		document.querySelector('#res').innerHTML = p1-p2;
+	}
+
+	function multiplication(){
+		var p1,p2;
+
+		p1=document.querySelector('#p1').value;
+		p2=document.querySelector('#p2').value;
+		document.querySelector('#res').innerHTML = p1*p2;
+	}
+
+
+	function division(){
+		var p1,p2;
+
+		p1=document.querySelector('#p1').value;
+		p2=document.querySelector('#p2').value;
+		document.querySelector('#res').innerHTML = p1/p2;
+	}
+
+	</script>
+</body>
+</html>

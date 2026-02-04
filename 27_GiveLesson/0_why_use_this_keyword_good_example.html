@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+
+
+
+let user = {
+	name: 'Valod',
+	foo : function() {
+		console.log(this.name);//working correct
+		// console.log(user.name);//Error -  Cannot read property 'name' of null
+	}
+}
+
+let admin = user;
+user = null;
+console.log("user", user);//output - null
+console.log("admin", admin);//{name: "Valod", foo: ƒ}
+admin.foo();
+
+/*
+	Մենք կարող ենք this.name փոխարեն կարաինք գրել հենց օբյեկտը user.name, բայց հենց օբյեկտը գրելուց ստաբիլ չի աշխատի foo ֆունկցիան, օրրինակ եթե մենք user -ը վերագրենք admin-ի, admin-ը ել չի կարա name-ի հանդեպ հասանելիություն ըստանա։
+
+*/
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MoveElemWithArrowsKeys.html</title>
+
+
+	<style>
+		body {
+			margin: 0;
+		}
+		#zone{
+			width: 100%;
+			height:100vh;
+			position: relative;
+			margin: 0 auto;
+			background: url(../../JavaScript___Alik/ReadyWorksByJS/beauty_images/grass.jpg) no-repeat ;
+			background-size: cover;
+
+
+		}
+
+		#move{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			bottom:0;
+			/*transition: 0.5;*/
+		}
+
+
+
+	</style>
+</head>
+<body><!-- onkeydown="f(event)" -->
+	
+<div id="zone">
+	<img src="../../JavaScript___Alik/ReadyWorksByJS/beauty_images/runing_mario.gif" alt="" id="move">
+</div>
+
+
+
+	<script>
+
+	var zone = document.querySelector('#zone');
+	var move = document.querySelector('#move');
+
+	var horiz = zone.offsetWidth - move.offsetWidth;
+	var verti = zone.offsetHeight - move.offsetHeight;
+
+	var x = 0;
+	var y = 0;
+	document.body.onkeydown = function(e){
+
+		if(e.which == 39 && x < horiz){
+			x+=5;
+			move.style.left = x+'px';
+		}
+
+		else if(e.which == 37 && x > 0){
+			x-=5;
+			move.style.left = x+'px';
+
+		}
+
+		else if(e.which == 40 &&  y != 0 ){
+			y-=5;
+			console.log("y", y);
+			move.style.bottom = y+'px';
+		}
+
+		else if(e.which == 38 && y < 559){
+
+console.log("y", y);
+			y+=5;
+			move.style.bottom = y+'px';
+		}
+	}
+
+
+
+</script>
+</body>
+</html>

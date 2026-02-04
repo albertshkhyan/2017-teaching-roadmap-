@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>carring</title>
+</head>
+<body>
+	
+
+	<script>
+		
+		
+		
+		function sum(a) {
+
+			var sum = a;
+			function f(b) {
+				sum += b;
+				return f;
+			}
+			f.toString = function() { return sum }
+			return f;
+		}
+
+		// console.log(sum(1)(2)(3)(4));//correct working
+		// console.log(sum(1,2,3,4));//1 
+	</script>
+</body>
+</html>

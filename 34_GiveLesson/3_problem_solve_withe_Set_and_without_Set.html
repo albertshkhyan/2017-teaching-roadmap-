@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//
+
+
+	//////////// Remove duplicate values from JS array  ///////////
+//1.
+
+// let uniqueArr = ['Donald','Jon','Thomas','Donald','Natali','Donald','Donald'];
+// let uniqueNameArr = uniqueArr.filter((item,index) =>{
+// 	return uniqueArr.indexOf(item) == index;
+// 	// console.log(uniqueArr.indexOf(item));//0,1,2,0,4
+// 	// console.log(index);//0,1,2,3,4
+// });
+// console.log("uniqueNameArr - ", uniqueNameArr);//["Donald", "Jon", "Thomas", "Natali"]
+
+/*
+uniqueArr.indexOf(item) == index -> false -> 0 === 3 
+*/
+
+
+
+
+// 2.❌
+
+// let uniqueArr = ['Donald','Jon','Donald','Thomas','Donald','Natali','Donald','Donald'];
+// // uniqueArr.splice(uniqueArr.lastIndexOf(uniqueArr["Donald"]),1);
+// // uniqueArr.splice(3,1);
+// // uniqueArr.splice(5,1);
+// // uniqueArr.splice(6,1);
+// for(let i = 0; i < uniqueArr.length; ++i) {
+// 	let a = uniqueArr.indexOf(uniqueArr[i]);
+// 	let b = uniqueArr.lastIndexOf(uniqueArr[i]);//last index is dublicat
+// 	if(a != b) {
+// 		uniqueArr.splice(b,1);
+// 	}
+// }
+// console.log("uniqueArr", uniqueArr);
+
+
+
+
+
+
+//// 3. Այս օրինակում մենք չենք ջնջում մեր զ/ծ-ը ուղղակի ստուգում ենք տվյալ տարի առակյությունը։
+
+
+// let namesArr = ['Donald','Jon','Donald','Thomas','Donald','Natali','Donald','Donald'];
+// // let namesArr = [1,1,2,2,3,3,4,4];
+// function removeDuplicate(arr) {
+// 	let uniqueNamesArr = [];
+// 	for(let i = 0; i < arr.length; ++i) {
+// 		if( uniqueNamesArr.indexOf(arr[i])  == -1 ) {
+// 			uniqueNamesArr.push(arr[i]);
+// 		}
+
+// 	}
+
+// 	return uniqueNamesArr;
+
+// }
+
+// let rd = removeDuplicate(namesArr);
+// console.log(rd);
+
+
+/*
+⚫ Այս պայմանը ստուգում մեր զանգվախի մեջ տվյալ անունա կա թե չե
+	եթե չկա վալացնումա անունը մեր զա/ծ-ի մեջ
+	Եթե կա արդեն կա տվյալ անունը չի ավելացնում
+
+	⚠ -1 տալիս են ժամանակ երբ տվյալ տարրը չի գտնում
+
+*/
+
+
+
+
+
+
+
+
+/****************with Set****************/
+
+
+// let uniqueArr = ['Donald','Jon','Thomas','Donald','Natali','Donald','Donald'];
+// let unikalValue = new Set(uniqueArr);
+// console.log("unikalValue - ", unikalValue);
+
+
+
+</script>
+</body>
+</html>

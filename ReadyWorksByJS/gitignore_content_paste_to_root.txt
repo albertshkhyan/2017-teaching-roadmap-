@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# IDE / Editor
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies (if added later)
+node_modules/
+
+# Optional: large binaries (uncomment to exclude PDFs)
+# *.pdf
+
+# Logs and temp
+*.log
+*.tmp
+.cache/

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		
+		//
+
+// function foo() {
+// 			console.log(a);//2
+// 		}
+
+// 		var a = 2;
+// 		foo();
+
+// 		var obj = {
+// 			a : 3,
+// 			foo : foo
+// 		}
+// 		obj.foo();
+
+/*
+
+Output 
+	2
+	2
+
+*/
+
+////// variant 2 ///////////
+// 'use strict'
+// with use strict ->  Cannot read property 'a' of undefined
+
+function foo() {
+			console.log(this.a);//this === obj
+		}
+
+		var a = 2;
+		foo();
+
+		var obj = {
+			a : 3,
+			foo : foo
+		}
+		obj.foo();	
+
+
+		/*
+
+Output -> with this.a show 3
+	2
+	3
+
+*/
+
+
+
+//////////////// call appy bind
+
+// function foo() {
+// 	console.log(this.a);
+// }
+
+// var obj = {
+// 	a : 2
+// }
+
+
+// foo.call(obj);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*+++++++++++++ Object in js++++++++++++++++*/
+
+/*
+[[Get]]
+[[Put]]
+[[Proototype]]
+
+Օբյեկտը դա սովարական key ու value-ների կոնստրուկցիա է
+
+	# Ինչպես օբյեկտ ստեղծել 
+		1․ ասոցացվող օբյեկտներ -> {key : value}
+		2. Object-ի ֆունկցիա
+
+
+
+		+++++++++++++++ [[Get]] ++++++++++++
+		մեխանիզմ, որի միջոցով օբյեկտից ստանում ենք իրա key-ը։
+
+* obj.a սկզբում փնտրումա իր կենտեքստի շրծջանակներում, հետո prototype-ով շխթայական կապով կսկսի փնտրել, մինչև հասնի վերջ Object: Այս պռոցեսը կոչվումա [[Get]] մեխանիզմ։
+
+
+* prortype-ը ինչ-որ օբյեկտի վրա հղում ունեն
+
+
+
++++++++++++++++ [[Put]] ++++++++++++
+
+Իսկ put-ը նույնա սկզբունքով ուղղակի ինքը ոչ թե փոնտրումա այլ ավելացնումա։
+
+
+********************************
+
+JavaScript-ում ցանկացած օբյեկտ կարա հղում ունենա մեկ այլ օբյեկտի վրա, իսկ դա արվում է Object.create() -ով,
+
+Object.create() - ի միջոցով կարելիա նոր օբյեկտ ըստանալ, որի  prototype-ում դրվածա ուրշ օբյեկտ 
+
+
+************************
+
+Object.definedPrperty(myObject, 'a', {
+	value: 2,
+	writeable:true, // թույլատրում է կոդի կատարման ժամանակ իրա type-ը փոխել
+	configurable : true, // թույլատրեում ենք վերասահմանել իրան թե ոչ, այսինքն թողում ենք 2 անգամ defineProperty
+	enumerable:true//կարա մասնակցի իտեռացիաներին թե ոչ
+
+})
+myObject․a;
+
+
+
+
+*********** class *************
+class-ի միջոցով մենք օբյեկտից ստանում ենք նոր օբյեկտ
+
+javascript-ը class-ները իմիտացիա են անում, որ օբյեկտների հետ են աշխատում, որ
+javascript-ի class-ները ձևացնում են, որ իրանք կլասս են, իրանք իրանց կլասսի նման են պահում վայց իրանք կլասս չեն։ Ոիրշ OOP -ը ծրագրավորման լեզուներում կլասսը ուրիշ բան օբյեկտը ուրիշ։
+
+
+es5-ում ժառանգալանությունը կատարվումա Object.create-ով իսկ es6-ում extends
+
+
+*/
+
+</script>
+</body>
+</html>

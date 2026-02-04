@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js41 - GENERATOR with function</title>
+</head>
+<body>
+	
+
+<img id="nkar" src="images/fid_spinner.png" alt="">
+	<script>
+	
+//generator-ը կանչվում է iterator - ով
+//  onclick="spin()" - img թեգին պետք չի տալ onclick
+// Եթե done false է ուրեմն գործողւթյունը դեռ չի ավառվել
+// generator.next() - վերդարձնում է հաջորդ yield-ը
+//generator - ի մեջ կարելի է գրել return
+
+//generator ֆունկցիան դուք չէք կարող հետ կանչել, բայց կարելի է ստեղծել նոր
+
+// /!\ Քանի որ մենք գրելենք next() մեթոդը,իսկ մենք գիտենք որ next() մեթոդը իտերացվող օբյեկտում է, սա նշանակու է որ generator-ը իտերացվող օբյեկտ է:
+
+//my mistake - մի հատ հավասար էի դրել
+
+//working without event
+var nkar = document.querySelector('#nkar');
+var stop;
+var deg = 0;
+function* spin(){
+	yield stop = setInterval(function(){
+		nkar.style.transform = `rotate(${deg++}deg)`;
+		(deg==360) ? deg=0 : '';//working
+	});
+
+	yield clearInterval(stop);
+
+	yield stop = setInterval(function(){
+		nkar.style.transform = `rotate(${deg--}deg)`;
+		(deg == -360) ? deg=0 : '';
+	});
+
+	yield clearInterval(stop);
+}
+var gen = spin();
+// gen.next();
+// gen.next();
+
+nkar.onclick = function(){
+	var x = gen.next();
+	if(x.done == true){//gen.next().done = true
+	console.log(gen.next());//վերջում ինչքան clcik անենք ետքան true կտա
+		// var newGen = spin();
+		// newGen.next();
+		gen = spin();
+		gen.next();
+	}
+}
+
+
+
+</script>
+</body>
+</html>

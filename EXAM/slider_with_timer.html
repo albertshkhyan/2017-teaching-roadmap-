@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+	<style>
+		*{
+			margin: 0;
+		}
+
+		#wrapper {
+
+		}
+
+		#wrapper main img {
+			width: 100%;
+			height: 100vh;
+		}
+
+		#wrapper main button {
+			color:	#454545;
+			border:none;
+			/* padding: 10px; */
+			background-color: transparent;
+			/* background-color: red; */
+			outline: none;
+
+		}
+		#wrapper main button:hover {
+			color:	rgba(189, 184, 184, 0.698);
+		}
+		#wrapper main button:active {
+			color:	rgba(233, 229, 229, 0.87);
+		}
+		#wrapper main button > .icon {
+			font-size: 30px;
+		}
+		#wrapper main button:nth-child(1){
+			position: absolute;
+			top: 50%;
+			left: 0;
+
+		}
+		#wrapper main button:last-child{
+			position: absolute;
+			top: 50%;
+			right: 0;
+
+		}#wrapper main{position: relative;}
+	
+
+
+		#sectionBgFon {
+			background-color: rgba(107, 107, 107, 0.671);
+			width: 100%;
+			height: 100vh;
+			position: absolute;
+			top:0;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+
+		#cOfImgAndBtn {
+			width: 35%;
+			height: 300px;
+			border: 1px solid #000;
+			position: relative;
+
+		}
+
+
+		#cOfImgAndBtn img {
+			width: 100%;
+			height: 100%;
+			/* position: absolute; */
+		}
+
+
+
+		#closeBtn {
+			position: absolute;
+			right: 0;
+		}
+	
+	</style>
+	</head>
+<body>
+
+
+	<div id="wrapper">
+		<main>
+			<button id="left" onclick="whenClickLeft()">
+					<i class="fas fa-chevron-circle-left icon"></i>
+			</button>
+			<img src="../../IMAGES_and_ICON/ImagesFor1366x768/img (1).jpg" onclick="whenClickOnImage(this)">
+			<button id="left" onclick="whenClickRight()">
+					<i class="fas fa-chevron-circle-right icon"></i>
+			</button>
+
+		</main>
+	</div>
+
+	<script>
+		// let set;
+
+		// let arrOfImages = [
+		// 	'../../IMAGES_and_ICON/ImagesFor1366x768/img (1).jpg',
+		// 	'../../IMAGES_and_ICON/ImagesFor1366x768/img (2).jpg',
+		// 	'../../IMAGES_and_ICON/ImagesFor1366x768/img (3).jpg',
+		// 	'../../IMAGES_and_ICON/ImagesFor1366x768/img (4).jpg',
+		// 	'../../IMAGES_and_ICON/ImagesFor1366x768/img (5).jpg',
+		// 	'../../IMAGES_and_ICON/ImagesFor1366x768/img (6).jpg',
+		// 	'../../IMAGES_and_ICON/ImagesFor1366x768/img (7).jpg'
+		// ];
+
+		// let  chengeSrcOfImg = () => {
+		// 	let getImg = document.querySelector('#wrapper > main > img');
+		// 	getImg.src = arrOfImages[0];
+		// }
+		// let  takeFirstPutLast = () =>   {
+		// 	let takeFirst = arrOfImages.shift();
+		// 	arrOfImages.push(takeFirst);
+		// 	chengeSrcOfImg();
+		// }
+		// let  whenClickRight = () =>  {
+		// 	clearInterval(set);
+		// 	set = setInterval(takeFirstPutLast,1000);
+		// }
+
+
+
+		// let takeLastPutFirt = () => {
+		// 	let takeLast = arrOfImages.pop();
+		// 	arrOfImages.unshift(takeLast);
+		// 	chengeSrcOfImg();
+		// }
+		// let whenClickLeft = () => {
+		// 	clearInterval(set);
+		// 	set = setInterval(takeLastPutFirt,1000);
+
+		// }
+
+
+		// let bgOfImage = document.createElement('section');
+		// let containerOfImgAndBtn = document.createElement('div');
+		// let createImage = document.createElement('img');
+		// let createBtn = document.createElement('button');
+		// let closeBtn = document.createTextNode('X');
+
+		// let whenClickOnImage  = (t) => {
+		// 	// console.log(t);
+		// 	clearInterval(set);
+		// 	document.body.appendChild(bgOfImage);
+		// 	bgOfImage.setAttribute('id', 'bgofImg');
+        ////bgOfImage.id = 'bgofImg';
+
+		// 	bgOfImage.appendChild(containerOfImgAndBtn);
+		// 	containerOfImgAndBtn.setAttribute('id', 'cOfImgAndBtn');
+
+		// 	containerOfImgAndBtn.appendChild(createImage);
+		// 	createImage.src = t.src;
+
+		// 	containerOfImgAndBtn.appendChild(createBtn);
+		// 	createBtn.appendChild(closeBtn);
+		// 	createBtn.setAttribute('id', 'closeBtn');
+
+		// 	createBtn.setAttribute('onclick', 'closeAll(this)');
+
+
+		// }
+		
+
+		// let closeAll = (t) => {
+		// 	console.log(t);//working
+		// 	// console.log('bgOfImage.parentNode', bgOfImage.parentNode);
+		// 	bgOfImage.parentNode.removeChild(bgOfImage);
+			
+		// }
+
+		
+
+
+
+
+		// //// NOTE variant 2
+
+		let set;
+		let arrOfImages = [
+			'../../IMAGES_and_ICON/ImagesFor1366x768/img (1).jpg',
+			'../../IMAGES_and_ICON/ImagesFor1366x768/img (2).jpg',
+			'../../IMAGES_and_ICON/ImagesFor1366x768/img (3).jpg',
+			'../../IMAGES_and_ICON/ImagesFor1366x768/img (4).jpg',
+			'../../IMAGES_and_ICON/ImagesFor1366x768/img (5).jpg',
+			'../../IMAGES_and_ICON/ImagesFor1366x768/img (6).jpg',
+			'../../IMAGES_and_ICON/ImagesFor1366x768/img (7).jpg'
+		];
+		
+		let changeSrc = () => {
+			let getImg =  document.querySelector('#wrapper > main > img');
+			getImg.src = arrOfImages[0];
+		}
+
+		let takelastPutFirst = () => {
+			let takeLast = arrOfImages.pop();
+			arrOfImages.unshift(takeLast);
+			changeSrc();
+		}
+
+		let whenClickLeft = () => {
+			clearInterval(set);
+			set = setInterval(takelastPutFirst,1000)
+		}
+		let takeFisrPutLast = () => {
+			let takeFirst = arrOfImages.shift();
+			arrOfImages.push(takeFirst);
+			changeSrc()
+		}
+		let whenClickRight = () => {
+			clearInterval(set);
+			set = setInterval(takeFisrPutLast, 1000);
+		}
+
+		let bgFon = document.createElement('section');
+		let containerOfImgAndBtn = document.createElement('div');
+		let createBtn = document.createElement('button');
+		let txtOfCloseBtn = document.createTextNode('X');
+		let createImage = document.createElement('img');
+
+
+		let whenClickOnImage = (t) => {
+			clearInterval(set);
+			document.body.appendChild(bgFon);
+			// bgFon.setAttribute('id','sectionBgFon');
+			bgFon.id = 'sectionBgFon';//working correct
+			containerOfImgAndBtn.id = 'cOfImgAndBtn';
+			bgFon.appendChild(containerOfImgAndBtn);
+			createBtn.id = 'closeBtn';
+			containerOfImgAndBtn.appendChild(createBtn);
+			createBtn.appendChild(txtOfCloseBtn);
+			containerOfImgAndBtn.appendChild(createImage);
+			createImage.src = t.src;
+
+			createBtn.setAttribute('onclick', 'closeBtnFunc()');
+
+
+		}
+
+		let closeBtnFunc = () => {
+			bgFon.parentNode.removeChild(bgFon);
+		}
+
+
+
+
+// for(var i = 0; i< 2; ++i) {
+
+// }
+// console.log(i);
+
+
+		
+	</script>
+</body>
+</html>

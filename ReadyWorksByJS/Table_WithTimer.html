@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chess board with timer</title>
+</head>
+<body>
+	
+
+
+
+
+	<script>
+var a=0;
+var b=0;
+function f(){
+if (a==0) {
+	document.write("<table>")
+}
+a++	
+if (b==0) {
+	document.write("<tr>")
+}
+b++
+
+if(b%a==2){
+document.write('<td style="width:50px; height:50px; border:1px solid orange; background-color:yellow;">'+a+'</td>');
+}
+else{
+document.write('<td style="width:50px; height:50px; border:1px solid orange; background-color:blue;">'+a+'</td>');
+
+}
+
+if (b==10) {
+	document.write("</tr>");
+	b=0;
+}	
+if(a==100){
+	document.write("</table>");
+	clearInterval(set);
+	}
+
+}
+var set=setInterval(f,50);
+
+	</script>
+</body>
+</html>

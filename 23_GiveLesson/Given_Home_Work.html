@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home work</title>
+
+	<style>
+		body{
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+
+<ul id="list">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ul>
+
+	<script>
+
+		
+		//Increase Div and change Color with DOM
+		// let rgb = 'red';
+		// let wh = 100;//width and height
+		// let stop = setInterval(function() {
+		// let createElem = document.createElement('div');
+		// 	document.body.appendChild(createElem);
+		// 	createElem.style = `
+		// 		background-color:${rgb};
+		// 		width:${wh}px;
+		// 		height:${wh}px;
+		// 		margin-bottom:20px;
+		// 	`;
+		// 	if(rgb == 'red') {
+		// 		rgb = 'green';
+		// 	}
+
+		// 	else if(rgb == 'green') {
+		// 		rgb = 'blue';
+		// 	}
+
+		// 	else if(rgb == 'blue') {
+		// 		rgb = 'red';
+		// 	}
+		// 	wh += 100;
+
+		// 	if(wh >= window.innerWidth) {
+		// 		clearInterval(stop);
+		// 	}
+		// },100);
+
+		
+
+
+
+///////// without DOM
+
+
+		// var a=10;
+		// var b=0;
+		// function f(){
+		// 	if (b==0) {
+		// 		document.write('<div style="width:'+a+'; height:'+a+'; background-color:red;"></div>')
+		// 		b++
+		// 	}
+		// 	else if(b==1){
+		// 		document.write('<div style="width:'+a+'; height:'+a+'; background-color:green;"></div>')
+		// 		b++ 
+		// 	}
+		// 	else if(b==2){
+		// 		document.write('<div style="width:'+a+'; height:'+a+'; background-color:blue;"></div>')
+		// 		b=0;
+		// 	}
+		// 	a+=10;
+		// }
+		// setInterval(f,1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let parent = document.querySelector('#list');
+// let chanePlace1 = document.querySelector('#list li:nth-child(1)');
+// let chanePlace2 = document.querySelector('#list li:nth-child(3)');
+// let a = chanePlace1.cloneNode(true);
+// parent.insertBefore(chanePlace2,chanePlace1);//3-ը դնումա 1-ից առաջ։
+
+
+//////////correct variant - տեղերով փոխելը 
+
+let parent = document.querySelector('#list');
+let chanePlace1 = document.querySelector('#list li:nth-child(2)');
+let chanePlace2 = document.querySelector('#list li:nth-child(4)');
+let newChdild = chanePlace2.cloneNode(true);//1 li
+
+			//false -  для того, чтобы был клонирован только указанный узел
+			// console.log("newChdild", newChdild);//with false clonNode -> <li></li>
+// parent.insertBefore(chanePlace2,chanePlace1);//3-ը դնումա 1-ից առաջ։
+
+parent.insertBefore(newChdild, chanePlace1);
+parent.replaceChild(chanePlace1, chanePlace2);//// 1 պառամետրը	դա են տարրնա որը պիտի փոխարինվի(եթե տվյալ տարրը արդեն կա կջնջվի ), 2 պառամետրը ետի են տարրնա որը փոխարինվելուա(ջնջվելուա)
+
+/*Explanation
+* Ստեղծում ենք են տարրի կլոնը, որը replace անելուց ջնջվումա(chanePlace2)
+*	ու ետ կլոնաորված տարրը ավելացնում ենք առաջին փոխարիվող տարրից առաջ(chanePlace1)
+* ու նոր կատարում ենք replace
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////Տեղերեվ փոխել ոչ թե փոխարինել 
+
+//// ⚠ տեղերով լինումա փոխել երբ տարերրը իրար տակ են։
+let parent = document.querySelector('#list');
+let chanePlace1 = document.querySelector('#list li:nth-child(1)');
+let chanePlace2 = document.querySelector('#list li:nth-child(3)');
+
+parent.insertBefore(chanePlace2,chanePlace1);//3-ը դնումա 1-ից առաջ։
+	</script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>*****Lorem поисковик*****</title>
+	<link rel="icon" href="images/searching.png">
+</head>
+<body>
+
+
+
+
+<p id="lorem">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis, nam at. Quia illum quis ratione doloremque
+		exercitationem sed sequi labore dolorum, sint corrupti ducimus perferendis consectetur. Eveniet fuga harum, quia
+		similique, quos repellendus perferendis esse id, ullam tempora voluptate porro!
+	</p><br><br>
+
+<!-- <input type="text" id="search" oninput="f(event)"> -->
+<input type="text" id="search" >
+
+<div  class="result"></div >
+
+	<script>
+
+
+
+
+
+
+
+
+
+
+
+let pElemm = document.querySelector('#lorem');
+    let inpElemm = document.querySelector('#search');
+    let resElem = document.querySelector('.result');
+    console.log('resElem', resElem);
+
+
+/*
+
+1) հենց փոփոխություն կատարվեց մեր input-ի մեջ  թող, բոլոր բառերը պահվեն զ/ծ -ի մեջ։ 
+    ⚠ Պարտադիր function-ի մեջ։
+
+
+      resElem.innerHTML = ''; - որ հին փոփխությունը ջնջվի նորը ցույց տա։
+*/
+
+inpElemm.oninput = (e) => {
+	let arr_pElem = pElemm.innerText.split(' ');
+// console.log('e', e.target);
+
+  resElem.innerHTML = '';
+
+  for(let i = 0; i < arr_pElem.length; ++i) {
+  let search_word_from_pElem = arr_pElem[i].toLowerCase();
+  let search_word_from_inpElem = e.target.value.toLowerCase();
+//   if( search_word_from_pElem.indexOf( search_word_from_inpElem ) != -1 && search_word_from_inpElem != '') {
+  if( search_word_from_pElem.indexOf(search_word_from_inpElem) != -1 && search_word_from_inpElem != '') {
+    // arr_pElem[i] = `<span style="color:red;">${arr_pElem[i]}</span>`;//h2>span -> all red
+
+    resElem.innerHTML += `
+      <h2> ${ arr_pElem[i] } </h2>
+	`;
+    arr_pElem[i] = `<span style="color:red;">${arr_pElem[i]}</span>`;//only h2
+	
+
+  }
+}
+pElemm.innerHTML = arr_pElem.join(' ');
+console.log('arr_pElem', arr_pElem);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------- lorem SearchEngine Correct Variant--------------------*/
+
+/*
+PROMPT(подсказка)
+
+* -1 ov pkasacecel
+* return
+* function-in tal parametr
+
+*/
+
+
+
+
+// var lm = document.querySelector('#lorem');	
+// var text =  lm.innerText;
+// var res = document.querySelector('.result');//for output _ get div		
+   		
+// function f(e){
+// 	var r = Math.round(Math.random()*255);
+// 	var g = Math.round(Math.random()*255);
+// 	var b = Math.round(Math.random()*255);
+
+// 	var arrLm = text.split(' ');//եթե ուզում եմ input-ի մեջ ջնջելուց տարրը բառը նորից կարմիր չլինի։
+// 	// var result;
+// 	res.innerText ='';//mincev lcnely datarkum e
+// 	for(var i =0; i<arrLm.length; ++i){
+// 		var val = e.target.value.toLowerCase();//A -> a
+// 			if(arrLm[i].toLowerCase().indexOf(val) != -1 && val != ''){//*
+// 			res.innerHTML += '<span style="background:rgba('+r+','+g+','+b+'); font-size:20px;">'+arrLm[i]+'</span>' + '<br>';
+// 			arrLm[i] ='<span style="color:red;">'+arrLm[i]+'</span>'; 
+
+// 			}
+
+// 	}
+// 	lm.innerHTML = arrLm.join(" ");
+
+// }
+
+
+/*x`
+ ' '.indexOf (  ) -> -1
+ 'a'.indexOf ('b') -> -1
+
+Երբ, մենք մեր input-ի մեջ բան չենք գրում իրա value-ն undefined է։	
+ btn.value
+
+ btn.value == undefined -> false
+ btn.value == '' -> true
+
+
+ 'lorem'.indexOf('lorem') -> 0 միայն առաջին սիմվոլնա հաշվում։
+*/
+
+
+/*---------------------------------------------------*/
+
+        // var results = new Array();
+        // for(var i = 0; i < queryTerms.length; i++) {
+        //     for(var j = 0; j < links.length; j++) {
+        //         if (links[j].text.indexOf(queryTerms[i]) > -1) {
+        //             results.push(links[j].element);                     
+        //             }
+        //     }
+        // }
+
+
+/***********************************************************************/
+
+/*===================explanation how working correct variant lrem SearchEngine===================*/
+
+/*
+No1	 Երբ որ input թեգի մեյ ինչ որ սիմվոլ ենք մուտքագրում, միանում է   oninput իրադարձությունը որը իր հետ բերում է event 	օբյեկտ > ( oninput="f(event)" )
+	Հարց: Ինչու oninput իրադարձությունը պետք է իր հետ բերի event օբյեկտ > ( oninput="f(event)" )
+	Որ ցույց տա այն տարրի արժեքը որի վրա կատարվում է տվյալ իրադարձությունը: > e.target
+
+	------------------------------------
+
+No2  Վոնց է աշխատում տվյալ պայմանը if(val == arrLm[i].toLowerCase().slice(0,val.length)   && val != '') 
+	Առային հերթին մենք վեկալում ենք մեր input-ի մեջ մուտքագրված սիմվոլը և սարքում ենք փոքրատառ 
+	Հարց: Ինչու պետք է սարքել  փոքրատառ կամ մեծատառ -- Որ տվյալ տառով սկսվող բոլոր բառերը ցուցադրվի անկախ նրանից տառը մեծատառ է թե ոչ:   
+		մենք համ մեր մուտքագրած բառնենք սարքում փոքրատառ համ զանգվածի բառի սիմվոլները, որովհետև 
+		js-ում փոքրատառ սիմվոլը հավասար չի նույ սիմվոլի մեծատառին ( (a==A) > output: false )
+
+		---------------------------------
+		//slice
+No3	Ինչու arrLm[i].toLowerCase().slice(0,val.length)
+	Մենք զ/ծ-ի տվյալ տարրը, որը որ սարքելենք փոքրատառ կտրում ենք 0 ինդեքսից մինչև մեր մուտքագրած տառի երկարությունը
+	Example :  val === l
+	 arrLm[i].toLowerCase().slice(0,val.length === l)
+	 Answer : Որովհետև մենք պետք է գտնենք այն հատվածը, որը որ հմապատասխանում է մեր մուտքագրած բառին կամ տառին 
+	 Օրինակ՝ 
+	 Եթե մենք մուտքագրելենք  lor  բառը
+	 val-ը դա մեր մուտքագրած lor բառն է, իսկ arrLm[i].toLowerCase().slice(0,val.length) սա մեր  զ/ծ-ի տվյալ տաչից կտրում է այն հատվածը որը որ համապատասխանում է val-ին;
+	 (val == arrLm[i].toLowerCase().slice(0,val.length)   && val != '') === lor==lor
+val == arrLm[i].toLowerCase().slice(0,val.length --> 
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/********************************WRONG Variant*******************************************/
+	// var inp = document.querySelector('#inp');
+	// var arr = ['Lorem','ipsum'];
+	// function bt(){
+
+	// for(var i = 0; i<arr.length; ++i){
+	// 	if(arr[i][0] == inp.value[0]){
+	// 		console.log(arr[i]);
+
+	// 	}
+	// }
+	// }
+
+	/*------------------------------*/
+	// function f(e){
+	// 	var para = document.querySelector('p');
+	// 	var inPara = para.innerText;
+	// 	var arrinPara = inPara.split(' ');
+	// // console.log(arrinPara);
+	// var result = document.querySelector('.result');
+	// var srch = document.querySelector('#search');
+
+	// // var loremiGuyn = srch.value;//?????
+
+	// // var newP = document.createElement('p');
+
+	// 		// var x =0; 
+				
+	// 	for(var i = 0; i<arrinPara.length; ++i){//0<10
+	// 		// var x =arrinPara[0];
+					
+	// 		for(var j = i; j<=i; ++j ){
+	// 			if(arrinPara[i][0] == srch.value){//|| arrinPara[i][0] == srch.value[0]
+	// 				var r = Math.round(Math.random()*255);
+	// 				var g = Math.round(Math.random()*255);
+	// 				var b = Math.round(Math.random()*255);
+
+	// 				arrinPara[i][0].style = 'color:rgb('+r+', '+g+', '+b+')';
+
+	// 				var newElem = document.createElement('p');
+	// 				var txt = document.createTextNode(arrinPara[i]);
+	// 				var br = document.createElement('br');
+					
+				
+
+	// 				var a = newElem.appendChild(txt);
+	// 				newElem.style = 'background:rgba('+r+', '+g+', '+b+'); display:inline-block; margin:3px 0px 3px 0px';
+
+	// 				document.body.appendChild(newElem);
+	// 				document.body.appendChild(br);
+
+				
+	// 			}
+	// 			// else if(srch.value == srch.value){
+				
+	// 			// 	var a = newElem.appendChild(txt);
+	// 			// 	newElem.style = 'background:rgba('+r+', '+g+', '+b+'); display:inline-block; margin:3px 0px 3px 0px';
+
+	// 			// 	document.body.appendChild(newElem);
+	// 			// 	document.body.appendChild(br);
+
+	// 			// }
+
+	// 		}
+	// 	}
+
+	// }
+		</script>	
+</body>
+</html>

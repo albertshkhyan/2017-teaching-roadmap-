@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		////ՀԱՐՑ ։ ԻՆչ կցուցադր իայս կոդը -> hard binding-ի մեկ այլ օրինակ՝ 
+
+function foo(somtething) {
+	return this.a + somtething;
+}
+
+
+let obj = {
+	a : 2
+}
+//⚠ այ այստեղ տարբերություն կա call և apply-ի
+let hardBinding = function() {
+	// return foo.call(obj, arguments);//2[object Arguments]
+	return foo.apply(obj, arguments);
+}
+
+let bar = hardBinding(3);
+console.log(bar);
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    /*
+    * Event Loop, Stack (threads),Heap  , WebAPIs, AYAX and COMET,
+    * What is and sync, 
+    *
+    *
+    *
+
+    ----------------------------------------
+
+
+    * promise-ների հետ աշխատելու կա ավելի հեշտ տարբերակ, 
+        ⚠24․04․19 տվյալ պահին Async և Await օպերատորները ոչ բելոր բրաուզերներն են աջակցում։
+    ⚫ 
+        ◼
+        ◼reolve- ը կարա մի քանի անգամ կատարվի։
+    
+    
+    */
+
+
+
+    /*++++++++++++++++What is show - Promise++++++++++++++++*/
+    //// * resolve-ի կան reject-ի արգումենտը փոխանցումա then -ի առաջին ֆունկցիայի պառամետրին։ 👁‍🗨 
+
+
+    // 1
+    // let p = new Promise((resolve, reject) => {
+    // console.log('hi');
+    // })
+
+    
+    //2
+    // let p = new Promise((resolve, reject) => {
+    // console.log(resolve('hi'));
+    // })
+
+    //or 
+
+    // let p = new Promise((resolve, reject) => {//???
+    // console.log(resolve('resolve'));
+    // console.log(reject('reject'));
+    // })
+    
+
+    
+    let p = new Promise((resolve, reject) => {//???
+    // throw new Error('reject'); // throw  ===  reject(new Error('reject'))
+    // console.log( resolve('resolve'));//undefined
+
+
+    resolve('resolve');
+    reject(new Error('reject'));
+    })
+
+    // p.then(function(resolved){
+    //     console.log(resolved);
+    // },function(rejected) {//
+    //     console.log(rejected);
+        
+    // })
+
+    /////OR1
+    // p.then(function(resolved){
+    //     console.log(resolved);
+        
+
+    // })
+    // // p.catch(function(rejected) {//black error with catch
+    // //     console.log(rejected);
+        
+    // // })
+
+    ////or2
+
+    // p.then(function(resolved){
+    //     console.log(resolved);
+        
+
+    // })
+    // .catch(function(rejected) {//black error with catch
+    //     console.log(rejected);
+        
+    // })//only one orror
+    
+    
+    /* ---------------- Why show this error -------------------
+    //Եթե reject-ը չմշակվի կցուցադրի այս error-ը (in promise) Error: reject։ Իսկ եթե reolve-ը չմշակվի undefined
+    
+    
+    -----------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************************/
+
+////⁉ What is show this code?
+
+        // setTimeout(function f1() {
+        //     console.log('hello im f1 - 1000');
+        // }, 1000);
+
+        // setTimeout(function f2() {
+        //     console.log('hello im f2 - 100');
+        // },100);
+        
+        //  setTimeout(function f3() {
+        //     console.log('hello im f3 - 2000');
+        // },2000);
+
+        // setTimeout(function f4() {
+        //     console.log('hello im f4 - 50');
+        // }, 50);
+
+
+
+////callBack-quee -ից stack առաջինը գնումա են թայմեռը, որի ժամանակը ամենա շատանա 
+
+
+
+
+
+
+    
+    </script>
+</body>
+</html>

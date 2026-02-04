@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>nextSibling - հարազատ </title>
+</head>
+<body>
+<!-- 
+<ul>hay
+	<li>0</li>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>6</li>
+	<li>7</li>
+	<li>8</li>
+	<li>9</li>
+	<li>10</li>
+	<li>11</li>
+</ul> -->
+
+
+<div id="div0"></div>
+<div id="div1">
+	<div class="divs">1</div>
+	<div class="divs">2</div>
+	<div class="divs">3</div>
+</div>
+<div id="div2">hello</div>
+	<script>
+		
+
+		// let getUl = document.querySelector('#div1');//working with NodeList
+		let div1 = document.getElementById('div1');//working with HTMLCollection
+		console.log(div1.childNodes);
+		// div1.nextElementSibling․style = 'color:red;'//error
+		// div1.nextElementSibling․innerText = 'something';//not show result
+		console.log(div1.nextSibling);
+		console.log(div1.nextElementSibling);//<div id="div2">hello</div>
+		// console.log(div1.previousElementSibling);//<div id="div0"></div>
+
+
+		/*
+
+nextElementSibling - վերադարձնումա մեր նշած noed-ի հաջորդ տարրը, իսկ nextSibling-ը վերադարձնումա հենց node-ը (#text, comment, div.div1) այսինքն որպես օբյեկ։
+		*/
+
+		// previousElementSibling
+
+
+	</script>
+	
+</body>
+</html>

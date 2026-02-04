@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+
+	<script>
+		
+		//
+
+		
+
+/*------------------------------------------------------*/
+//How inherit private - 3 version 
+
+
+
+
+// function AbstAuto(m,c) {
+// 	this.model  =  m;
+// 	this.color  =  c;
+// 	this.go = function(){//public e 
+// 		// console.log('this', this);//Kran
+// 		start();//ete kanchenq private metody
+// 		console.log('avton gnac');//this - cuyc kta Kran-i contexty - Inchu? - 
+// }
+// 			/*?????????????????????if private?????????????????????*/			
+// 			// let start = function(){//private լինելու համար փոփոխականը նշել
+// 			// 	console.log('starting ' + this.model );//this is global -> starting undefined
+// 			// }
+
+
+// 			//with public not working -❌
+// 			// this.start = function(){//not working - this.start
+// 			// 	console.log('starting ' + t.model );//Uncaught ReferenceError: start is not defined - Why 
+// 			// }
+
+
+
+// 	/* ++++++++++++++ how inherit private ✔ ++++++++++++++ */
+// 			/*-------------- 1 ---------------*/
+// 			//// 1 variant
+// 			// let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+// 			// function start(){//not working - this.start
+// 			// 	console.log('starting ' + t.model );//Kran.model -> staring cat
+// 			// }
+// 			//// 2 variant
+// 			// let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+// 			// let start = function(){//not working - this.start -> 
+// 			// 	console.log('starting ' + t.model );//Kran.model -> staring cat
+// 			// }
+// 			/*-------------- 2 ---------------*/
+// 			////bind and Function Expression
+// 			var start = function(){
+// 				console.log('starting ' + this.model );//output - cat(this.model) - սրա this-ը Kran է 
+// 			}.bind(this);
+// 			/*-------------- 3 ---------------*/
+// 			// start = () => console.log(this.model);
+
+// }
+// // AbstAuto.prototype.go = function () {
+// // 	console.log('this - ',this);//Kran
+// // 	start();
+// // 	console.log('avton gnac');
+
+// // }
+
+
+// // console.log("AbstAuto", AbstAuto.prototype);
+
+// function Kran(m,c,k) {
+// 	AbstAuto.call(this, m, c);
+// 	this.kran = k;
+// }
+
+
+
+// // Kran.prototype = AbstAuto.prototype;
+// //Բայց Kran-ի construcotr- ը փոխվեց դառավ AbstAuto-ինը։ Դրա համար՝
+// Kran.prototype = Object.create(AbstAuto.prototype);//create __proto__: AbstAuto
+// // Kran.prototype.constructor = Kran;
+
+
+// let kran = new Kran('CAT', 'yellow', '39m');
+// console.log("kran", kran);
+
+// //HOW INHERIT GO
+// // kran.go();//Uncaught TypeError: kran.go is not a function
+
+// // kran.go();//working when inherit prototypes
+
+// kran.go();
+
+
+
+/*
+
+* Object.create() մեթոդը ստեղծում նոր օբյեկտ(__proto__) մեր նշած օբյեկտի prototype-ով։ __proto__ : AbstAuto
+
+⚠__proto__ հատկության արժեքը կոչվումա prototype (Объект, на который указывает ссылка __proto__, называется «прототипом». ):
+
+
+*/
+		
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/ 
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function AbstAuto(m,c,e, md) {
+// 	this.marka = m;
+// 	this.color = c;
+// 	this.engine = e;
+// 	this.go = function() {
+// 		start();
+// 		console.log(this.marka + ' avton gnac');
+// 	}
+
+// 	// this.start = function() {//working with this
+// 	// 	console.log(this.marka + ' avton xodi ynkav');
+// 	// }
+// 	// start = function() {//not working without this
+// 	// 	console.log(this.marka + ' avton xodi ynkav');
+// 	// }
+// 	///// Ենթադրեն, որ մենք ուզում ենք որ AbstAuto-ն ունենք private մեթոդ, որը խոդի է քցում ցանկացած մեքենա (եթե  this.start-ով գրենք բոլոր Kran constructor-ից ստացված օբյեկների մեջ կավելանա start մեթոդը, իսկ այդ դեպքում հիշողությունը կլցվի իսկ դա մեզ պետք չի)
+
+// 	//// how inherit private property
+// 	// let start = function() {
+// 	// 	console.log(this.marka + ' avton xodi ynkav');
+// 	// }
+
+// 	////կա 3 ձև private-ը ժառանգելու համար՝
+
+// 	//// 1․ bind մեթոդը օգտագործելով
+// 	// let start = function() {
+// 	// 	console.log(this.marka + ' avton xodi ynkav');
+// 	// }.bind(this);
+
+
+// 	////2. this-ը փոփոխականի մեջ պահելով
+// 	// let  t = this;
+// 	// let start = function() {
+// 	// 	console.log(t.marka + ' avton xodi ynkav');
+// 	// }
+
+// 	////3. arrow function օգտագործելով
+// 	let start = () => console.log(this.marka + ' avton xodi ynkav');
+	
+
+// }
+
+
+// function Kran(mk,cl,eg,kh) {
+// 	AbstAuto.call(this, mk,cl,eg);
+// 	this.kranHeight = kh;
+// }
+
+// ///// Եթե մենք ուզում ենք kran օբյեկտը ժառանգի AbstAuto-ի model-ը prototype-նի ժառանգականությունը
+// AbstAuto.prototype.model = 'da34jk';
+// // Kran.prototype = AbstAuto.prototype;
+// ////Խորհուրդա տրվում, նոր օբյեկտի մեջ պահել հատկությունները կամ մեթդները
+// Kran.prototype = Object.create(AbstAuto.prototype);
+// //// kran օբյեկտի constructor-ը AbstAuto-ն է , դա արդեն կարող է հանգելցնել սխալների
+// // console.log('kran instanceof AbstAuto', kran instanceof AbstAuto);//// WHAT A F... 😱
+// // console.log(kran.__proto__.constructor.name);//AbstAuto
+// Kran.prototype.constructor = Kran;//👍 
+
+
+// let kran = new Kran('CAT', 'yellow', 4.8, '40m');
+
+// console.log('kran', kran);
+// console.log('AbstAuto', AbstAuto.prototype);
+// console.log(kran.model);//working without prototype inherit
+
+
+// // kran.go();
+
+
+
+
+
+/*+++++++++++++++++++++++++++*/
+
+
+
+
+
+function AbstAuto(m,c,e) {
+		this.marka = m;
+		this.color = c;
+		this.engine = e;
+		this.go = function() {
+			start();
+			console.log(this.marka + ' avton gnac');
+		}
+
+		// let start = function() {
+		// 	console.log(this.marka + ' avton xodi ynkav');
+		// }
+
+
+		//// how inherit private method or property
+		////1
+		// let t = this;
+		// let start = function() {
+		// 	console.log(t.marka + ' avton xodi ynkav');
+		// }
+
+		////2
+		// let start = function() {
+		// 	console.log(this.marka + ' avton xodi ynkav');
+		// }.bind(this);
+
+		////3
+		let start = () => console.log(this.marka + ' avton xodi ynkav');
+
+
+
+}
+
+AbstAuto.prototype.model = '12a24';
+
+
+
+
+function Kran(md, cl, eg, kh) {
+	AbstAuto.call(this, md, cl, eg);
+	this.kranHeight = kh;
+
+}
+
+
+// Kran.prototype = AbstAuto.prototype;
+Kran.prototype = Object.create(AbstAuto.prototype);
+Kran.prototype.constructor = Kran;
+
+
+let kran = new Kran('CAT', 'yellow', '4.8', '40m');
+// console.log("kran", kran);
+kran.go();
+
+
+
+
+console.log("kran.model", kran.model);
+
+console.log("kran", kran);
+
+
+
+
+// function foo() {
+// 	console.log(this);
+// }.bind(true);
+
+// console.log(foo());
+
+// let a = new x();
+// console.log("a", a);
+
+
+
+
+
+
+
+// let obj = {};
+// console.log(obj.toString);
+// obj.__proto__ = null;
+
+// let obj = Object.create(null);
+
+// obj.text = 'hsdjka';
+// console.log("obj", obj);
+
+
+		
+		</script>
+</body>
+</html>

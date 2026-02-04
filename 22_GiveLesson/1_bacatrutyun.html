@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<!--for browese firefox-->
+
+		<!-- <p id="p1"></p> -->
+
+<!-------------------->
+
+<!-- ինչպես փոխել տեղերով ոչ թե փոխարինել -->
+
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+
+<!-- ինչպես ստեղծել տեքստի կլոնը -->
+<!-- <button onclick="foo()">Only text clonning</button>
+<p id="cloneText">text clone</p>
+<div id="result"></div> -->
+
+	<script>
+		//
+		
+/*	
+		* inchu chogtagorcel innerHTML ev InnetText✔
+				cloneNode - petqa append child anel
+
+		* incpes stexcel texti clony ✔
+		* bacatrrutyun removeChild and remove✔
+		* inchpaes poxel texerov vochte poxarinel ✔
+*/
+
+		/************* inchu chogtagorcel innerHTML ev InnetText ************* 
+
+		Կլոնավորել կարելիա innerHTML - էլ, բայց cloneNode մեթոդով ավելիա արագ կստացվի։
+		createTextNode () 2 անգամ  ավելի արագ է քան innerText-ը կամ innerHTML-ը։
+		/!\ Բոլոր բրաուզերները աջակցում են մեթոդները։ Իսկ innerText ու innerHTML հնարավորա որ որշ բարուզերներ չաջակցեն։	
+
+
+		*/
+		// let p1 = document.getElementById('p1');
+		// // console.log("p1", p1);
+		// p1.innerHTML = '<h1>dskk</h1>';//working in firefox
+		// p1.innerText = '<h1>dskk</h1>';//working in firefox
+
+
+		/**************************************************************************/
+
+
+		/************* cloneNode - petqa appen child anel ?? ************* 
+		/************* cloneNode - petqa appen child anel ?? ************* 
+
+
+
+/***************** ինչպես փոխել տեղերով ոչ թե փոխարինել*****************/
+// ///////////////
+// var p = document.getElementById('mylist');
+
+// var a = document.getElementById('item1');
+// var b = document.getElementById('item2');
+// var after_b = b.nextSibling;//after_b - #text-> item3
+// // console.log("after_b", after_b);//#text
+// // console.log("after_b", after_b);//b.nextElementSibling - > <li id="item3">3</li>
+
+
+// // console.log("li#item3 == after_b", li#item3 == after_b);
+// // var p = a.parentNode;//ul#mylist
+
+// p.replaceChild(b,a);
+
+// if (after_b) {
+//     p.replaceChild(a, after_b);
+// } else {
+//    p.appendChild(a);
+// } 
+
+/*	Result
+ Item 1 ->  Item 2
+ Item 2 ->  Item 1
+ Item 3 ->  Item 3
+
+ Explanation
+ 
+ 2
+ 2
+*/
+
+///////////////ինչպես փոխել տեղերով ոչ թե փոխարինել -  OR with insertBefore
+var a = document.getElementsByTagName('li')[0];//first li1
+var b = document.getElementsByTagName('li')[1];//second li2
+a.parentNode.insertBefore(b, a);//2-ը ավելացնում ենք 1-ից առաջ։
+////Սկզբում նշում ենք ավելացվող տարրը, հոտժժժոտո ն ներ վռրւեւմմվռրւեւմմ
+console.log("a", a);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******************ինչպես ստեղծել տեքստի կլոնը*******************/
+
+// let txt = cloneText.childNodes.cloneNode(true);////<p id="cloneText">text clone</p> -> թեգնելա կլոնավորում
+// let cloneText = document.querySelector('#cloneText');
+// // console.log("cloneText.childNodes", cloneText.childNodes);//working
+
+// let nodeTxt = cloneText.childNodes[0];//"text clone"
+
+// let result = document.querySelector('#result');
+
+// function foo() {
+// let cloneOfTxt = nodeTxt.cloneNode(true);
+// let br = document.createElement('br');
+// result.appendChild(cloneOfTxt);
+// result.appendChild(br);
+
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******* bacatrrutyun removeChild and remove ******/	
+/*-------- removeChild -----------
+# Ջնջումա մեր նշած ծնող տարրի ժառանգը։
+Syntax of removeChild
+	let ջնջվածՏարրը = ծնողՏարր․removeChild(ժառանգՏարր)
+
+*/
+/*-------- remove -----------
+# Ջնջումա մեր նշած տարրը։
+
+Syntax of removeChild
+	let ջնջվածՏարրը = ծնողՏարր․removeChild(ժառանգՏարր)
+
+*/
+
+///////////difference between remove and removeChild js
+// /!\ remove - պարտադիր չի իմանա թե իրա ծնողը ովա, իսկ removeChild() - ի ժամանակ պարտադիրա։
+
+// /!\ են ինչ որ կարելիա անել removeChild() - ով նուն բանը կարեիլա անել նաև remove() մեթոդով։
+// /!\ Իրավիճակներ կան որ ծնողին չես հիշում, ինչ պիտի բռնես ծնեող ման գաս որ կարանաս ջնջես, դրա փոխարեն որ տարրը որ ուզում ենք ջնջել կգրենք remove-ով կջնջի
+
+//Օրինակ -> slider_with_javaScript/js_26_slider_with_Timer.html
+
+/****************************************************/
+
+
+
+	</script>
+</body>
+</html>

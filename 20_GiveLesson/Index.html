@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-------- Tasks -------->
+
+<!-------- querySelector and innerHTML-------->
+
+		<!-- 	<input type="text">
+			<p></p> -->
+
+<!-------------------------------->
+
+<!-------- ունի տվյալ ատրիբուտը թե ոչ -------->
+
+<!-- 	<img id="img1" style="width: 45%; height:500px; " src="../../IMAGES_and_ICON/auto/img (3).jpg" title="avto">
+ -->
+<!-------------------------------------------->
+
+<!------- ինչպես ստանալ ատրիբուտի արժեքը ------->
+
+
+<select name="" id="">
+	<option value="Ispaniya">Ispaniya</option>
+	<option value="Vrastan">Vrastan</option>
+	<option value="Hndkastan">Hndkastan</option>
+	<option value="Argentina">Argentina</option>
+	<option value="Hunastan">Hunastan</option>
+	<option value="Avstralia">Avstralia</option>
+	<option value="Chinastan">Chinastan</option>
+	<option value="Anglia">Anglia</option>
+</select>
+
+<!-------------------------------------------->
+
+
+<!------ Task, Ինչպես ջնջել ատտրիբուտը ------>
+
+<!-- <div>
+	<p style="background: tomato; font-size: 40px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, inventore!</p>
+</div>
+ -->
+<!-- ------------------------------------- -->
+
+
+	<script>
+
+		///////// simple task by DOM ////////////
+		// let inp = document.querySelector('input');
+		// let prp = prompt('greq vernagir');
+		// inp.value = prp;
+
+		// let prg = document.querySelector('p');
+		// setTimeout(function() {
+		// 	prg.innerHTML = `<h1 style="
+		// 		text-align:center;
+		// 	">${inp.value}</h1>`;
+		// },2000);
+
+
+
+
+
+/////////////Task by hasAttribute -> ունի տվյալ ատրիբուտը թե ոչ
+// if(img1.hasAttribute('title')){
+// 	alert('uni');
+// }
+// else {
+// 	alert('chuni');
+// }
+
+
+//////////////////////////
+
+
+
+
+
+
+
+
+/////////// ատրիբուտի արժեքը ստանալ առանց data- ատռրբուտի//////////
+
+////Task Հենց գտավ հունստանը թող  alert անի հունստան բառը ու իրա ինդեքսը։
+//// /!\ getAttrivut-ի փոխարեն dataset է օգտաագործվում
+
+// let slc = document.querySelectorAll('select > option');//for object
+// slc.forEach(function(elem, i){
+// 	// console.log(elem.getAttribute('value'));//Ispanya, Hunastan, Vrastan
+// 	if(elem.getAttribute('value') == 'Hunastan') {
+// 		alert('Index of Hunastan = ' + i);
+// 	}
+// });
+
+
+
+
+/***************Task, Ինչպես ջնջել ատտրիբուտը***************/
+//// javascript style տալը վատ պրակտիկա է համրվում դրա համար պետքա տվյալ ատրբուտը ջնջեքնք։
+
+// let prg = document.querySelector('div > p');
+// prg.removeAttribute('style');
+
+
+
+/***********************************************************/
+
+
+
+
+
+
+
+////////// ichpes avelacnel nor klass
+
+
+
+	</script>
+</body>
+</html>

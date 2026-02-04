@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+		/* ++++++++++++++++++ bind with function expression ++++++++++++++++++ */
+
+// let obj1 = {
+// 	a : 3
+// }
+
+////⚠must be function expression
+// var foo = function () {
+//   // console.log(this, typeof this);
+//   console.log(this.a);
+// }.bind(obj1);//correect working ✔ with function expression
+
+//but with function declaration
+
+// function foo() {
+// 	 console.log(this.a)
+// }.bind(obj1);//SyntaxError: Unexpected token .
+// foo();
+
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+var foo = function () {
+  console.log(this, typeof this);
+}.bind('foo');
+
+var bar = function () {
+  console.log(this, typeof this);
+}.bind(1337);
+
+var baz = function () {
+  console.log(this, typeof this);
+}.bind(false);
+
+var qux = function () {
+  console.log(this, typeof this);
+}.bind(NaN);
+
+var quux = function () {
+  console.log(this, typeof this);
+}.bind(undefined);
+
+var corge = function () {
+  console.log(this, typeof this);
+}.bind(null);
+
+var grault = function () {
+  console.log(this, typeof this);
+}.bind([]);
+
+var garply = function () {
+  console.log(this, typeof this);
+}.bind({});
+
+var waldo = function () {
+  console.log(this, typeof this);
+}.bind(/regex/);
+
+var fred = function () {
+  console.log(this, typeof this);
+}.bind(function () {});
+
+foo(); // String { 0: "f", 1: "o", 2: "o" } object
+bar(); // Number { 1337 } object
+baz(); // Boolean { false } object
+qux(); // Number { NaN } object
+quux(); // Window object
+corge(); // Window object
+grault(); // Array [ ] object
+garply(); // Object { } object
+waldo(); // /regex/ object
+fred(); // function fred<() function   
+
+
+
+//////////////// bind մեթոդը ստեղծումա նոր ֆունկցիա - check /////////////////////
+
+
+// function foo() {
+// 	console.log(this.a);
+// }
+
+// let obj1 = {
+// 	a : 3
+// }
+
+// let wrrap = foo.bind(obj1);
+
+/*
+console.log("wrrap", wrrap);
+output
+	function foo() {
+		console.log(this.a);
+	}
+
+*/
+/* Identy result like wrrap
+console.log("foo", foo);
+output
+	function foo() {
+		console.log(this.a);
+	}
+
+*/
+// console.log(wrrap == foo);//false - որովհետև նոր ֆունկցիա է ստեղծում bind-ը
+// console.log(wrrap === foo);//false - որովհետև նոր ֆունկցիա է ստեղծում bind-ը
+
+
+
+////////// call, apply
+
+//// ⚠call, apply-ը bind-ից տարբերվում են նրանով, որ bind-ը նոր ֆունկցիա է ստեղծում։
+
+// function foo() {
+// 	console.log(this.a);
+// }
+
+// let obj1 = {
+// 	a : 3
+// }
+
+
+// // let wrrap = foo.call(obj1);//wrrap is undefined
+
+// console.log(foo.call(obj1));//not create new function
+	</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>gradinet/title></title>
+ </head>
+ <body>
+
+
+
+ 	<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//
+
+		/*===========================Gradinet with javascript===========================*/
+
+
+		var erang1 = 'rgb(120, 70, 15)';
+		var erang2 = 'rgb(15, 85, 255)';
+		var diveriQanak = 10;
+
+		var arrOfErang1 = erang1.slice(4, -1).split(',');
+		var arrOfErang2 = erang2.slice(4, -1).split(',');
+
+		var red = (arrOfErang1[0] - arrOfErang2[0])/diveriQanak ;//10.5 -> 120 - 15 = 105 / 10 = 10.5
+		var green = (arrOfErang1[1] - arrOfErang2[1])/diveriQanak ;//-1.5 -> 70 - 85 = -15 / 10 = -1.5
+		var blue = (arrOfErang1[2] - arrOfErang2[2])/diveriQanak ;//-24 -> 15 - 255 = -240 / 10 = -24
+
+
+		var r,g,b;//վերջնական գույնը ըստանալու համար
+		for(var i = 0; i <= diveriQanak; ++i){//i <= 15
+			r = arrOfErang1[0] - (i * red);
+			g = arrOfErang1[1] - (i * green);
+			b = arrOfErang1[2] - (i * blue);
+
+
+		document.write('<div style="background-color:rgb('+r+','+g+','+b+'); width:50px; height:50px"></div>')
+		}
+
+		/*
+		/!\ Ինչու բաժանել մեր դիվերի քանակին։ Որ չբաժանանենք դիվերի քանակին, միջին թիվը շատ մեծ կլնինի ու կտա մինուս
+			օրինակ՝
+				Եթե մի երանգից մյուս եանգին անցնելուց պիտի նվազի ապտ մեծ թիվ կվեկալի, ու արդյունքում կտա մինուսով թիվ
+					120 - 105 = 15
+					15 - 105 = -90 
+					-90 - 105 = -195
+
+		/!\ i ցիկլը պարտադիր պիտի 0-ից սկսի ու աշխաատի մինչև պարտադիր հավասար լինի մեր div-երի քանակին։
+		/!\ minus - (-minus) = plus, example : 1 - (-1) = 2
+		/!\Եթե մինուսով թիվ ելավ գնալով գույնի թիվը կավելանա
+		/!\ թիվը որ բազմապատկում ենզ 0-ի տալիսա 0
+		1 iteration of i loop - i === 0
+			r = 120 -> 120 - 0 = 120
+			g = 70
+			b = 15
+
+		2 iteration of i loop - i === 1
+			r = 109.5 -> 120 - (1 * 10.5) -> 120 -  10.5 = 109.5
+			g = 71.5 ->  70 - (1 * -1.5) -> 70 - (-1.5) = 71.5
+			b = 39 -> 15 - (1 * -24) -> 15 - (-24) = 39
+
+			------------------------------------------------------
+			Red
+			120 - 15
+			Gold Number - 10.5 գնալով նվազումա
+			i === 0 -> r = 120
+				(120 - 10.5 = 109.5)
+
+			i === 1 -> r = 109.5
+				(109.5 - 10.5 = 99)
+						 կամ
+				120 - (10.5 *2) - > 10.5 * 2 = 21 -> 120 - 21 = 99
+			i === 2 -> r = 99
+
+
+
+			------------------------------------------------------
+			Green
+			70 - 85
+			Gold Number - 1.5 - ով գումարվելուա
+			i == 0 -> g = 71.5 ( 70 - (-1.5) )
+				71.5 + 1.5 = 73
+			i === 1 - 71.5 - 73 = -1.5 -> 
+
+			/
+
+			*/
+
+
+
+// 			function f() {
+// 				var erang1 = 'rgb(120, 70, 15)';
+// 				var erang2 = 'rgb(15, 85, 255)';
+// 				var diveriQanak = 10;
+
+// 				var arrOfErang1 = erang1.slice(4, -1).split(',');
+// 				var arrOfErang2 = erang2.slice(4, -1).split(',');
+
+// 		var red = (arrOfErang1[0] - arrOfErang2[0])/diveriQanak ;//10.5 -> 120 - 15 = 105 / 10 = 10.5
+// 		var green = (arrOfErang1[1] - arrOfErang2[1])/diveriQanak ;//-1.5 -> 70 - 85 = -15 / 10 = -1.5
+// 		var blue = (arrOfErang1[2] - arrOfErang2[2])/diveriQanak ;//-24 -> 15 - 255 = -240 / 10 = -24
+
+
+// 		var r,g,b;//վերջնական գույնը ըստանալու համար
+// 		for(var i = 0; i <= diveriQanak; ++i){//i <= 15
+// 			r = arrOfErang1[0] - (i * red);
+// 			g = arrOfErang1[1] - (i * green);
+// 			b = arrOfErang1[2] - (i * blue);
+
+
+// 			document.write('<div style="background-color:rgb('+r+','+g+','+b+'); width:50px; height:50px;float:left"></div>')
+// 		}
+
+// 	}
+// f();
+// document.write('<div style="clear:both"></div>');//vor irar kox chlini h1 u div
+// document.write('<h1>Hello</h1>');//
+// f
+
+
+
+
+
+	
+
+
+</script>
+
+
+</body>
+</html>

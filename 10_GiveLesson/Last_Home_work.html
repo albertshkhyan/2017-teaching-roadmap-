@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home work</title>
+</head>
+<body>
+
+
+
+
+	<script>
+
+
+//Հարց - ինչի բաժանել div երի քանակին
+
+//skzbum bacatrel tgb(red, green ,blue)
+
+		//Gradient
+		var erang1 = 'rgb(120,12,9)';
+		var erang2 = 'rgb(10,189,70)';
+		var countOfDiv = 10;
+		var arrOfErang1 = erang1.slice(4, -1).split(',');//["125", "12", "9"]
+		var arrOfErang2 = erang2.slice(4, -1).split(',');
+
+		var red = (arrOfErang1[0] - arrOfErang2[0]) / countOfDiv;//120 - 10 = 110 / 10 = 11 -- սա նրա համար է, որ ինչքանով կարմիր երանգը սկսի նվազել
+		var green = (arrOfErang1[1] - arrOfErang2[1]) / countOfDiv;// 12 - 182 = -172 / 10 = -17.7
+		var blue = (arrOfErang1[2] - arrOfErang2[2]) / countOfDiv;//9 - 70 / 10 = -6.1
+
+
+		var r,g,b;
+		for(var i = 0; i <= countOfDiv; ++i) {
+			//minus * minus = +
+			//սա բազմապատկում ենք նրա համար, որ աստիճանաբար գույնը փոխվի (red * i)
+			r = arrOfErang1[0] - (red * i);//120 - (11*1) = 109 = 109
+			g = arrOfErang1[1] - (green * i);//12 - (-17.7) = 29.7
+			b = arrOfErang1[2] - (blue * i);// 9 - (-6.1) =  15.1
+
+
+			document.write('<div style="width:50px; height:50px; background-color:rgb('+r+', '+g+', '+b+')"></div>');
+		}
+
+
+
+
+
+//Home work
+// var users = [
+// ['Narek', 'Hakobyan', 25, 'arakan'],
+// ['Anna', 'Nersisyan', 17, 'igakan'],
+// ['Karen', 'Sahakyan', 14, 'arakan'],
+// ['Sona', 'Karapetyan', 35, 'igakan']
+// ];
+// var anchapahasner = [];
+// var igakan = [];
+// var arakan = [];
+// // var l =  users.length;
+
+// for(var i = 0; i <users.length; ++i) {
+// 		if(users[i][2] < 18) {
+// 			// var takeAge = users.shift();
+// 			anchapahasner.push(users[i]);
+// 		}
+// 		if(users[i][3] == 'arakan') {
+// 			arakan.push(users[i]);
+// 		}
+// 		if(users[i][3] == 'igakan') {
+// 			igakan.push(users[i]);
+// 		}
+// }
+
+
+// console.log("anchapahasner", anchapahasner);
+// console.log("igakan", igakan);
+// console.log("arakan", arakan);
+
+
+
+
+//ցուցադրել բոլոր արգումենտները հաջորդաբար
+//նվազագույն arguments
+// function f() {
+// 	var maxArg = arguments[0];
+// 	for(var i = 0; i < arguments.length; ++i) {
+// 		if(maxArg < arguments[i]) {
+// 			maxArg = arguments[i];
+// 		}
+// 	}
+// 	console.log(maxArg);
+// }
+
+// f(10,2,101,12,-2,0.8);
+
+
+
+//Task 2  - առգւմենտեների գումարը
+
+// function f() {
+// 	var sum = 0;
+// 	for(var i = 0; i < arguments.length; ++i) {
+// 			sum = sum + arguments[i];
+// 	}
+// 	console.log(sum);
+// }
+
+// f(1,2,3,4);//10
+
+
+	</script>
+</body>
+</html>

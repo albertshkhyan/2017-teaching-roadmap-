@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slider</title>
+
+	<style>
+	body{
+		margin: 0px;
+	}
+
+
+		#wrrap img{
+			width: 100%;
+			height: 100vh;
+			/*position: relative; -> not working correct with button*/
+			display: none;
+		}
+		#wrrap button:first-child {
+			position: absolute;
+			top:50%;
+			left:0;
+		}
+		#wrrap button:last-child {
+			position: absolute;
+			top:50%;
+			right:0;
+		}
+
+
+	</style>
+</head>
+<body>
+
+<div id="wrrap">
+	<button id="btn1" onclick="foo(-1)"> << </button>
+	<img src="../../IMAGES_and_ICON/smallBeautyImages/img2.jpg" alt="0 index">
+	<img src="../../IMAGES_and_ICON/smallBeautyImages/img3.jpg" alt="1 index">
+	<img src="../../IMAGES_and_ICON/smallBeautyImages/img4.jpg" alt="2 index">
+	<img src="../../IMAGES_and_ICON/smallBeautyImages/img5.jpg" alt="3 index">
+	<button onclick="foo(1)"> >> </button>
+
+</div>
+
+	<script>
+		///////// slider 1
+
+			let indexOfImage = 1;
+		function foo(y) {
+			changeImage(indexOfImage = indexOfImage + y );
+		}
+
+
+		function changeImage(x) {
+			let nodeImages = document.querySelectorAll('#wrrap > img');
+			console.log("nodeImages", nodeImages);
+			(x > nodeImages.length) ? indexOfImage = 1 : '';
+			(x == 0) ? indexOfImage = nodeImages.length : '';
+			for(let i = 0; i < nodeImages.length; ++i) {
+					nodeImages[i].style.display = 'none';
+			}
+			// indexOfImage++;
+			nodeImages[indexOfImage - 1].style.display = 'block'
+
+		}
+
+		changeImage(indexOfImage);
+
+		/*Explanation how wrking slider 1
+		*ինչ է կատարվում երբ ԱՋ click ենք անում ?
+			Աջ click-ի ժամանակ անընդհատ նկարի ինդեքսը 1 հատով գումարվումա։
+			 - Մեր պարագայում աջ click - ի ժամանակ պետքա 1 ինդեքսով նկարը ցուցադրվի, բայց  							indexOfImage - ը դառնումա 2, ինչ անել դրա համար՝
+			 	 		indexOfImage - 1
+
+		*ինչ է կատարվում երբ ՁԱԽ click ենք անում ?
+			Օրինակ եթե ներկայիս նկարը  3-րդ ինդեքսի տակա,
+				4 + (-1) = 3	
+				when click left -> y = -1
+
+		*
+		*
+		*
+		*
+		*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+		/*++++++++++++++++++++ 2 variant of slider, with arrays ++++++++++++++++++++*/
+	</script>
+</body>
+</html>

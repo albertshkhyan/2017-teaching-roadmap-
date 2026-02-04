@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+
+
+		/***************** gettr, setter and encapsulation *****************/
+		
+function User(n,s,a,p){
+
+	this.name=n;
+	this.sname=s;
+	this.age=a;
+	var _pass = p;//entardenq vor user piti password avelacni, chpetq tver cuyc ta, local popoxakan //inkapsulacvac popoxakan, _pass(inkapsulacva var)
+	//pass kpnelu hamar
+	this.getPass  = function(){//getPassy metod e vory menq enq sarqum - getter
+		return _pass;
+	}
+
+	this.setPass = function(new_pass){//եթե ուզում ենք password-ը փոխվի, valod.setPass(1234); -> հետո get անել ( valod.getPass() ), որ տենալ փոխվելա թե չէ:
+		return _pass = new_pass;
+
+	}
+
+}
+
+
+// var valod = new User('Valod','valodyan',54);//this nra hamor e vor valod object mej el lini
+var valod = new User('Valod','valodyan',54,4535314);//this nra hamor e vor valod object mej el lini
+
+// console.log(valod);//working 	
+// console.log(valod.getPass());//4535314 working
+
+////setPass - ը parol-ը փոխելու համարա նախատեսված
+// valod.setPass(1234);//1234 -> newp_pass
+
+// console.log(valod.getPass());//1234 
+
+
+
+
+
+/*
+
+Explanation
+
+* getPass - մեթոդը ստանումա ներկայիս password-ը։ -> getter-ը կարդալու համարա։
+
+
+* setPass - մեթոդը փոխումա հին password-ը նորով։ -> setter-ը getter-ը փոխելու համարա։
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------getPass and setPass----------------------------*/
+		// var setPass = 'hello';
+		// alert(setPass);//getPass && setPassy js-um banali barer chen dranq metodner e voronq menq enq stecel
+
+/*-----------------------------------------------------------*/
+
+
+
+// function User(n,s){
+// 	this.name = n;
+// 	this.snmae = s;
+// }
+
+// var PersonUser = new User('Valod','Valodyan');
+// console.log(PersonUser);
+
+	
+	</script>
+</body>
+</html>

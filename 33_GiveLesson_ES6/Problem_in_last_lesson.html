@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+		//polimorfizmi orinak 
+
+		/*
+
+		//super and extends -> why use super
+		//extends aneluc petqa constructor-i mej super lini, ete extends -ov asum enq vor jarangi, superov asum enq te inchy jarangi
+		//super == call, apply
+
+
+		⚠👁‍🗨 Սովորաբար  super մեթոդը օգտագործվումա class-ների հետ։ Բայց կարող է օգտագործվել օբյեկտների հետ
+			Օրինակ՝ 33_GiveLesson/Experiment.html
+		
+
+		⚫super and extend
+			◼ super-ը ֆունկցիա է, որը կանչում է ծնող class-ը ու ետ ծնող կլասսին փոխանցումա մեր մեր նշած արգումենտները։
+			⚠ Եթե որդի class-ը չունենա իր constructor-ը,որդի class-ը օգվելուա ծնողի constructor-ից։ 
+				Այսինքն եթե մեր որդի class-ի  instance-ին փոխանցենք արգումենտներ, ու մեր որդի class-ը constructor չունենա որ պահի ետ արգումենտները, որդին փոխանցելու ծնողին որ պահի։
+
+
+
+
+		*/
+
+
+
+/*---------------------------------------------------*/
+
+		/////բաց թողածը անցած դասի -> պոլիմորֆիզմ - 32_GiveLesson_end_OOP/4_Duck_typing.html 
+
+		//և destructuring assignment
+		//32_GiveLesson_end_OOP/6_destructuring_assignment.html
+
+
+/* +++++++++++++ what is show this code +++++++++++++ */
+
+// class Task {
+// 	constructor() {
+// 		console.log('creae task');
+// 	}
+// }
+
+// class SubTask extends Task{
+
+// }
+
+// let task = new Task();
+// let subTask = new SubTask();
+
+
+
+//// 🔰 instanceof օպերատորը ցույցա տալիս թե տվյալ օբյեկտը, որ class-ին է պատկանում
+// console.log(subTask instanceof SubTask);//true - 
+// console.log(subTask instanceof Task);//true - subTask օբյեկտը քանի որ ժառանգումա Task-ից որեմն ետ Task-ինելա պատկանում
+
+//// ⚠👁‍🗨 2 անգամ է ցույց տալիս creae task, որովհետև եթե ինքը իրա constructor-ը չունենա օգվելուա իրա ծնող class-ի constructor-ից
+
+
+
+/*--------------------------------------*/
+
+/*++++++++++++ Եթե ժառանգվողը ունի constructor ++++++++++++*/
+//⚫  Եթե ժառանգվող  կլասը ունի constructor, ուրեմն ետ cosntructor-ը պետքա կանչի իրա ծնող constructor-ը։
+//🔰😁 Example in real life - ծնողի ու ժառանգի գենը նույննա։ Ժառանգը ունի իր սեփական հատկություններ, որոնցով տարբերվումա իրա ծնողից, բայց ծնողի ու ժառանգի գենը նույնա, js-ում պետքա նշես որ գենը նույնա ու ասելը super() - նա, որ կանչումա իր ծնող class-ը։
+
+//❌ Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+//Uncaught ReferenceError: Необходимо вызвать супер-конструктор в производном классе, прежде чем получить доступ к «this» или возврату из производного конструктора
+
+
+
+class Task {
+	constructor() {
+		console.log('creae task');
+	}
+}
+
+class SubTask extends Task{
+	constructor() {
+
+	}
+}
+
+let task = new Task();
+let subTask = new SubTask();
+console.log(subTask.hasOwnProperty())
+
+
+
+//// 
+
+/*------------------------------------*/
+
+
+
+
+/*++++++++++++ super in constructor ++++++++++++++++*/
+
+////
+//⚫ В конструкторе ключевое слово super() используется как функция, вызывающая родительский конструктор. Её необходимо вызвать до первого обращения к ключевому слову this в теле конструктора. Ключевое слово super также может быть использовано для вызова функций родительского объекта.
+
+//⚫ եթե ուզում ենք ժառանգը ունենա լրացուցիճ հատկություն ուրեմն իրան պետքա new անել։
+
+// class Task {
+// 	constructor(title) {
+// 		this.title = title;
+// 		this.done = false;
+// 		console.log('creae task');
+// 	}
+// }
+
+
+// class SubTask extends Task{
+// 	constructor(t) {
+// 		super(t);//{title: undefined, done: false}
+// 		//super-ը մեր constructor-ի պառամետրերը, որպես արգումենտ փոխանցումա ծնող կլասի պառամետրին։
+// 		//why undefined title - title-ի արժեքը t-նա, բայց հենց title հատկությունը մեր մոտ չի գտնվումա, ինքը հատկությունը վեկալումա ծնող կլասի մեջից բայց արդեն արժեքը փոխած
+
+// 	}
+
+// 	create() {
+// 		console.log(this.title);
+// 	}
+// }
+
+
+
+// let task = new Task('Study javascript');
+// let subTask = new SubTask('learn javascrip');
+// subTask.create();
+
+// console.log("task", task);
+// console.log("subTask", subTask);
+
+
+
+//super-ը մեր constrctor-ի պառամետրը փոխանցումա ծնող կլասի մեջ գտնվող 
+//super-ը ընդունումա argument, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Իսկ եթե ուզում ենք ծնողինը մնա բայց ունենա իր հատկություններ*/
+
+
+
+class BmwM1 {
+	constructor(c,m,e,) {
+		this.color = c;
+		this.model = m;
+		this.engine = e;
+	}
+}
+
+
+class BmwM5 extends BmwM1{
+	constructor(cl,md,eg) {
+		super(cl,md,eg);//{color: undefined, done: false}
+
+	}
+	info() {
+		console.log(`${this.color} ${this.model} ${this.engine}`);
+	}
+}
+
+
+
+let bmwM1 = new BmwM1('red','bmw m1 e26', 'v8');
+let bmwM5 = new BmwM5('red', 'bmw m5 e60', 'v10');
+
+bmwM5.info();//red bmw m5 e60 v10 -> գույնը թողինք նույնը մնացախը փոխինք
+
+
+console.log("bmwM1", bmwM1);
+// console.log("bmwM5", bmwM5);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class RootElement {
+// 	constructor(tagName = 'div') {
+// 		this.el = tagName;
+// 	}
+// }
+
+
+// class Box extends RootElement {
+// 	// constructor() {
+
+// 	// }
+
+
+// 	create() {
+// 		console.log(this.el);//div
+// 	}
+// }
+
+// let redBox = new Box(); 
+// redBox.create();
+
+
+	</script>
+</body>
+</html>

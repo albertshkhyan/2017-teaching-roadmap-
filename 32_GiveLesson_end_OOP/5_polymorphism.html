@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Polmorphism</title>
+</head>
+<body>
+	<script>
+		//
+//extend - ընդլայնել, տարածել
+
+
+		///// good example of polymorphism
+
+		var parent = {
+			get() {
+				return this.val;
+			},
+			val: 42
+		}
+
+
+		var childExtendParent = Object.create(parent);//ստեղծումա նոր օբյեկտի որի __proto__-ի մեջ կպահվի parent օբյեկի պարունկությունը։
+		/*Output
+		{}
+			__proto__:
+				get: ƒ ()
+				val: 42
+
+		*/
+// console.log("childExtendParent", childExtendParent);
+
+		childExtendParent.get = function () {
+			return this.val + '!!';
+		};
+		console.log('childExtendParent', childExtendParent);
+
+
+		document.write("Parent object: " + parent.get());
+		document.write("<br />Child object: " + childExtendParent.get());
+
+
+// console.log("childExtendParent", childExtendParent);
+		/*
+
+		val հատկությունը ուրշ օբյեկտի մեջ իրան ուրիշ ձևա արդեն դրսեվորում -> 42!!
+		*/
+
+	</script>
+</body>
+</html>

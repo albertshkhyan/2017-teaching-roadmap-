@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<img onmousemove="this.style.width = '100%' " src="../About_My_Lessons_HELP_FILES/OOP/images_of_oop/Explicit-Implicit.jpg">
+
+
+<button onclick="foo(this)">click me</button>
+	<script>
+		//
+
+
+function foo(t) {
+console.log("t - ", t);
+
+}
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/****************** Ամփոփում ******************/
+
+/*
+⚫ Ինչա call, apply և bind - Ֆունկցիայի մեթոդներ են, որոնք թույլ են տալիս ֆունկցիան կանչել մեր ուզած կոնտեքստում։
+
+⚫ Ինչա binding-ը - binding-ը դա ֆունկցիան իրա this-ի հետ կապելնա։ Ֆունկիցան իրա this-ի հետ կապելու համար կա 4 ձև՝
+		1. default binding - դա երբ որ ֆունկիցան հղվումա գլոբալ կոնտեքստի վրա(window):
+		2. explicit(արտաքին) binding - դա երբ որ ֆունկիցան իրա this-ի հետ կապելու համար օգտագործում ենք call, apply և bind մեթոդները։
+		3. implicit(ներքին) binding - դա երբ որ ֆունկցիայի this-ը, նշածա ֆունկիցայից առաջ։ (obj1.obj2.foo() );
+		4. new binding - 
+
+⚫ Ինչա call-site - ֆունկիցայի կանչած տեղնա։
+
+
+*/
+
+/* --------- call and apply how working -> Example --------- */
+
+// 		function foo(name,sname,age) {
+// 			console.log("name", name);
+// 			console.log("sname", sname);
+// 			console.log("age", age);
+// 		}
+// foo.call(window, 'hello', 'Valodyan', 23);//working
+// foo.apply(foo, ['Valod', 'Valodyan', 23]);//working
+
+
+////Task by call and apply - call-ով և apply-ով ֆունկիցան կանչելուց զանգվածի ամեն մի տարրը փոխանցել foo ֆունկցիայի պառամետրերին։
+// let arr = [1,2,3,4];
+
+// function foo(arr1, arr2, arr3, arr4) {
+// 	console.log(arr1+arr2+arr3+arr4);
+// }
+// foo.apply(window, [...arr]);//working correct
+// foo.call(window, ...arr);//working correct
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+/*➕➕➕➕➕➕➕➕➕➕➕➕➕➕questions➕➕➕➕➕➕➕➕➕➕➕➕➕➕*/
+
+
+
+// //what show this code
+// var obj = {
+// 	age:50
+// }
+
+// var k = 'age';
+// // console.log(obj[k]);
+// console.log(obj.k);
+// // console.log(obj.age);
+
+/*-----------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///
+
+
+
+/* **************** why Implicit binding **************** */
+
+
+// function foo() {
+// 	console.log(this.a);//this-ը ցույցա տալու obj-ն
+// }
+
+
+// let obj = {
+// 	a : 2,
+// 	fnc : foo
+// }
+
+// obj.fnc();
+
+
+////Այս օրինակը հավասար է վերեվի օրինակին։
+
+// let obj = {
+// 	a : 2,
+// 	fnc : function () {
+// 	console.log(this.a);//this-ը ցույցա տալու obj-ն
+// }
+// }
+
+// obj.fnc();
+
+/*-------------------------------------------------------*/
+
+/* **** setTimout-ով Default binding է կատարվում: Ինչպես դա ուղղել՝ **** */
+
+
+////////Task
+
+
+
+// let obj1 = {
+// 	a : 2,
+// 	foo:foo
+
+// }
+// function foo() {
+// 	console.log(this.a);
+// }
+
+// setTimeout(obj1.foo, 4000);
+
+
+
+/*************** Ինչպես դա ուղղել setTimeout-ի խնդիրը։ ***************/
+
+
+
+function foo() {
+	console.log(this.a);//այստեղ this obj1-ն է։
+}
+
+let obj1 = {
+	a : 2,
+	foo:foo
+
+}
+
+
+let bar = function() {
+	foo.call(obj1);
+}
+setTimeout(bar, 1000);//correct working
+
+/*
+⚠ Չի փոխվում  որովհետև մենք մեր կատարման կոնտեքստը փոխում ենք bar-ի համար այլ ոչ թե foo-ի։
+*/
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function3</title>
+</head>
+<body>
+	
+
+
+	<script>
+
+		
+
+		/*
+		19.function
+			arguments and ... 
+			պարամետրական ֆունկցիա
+			return 
+			expression , decleration
+			
+			ինքն իրեն կանչող ֆունկցիա 
+			տողային ֆունկցիա (ES6) - arrow function
+			default value (ES6)
+
+			ռեկուրսիա
+			closure
+			scope
+			hoisting
+
+*/
+
+
+function pow() {
+	// return (2 * pow());
+	return 5 * (6 * 5)
+}
+
+console.log('pow()', pow());
+// document.write(pow());
+
+// function rec(x) {
+
+// 	if(x < 100) {
+// 		x++;
+// 		if(x % 2 == 0) {
+// 			document.writeln(x);
+// 		}
+// 		return rec(x);
+// 	}
+// }
+// rec(1);
+
+// document.writeln(x);
+
+		/*
+			Ամփոփոում 10-րդ դասը՝
+				Ինչա EcmaScript-ը - js-ի ստանդարտա, որը ավելիա հեշտացնումա ծրագրավորողի աշխատանքը 
+				Որնա global ու local տիրույթը
+				Ինչով են տարբերվում լոկալ ու գլոբալ փոփոխականները
+				ինչա կոտեքստը - օրինակ՝ {...} կամ alert(․․․)
+				ինչ է ֆունկիցան
+				ինչէ լոկալ ու գլոբալ փոփոխականները
+				function expression —ի և function declaration-ի տարբերությունը։
+				return - ի վերադացրածը տենալու համար ինչ պետքա արվի։
+					արտածման ֆունկցիայի մեջ կանչել ֆունկցիան կամ ֆունկիցայի կանչը պահել ինչ-որ փոփոխականի մեջ։
+						Task by return - ֆունկցիա սարքել, որը կվերադարցնի մեր արգումենտի քառակուսին
+				Qusetion why show NaN
+					function f(p1,p2) {
+							return p1 * p2
+						}
+
+						var func = f();
+						console.log("func", func);//NaN
+			*/
+
+//Inch ktpi
+// var a = 10;
+// function f(g) {
+// 	var g = 1
+// 	console.log(a);//output 10
+// }
+// f(1);
+
+//arguments - psueduarray - ինչու է կոչվում կեղծ զ/ծ - ?????
+
+/*******************function expression*******************/
+//#frunction expression - երբ որ ֆունկցիան գտնովումա ինչ-որ արտահայտության կոտեքստում, օրինակ փոփոխականի։
+// /!\frunction expression և function declaration -ներին կարելի անուն տալ կամ չտալ
+
+// # function expression-ը կարա լինի անվանավորաված և որ անվանավորված
+// function(){
+// console.log('barev')
+// }
+// var f = function(){
+// 	console.log('barev');
+// }
+
+//ինքը իրան կանչող ֆունկիցա function expression է
+//#self invoking function expression
+// (function sayHello() {
+//     alert("hello!");
+// })();
+
+
+/************* return *****************/
+// ##### return -ը դադարեցնումա ֆունկցիայի աշխատաքնը և վերադարցնումա return -ի արժեքը
+//return -ից հետո չի կարելի պռոբել դնել
+// function f(p1,p2) {
+// 	return p1 * p2;//undefined
+// }
+// f(10,2)
+
+//Եթե մեր վերադարցրածը կարելիա պահել փակագծորի մեջ
+//#What show this statement and why UNDEFINED
+// function f(p1,p2) {
+// 	return (
+// 	 	//մեջ կետ ստորակաետ չի կարելի դնել,
+// 	 	// p1 * p2,//undefined - որովհետև մեռանումա տողը անելուց հետո
+// 	 	document.write('hello'),
+// 	 	document.write(' world '),
+// 	 	p1 * p2//վերադարցրած արժեքը պիտի վերջում լինի -> Return value: 20
+// 	 );
+// }
+
+// var func = f(10,2);//սկզբում կատարվումա f(10,2), հետո երբ ավարվումա չի հասցնում վերագրի func-Ին
+// console.log(func);//undefined 
+
+/**************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************** ինքն իրեն կանչող ֆունկցիա ***************************/
+
+
+// (function f() {//ես պարագայում իմաստ չկա իրան անուն տանք
+// 	alert('hello world');
+// })();
+
+// /!\ ինքն իրեն կանչող ֆունկցիանույնպես function expression է
+
+
+
+// /!\ Եթե անուն չենք տալիս պիտի պարտադիր փակագծերը գրել -> function()
+// (function(param1, param2) {
+// 	console.log(param1**param2);//125
+// })(5,3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+//counter
+// function f(){
+//   var a = 1;
+//   return function(){
+//   	console.log(a);
+//   	a++
+//   }
+//   }
+//   var c = f()
+//   c();
+//   c();
+//   c();
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>alert style</title>
+
+	<style>
+	#dialogOverlay{
+		display: none;
+		opacity: .8;
+		position: fixed;
+		top: 0px;
+		left:0px;
+		background: #FFF;
+		width: 100%;
+		z-index: 10;
+	}
+
+	#dialogBox{
+		display: none;
+		position: fixed;
+		background: #000;
+		border-radius: 7px;
+		width: 550px;
+		z-index: 10;
+	}
+
+	#dialogBox >div {background: #FFF; margin: 8px;}
+	#dialogBox >div>#dialogBoxHead{background: #777; font-size: 19px;padding: 20px;color:#ccc;}
+	#dialogBox >div>#dialogBoxBody{background: #333; padding: 20px; color:#fff;}
+	#dialogBox >div>#dialogBoxFoot{background: #777; padding: 10px; text-align: right;}
+</style>
+</head>
+<body>
+	<script>
+			function customAlert(){//
+				this.render = function (){
+					var winW = window.innerWidth;
+					var winH = window.innerHeight;
+					var dialogBox = document.querySelector('#dialogBox');
+					var dialogOverlay = document.querySelector('#dialogOverlay');
+					dialogOverlay.style = 'display:block; height:'+winH+'px; ';
+
+					// dialogBox.style.left = (winW/2) - (550 * .5)+'px;'//not working
+					// dialogBox.style.left = '500px;'//not working
+					dialogBox.style.top = '100px';
+					dialogBox.style.display = 'block'; 
+
+					document.querySelector('#dialogBoxHead').innerHTML = 'This message';
+					document.querySelector('#dialogBoxBody').innerHTML = 'Hello my dear friend';//??argument
+					document.querySelector('#dialogBoxFoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
+
+
+
+				}
+				this.ok = function(){
+					document.querySelector('#dialogBox').style.display = 'none';
+					document.querySelector('#dialogOverlay').style.display = 'none';
+
+				}
+
+			}
+			var Alert = new customAlert();
+
+		</script>
+
+		<div id="dialogOverlay">
+			<div id="dialogBox">
+				<div>
+					<div id="dialogBoxHead"></div>
+					<div id="dialogBoxBody"></div>
+					<div id="dialogBoxFoot"></div>
+				</div>
+			</div>
+		</div>
+
+		<button onclick="alert('Hello world')">Default alert</button>
+		<button onclick="Alert.render('Hello my dear friend')">Style of alert</button>
+		<!-- <button onclick="Alert.render('You are very nice')">Style of alert 2</button> -->
+
+
+	</body>
+	</html>

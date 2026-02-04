@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body>div{
+			width: 500px;
+			height: 500px;
+			background-image: url(jam.jpg);
+			background-size: 100%;
+			background-repeat: no-repeat;
+			margin: 0 auto;
+		}
+		#sec{
+			width: 10px;
+			height: 200px;
+			background-color: red;
+			position: relative;
+			left: 240px;
+			top: 39px;
+			transform-origin: bottom;
+		}
+		#min{
+			width: 10px;
+			height: 170px;
+			background-color: blue;
+			position: relative;
+			left: 240px;
+			top: -131px;
+			transform-origin: bottom;
+		}
+		#hours{
+			width: 10px;
+			height: 130px;
+			background-color: green;
+			position: relative;
+			left: 240px;
+			top: -261px;
+			transform-origin: bottom;
+		}
+	</style>
+
+</head>
+<body>
+	<div>
+		<div id="sec"></div>
+		<div id="min"></div>
+		<div id="hours"></div>
+		
+	</div>
+
+	<script>
+		
+		setInterval(()=>{
+			var d=new Date();
+			sec.style.transform = "rotate("+d.getSeconds()*6+"deg)";
+			min.style.transform = "rotate("+d.getMinutes()*6+"deg)";
+			hours.style.transform = "rotate("+d.getHours()*30+"deg)";
+		},1000)
+	</script>
+	
+</body>
+</html>

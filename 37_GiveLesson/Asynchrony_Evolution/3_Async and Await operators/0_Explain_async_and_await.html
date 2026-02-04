@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>explain async and await</title>
+</head>
+
+<body>
+    <script>
+        //
+
+
+
+        //  console.log( (async function(){})() );//Promise {<resolved>: undefined}
+        /*
+        * 
+
+        ⚫ async function -ները նախատեսված են ասինխրոն ֆունկցիաներ ստեղծելու համար։
+                async await -ը ոնցոր genrator և promise -ը իրար կպցրած։
+                 async/await подобна комбинации генераторов и promises (MDN)
+
+
+        await - ը դադարեցնում ֆունկցիայի կատրումը generator-ների yield-ի նման։
+            ⚠ await բանալի բառը հասանելի է միայն ասինխրոն ֆունկցիայի մեջ։ Եթե մեջը չի կտա SyntaxError:
+
+        
+        
+        ++++++++++++sync await with arrow function ✔ ++++++++++++
+        let p = async  () => {}
+        p.__proto__
+        AsyncFunction {constructor: ƒ, Symbol(Symbol.toStringTag): "AsyncFunction"}
+        ++++++++++++++++++++++++++++++++++++++++++++++++
+պ
+
+        --------------------------
+
+         ⚠ async functions - նորը ստեղծվում են AsyncFunction constructor -ի միջոցով։
+        
+        cookBurger.__proto__ -> AsyncFunction {constructor: ƒ, Symbol(Symbol.toStringTag): "AsyncFunction"}
+            Օրինակ՝
+                async function foo(){}
+                console.log(foo.__proto__);
+                    Output
+                        AsyncFunction {constructor: ƒ, Symbol(Symbol.toStringTag): "AsyncFunction"}
+        
+        */
+
+
+
+        /*------async await -ը չունի pending վիճակ ❌ ->async ֆունկցիան ունի pendinf վիճակ, օրինակ՝------*/
+        ////// ⚠ promise-ի status-ը pending չի լինում
+
+        ///// async await -ը չունի pending վիճակ ❌ ->async ֆունկցիան ունի pendinf վիճակ, օրինակ՝
+        // let haveMoneyOrNot = Math.round(Math.random());
+        // async function payPhoneOrNot() {
+        //     await function() {
+        //         let getPhone = {brand:Iphone, model:11, color:'black'}
+        //             return getPhone;
+
+        //     }
+
+        // }
+        // // console.log(' payPhoneOrNot()',  payPhoneOrNot());//Promise {<resolved>: undefined}
+
+        // let promise = payPhoneOrNot();
+        // console.log('promise', promise);
+
+
+        /*-----------------------------------------*/
+
+
+
+        /*----------------- how put value [[PromiseValue]] : undefined ---------------------*/
+
+        // let haveMoneyOrNot = Math.round(Math.random());
+        // async function payPhoneOrNot() {
+        //     let  a = await 1234;
+        //     return a;//return-ի դեպքում նոր [[PromiseValue]]  : '1234'
+
+
+        // }
+
+        // let promise = payPhoneOrNot();
+        // console.log('promise', promise);
+
+        // promise.then(function(resolved) {
+        //     console.log('resolved', resolved);
+        // });
+
+
+
+        /*+++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+
+
+
+        // function dashBurger() {
+        //     return new Promise(function (resolve, reject) {
+        //         setTimeout(() => {
+        //             resolve('Ձեր բուրգերը պադրաստ է։ 🍔');
+        //         }, 1000);
+        //     });
+        // }
+
+        // ////then-ի փոխարեն գրում ենք await 
+        // async function cookBurger() {
+        //     let ready = await dashBurger();//ready === 'Ձեր բուրգերը պադրաստ է։ 🍔'
+        //     return ready;
+        // }
+        // // console.log(cookBurger());
+
+        // cookBurger().then((resolved) => {
+        //     console.log(cookBurger());
+        //     console.log('resolved - ', resolved);
+        // });
+
+
+
+        // console.log((async function foo(){})());//Promise {<resolved>: undefined}
+
+        /* +++++++++++++++ with await and without await +++++++++++++++*/
+
+        // function foo(num) {
+        //     return num;
+        // }
+        // async function baz() {
+        //     let a =  foo(10);
+        //     return a;
+        // }
+        // console.log(baz());//Promise {<pending> : 10}    identy result
+
+
+
+        ////⚠ await գրելուց ցույց տալիս pending 
+        // function foo(num) {
+        //     return num;
+        // }
+        // async function baz() {
+        //     let a = await foo(10);
+        //     return a;
+        // }
+        // console.log(baz());//Promise {<pending> : 10}    identy result
+
+        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+        ////ինչպես վեկալել burger-ը։
+
+
+
+
+        // console.log(cookBurger());//Promise {<pending>}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*+++++++++++++++++++++ NOTE  Emulation of server request  +++++++++++++++++++++*/
+        ////🔰 Այս օրինակը գրել async await-ով
+
+        //⚠ երբ որ return ենք անում ինքը մինչև մեր promise-ը չանի, հաջորդ promise-ին չի անցնի։ 
+
+
+
+
+        // let requsetPromise = new Promise(function (resolve, reject) {
+        //     setTimeout(() => {
+        //         console.log('1 - Client : Հարցնում եմ սեռվերից user-ների ցանկը?');
+        //         console.log('...');
+        //         resolve();
+        //     })
+
+        // });
+
+
+        // requsetPromise.then(function () {////Ամենա արտաքին then-ի մեջի promise-ը պարտադիր չի return անել, փոփոխականով էլ հերթականությունը ճիշտ կկատարվի։ 
+        //     let requsetPromise = new Promise(function (resolve, reject) {
+        //         setTimeout(() => {
+        //             console.log('2 - Server : Հարցնում եմ -ին user-ների ցանկը?');
+        //             console.log('...');
+        //             resolve();
+        //         }, 2000)
+
+        //     })
+        ////այ ըստեղից հերթականությունը խախտվումա??
+        ////Պատ՝․ որովհետև մենք ըստեղից ենք սկսում return անել
+        //         .then(function () {
+        //             return new Promise(function (resolve, reject) {
+        //                 setTimeout(() => {
+        //                     console.log('3 -  : Ստանում եմ user-ների ցանկը, որ տամ սեռվերին։');
+        //                     console.log('...');
+        //                     resolve();
+        //                 }, 1000)
+
+        //             })
+        //         })
+
+        //         .then(function () {
+        //             return new Promise(function (resolve, reject) {
+        //                 setTimeout(() => {
+        //                     console.log('4 - Server : ձևափոխեմ user-ների ցանկը, որ տամ client-ին։');
+        //                     console.log('...');
+        //                     resolve();
+        //                 })
+
+        //             }, 5000)
+        //         })
+
+        //         ////Վերջին then-ը պետք չի new Promise անի որվհետև ել ասինխրոն կոդ չկա անելու
+        //         .then(function () {
+        //             setTimeout(() => {
+        //                 console.log('5 - Client : Ստացա user-ների ցանկը։ 👍');
+        //                 // resolve();
+
+        //             })
+        //         })
+        // })
+
+        //1,2,4,3 - with variables
+        //1,2,3,4 - with return
+
+
+        /**********************************************************************/
+
+
+
+
+    </script>
+</body>
+
+</html>

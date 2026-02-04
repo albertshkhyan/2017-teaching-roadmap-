@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>functional inheritance</title>
+</head>
+<body>
+	<script>
+		//
+
+
+		/*
+			Ժառանգականությունը - բազային class-ից նոր class ստեղծելը նույնպես ժառանգականությունը է։ js-ում Ժառանգականությունը կարելիա անել 2 եղանակով։
+				1․Functional inheritence 	-  when use call, apply, bind
+				2․Prototype inheritence 	- 
+
+
+				Ինչի համար է Ժառանգականությունը՝
+					Առորյա կյանքում մարդուն մի տեխնիկայով դժվար կլինի  յոլա գնալը, օրինակ բացի կոֆեվարկաից մեզ պետքա սառնարան, լվացքի մեքենա և այլն։ Ու այս բոլոր տեխնիկանները ունեն ընդանուր հատկություններ, օրինակ՝ անջատելու կոճակ, միացնելու կոճակ , շնուռ և այլ։
+					🔰 Ժառանգականությունը մեզ պետքա նրա համար, որ ստեղծենք մի հատ բազային կլասս որի մեջ կպահենք տեխնիկանների ընհանուր հատկությունները։ Եւ ետ բազային class-ից կստեղծենք կոֆեվարկա, սառնարան, լվացքի մեքենա և այլ լիքը տեխնիկաններ։
+
+
+		*/
+
+		/* +++++++++++++++++++ what is functional inheritence +++++++++++++++++++ */
+		//Example 
+
+
+/*
+1. սկզբում ստեղծել աբստրակտ Auto class-ը։
+		⚠ Աբստրակտ class-ը դա են կլասսն է, որին new չենք անում։
+2․ հետո ստեղծել Kran class-ը, որը ֆունկցոնալ ժառանգումա Auto-ի հատկությունները ( AbstractAuto.call(this, m, c) ) և լրացուցիչ ունենումա իրա հատկությունները (this.kran = k)
+3. Հետո սարքւմ ենք մեր Kran class-ի instence-ը ու իրա մեջից կանչում ենք go մեթոդը ( cat.go() )
+*/
+
+
+		function AbstractAuto(m,c){
+			this.model = m;
+			this.color = c;
+			this.go = function(){//public e 
+				start();//ete kanchenq private metody
+				console.log('avton gnac');//this - cuyc kta Kran-i contexty - Inchu? - 
+			}
+			/*?????????????????????if private?????????????????????*/			
+			// let start = function(){//private լինելու համար փոփոխականը նշել
+			// 	console.log('starting ' + this.model );//this is global -> starting undefined
+			// }
+
+
+			//with public not working -❌
+			// this.start = function(){//not working - this.start
+			// 	console.log('starting ' + t.model );//Uncaught ReferenceError: start is not defined - Why 
+			// }
+
+
+	/* ++++++++++++++ how inherit private ✔ ++++++++++++++ */
+			/*-------------- 1 ---------------*/
+			//// 1 variant
+			// let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+			// function start(){//not working - this.start
+			// 	console.log('starting ' + t.model );//Kran.model -> staring cat
+			// }
+			//// 2 variant
+			let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+			let start = function(){//not working - this.start -> 
+				console.log('starting ' + t.model );//Kran.model -> staring cat
+			}
+			/*-------------- 2 ---------------*/
+			////bind and Function Expression
+			// var start = function(){
+			// 	console.log('starting ' + this.model );//output - cat(this.model) - սրա this-ը Kran է 
+			// }.bind(this);
+			/*-------------- 3 ---------------*/
+			// start = () => console.log(this.model);
+		}
+
+		function Kran(m,c,k){
+			AbstractAuto.call(this, m, c);
+			this.kran = k;
+		}
+
+		var cat = new Kran('cat','yellow','10m');
+		console.log("cat", cat);
+		cat.go();
+		// start();//global is start  -> with var or let not working
+		// console.log(cat);//ktpi AbstractAuto public hatkutyunnery ev metodnery ev mer avelacrac krany - 10m
+
+/*
+
+AbstractAuto -ի ժառանգը (Kran) հասանելիություն չունի private հատկությունների հանդեպ։
+AbstractAuto.call(this, m, c); - բայց եթե  AbstractAuto class-ի մեջ լինի private այն չի ժառանգվի call-ով, դրա համար պետքա իրան protected սարքել
+
+*/
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

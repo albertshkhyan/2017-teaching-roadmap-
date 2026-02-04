@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>oncontextmenu.html</title>
+
+
+<!-- onconstextmenu - մկնիկի սլաքը գույների մենյուի վրայից դուրս հանելուց անհետանա բլոկը։ -->
+	<style>
+		*{
+			margin: 0;
+		}
+
+		main {
+			width: 100px;
+			height: 70px;
+			background-color:rgb(145, 145, 145);
+			display: none;
+/*			position: relative;
+			left:200px;
+			top: 200px;*/
+			position: absolute;
+		}
+
+		main > div:hover {
+			width: 100%;
+			color:white;
+			font-size: 27px;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			font-style: italic;
+			font-variant: small-caps;
+			background-color: rgb(253, 142, 47);
+			box-shadow: 2px 5px 5px grey inset,
+			-2px -5px 5px grey inset;
+			box-sizing: border-box;
+			
+
+
+		}
+		main > div{
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			font-variant: small-caps;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<main>
+		<div onclick="rgbColor(event)" class="r" data-bg="#ff0000">red</div>
+		<div onclick="rgbColor(event)" class="g" data-bg="#00ff00">green</div>
+		<div onclick="rgbColor(event)" class="b" data-bg="#0000ff">blue</div>
+	</main>
+
+	<script>
+
+// function foo() {
+// // mainMenu.style = `
+// // display:block;
+// // `;
+// console.log(1);
+// }
+
+
+let mainMenu = document.querySelector('main');
+console.log("mainMenu", mainMenu);
+document.oncontextmenu = function(e) {
+	mainMenu.style = `
+	display:block;
+	left:${e.pageX}px;
+	top:${e.pageY}px;
+	`;
+
+	let createDiv = document.createElement('section');
+	createDiv.style = `
+	width:${window.innerWidth}px;
+	height:${window.innerHeight}px;	
+	`;
+	document.body.appendChild(createDiv);
+
+
+
+	createDiv.onmousemove = function() {
+		mainMenu.style.display = 'none';
+
+	}
+
+//⚠ document.body ամենա սկզբիցել կա դրա համար իրար հետ կոնֆլիկտում են
+
+
+// console.log(mainMenu.style.display);//block
+	return false;//close context menu
+
+
+}
+
+
+function rgbColor(e) {
+	// console.log(e);
+	// console.log(e.target.dataset.bg);//ff0000
+	document.body.style.backgroundColor = `${e.target.dataset.bg}`;
+
+}
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+		/*Given home work*/
+
+//տնային  1
+/*== Արատածել true եթե թվի թվանշանները իրար հավասար են  ==*/
+
+
+// var n=+prompt("եթե իրար հավասար թվի թվանշանները։");
+// var k='Բոլորը իրար հավասար են։';
+// var b=n%10;
+// while(n){
+// 	if(b!=n%10){//ex 11 -> 1 != 1
+// 		k='Վերջինը հավասար չի նախավեջինին։';break;
+// 	}
+// 	n=(n-n%10)/10;
+	
+// }
+// alert(k);
+
+
+
+/*Explanation
+# k - ն true ցույց կտա են ժամանակ երբ, երբ որ բոլոր թվանշանները իրար հավասար լինեն:
+# եթե մեր վերջին թիվը հավասար չեղավ նախավերջինին, թող k-ն դառնա false 
+
+*/
+
+/*====================================================================================================*/
+
+
+
+
+// Տնային 2
+// var rgb = 'rgb(255, 55, 2)';
+
+// console.log(rgb.slice(4,-1));//մենակ մինուսով ինդեքս slice-ը ունի։
+// /*----------------------------------------*/
+// var str = 'hello';
+// console.log(str[-1]);//undefined
+// console.log(str.charAt(-1));//undefined
+
+// console.log(str.slice(0,-2));//working with minus inedex
+// var slc = str.slice(0,-2);
+// console.log(typeof slc);//string
+
+
+/*====203.Հաշվել և արտածել թվի թվանշանների արտադրյալը ==== */
+
+
+// var n=+prompt("Enter number");
+// var g=1;
+// while(n!=0){
+// g=g*(n%10);//skzbum bazmapatkumna anum
+// n=(n-n%10)/10;//kloracnum enq 
+
+// }alert(g);//working
+
+/*example n === 123
+------ 1 iteration ----------
+123 != 0
+	1 = 1 * (123%10) -> g = 3
+	123 = (123 - 123%10)/10; n = 12
+
+12 != 0
+	3 = 3 * (12 % 10) -> g = 6
+	12 = (12 - 12 % 10) /10 -> 10 /10 = 0
+
+*/
+
+  
+
+// function User1 (n,s,m,p) {
+// 	this.name = n;
+// 	this.sname = s;
+// 	this.mail = m;
+// 	this.password = p;
+// 	this.showName = function() {
+// 		alert(this.name + ' ' + this.sname);
+// 	}
+// }
+// let user1 = new User1('Gagik', 'Poghosyan','gagik@mail.ru', '1234');
+// console.log('user1', user1);
+
+// function User2(n,s,m,p) {
+// 	////functioanl jarangakanutyun
+// 	User1.call(this,n,s,m,p);
+
+}
+// let user2 = new User2('Valod','Valodyan','valod@mail.ru','4321');
+// console.log('user2', user2);
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+
+
+
+ 
+
+
+
+
+
+
+	<script>
+
+		//
+
+/*Ամփոփում - Summary
+
+
+⚫ Ինչա ֆունկցիա-constructor-ը և instance-ը ?
+	◼ constructor -  constructor-ը դա ֆունկցիա է, ուրիշ ծրագրավորման լեզուներում ասում են class:  Constructor-ը նախատեսվածա նույն հատկություններով և մեթոդներով մի քանի օբյեկտներ ստեղծելու համար, իսկ constructor-ից օբյեկտ ստանալու համար պետքա օգտագործել new օպերատորը։
+
+	◼ instance - դա constructor-ից ստացած օբյեկտնա։
+
+
+⚫ OOP-ի 3 դրույթները թվարկել՝
+	◼	Ինկապսեւլացիա	(թաքնված)
+	◼	Ժառանգակոնւթյուն 
+	◼	Պոլիմորֆիզմ(բազմաթիվ ձև ունոցող)
+
+⚫ Ինչա ինկապսուլացիան
+	◼ Ինկապսուլացիա նշանակումա թաքցնել ինֆորմացիա, այսինքն օբյեկտների մեջի տվյալները կարելիա թաքցնել։
+
+⚫ private, public and protected
+		◼ private - դա երբ հակտությունը կամ մեթոդը հասանելի է միայն տվյալ class-ի համար։ 
+			⚠ լոկալ փոփոխկանները և պառամետրերը նույնպես կարեիլիա համարել private:
+			⚠ լոկալ փոփոխկանները և պառամետրերը հասանելի են միայն constructor-ի մեջ։
+			⚠private -ը մեթոդը նույնպես գրվումա առանց this:
+		◼ public - դա երբ հակտությունը կամ մեթոդը հասանելի է ցանկացած տեղ մեր կոդում։
+		◼ protected - հակտությունը կամ մեթոդը հասանելի է, համ  տվյալ class-ի համար համել class-ից ժառանգող օբյեկտների համար։
+
+
+⚫ Թվարկել this-ը իրա կոնտեքստի հետ կապելու եղանակները։
+		1.Default Binding ( when this refer on window(global object) )
+		2.Explicit(Արտաքին) Binding (call(), apply() and bind() methods )
+		3.Implicit(ներքին) Binding ( obj1.obj2.obj3.foo() ) -> ⚠ foo : foo - օբյեկտի մեջ պետքա ֆունկիցա լինի
+		4.new Binding (let user = new User(arg1, arg2, arg3, ...) when this define at time new )
+
+
+*/
+/* ++++++++++++++++++ bind with function expression ++++++++++++++++++ */
+
+let obj1 = {
+	a : 3
+}
+
+////⚠must be function expression
+// var foo = function () {
+//   // console.log(this, typeof this);
+//   console.log(this.a);
+// }.bind(obj1);//correect working ✔ with function expression
+
+//but with function declaration
+
+// function foo() {
+// 	 console.log(this.a)
+// }.bind(obj1);//SyntaxError: Unexpected token .
+// foo();
+
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+// var foo = function () {
+//   console.log(this, typeof this);
+// }.bind('foo');
+
+// var bar = function () {
+//   console.log(this, typeof this);
+// }.bind(1337);
+
+// var baz = function () {
+//   console.log(this, typeof this);
+// }.bind(false);
+
+// var qux = function () {
+//   console.log(this, typeof this);
+// }.bind(NaN);
+
+// var quux = function () {
+//   console.log(this, typeof this);
+// }.bind(undefined);
+
+// var corge = function () {
+//   console.log(this, typeof this);
+// }.bind(null);
+
+// var grault = function () {
+//   console.log(this, typeof this);
+// }.bind([]);
+
+// var garply = function () {
+//   console.log(this, typeof this);
+// }.bind({});
+
+// var waldo = function () {
+//   console.log(this, typeof this);
+// }.bind(/regex/);
+
+// var fred = function () {
+//   console.log(this, typeof this);
+// }.bind(function () {});
+
+// foo(); // String { 0: "f", 1: "o", 2: "o" } object
+// bar(); // Number { 1337 } object
+// baz(); // Boolean { false } object
+// qux(); // Number { NaN } object
+// quux(); // Window object
+// corge(); // Window object
+// grault(); // Array [ ] object
+// garply(); // Object { } object
+// waldo(); // /regex/ object
+// fred(); // function fred<() function   
+
+
+
+//////////////// bind մեթոդը ստեղծումա նոր ֆունկցիա - check /////////////////////
+
+
+// function foo() {
+// 	console.log(this.a);
+// }
+
+// let obj1 = {
+// 	a : 3
+// }
+
+// let wrrap = foo.bind(obj1);
+
+/*
+console.log("wrrap", wrrap);
+output
+	function foo() {
+		console.log(this.a);
+	}
+
+*/
+/* Identy result like wrrap
+console.log("foo", foo);
+output
+	function foo() {
+		console.log(this.a);
+	}
+
+*/
+// console.log(wrrap == foo);//false - որովհետև նոր ֆունկցիա է ստեղծում bind-ը
+// console.log(wrrap === foo);//false - որովհետև նոր ֆունկցիա է ստեղծում bind-ը
+
+
+
+////////// call, apply
+
+//// ⚠call, apply-ը bind-ից տարբերվում են նրանով, որ bind-ը նոր ֆունկցիա է ստեղծում։
+
+function foo() {
+	console.log(this.a);
+}
+
+let obj1 = {
+	a : 3
+}
+
+
+// let wrrap = foo.call(obj1);//wrrap is undefined
+
+console.log(foo.call(obj1));//not create new function
+
+	</script>
+</body>
+</html>

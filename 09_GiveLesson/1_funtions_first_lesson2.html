@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>functions</title>
+</head>
+<body>
+	<script>
+		//
+
+
+
+/*
+	19.function
+		arguments and ...rest
+		պարամետրական ֆունկցիա
+		return
+		expression , decleration
+		
+		ինքն իրեն կանչող ֆունկցիա
+		տողային ֆունկցիա (ES6) - arrow function
+		default value (ES6)
+
+		closure
+		scope
+		hoisting
+		ռեկուրսիա
+
+*/
+
+/*=======function==========*/
+
+//# Local Variables and Global variable
+
+// function f(){
+// 	var a = 5;
+// 	console.log(a);//a - ն տենալու համար
+// }
+// // console.log(a);//a is not defined
+// // console.log(f.a);//window - ի մեջա ման գալիս
+
+// f();
+
+/*
+Ֆունկցիաները նախատեսված են մեր գրած կոդը ծրագրի տարբեր մասերում օգտագործելու համար։
+	Օրինակ՝
+	Ուզում ենք գրենք նեց կոդ, որը կաշխատի են ժամանակ երբ, որ մենք ենք ուզում, կամ օրինակ երբ օգտվողը մտնումա մեր կայք թող կողը մի հատ ռեկլամ բացվի, կամ երբ որ օգտվողը մտնումա մեր կայք թող ցուցադրվի բարի գալուս մեր կայք, ու դուրս գալուցել թող ցուցադրվի 'Շնորհակալություն մեր կայքից օգտվելու համար'։
+
+Երվ որ մենք ինչ որ կոդ ենք գրում ետ կոդը անմիջապեսա կատարվում․․․
+Նույն կոդը մի քանի անգամ չգրելու համար։ 
+
+
+*/
+
+
+// console.log(typeof Function);//function
+
+//#1 ------------- return  -----------------
+// /!\ return -օպեռատորը դադարեցնումա ֆունկիցայի կատարումը ու վերադարձնումա մեր գրեած կոդը
+/////////# Ինչու ենք վերադարձնում, կարողա console.log -ի փոխարեն մենք alert ենք ուզում անենք։///////
+// function f(a, b) {
+//   return a * b;
+// }
+// f(4,3);
+//Հենց ֆունկցիան տենումա return օպեռատորը կագնումա ֆունկիցայի աշխատանքը։
+
+//#Ինչպես տենալ return-ի արդյունքը
+//վերադարձրացը տենալու հաամար պետքա փոփոխականի մեջ պահել։
+// function f(a, b) {
+//   return a * b;//
+//   alert('hi');//չի անում քանի որ return -ից հետո բան րի անում
+// }
+// var x = f(4, 3);
+// console.log("x", x);
+
+
+//#
+// function f() {  }
+// alert( f(1) ); //return undefined
+
+
+//# recursiv function
+//Ռեկուրսիվ ֆունկիցան երբ ինքը իրան կանչումա։
+
+//Task
+// function f(a) {
+// 	if(a <= 10) {
+// 		document.writeln(a);
+// 		a++;
+// 		f(a);
+// 	}
+// }
+// f(1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------- ֆունկցիայի արգումենտեր -------*/
+// function f(a) {//parametr
+// 	// console.log(arguments);//f(1) - Arguments [1, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+// 	console.log(arguments);//f(1,2,3) - Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+// }
+
+// // f(1);//տալիս ենք argument
+// f(1,2,3);
+
+//# access argumet - ավելորդ արգումենտների մեզ հասանալիա arguments հատկության շնորհիվ
+// function f(a) {
+// 	console.log(arguments[1]);
+
+// }
+
+// f(1,2,3);
+
+//#
+// function f(a){
+// 	a = 2;
+// 	console.log(arguments);//Arguments -ը դատարկա քանի, որ ֆունկցիան կաչելուց արգումենտ չենք տվել
+// }
+// f();
+
+
+
+
+///////////// arument and parametr /////////////
+// function f(a,b,c,d,f) {
+// 	for(var i = 0; i < arguments.length; ++i) {
+// 		alert('Barev ' + arguments[i]);
+// 	}
+
+// }
+
+// f('Narek', 'Hayko', 'Gor', 'Hoso', 'Vahag');
+
+/*
+Պառամետրերը օգտագործելը ավելի ահարմար քան arguments հատկությունը, 
+*/
+
+// console.log(f.length);//5
+
+
+
+	</script>
+</body>
+</html>

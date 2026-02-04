@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>event 1</title>
+</head>
+
+<!-- <div onclick="foo()"></div> -->
+
+
+<button class="btn1">click me</button>
+
+<!-- <p onmouseover="alert('hello')">mouseover</p> -->
+<body>
+	<script>
+////
+
+
+/********************addEventListener********************/
+
+
+// let getBtn = document.querySelector('.btn1');
+// getBtn.addEventListener('click', function() {
+// 	alert('hi');
+// });
+
+//// ինչպես անել որ աջ click անելուց հետո չհայտնվի menu-ն։
+
+// document.addEventListener('contextmenu', function() {
+// 	alert('hi');
+// },false);//not working ❌
+
+// document.addEventListener('contextmenu', function(e) {
+// 	alert('hi');
+// 	e.preventDefault();
+
+// });//✔ 
+
+
+// getBtn.addEventListener-ը ընդումա 3 պառամետր՝
+// 	1 - string-ի մեջ գրած իրադարձության տեսակը։
+// 	2 - event handler ( обработчик событий )
+// 	3 bubbling or capturing
+
+
+
+/******************** element.event ********************/
+
+	// window.onload = function(e) {
+	// 	console.log(e);
+	// }
+		/*Output
+
+		Event {
+			bubbles
+			currentTarget
+			target
+			__proto__ : Event
+				stopPropogation
+		}
+
+
+
+		*/
+		//
+
+
+		/*
+			⚫ event-ը դա օբյեկտ է, որը 
+		*/
+
+		/*event and event listener
+		/!\ ինտերակտիվ - դա երբ որ օգտվողը ինչ-որ գործողությունա անում ու իր արած գործողությունը տվյալ օգտվողին արձագանքում։
+		Կայքը ինտերակտիվ սարքելու համար օգտագործվումա event-ները։
+		event - ը դա երբ որ օգտվողը ինչ-որ գործողությունա անում ու իրա արած գործողության հետևանքով ինչ իրադարձությունա տեղի ունենում։
+
+		******************************
+		/!\ мы не пишем само событие а пишем обработчик событий
+		event handler - обработчик событий, իրադարձության մշոկող
+
+		⚫ Ֆունկցիա գրելով ենք մենք մշակում event-ը։
+
+		//// event տալու կա 3 ձև
+	1․ օգտագործելով event ատրիբուտները ու կոդը հենց javascript-ում գրելը, սա ամենա վատ ձևնա,
+					վատ պրակտիկայա համարվում html-ի հետ css, javascript խառնելը
+	2․ elemnt.event -> button.onclick 
+		js-ի համար բոլոր թեգերը օբյեկտներ են, իսկ այդ թեգերի ատտրբուտները հատկություններ։
+		օրինակ՝
+			in HTML 						|		in JS
+			--------------------------------|------------------------------
+			<img src="10" alt="" onclick="">	|			img {
+											|				src : ,
+											|				alt : ,
+											|				onclick : ,
+														}
+	3․ օգտագործելով addEventListener() մեթոդը
+				⚫ այս ձևը ունի մի հատ առավելություն մի հատել թերություն
+					  * Առավալությունները
+					  		. большие преимущества в том что мы можем отслеживать несколько обработчиков событий
+					  		. Նաև թույլա տալիս ջնջել event-ը
+					  * Թերությունը
+					  		. Ոչ բելոր բրաուզեներն են աջակցում
+					  		օրինակ IE-ը չի աջակցում addEventListener մեթդը, դրա փոխարեն atachEvent-ա
+
+
+		*/
+
+
+		/*
+		Բոլոր event-ները գտնվում են window-ի մեջ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		Event.prototype
+			target
+			currentTarget
+			preventDefault
+			
+
+*****************************************
+##### property of MouseEvent object ######
+
+MouseEvent {
+	clientX
+	clientY
+	pageX
+	pageY
+
+}
+
+#####################################
+
+*****************************************
+Մկիկի հետ կապված իրադարձությունները
+	onclick - տեղի է ունենում երբ ինչ-ոչ տարրի վրա մկնիկի ձախ կոճակը սեղմում ենք։
+	ondblclick - տեղի է ունենում երբ կրկնակի անգամ ենք clik անում մկնիկի վրա։
+	oncontextmenu - occurs when right-clicking on an element
+	onmouseover - տեղի է ունենում երբ ինչ-որ տարրի վրա է պահում մկնիկի սլաքը։
+	onmousedown և onmouseup - տեղի է ունենում երբ մկինկի կոճակը սեղմում և բաց ենք թողնում 
+	onmousemove  - տեղի է ունենում երբ ինչ-որ տարրի վրա է շարժում են մկնիկի սլաքը։
+
+/!\ difference between onmouseover and onmousemove -> DOM/Events/mousemove_and_mouseover.html
+
+// /!\ event - ները գտնվում են window-ի մեջ։
+window events
+	onclick
+	ondblclick
+	oncontextmenu 
+	onchange, oninput
+	onkeydown - տեղի է ունենում երբ ստեղնաշարի վրա մատտ սեղմված է։
+	onkeyup - տեղի է ունենում երբ ստեղնաշարի վրայից մատտ բաց թոաղած է։
+	onload - տեղի է ունենում երբ web էջը ամբողջովի բեռնվումա։
+
+
+
+*/
+
+
+
+</script>
+</body>
+</html>

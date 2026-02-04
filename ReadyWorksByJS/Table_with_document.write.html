@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chess board</title>
+</head>
+<body>
+
+
+
+	<script>
+
+
+//// ձախ անկյունագծով
+
+
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 0; i < 8; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 0; j < 8; ++j) {
+// 				if(i==j) {
+// 					document.write('<td style="background:coral;"></td>');
+// 				}
+// 				else{
+// 					document.write('<td></td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+
+/***************************************************/
+
+////ձախ և աջ անկյունագծով (right)
+
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 8; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 8; ++j) {
+// 				if(i==j) {
+// 					document.write('<td style="background:coral;"></td>');
+// 				}
+// 					else if(j+i == 9) {
+// 						document.write('<td style="background:red;"></td>')
+// 					}
+// 				else{
+// 					document.write('<td></td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+//
+// document.write('</table>');
+
+
+//// շախմատաձև տեսք
+
+//// 1
+
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 8; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 9; ++j) {
+// 				if(i%2 == 0 && j % 2 == 0 || i%2 && j % 2) {
+// 					document.write('<td style="background:coral;"></td>');
+// 				}
+
+// 				else{
+// 					document.write('<td></td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+
+/*
+
+⚫ Եթե i-ն սկսումա 1-ից , ու եթե մենք 1-ը բաժանենք 2-ի կտա մանցորդ, իսկ մնացորդով թիվնել կենտ է։
+
+	⬛ ամենա առաջին իտերացիան i-ն, սկսումա 1-ից -> 1%2 կտա մնացորդ(կենտ)։ Ուրեմն առաջին tr-ի td-ները կլինեն կենտ թվի տակ։
+
+⚠ Եթե ոչ զույգա ոչել կենտ որեմն տվյալ td-ն կլինի սպիտակ։
+⚠ i and j must be event or td will be empty
+
+
+
+*/
+
+
+//// 2
+
+
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 8; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 8; ++j) {
+// 				if( (i+j) % 2 == 0 ) {
+// 					document.write('<td style="background:coral;"></td>');
+// 				}
+
+// 				else{
+// 					document.write('<td></td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+
+//// 3 - սա միայն շախմատաձև կլինի կենտերի համար
+
+// var qanak = 1;
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 9; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 9; ++j) {
+// 				if(qanak % 2 == 0 ) {
+// 					document.write('<td style="background:coral;">'+ qanak++ +'</td>');
+// 				}
+// 				else{
+// 					document.write('<td>'+ qanak++ +'</td>');
+
+// 				}
+
+// 			}
+
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+
+
+
+
+
+
+
+
+////task1
+
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 9; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 9; ++j) {
+// 				if(j == 1 || i == 9 || i == j){
+// 					document.write('<td style="background:coral;"></td>');
+// 				}
+// 				else{
+// 					document.write('<td></td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+//task2
+
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 9; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 9; ++j) {
+// 				if(i>=j){
+// 					document.write('<td style="background:coral;"></td>');
+// 				}
+// 				else{
+// 					document.write('<td></td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+
+//task3
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 9; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 9; ++j) {
+// 				if(j==1 || j == 9 || i == 1 || i == 9){
+// 					document.write('<td style="background:coral;"></td>');
+// 				}
+// 				else{
+// 					document.write('<td></td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+
+//task4
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 9; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 9; ++j) {
+// 				if(i+j>=10){
+// 					document.write('<td style="background:coral;">'+(i+j)+'</td>');
+// 				}
+// 				else{
+// 					document.write('<td>'+(i+j)+'</td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+
+///task5
+
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 9; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 9; ++j) {
+// 				if(i+j<=10){
+// 					document.write('<td>⭐</td>');
+// 				}
+// 				else{
+// 					document.write('<td></td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+///task6 pyramid empty
+
+// document.write('<table border = 1 width="300" height="300">');
+// 		for(var i = 1; i <= 9; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 17; ++j) {
+// 				if(i+j==10 || j - i == 8 || i == 9){
+// 					document.write('<td style="background:lightgreen;"></td>');
+// 				}
+// 				else{
+// 					document.write('<td></td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+////task7	-
+// document.write('<table border = 1 width="300" height="300">');
+// 		for(var i = 1; i <= 9; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 9; ++j) {
+// 				if(j%2 && i % 2==0 || j%2==0 && i%2){
+// 					document.write('<td style="background:lightgreen;">'+i+'-'+j+'</td>');
+// 				}
+// 				else{
+// 					document.write('<td>'+i+'-'+j+'</td>');
+// 				}
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******************************************/
+
+
+
+// var x = 8;
+
+////// dynamic right diagonal
+// var td = 10;
+// var tr = 10;
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= tr; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= td; ++j) {
+// 				var x = i+j;
+// 				if(i+j==td+1){
+// 					document.write('<td style="background:coral;"> '+ i,j +' </td>');
+// 				}
+// 				else {
+// 					document.write('<td style="background:cyan;">'+ i,j +'</td>');
+// 				}
+
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+///////////////////////////////////
+
+//// random td
+
+// document.write('<table border = 1 width = 300 height = 300>');
+// 		for(var i = 1; i <= 8; ++i) {
+// 			document.write('<tr>');
+// 			for(var j = 1; j <= 8; ++j) {
+// 				var r = Math.round(Math.random()*255);
+// 				var g = Math.round(Math.random()*255);
+// 				var b = Math.round(Math.random()*255);
+// 					document.write('<td style="background:rgb('+ r +', '+ g +', '+ b +');"> '+ i,j +' </td>');
+// 			}
+// 		}
+// 			document.write('</tr>');
+
+// document.write('</table>');
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

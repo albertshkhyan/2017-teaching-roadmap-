@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        ////500 - 200-ով մինուս է տալիս
+        // console.log( '500-200 - ',  Math.round(Math.random()*500-200) );
+
+
+        /*with 500 - 200
+        -200-ից փոքր չի տպում -> ✔
+        300-ից ավել չի անում -> ✔
+
+        */
+
+        ////300-ով մինուս չի տալիս
+        // console.log( '300 - ',  Math.round(Math.random()*300) );
+    
+        
+        // setInterval(() => {
+        // let r = Math.round(Math.random()*500-200);
+        // if(r <= -200) {
+        //     console.log(r);
+        // }
+
+        // });
+        ////300-ից ավել չի անում
+        //  setInterval(() => {
+        //     let r = Math.round(Math.random()*500-200);
+        //     if(r >= 299) {
+        //         console.log(r);
+        //     }
+        //     });  
+
+
+        /*Explanation why 500-300
+        0*300 = 0
+        0*500-200 = -200
+
+
+        -------------------------
+        սենց ավելի ճիշտա քանի որ եկրանի չափորից div որը դուրս չեն գալիս։
+         Math.round(Math.random()*200-100)+"px"
+          Math.round(Math.random()*600-300)+"px"
+        
+        */
+
+        /*
+        height:768
+        width: 1366
+        avilHeight:728
+        window.innerHeight: 657
+        
+        */
+
+
+
+
+    </script>
+</body>
+</html>

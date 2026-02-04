@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>difference_between_nextElementSibling_and_nextSibling.html</title>
+</head>
+<body>
+
+	<div>
+		<p id="span-01">Here is span-01</p>
+		Some text at the top level
+		<p id="span-02">Here is span-02</p>
+	</div>
+		<script>
+
+		//
+
+
+		/*********difference between nextelementsibling and nextsibling*********/
+console.log(document.getElementById('span-01').nextSibling);//Some text at the top level
+console.log(document.getElementById('span-01').nextElementSibling);///	<p id="span-02">Here is span-02</p>
+
+	</script>
+</body>
+</html>

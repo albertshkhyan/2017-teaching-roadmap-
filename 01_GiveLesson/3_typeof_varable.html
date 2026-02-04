@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>data type</title>
+</head>
+<body>
+
+
+
+
+	<script>
+		////
+
+		/*+++++++++Տվյալի տտեսակներ, typeof+++++++++*/
+
+		var $1 = 'my names is Alik';//String
+		var $2 = 3.14;//Number
+		var $3 = true;//boolean - true 1  e
+		var $3 = false;//boolean - false 0 e
+		var $4 = null;//datarkutyun
+		//null tvyali tesaki orinak
+		// var x = 10;
+		// var y = x + 15;
+		// console.log(y);
+		// console.log(x);
+		// x = null;//x popoxkany datarkeulu hamar e null
+		// console.log(x);//null
+
+		//undefined - da erb vor popoxkanin arjeq chenq talis
+		var $5 = undefined;//anhayt
+		//undefined tvyali tesaki orinak
+		var a;
+		// console.log(a);
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+/***************  Տվյալի տեսակներ -> typeof, տվյալների տեսակներ ********************/
+/*Ինչ կարլիա պահել փոփոխականների մեջ՝
+կա հիմնական 6 տեսակի տվյալներ, որոնք կարելիա պահել փոփոխականների մեջ, դրենք են՝
+	String
+	Number
+	Boolean
+	Undefined
+	Null
+
+	Object
+
+	/!\ Առաջին 5 տվյալի տեսակնորը  են ՊՐԻՄԻՏԻՎ տեսակներ են
+	/!\ Իսկ վերջին տվյալի տեսակը ԲԱՐԴ է */
+
+	// alert('Hello');//string
+
+	// alert(1);//number
+	// alert(0.1);//number
+
+	// alert(true);//boolean
+	// alert(false);//boolean
+
+	// alert(undefined);//undefined
+	// alert(null);//null
+
+	// alert(Object);
+
+
+
+
+// var x = 10;
+
+// if(typeof x == 'number') {
+// alert('tiv e ');
+// }
+
+
+
+
+
+
+
+
+
+	/*+++++++++++++++++++++++++++++++++++++++++++++++ No 1 - String ++++++++++++++++++++++++++++++++++++++++++
+javascript-ում բոլոր տեքստայի արտահայտությունները գրվում են չակերտների մեջ։ Իսկ Չակերտի մեջ գրած արտահայտությունը պատկանումա String տվյալի տեսակնի։
+զույգ կան անզույգ չակերտներ`
+	''
+	""
+/!\ Եթե չակաերտների մեջա ուրեմն ինքը string տիպիա։
+
+/!\ js-ում չակերտների մեջ բացի տեքստային մաս գրելուց կարլիա նաև օգտագործել unicode-ի բոլոր սիմվոլներ, օրինակ՝
+'😁😊🎶😎✌😂❤✔'
+/!\ javascript -ի ու unicode-ի համադրության շնորհիվա որ կարելիա մեր չակերտների մեջ գերլ ցանկացած լեզու։
+⚠ unicode-ում ինչքան սիմվոլ կա չակերտների մեջ կարելիա գրել։
+*/
+/*+++++++++++++ Using String typeof +++++++++++++++*/
+/*
+javascript -ում փոփոխականին արժեք տալու համար պետքա գրել հավասարման նշանը, որը իրկանում հավասարման նշան չի այլ ՎԵՐԱԳՐՄԱՆ ՕՊԵՐԱՏՈՐ -> =
+	վերագրել - վերաբերվել
+
+*/
+
+// var str = 'Hello World';
+// alert(str);
+
+// var str = 'Բարեվ աշխարհ';
+// alert(str);
+
+// var str = '😁😊🎶😎✌😂❤✔';
+// alert(str);
+
+
+
+
+
+
+
+
+var a  = 1;
+// var b = 2;
+// a = a+b;
+// b = a-b;
+// a = a-b;
+// console.log('a - ', a);
+// console.log('b - ', b);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*	+++++++++++++++++++++++++++++++++++++++++++++++ No 2 - Number +++++++++++++++++++++++++++++++++++++++++++ */
+//// javascript - ում թիվ գրելու համար պետքա գրել հետևյալ կերպ՝
+
+// var n1 = 1;
+// var n2 = 0.1;
+// document.write(n2);
+/*
+
+------------------ Intersting about variables in JavaScript ---------------------------
+ ի տարբերություն ուրիշ ծրագրավորման լեզուների javascript - ում կաելիա բոլոր տվյալի տեսակները գրել մի փոփոխականի մեջ, օրինակ՝
+	C++
+var char = 'hello world';
+var Int = 1;// minus and plus numbers
+var Float = 0.1;//մնցորդով թվերը
+---------------------------------------------
+
+
+
+*/
+////Number տվյալի տեսակի հետ գործողություններ՝
+
+
+// var a = 10;
+// var b = 5;
+// console.log(a + b);//15
+// console.log(a - b);//5
+// console.log(a * b);//50
+// console.log(a / b);//2
+
+///////////////
+
+// console.log(0 + 1);//1
+// console.log(0 - 1);//-1
+// console.log(0 * 1);//0
+// console.log(0 / 1);//0
+
+
+
+////Number-ը տեսակը ունի նաև 2 տեսակի թվային արժեք։
+////1 Infinity
+// console.log(1 / 0);//Infinity
+////2  NaN (Not a Number)
+// console.log('1' * 3);//working wit numbers
+////NaN -Ю NaN տասլիսա երբ սխալ թվաբանակն հաշվարկ է տեղի ունենում։ Օրինակ փորձում ենք տեքսը * / - ինչ-որ թվի
+// console.log('tiv che' * 3);//ouptut NaN
+// console.log('tiv che' / 3);//ouptut NaN
+// console.log('tiv che' - 3);//ouptut NaN
+
+/*++++++++++++  when use + operator +++++++++++++++++*/
+//// Բայց երբ փորձում  ենք string-ը գումարել ցանկացած տվյալի տեսակի հետ կպցնումա իրար (ԿԱՆԿԱՏԵՆԱՑԻԱ)
+// console.log('1' + 3);
+// console.log('a' + 3);
+
+//// Եթե թիվա string-ի մեջ թիվա ուրեմն մեթեմաթիկական գործողություն կարա անի միայն / * - հետ
+// alert('10' / 2);//5
+// alert('10' * 2);//20
+// alert('10' - 2);//8
+
+//// Simple Tasks
+// alert('a' + 10);//NaN
+// alert(47 / 0);//infiniet
+// alert(0 / 47);//0
+// alert('5' * 10);//50
+
+
+///// իսկ ինչպես անել, որ + հետել մաթեմաթիկական գործողություն անի  -> օպեռատրրներ բացատրելուց հետո ասել???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++Boolean+++++++++++++++++++++++++++++++++++++*/
+
+
+/*Boolean - Ամենապարզ typof-ն ա, որը վերադարձնումա true կամ false, եթե մենք ինչ-որ բան իրար հետ համեմատում ենք Boolean-ն արժեքա տալիս։ Նմանա հանրահաշվի բուլյանին ընդեղ ուղղակի 0 ու 1 է։ Այստեղ նույնպես 0 false է 1-ը true,
+
+*/
+// console.log(true + true);//1 + 1
+// console.log(true + false);//1 + 0
+
+//// երբ համեմատթյուն ենք կատարում վերադդարձնումա boolean արժեք
+
+////// անցնել Օպեռատորների բացատրմանը
+
+
+
+
+//////////////////////////////////////
+
+////xist havasar
+
+// var a = 1;
+// var b = '1';
+// console.log(a === b);//false
+// var a = 1;
+// var b = 1;
+// console.log(a === b);//true
+
+
+// Symbol es6 - tvyali tesak - unikal popxakanner stexcelu hamar e naxatesvac
+
+
+
+// var user1 = 'Arman';
+// var user2 = 'Arman';
+// console.log(user1 == user2);//true
+// console.log(user1 === user2);//true
+
+// var user1 = Symbol('Arman');
+// var user2 = Symbol('Arman');
+// console.log(user1 == user2);//false
+// console.log(user1 === user2);//false
+
+
+///// bard tvyali  tesak (object)
+
+////bard tvyali  === reference (ssilka) type
+
+
+// let x = 1;
+// let y = 1;
+// console.log(x == y);
+
+/*
+inchpes e pahuvum bard tvyali tesaky js-i hishoxutyan mej
+[1,2,3] - #0001
+[1,2,3] - #0002
+
+reference type-ery linum en 3 tesaki`
+
+1) array
+2) function
+2) associative array
+let assocArr = {
+	key : value;
+}
+*/
+
+// console.log(window);
+
+
+// let arr1 = [1,2,3];
+// let arr2 = [1,2,3];
+// console.log(arr1 == arr2);//false
+// console.log(arr1 === arr2);//false
+
+
+////parz tvyali tesak
+// let x = 10;
+
+
+// ////bard tvyali tesak
+// let arr = [
+
+// ]
+
+
+////// [], {} =  naxatesvaca mec qanakutyamb tvyalner pahelu hamar:
+// console.log(window);//
+// console.log(document);//
+// console.log(conosle);//
+
+
+
+////incpes kpnel zc tarin
+
+// var names = ['Valod', 'Arman', 'Alik'];
+// console.log(names[0]);
+// console.log(names[names.length-1]);
+
+
+
+/////typof
+
+// var x = [];
+// console.log(x);
+
+// console.log(typeof x);//Object
+
+// if(typeof x === 'object') {
+// 	alert('hello im Object');
+// }
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

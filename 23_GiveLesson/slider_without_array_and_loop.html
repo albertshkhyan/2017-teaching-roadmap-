@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+
+	#wrapper {
+
+	}
+
+	#wrapper{
+		display: flex;
+		height: 100vh;	
+	}
+
+	#wrapper >  img{
+		margin: auto;
+		width: calc(100% / 2);
+		height: 600px;
+	}
+</style>
+
+</head>
+<body>
+	<div id="wrapper">
+		<img src="../../IMAGES_and_ICON/girls/img (1).jpg">
+	</div>
+
+	<script>
+//// առանց զանգված ու առանց ցիկլ սարքել slider
+		let currentIndex = 1;
+
+		function slideShow() {
+			document.querySelector('img').src = '../../IMAGES_and_ICON/girls/img ('+currentIndex+').jpg';
+			currentIndex++;
+			(currentIndex == 4) ? currentIndex = 1 : '';
+		}
+		setInterval(slideShow, 1000);
+	</script>
+</body>
+</html>

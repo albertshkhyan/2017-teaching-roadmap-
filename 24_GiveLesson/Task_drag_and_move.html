@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		
+		#elem {
+			width: 100px;
+			height: 100px;
+			background: red;
+			border-radius: 50%;
+
+			position: absolute;
+		}
+
+	</style>
+</head>
+<body>
+
+
+<div id="elem"></div>
+
+	<script>
+
+		let drag = document.querySelector('#elem');
+
+		document.onmousedown = function() {
+			document.onmousemove = function(e) {//սեղմած պահելու ժամանակ պիտի move անել, հետո մատը հանել մկիկից
+// console.log("drag.offserWidth", drag.offsetWidth);//
+				drag.style.left = `${e.pageX - 100/2}px`;
+				drag.style.top = `${e.pageY -100/2 }px`;
+			}
+		}
+
+		document.onmouseup = function() {
+			document.onmousemove = null;
+		}
+		
+	</script>
+</body>
+</html>

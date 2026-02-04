@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#sld {
+			width: 700px;
+			height: 400px;
+			margin: 50px auto;
+			background-color: rgba(176, 196, 222, 0.5);
+			/*box-shadow: 5px 5px 80px red;*/
+		}
+
+		#sld>div {
+			width: 35px;
+			float: left;
+			overflow: hidden;
+			transition: 1s;
+		}
+
+		img {
+			width: 700px;
+			height: 400px;
+			position: relative;
+		}
+	</style>
+</head>
+
+<body>
+
+
+
+	<div id="sld">
+
+	</div>
+	<button onclick="pox()">Next</button>
+
+
+	<script>
+
+		var arr = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"];
+		var sld = document.querySelector("#sld");
+		(function t() {
+			for (var i = 0; i < 20; ++i) {
+				var div = document.createElement("div");
+				var img = document.createElement("img");
+				sld.appendChild(div);
+				div.appendChild(img);
+				img.src = arr[0];
+				img.style.left = -i * 35 + "px";
+				// img.style.filter = "blur("+ i / 3 +"px)"
+			}
+
+		})()
+
+		var deg = 180;
+		function dnox() {
+			var div = document.querySelectorAll("#sld>div");
+			var img = document.querySelectorAll("#sld img")
+			console.log(div);
+			for (let i = 0; i < div.length; ++i) {
+
+
+				setTimeout(function () {
+					div[i].style.transform = " perspective(400px) rotateY(" + deg + "deg)scaleX(-3)scale(1.2)";
+					setTimeout(function () {
+						img[i].src = arr[0];
+						var scl = (deg % 360 == 0) ? 1 : -1;//երբ որ սաղ մեծացրած լինի հետոել պետքա փոքրացնի եթե 360 աստիճան պտտվելա
+						div[i].style.transform = "perspective(400px) rotateY(" + deg + "deg)scaleX(" + scl + ")scale(1)";
+						// div[i].style.outline = '1px solid green'
+						/*
+						* scale(1) - սա նշանակումա որ նկարը լինի default չափի, չթեքված 
+						* scl - նրա համար է, որ նկարները իրար վրա չհելնեն, երբ որ մենք նկարը 180 աստիծան պտտում ենք, ինքը արդեն չի համապատասխանում իրա հաջորդ մասին։
+						*/
+					}, 300);
+				}, i * 500);
+			}
+			deg += 180;//
+		}
+		function pox() {
+			var k = arr.shift();
+			arr.push(k);
+			dnox()
+		}
+
+
+
+
+
+/*
+
+⚫ div-երը(նկարները), որ 180 աստիճան պտտվում իրանք իրանց նախնական տեսքից չեն վերադարժռնում այլ խառնվումա նկարները։
+
+
+
+⚫ var img = document.querySelectorAll("#sld img") - բոլոր նկարների ենք կպնում որ ամեն մի div-ի մեջ նկարը փոխվի։
+
+⚫ transform: scale(-1); == transform: rotateX(180deg);
+
+
+*/
+
+		/*
+		
+		⚫  perspective(400px) - եթե մի թայմեռի մեջ լինի perspective մյուսի մեջ չի լինի մեր ակնկալած ձևով չի պտտվի։
+		
+		
+		
+		
+		perspective(400px)rotateY("+deg+"deg)scaleX(-1)scale(1.2)";
+		perspective(400px) - կարիք կա օգտագործել, որ պտտվելու էֆֆեկտը զգացվի (փոքրանալեվ չպտտվի)
+		scaleX(-3) - ը մեծացնումա մաշտաբը ուղղակի դեպի ձախ (նկարը 180 աստիճան պտտվումա)
+		
+		
+		scale(1.2) - սա նրա համար է որ համ հիրզոնական մեծանա համել ուղղահայաց։
+		
+		
+		-----------------------
+		
+		սրանք պետք են, որ պտտվելուց չփոքրանա տարրը
+			perspective(400px) 👍✔
+			perspective(300px) 👍✔
+		
+		-----------------------
+		
+		rotateY("+deg+"deg)scaleX(-3) scale(1.2) scaleX(-3) ;
+		
+		
+		
+		
+		
+			+++++++++++++++++++++++++++++++++
+		
+		
+			Why timer in timer
+		
+				Որ այս գործողությունը հասցնի կատարվի -> div[i].style.transform = "perspective(400px)rotateY("+deg+"deg)scaleX(-3) scale(1.2)";
+						⚠ Թե ինչքանով ենք ուզում հացնի արդեն մենք ենք տալիս օրինակ 300մլվ։
+		
+		
+			+++++++++++++++++++++++++++++++++
+		
+		
+			i*100 - Որ սաղ միանգամից չպտտվի։ Սա նշանակումա , որ ամեն մի div-ը 100 մլվ ում կպտտվի։
+				i*100 - առաջին քայլի մինումում 4մլվ հետո է կատարվում -> 0*100=0
+		
+			setTimeout(function(){}, 300) -
+		
+		
+			+++++++++++++++++++++++++++++++
+		
+			var scl = (deg % 360 == 0)? 1 : -1; -> working
+			var scl = (deg % 2 == 0)? 1 : -1; -> working - բայց 2-րդ click -ի ժամանակ 360 աստիճան ճի պտտվում։
+		
+		
+		
+			*/
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>RandomTable_simple_numbers_bg.html</title>
+</head>
+<body>
+	
+
+
+	<script>
+					/*-------------------------------------------------*/			
+							// document.write('<td style="background-color:lightblue;">'+pthk+'</td>');
+							// document.write('<td>'+pthk+'</td>');
+							//2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 
+//xndir nuyn tivy mi qani angam e xuyx talis
+document.write('<table border=1 width=500 height=500>');
+for(var i = 0; i < 9; ++i){
+	document.write('<tr>');
+	for(var j = 0; j < 9; ++j){
+		var hashiv = 0;
+		var pthk = Math.round(Math.random()*99);
+		for(var k = 2; k <=99; ++k){
+			if(pthk % k) {
+				continue;
+			}
+			hashiv++;
+		}
+		if(hashiv == 1) {
+			document.write('<td style="background-color:lightblue;">'+pthk+'</td>');
+		}
+		// else if(pthk == pthk){
+		// 	document.write('<td style="background-color:red;">'+pthk+'</td>');
+			
+		// }
+		else {
+			document.write('<td>'+pthk+'</td>')
+		}
+
+
+			}
+	document.write('</tr>');
+}
+document.write('</table>');
+
+	</script>
+</body>
+</html>

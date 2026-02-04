@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task loop in loop</title>
+</head>
+
+<body>
+    <script>
+        //
+        ////🔰 square overflow stars - print with star
+        // for(var i = 0; i < 5; ++i) {
+        //     for(var j = 0; j <= 5; ++j) {
+        //         document.writeln('*');
+        //     }
+        //     document.write('<br>')
+        // }
+
+        ////🔰 triangle 1 variant- print with star
+
+        // for(var i = 0; i < 5; ++i) {
+        //     for(var j = 0; j <= i; ++j) {
+        //         document.writeln('*');
+        //     }
+        //     document.write('<br>')
+
+        // }
+
+
+        ////🔰 triangle 2 variant- print with star
+
+        // for(var i = 0; i < 5; ++i) {
+        //     for(var j = 5; j > i; --j) {
+        //         document.writeln('*');
+        //     }
+        //     document.write('<br>')
+
+        // }
+
+
+        /////🔰 uxankyun erankyun hakarak drac
+        // let a = +prompt();
+
+        // for(let i = a; i >= 1; --i) {
+        //     document.write('<br>');
+        //     for(let j = 1; j <= a; ++j) {
+        //         if(i >= j) {
+        //         document.write('&nbsp;&nbsp;&nbsp;&nbsp;');
+        //         }
+        //         else  {
+        //             document.write('*&nbsp;&nbsp;');
+        //         }
+
+        //     }
+        // }
+
+
+        /////🔰 X
+        // for(let i = 1; i <= 9; ++i) {
+        //     document.write('<br>');
+        //     for(let j = 1; j <= 9; ++j) {
+        //         if(i == j || i+j == 10) {
+        //         document.write('*&nbsp;&nbsp;');
+        //         }
+        //         else  {
+        //             document.write('&nbsp;&nbsp;&nbsp;&nbsp;');
+        //         }
+        //     }
+        // }
+
+        //////🔰 W
+
+        // for(let i = 1; i <= 4; ++i) {
+        //     document.write('<br>');
+        //     for(let j = 1; j <= 9; ++j) {
+        //         if(i == j ) {
+        //             document.write('*&nbsp;&nbsp;');
+        //         }
+        //         else if(i == 3 && j == 5) {
+        //             document.write('*&nbsp;&nbsp;');
+        //         }
+        //         else if(i+j==10) {
+        //             document.write('*&nbsp;&nbsp;');
+        //         }
+        //         else  {
+        //             document.write('&nbsp;&nbsp;&nbsp;&nbsp;');
+        //         }
+
+        //     }
+        // }
+
+
+
+        //////🔰piramida
+        // let a = +prompt();
+
+        // for(let i = a; i >= 1; --i) {
+        //     document.write('<br>');
+        //     for(let j = 1; j <= a; ++j) {
+        //         if(i >= j) {
+        //         document.write('&nbsp;&nbsp;');
+        //         }
+        //         else {
+        //             document.write('&nbsp;*&nbsp;');
+        //         }
+
+        //     }
+        // }
+
+        ///// 2 variant
+        // for(let i = 1; i <= 4; ++i) {
+        //     for(let j = 1; j <= 4; ++j) {
+        //         if(i+j>=5) {
+        //             document.write('&nbsp;*&nbsp;');//piramida
+        //             // document.write('*');
+        //         }
+        //         else {
+        //             document.write('&nbsp;&nbsp;');
+        //         }
+        //     }
+        //     document.write('<br>')
+        // }
+
+
+        ////🔰 square in empty -  print with star
+
+
+        //////my variant
+        // for(var i = 0; i < 5; ++i) {
+        //     for(var j = 0; j < 8; ++j) {
+        //         if(i > 0 && i < 4 && j > 0 && j < 7) {
+        //             document.write('&nbsp;&nbsp;&nbsp;');
+
+        //         }
+        //         else {
+        //             document.writeln('*');
+        //         }
+
+        //     }
+        //     document.write('<br>')
+        // }
+
+        //// my variant 2
+        // let a = +prompt();
+        // let b = +prompt();
+        // for(let i = 1;  i <= a; ++i) {
+        //     document.write('<br>');
+        //     for(let j = 1; j <= b; ++j) {
+        //         if(i > 1 && i < a && j > 1 && j < b) {
+        //             document.write('&nbsp;&nbsp;&nbsp;&nbsp;')
+        //         }
+        //         else {
+        //             document.write('&nbsp;*&nbsp;');
+        //         }
+
+        //     }
+        // }
+
+
+
+
+
+
+
+
+
+/*
+
+*
+*  *
+*      *
+*          *
+*  *  *  *  *
+
+
+*/
+
+
+
+
+// let p1 = +prompt();
+// for(let i = 1; i <= p1; ++i) {
+//     for(let j = 1; j <= p1; ++j) {
+//         if(i == p1  || j == 1 || i == j) {
+//             document.write('&nbsp;*&nbsp;')
+//         }
+//         else {
+//             document.write('&nbsp;&nbsp;&nbsp;&nbsp;')
+//         }
+//     }
+//     document.write('<br>');
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+        ////////////////////🔰նենց անել  2 2  ից հետո  չշարունակվի
+        ////version 1
+        // for (let i = 1; i <= 10; ++i) {
+        //     for (var j = 1; j <= 10; ++j) {
+        //         console.log(i, j);
+        //         if (i === 2 && j === 2) {
+        //             break;
+        //         }
+        //     }
+        //     if (j === 2) {
+        //         break;
+        //     }
+        // }
+
+        ////version 2
+        // let j;
+        // for (let i = 1; i <= 10; ++i) {
+        //     for (j = 1; j <= 10; ++j) {
+        //         console.log(i, j);
+        //         if (i === 2 && j === 2) {
+        //             break;
+        //         }
+        //     }
+        //     if (j === 2) {
+        //         break;
+        //     }
+        // }
+
+        ////version 3
+        // key : for (let i = 1; i <= 10; ++i) {
+        //         for (let j = 1; j <= 10; ++j) {
+        //             console.log(i, j);
+        //             if (i === 2 && j === 2) {
+        //                 break key;
+        //             }
+        //         }
+        //     }
+
+
+        ////նենց անել  2 2 2 ից հետո ???????????
+        // for (var i = 1; i <= 10; ++i) {
+        //     for (var j = 1; j <= 10; ++j) {
+        //         for (var k = 1; k <= 10; ++k) {
+        //             console.log(i,j,k);
+        //             if (i == 2 && j == 2) {
+        //                 break;
+        //             }
+        //         }
+        //         if (i == 2 && j == 2) {
+        //             break;
+        //         }
+
+        //     }
+        //     if (i == 2) {
+        //         break;
+        //     }
+
+        // }
+
+
+
+        //2221
+
+
+        //////🔰Տպել 1-100 թվերի պարզերը
+        ////Prime number - 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101
+        ////variant 1
+        // for(let i = 2; i <= 100; ++i) {
+        //     let count = 0;
+        //     for(let j = 2; j <= i; ++j) {
+        //         if(i % j) {
+        //             continue;
+        //         }
+        //         else {
+        //             count++;
+        //         }
+        //     }
+        //     (count === 1) ? document.writeln(i) : '';
+        // }
+
+        ////variant 2
+        // for(let i = 2; i <= 100; ++i) {
+        //     let count = 0;
+        //     for(let j = 2; j <= i; ++j) {
+        //         if(i % j) {
+        //             continue;
+        //         }
+        //         count++;
+        //     }
+        //     (count === 1) ? document.writeln(i) : '';
+        // }
+
+        ////variant 3
+        // for(let i = 2; i <= 100; ++i) {
+        //     let count = 0;
+        //     for(let j = 2; j <= i; ++j) {
+        //         if(i % j == 0) {
+        //             count++;
+        //         }
+        //         continue;
+        //     }
+        //     (count === 1) ? document.writeln(i) : '';
+        // }
+
+        // i - բաժանելի
+        // յ - բաժանարար
+
+        /*How explain
+
+            Ենթադրենք i-ն դառելա  4՝
+            i === 4
+            4 % 2
+        */
+
+
+
+
+        //////🔰տեսակավորել զ/ծ-ը առանց sort մեթոդի
+
+
+        ////⬛ sort array with one loop
+        // var arr = [10, 2, 1, 9, 0.8];
+        // for(var i = 0; i < arr.length; ++i) {
+        // 	if(arr[i] > arr[i+1]) {
+        // 		var remindMin = arr[i+1];
+        // 		arr[i+1] = arr[i];
+        // 		arr[i] = remindMin;
+        // 		// i = ( i > 1) ? i -2 : i;//not correct
+        // 		i = (i >= 1) ? i - 2 : i;
+        // 	}
+        // }
+        // console.log('arr', arr);
+
+
+        ////⬛ sort with loop in loop
+        // var remindMin;
+        // var min;
+        // var arr = [10, 2, 1, 9, 0.8];
+        // for(var i = 0; i < arr.length; ++i) {
+        // 	min = i;
+        // 	for(var j = i; j < arr.length; ++j) {
+        // 		if(arr[min] > arr[j]) {
+        // 			min = j;
+        // 		}
+        // 	}
+
+        // 	remindMin = arr[min];//2
+        // 	arr[min] = arr[i];//
+        // 	arr[i] = remindMin;
+
+        // }
+        // console.log('arr', arr);
+
+
+
+
+
+
+        /*+++++++++++++++++++++++++++++++++*/
+
+
+/*
+
+      *
+     ***
+    *****
+   *******
+    *****
+     ***
+      *
+
+*/
+        // for(let i = 1; i <= 5; ++i) {
+        //     document.write('<br>');
+        //     for(let j = 1; j <= 5; ++j) {
+        //         if(i > 1 && i < 5 && j > 1 && j < 5) {
+        //             document.write('&nbsp;&nbsp;&nbsp;&nbsp;');
+        //         }
+        //         else {
+        //             document.write('&nbsp;*&nbsp;');
+
+        //         }
+        //     }
+        // }
+
+///////////////////////
+
+// for(let i = 1; i )
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

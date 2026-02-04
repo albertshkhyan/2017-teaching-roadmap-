@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		section{
+			width: 400px;
+			height: 400px;
+			border: 6px solid;
+			border-radius: 50%;
+			margin: 40px auto;
+			position: relative;
+		}
+		#earth{
+			width: 40px;
+			height: 40px;
+			background-color: cyan;
+			border-radius: 50%;
+			position: absolute;
+			left: 50%;
+			top: -20px;
+
+			transition-duration: 0.5s;
+		}
+
+		#sun {
+			width: 70px;
+			height: 70px;
+			background-color: yellow;
+			position: absolute;
+			border-radius: 50%;
+			top: calc(50% - 35px);
+			left: calc(50% - 35px);
+
+		}
+	</style>
+</head>
+<body>
+
+	<section id="sec">
+		<div id="earth"></div>
+		<div id="sun"></div>
+	</section>
+
+	<script>
+		//
+		let deg = 0;
+		setInterval(() => {
+			sec.style.transform = `rotate(${deg++}deg)`;
+			deg = (deg >= 360)? 0 : deg;
+		},50);
+
+
+
+	</script>
+
+</body>
+</html>

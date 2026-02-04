@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>onload</title>
+
+	<style>
+	#loading {
+		width: 100px;
+		height: 100px;
+		/*background-color: rgba(120,120,120,0.4);*/
+		border:15px solid rgba(120,120,120,0.4);
+		border-right: 15px solid cyan;
+		border-radius: 50%;
+	}
+
+
+</style>
+</head>
+<body>
+
+	<div id="loading"></div>
+	<script>
+		
+		//
+
+// let deg = 0;
+// 		window.onload = function () {
+// 			let ldng = document.querySelector('#loading');
+// 			setTimeout(function() {
+// 				ldng.style.transform = `rotate(${deg++}deg)`;
+// 			},1000);
+
+// 		}
+
+
+// setInterval(window.onload = function f() {
+// 	// document.write('loaded');
+// 	return false;
+
+// }, 2000);
+
+
+//////////////////////
+
+
+window.onload = function() {
+	document.body.style.background = 'green';
+	let ldng = document.querySelector('#loading');
+	let deg = 0;
+	let stop = setTimeout(function f () {
+		ldng.style.transform = `rotate(${deg++}deg)`;
+		setTimeout(f, 10);
+		});//working
+
+
+
+};
+
+setTimeout(function() {
+	let t = document.body.style.background = 'red';
+	console.log("t", t);
+if(t == 'red') {
+	console.log(stop);
+		// clearInterval(stop);
+		clearTimeout(stop);
+
+
+}
+	// setTimeout(function() {
+	// })
+
+
+
+}, 3000);
+// console.log(stop);
+
+
+
+
+		// let ldng = document.querySelector('#loading');
+		// let deg = 0;
+		// setTimeout(function f () {
+		// 	ldng.style.transform = `rotate(${deg++}deg)`;
+		// 		setTimeout(f, 10);
+		// });//working
+
+
+	</script>
+</body>
+</html>

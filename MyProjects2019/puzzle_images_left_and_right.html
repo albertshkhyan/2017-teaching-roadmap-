@@ -1,0 +1,213 @@
+!<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		/**/
+
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		main {
+			width: 100%;
+			height: 100vh;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			display: flex;
+			justify-content: center;
+			-ms-align-items: center;
+			align-items: center;
+		}
+
+		.container {
+			width: 500px;
+			height: 500px;
+			outline: 1px solid #000;
+
+		}
+		.container div img {
+			width: 500px;
+			height: 500px;
+			position: relative;
+
+		}
+
+
+
+		.container > div {
+			/*width: calc(1333px / 50px);*/
+			width: 50px;
+			height: 50px;
+			/*outline:1px solid;*/
+			position: relative;
+			float: left;
+			overflow: hidden;
+		}
+
+		.forButtonsCenter {
+			width: 100%;
+			height: 100vh;
+			position: relative;
+		}
+		 .next {
+			position: absolute;
+			top:50%;
+			z-index: 999;
+			transform: translate(20px,-50%);
+		}
+
+			.prev {
+			position: absolute;
+			top:50%;
+			right: 0;
+			z-index: 999;
+			transform: translate(-20px,-50%);
+		}
+	</style>
+</head>
+<body>
+
+	<div id="wrapper">
+
+		<div class="forButtonsCenter">	
+		<button class="next" onclick="changeImagePrev()">prev</button>
+
+		<main>
+
+			<div class="container">
+
+<!-- 					<div>
+						<img src="http://www.123mobilewallpapers.com/wp-content/uploads/2014/07/danbo_in_forest.jpg" alt="">
+					</div> -->
+
+
+				</div>
+
+			</main>
+			<button class="prev" onclick="changeImageNext()">next</button>
+			</div>
+
+		</div>
+		<script>
+		//
+
+		let takeCont = document.querySelector('.container');
+
+		let arrOfImgs = [
+		'http://www.123mobilewallpapers.com/wp-content/uploads/2014/07/danbo_in_forest.jpg',
+		'http://www.winwallpapers.net/w1/2012/12/Download-Samsung-Galaxy-Mini-wallpaper-640x480-545.jpg',
+		'http://wfiles.brothersoft.com/ac/android_189007-640x480.jpg',
+		'http://people.kzoo.edu/k11kg03/CS107Web/originalLeopard.jpg',
+		'http://www.poriluk.com/wp-content/uploads/2015/05/2-1105131606050-L.jpg'
+		]
+
+
+		for(let i = 0; i < 10; ++i) {
+			for(let j = 0; j < 10; ++j) {
+				let createDiv = document.createElement('div');
+				let createImg = document.createElement('img');
+				takeCont.appendChild(createDiv);
+				createDiv.appendChild(createImg);
+				createImg.src = arrOfImgs[0];
+				createImg.style.left = -j * 50 + 'px';
+				createImg.style.top = -i * 50 + 'px';
+
+			}
+		}
+
+
+		let  puzzleImg = () => {
+			let getCreatedImg = document.querySelectorAll('.container div img');
+			for(let i = 0; i < takeCreatedDivs.length; ++i) {
+				takeCreatedDivs[i].style.transition = '1s ease';
+		// takeCreatedDivs[i].style.transform = 'rotate(360deg)';
+		takeCreatedDivs[i].style.transform =(count % 2) ? 'rotate(360deg)' : 'rotate(-360deg)';
+
+		takeCreatedDivs[i].style.left = Math.round(Math.random()* 500-400)+'px';
+		takeCreatedDivs[i].style.top = Math.round(Math.random()* 500-400)+'px';
+
+
+// console.log(getCreatedImg[i]);
+		setTimeout(() => {
+			takeCreatedDivs[i].style.transform = 'rotate(0deg)';
+			takeCreatedDivs[i].style.left = '0';
+			takeCreatedDivs[i].style.top = '0';
+			getCreatedImg[i].src = arrOfImgs[0];
+		},1000);
+
+	}
+
+	count++;
+
+}
+
+	let takeCreatedDivs = document.querySelectorAll('.container div');
+	let count = 0;
+let changeImagePrev = () => {
+	let takeLast = arrOfImgs.pop();
+	arrOfImgs.unshift(takeLast);
+	puzzleImg();
+
+}
+
+let changeImageNext = () => {
+	let takeFirst = arrOfImgs.shift();
+	arrOfImgs.push(takeFirst);
+	puzzleImg();
+
+}
+
+
+
+
+		/*
+
+		657 * 24 = 27.375
+
+		1333/24 = 55.5416666667
+		1333/26.66 = 50
+		1333 - container width
+		26.66 - .container > div {width:26.66px}
+		27.375 - .container > div {height:27.375px}
+
+
+		*/
+
+
+
+			/*
+
+			* ⚠ որ div-երը շատ-շատ են լինում սկսումա կախել։
+
+
+				* ցիկլի միջ ցիկլը կապ չունի
+
+								
+
+				**** My mistake ****
+					* Պետք չի գրել`
+						createdImg[i]
+
+					* Նկարներին պետք չի կպնել քանի, որ մենք մենք ստեղխելուց հետո միանգամից տալիս ենք իրանց դիրքը, Օրինակ՝
+						1)ստեղծինք առաջին նկարը
+						2)ավելացրինք առաջին նկարը
+						3)ետ ամենա առաջին նկարին տվինք left և top 
+							և այսպես շարունակ։
+
+					* Իմ ամենա գլխավոր սխալը, որ նկարին position չէի տվել։
+
+					* main mistakes - հիշել արտքաին և ներքին ցիկլը դերը
+							Ներիքին ցիկլը պումա td-ները, ասյինքն իրանց պիտի left տրվի
+
+							*/
+
+						</script>
+					</body>
+					</html>

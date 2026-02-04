@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Map collection</title>
+</head>
+<body>
+	<script>
+		
+
+		//
+
+
+		/*
+			⚫Map() - ES6 ում դուրս է եկել նոր կոլեկցիայի տեսակ, որը կոչվումա Map(): Map-ը նախատեղվածա associative array-ի նաման բաղկացածա key և value-ներ ստեղծելու համար։
+			Մենք գործ ենք անում հիմնականում զ/ծ-ների և օբյեկտների հետ, բայց սովորական օբյեկները ունեն հետևյալ թերությունները՝
+			Օրինակը ցույց տալ՝
+				◼ 1) դա այն է որ օբյեկտը ժառանգումա իր ծնող օբյեկտին, այսինքն երբ որ մեզ պետքա որ օբյեկտը մաքուր լինի ետ պարագայում թերությունա։ 
+					⚠ Սովորական օբյեկտ ի տարբերություն կելկցիաների չունի իր սեփական մեթոդները։
+
+				◼ 2) օբյեկտների key-երը միշտ string է, ուրիշ տվյալի տեսակ չի կարող լինել - 
+					⚠ Կարող մեզ պետքա, որ key-ը լինի ինչ-որ այլ տվյալի տեսակի պրիմիտիվ կամ բարդ, օրինակ ասպես՝
+					let user = {
+							true : 'is online',
+							[1,2,3,4] : '4 angam mtela kayq'
+					}
+
+				◼ 3) гарантия  չկա որ ճիշտ հերթականությամբ կցուցադրվի։
+					
+
+				◼ 4) Սովորական օբյեկտը չունի իրա length-ը։
+						Կարող է լուծվել -> Object.keys(user).length
+
+
+				◼ 5) Օբյեկտը իտերացիայի չի ենթարկվումա, key-երը ճի հաջորդաբար տարրերը չի լինում վեկալել։ Դրա համար հատուկ օբյեկտի համար ստեղծեցին հատուկ ցիկլ, for...in բայց ել ունի որոշ թերություններ։ ․․․ 
+
+
+⚠👁‍🗨😁 Map կոլեկցիան այս բոլոր թվարկված խնդիրները լուծում՝
+⚠ Map -ի ևս մեկ առավելություն իրեն կարելի է զանգված սարքել։
+
+			Syntax 
+				new Map([iterable])
+					Map-ի արժեքը պետքա լինի իտերացվող օբյեկտ
+					new Map([new String('hello','world')])
+					new Map([new Array('hello','world')])
+
+					*/
+
+
+
+// ◼ 1) դա այն է որ ասոցածիվ զանգվածը ժառանգումա  օբյեկտից, օրինակ՝
+// let user = {
+// 	name : 'Valod',
+// 	sname : 'Valodyan'
+// }
+
+// console.log(name.toString);//ƒ toString() { [native code] } - կա այդպիսի մեթոդ բայց մենք չենք ստեղծել, 
+
+
+
+
+// ◼ 2) օբյեկտների key-երը միշտ string է, ուրիշ տվյալի տեսակ չի կարող լինել - Օրինակ՝ 
+
+// let user = {
+// 	name : 'Valod',
+// 	sname : 'Valodyan'
+// }
+
+// ////➕Object.keys մեթոդը վերադարձնումա նոր զանգված, որի մեջ պահվումա մեր օբյեկտի key-ը ըստ ինդեքսների համարկալված։
+// console.log(Object.keys(user));
+/*
+["name", "sname"]
+0: "name"
+1: "sname"
+length: 2
+__proto__: Array(0)
+*/
+
+
+
+// ◼ 3) гарантия  չկա որ ճիշտ հերթականությամբ կցուցադրվի։
+
+// let user = {
+// 	name : 'Valod',
+// 	sname : 'Valodyan',
+// 	age : 20
+// }
+
+// console.log(user);
+/*
+Object
+	age: 20
+	name: "Valod"
+	sname: "Valodyan"
+
+	*/
+
+
+// ◼ 4) Սովորական օբյեկտը չունի իրա length-ը։
+
+// let user = {
+// 	name : 'Valod',
+// 	sname : 'Valodyan',
+// 	age : 20
+// }
+
+// console.log(Object.keys(user).length);//3
+
+
+
+
+// ◼ 5) Օբյեկտը իտերացիայի չի ենթարկվումա, key-երը ճի հաջորդաբար տարրերը չի լինում վեկալել։ Դրա համար հատուկ օբյեկտի համար ստեղծեցին հատուկ ցիկլ, for...in բայց ել ունի որոշ թերություններ։ ․․․ 
+
+// let user =  {
+// 	name : 'Valod',
+// 	sname : 'Valodyan'
+// }
+
+// for(let value of user) {
+// 	console.log(value);//Uncaught TypeError: user is not iterable
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************ How use Map collection ************/
+
+
+/*Map-ին հատկություններ key ու value-ներ կարելիա փոխանցել 2 ձևով՝*/
+
+////1. set() մեթոդով
+// let map = new Map();
+// map.set('name','Valod');
+// map.set('srname','Valodyan');
+// map.set(null, 'not online');
+// map.set(true, 'is online');
+// map.set(()=> alert('hello'), 'my name is Valod');
+
+////⚠set կարելիա տալ նաև ըստ շղթայական կապի, Օրինակ՝
+
+// let map = new Map();
+// map.set('name','Valod')
+// 		.set('srname','Valodyan')
+// 		.set(null, 'not online')
+// 		.set(true, 'is online')
+// 		.set(()=> alert('hello'), 'my name is Valod');
+
+// console.log("map", map);//✔
+
+/*⚠ Ինչպես կանչել key եթե այն ֆունկցիա է
+		Նախ և առաջ պետքա մեր map կոլեկցիան պետքա վերադարձնի MapIterator, որով կկարողանանք անցնել բոլոր key-երի կամ value-ներ վրայով, անցենլու համար պեզ պետքա next() մեթոդը։ Իսկ MapIterator վերդարձնումա  3 մեթոդ՝
+			1․key() - return MapIterator only key
+			2.values() - return MapIterator only value
+			3․entries() - return MapIterator [key, value]
+
+			*/
+///🔰keys() մեթոդը վերդարձնումա նոր MapIterator, որը պահումա իր մեջ մեր տված բոլոր key-երը։ Իսկ next() մեթոդով կարելիա անցնել բոլոր key-երի վրայով։
+// console.log(map.keys());//MapIterator {"name", "srname", null, true, ƒ}
+
+// let showKeyIter = map.keys();
+// console.log("showKeyIter", showKeyIter);
+// let getKey = showKeyIter.next();
+// console.log("getKey", getKey);//միայն key-նա ցուցադրումա
+// console.log(showKeyIter.next());//{value: "name", done: false}
+// console.log(getKey.value);//name
+// console.log(showKeyIter.next());
+// console.log(showKeyIter.next());
+// console.log(showKeyIter.next());
+// showKeyIter.next().value();//կանչեց key-ը։
+
+////Հեթով տպել key-երը՝
+// for(let value of showKeyIter) {
+// 	console.log(value);//srname, null, true, ()=> alert('hello')
+// }
+////Identy result
+// for(let value of map) {
+// 	console.log(value[0]);//
+// }
+
+/*++++++++++++++++++++++++++++++++++*/
+
+////Հերթով տպել մեր տված value-ները
+// for(let value of map) {
+// 	console.log(value[1]);//
+// }
+
+
+/*++++++++++++++++++++++++++++++*/
+////🔰 entries() - մեթդը վերադարձնումա համ key համ value
+// let entr = map.entries();
+// console.log("entr", entr);//MapIterator 
+// console.log(entr.next());//{value: Array(2), done: false}
+// console.log(entr.next().value);//["srname", "Valodyan"]
+// console.log(entr.next().value[1]);//not online
+// console.log(entr.next());
+
+
+// /*--------------------*/
+// //// ԻՆչպես կանչել map-ի key-ը եթե այն ֆունկցիա է։
+// entr.next().value[0]();
+
+
+/*++++++++++++++++++++++++++++++*/
+
+
+
+
+// console.log("map - ", map);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////2. ձև հատկություն փոխանցել համար
+
+// let map = new Map([
+// 	['name','Valod'],//Առաջինը key-նա, երկրորդը value-ն
+// 	['sname','Valodyan'],
+// 	[null, 'not online'],
+// 	[true, 'is online'],
+// 	[()=> alert('hello'), 'my name is Valod']
+// 	]);
+
+// console.log("map", map);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*+++++++ Ինչպես ստանալ հատկությունը +++++++*/
+// console.log("get - ", map.get('name'));
+// console.log("get - ", map.get(null));//working
+// console.log("get - ", map.get(true));
+
+
+////reference type-երը չի կարելիա get-ով ստանալ քանի, որ իրենց հասցեները տարբեր են
+// console.log("get - ", map.get(()=> alert('hello')));//undefined
+
+
+/*------------------------------------------------*/
+////⚠Remind about reference type
+// let a = {name:"Valod"};
+// let b = {name:"Valod"};
+// ////a -ն և b-ն իրար հավասար չեն քանի որ տարբեր հասցեների տակ են գտնվում։
+// console.log(a==b);//false
+
+//// բայց եթե ուզում ենք a-ն և b-ն նույն հասցեն ունենա՝
+// let a = {name:"Valod"};
+// let b = a;
+// console.log(a==b);//true
+/*------------------------------------------------*/
+
+
+/*
+
+⚫ get() մեթոդի մեջ գրում ենք key-ի ոնւնը ցույցա տալի value-ն։
+
+
+🤷‍⚠ Իչպես ստանալ key-ը եթե այն օբյեկտ է։
+Պատ․՝ գլոբալ կոնտտեքստում ստեծել ֆունկիցա, key-ի անունը դնել այդ գլոբալ ֆունկիցա անունը։
+
+*/
+//// Դա get-ով չի լինի անել - պետքա map կոլեկցիան սարքել MapIterator ու կանչել next() մեթոդի մեջ value-ն, 0 ինդեքսի տակ գտնվող։
+////🔰 1 -ին տարբերակ։
+
+let funRef = (p)=> alert(p);
+let map = new Map([
+	['name','Valod'],//Առաջինը key-նա, երկրորդը value-ն
+	['sname','Valodyan'],
+	[null, 'not online'],
+	[true, 'is online'],
+	// [()=> alert('hello'), 'my name is Valod']
+	[funRef, 'my name is Valod'],
+	// [function foo(){alert('hi')}, 'my name is Valod']//not find
+	]);
+console.log("get - ", map.get('name'));
+console.log('map', map);
+// console.log("get - ", map.get(null));//working
+// console.log("get - ", map.get(true));
+// console.log("get - ", map.get(foo));//foo is not defined ❌
+
+// map.get(funRef());//undefined - global ❌
+// funRef();//Ifenty result - դրսի ֆունկիցան է կանչում ❌
+
+// map.get(funRef());//դրսի ֆունկիցան է կանչում ❌
+
+
+
+//// 👍✔ 
+// console.log("get - ", map.get(funRef));//working correct -> my name is valod
+// map.get(funRef(map.get(funRef)));//my name is Valod -> map օբյեկտի մեջից կանչում ենք funRef key-ը, և իրեն որպես արգումենտ փոխանցում ենք ետ key-ի value-ն։
+
+
+
+
+
+////🔰 2-րդ  տարբերակ   MapIterator օգտագործելով։
+
+////⚠? Միանգամից չի լինում ֆունցկիա key-ին կպնել։???
+// let keyMapIter = map.keys();
+// console.log("keyMapIter", keyMapIter);
+// console.log(keyMapIter.next().value);
+// console.log(keyMapIter.next().value);
+// console.log(keyMapIter.next().value);
+// console.log(keyMapIter.next().value);
+// console.log(keyMapIter.next().value);//()=> alert('hello')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*++++++++++++has(), delete(), clear()++++++++++++*/
+
+
+
+
+// let map = new Map([
+// 	['name','Valod'],//Առաջինը key-նա, երկրորդը value-ն
+// 	['sname','Valodyan'],
+// 	[null, 'not online'],
+// 	[true, 'is online'],
+// 	[()=> alert('hello'), 'my name is Valod']
+// 	]);
+
+
+////has()
+// console.log("has - ", map.has('name'));//true
+// console.log("has - ", map.has(()=> alert('hello')));//false
+
+////delete()
+// console.log('deleete - ', map.delete('name'));//true - ջնջվեղ տվյալ հատկությունը
+// console.log(map);
+
+
+////clear()
+// console.log(map.clear());
+// console.log("map - ", map);//մաքրեց լռիվ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*+++++++++++++++++ Map tricks +++++++++++++++++*/
+
+/*key() մեթոդ
+Iterate over map keys
+Map offers the keys() method we can use to iterate on all the keys:
+*/
+// let map = new Map([
+// 	['name','Valod'],//Առաջինը key-նա, երկրորդը value-ն
+// 	['sname','Valodyan'],
+// 	[null, 'not online'],
+// 	[true, 'is online'],
+// 	[()=> alert('hello'), 'my name is Valod']
+// 	]);
+
+// for (const k of map.keys()) {
+//   console.log(k)
+// }
+
+
+/*values() մեթոդ
+Iterate over map values
+The Map object offers the values() method we can use to iterate on all the values:
+*/
+
+// let map = new Map([
+// 	['name','Valod'],//Առաջինը key-նա, երկրորդը value-ն
+// 	['sname','Valodyan'],
+// 	[null, 'not online'],
+// 	[true, 'is online'],
+// 	[()=> alert('hello'), 'my name is Valod']
+// 	]);
+
+// for (const v of map.values()) {
+//   console.log(v);//
+// }
+
+
+
+/*Destructuring and Map collection - with entries() method*/
+//եթե ուզում են համ value համ key տեսենլ
+
+
+// let map = new Map([
+// 	['name','Valod'],//Առաջինը key-նա, երկրորդը value-ն
+// 	['sname','Valodyan'],
+// 	[null, 'not online'],
+// 	[true, 'is online'],
+// 	[()=> alert('hello'), 'my name is Valod']
+// 	]);
+
+// for (const [k, v] of map.entries()) {
+//   console.log(k + ' - ' + v);//
+// }
+
+////without destructiring
+// for (const kv of map.entries()) {
+//   console.log(kv[0] + ' - ' +  kv[1]);//
+// }
+
+</script>
+</body>
+</html>

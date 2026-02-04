@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task loop</title>
+</head>
+<body>
+    <script>
+        //
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++Task with while loop+++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/*
+Reverse Number
+🔰 տպել թվերը աջից ձախ հաջորդականությամբ՝
+Օրինակ՝
+մուտքագրում ենք 123, տպումա 321։
+
+*/
+// var p  = +prompt('hakarak');
+// while(p) {
+//     console.log(p);
+// document.writeln(p%10);
+// p = (p - p % 10) / 10;
+// }
+
+
+// Check Number
+////🔰Եթե մեր մուտքագրած թվի թվանշանների մեջ կա 2 թվանշանը, ապա թսղ արտածվի true հակառակ դեպքում false
+// var p  = +prompt('ETE MEJY 2 KA');
+// while(p) {
+//     if(p % 10 == 2) {
+//         alert('2 ka');
+//     }
+//     p = (p - p % 10) / 10;
+// }
+
+
+
+// Sum Number
+/*
+////🔰 * Մուտքագրում ենք թիվ ցույցա տալիս տվյալ թվի թվանշանների գումարը։ Օրինակ՝
+ prompt-ի մեջ մուտքագրել ենք 123 պետքա ցույց տա 6, այսինքն 1+2+3 = 6
+ */
+// var sum = +prompt('cuyc tal tveri gumary');
+// var x = 0;
+// while(sum) {
+// 	// alert(sum);
+// 	x = x + sum % 10;
+// 	sum = ( sum - sum % 10) /10 ;
+// }
+// alert(x);
+
+
+/*
+Result of multiplying numbers (product)
+////🔰 Մուտքագրում ենք թիվ ցույցա տալիս մեր մուտքագրած թվի թվանշանների արտադրյալը( Բազմապատկաման արդյունքը )։
+
+Օրինակ prompt-ի մեջ մուտքագրում ենք 27՝
+7*2 = 14
+*/
+
+// var sum = +prompt('');
+// var x = 1;
+// while(sum) {
+// 	x = x *( sum % 10);
+// 	sum = (sum - sum % 10) /10;
+// }
+// alert(x);
+
+ //// 🔰 Մուտքագրում ենք թիվ ցույցա տալիս մեր մուտքագրած թվի ֆակտորիալը։
+// var n = +prompt('greq tib');
+// var i = 1;
+// var fact  = 1;
+// while(i<=n) {
+//   fact = fact * i;
+//   i++;
+// }
+// document.write('!' + n + ' = ' + fact);
+
+
+////🔰 եթե թվի թվանշանները իրար հավասա են թող alert անի true հակառակ դեպքում false:
+// var p  = +prompt('ETE sax nuynn en ');
+// var res;
+// var last = p % 10;
+// while(p) {
+//     res = (p%10 == last) ? true : false;
+//     // if(p%10 == last) {
+//     //     res = true;
+//     // }
+//     // else {
+//     //     res = false;
+//     // }
+//     p = (p - p % 10) /10;
+// }
+// alert(res);
+
+////🔰 Եթե թվի թվանշանների մեջ կա կենտ թվանշան, ապա թող արտածվի կա։
+//Օրինակ՝
+// 24836 -> 3 - ը կենտ է ուրեմն թող alert անի կենտ թվանշան կա
+
+// var p  = +prompt('cuyc tal kentery');
+// while(p) {
+//     // (p == 2) ? document.write('2 ka dzer tveri mej') : '';
+//     if(p % 2) {
+//         alert('kent ka');
+//     }
+//     p = (p - p % 10) /10;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////🔰 Տպել ֆիբանաչի թվային շարքը
+
+////0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765,
+// var start = 0;
+//         var end = 1;
+//         var fib = start + end;
+
+//         for(var i = 0; i < 30; ++i) {
+//           document.writeln(fib + '<br>');
+//           start = end;
+//           end = fib;
+//           fib = start + end;
+//         }
+
+////🔰
+//   var axyusak = +prompt('greq 1-10 tiv');
+//   for(var i = 1; i <= 10; ++i ) {
+//     var res = axyusak*i;
+//     console.log('res', res);
+//     document.writeln( axyusak + ' * '  + i + '=' + res + '<br>');
+//   }
+
+
+
+
+
+
+    ////🔰FACTORIAL
+    // var fact = +prompt('greq factorialy');
+    // var hishel = 1;
+    // for(var i = 1; i <= fact; ++i) {
+    //     hishel = hishel * i;
+
+    // }
+
+    //// var a = 1;
+    //// var b =2;
+    //// var c = 3;
+    //// var d = 4;
+    //// a*b*c*d = 24
+    // alert(hishel);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////🔰 star recatangle
+    // for(var i = 0; i < 5; ++i) {
+    //     for(var j = 0; j <= i; ++j) {
+    //         // document.writeln(i,j);
+    //         document.writeln('*');
+    //     }
+    //     document.writeln('<br>');
+
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////🔰aram - ից ստանալ -> ArAm - բոլոր a տառերը սարքել մեծատառ
+
+// var str = 'aram';
+// var result = '';
+// for(var i = 0; i < str.length; ++i) {
+//   if(str[i] == 'a') {
+//     result = result + str[i].toUpperCase();
+//   }
+//   else {
+//     result = result + str[i];
+//   }
+// }
+// console.log(result);
+
+
+//***Ete tivy zuyg e tox tpi  hajord kenty.ete tivy kente tox tpi naxord zuygy***//
+// let p = +prompt('Enter evem or odd number');
+//         let x;
+//         for (let i = 1; i <= p; ++i) {
+//             x = ((p % 2) + (p + 1))
+//             break
+//             x = ((p % 2) + (p - 2));
+//             break
+
+//         }
+
+//         console.log(x);
+
+
+
+////////🔰 task մուտքագրած բառի բոլոր a տառերը սարքել մեծատառ։
+
+// let txt = 'aramayis';
+// let txt = prompt();
+// let z = '';
+// for(let i = 0; i < txt.length; ++i) {
+//     if(txt[i] == 'a') {
+//         // let a = txt[i].replace(txt[i], 'A');
+//         z += 'A';
+//     }
+//     else {
+
+//         z += txt[i];
+//     }
+// }
+// alert(z);
+
+////// baren enq grum cuca talis ayd bary hakarak hertakanutyamb, Orinak hello -> olleh
+// let txt = prompt();
+// let hakarak = '';
+// for(let i = 1; i <= txt.length; ++i) {
+//     hakarak += txt[txt.length-i];
+// }
+// console.log(hakarak);
+
+
+
+// let txt = prompt();
+// let rez = '';
+// for(let i = 0; i < txt.length; ++i) {
+//     if(txt[i] == 'a') {
+//         rez += txt[i].toUpperCase()
+//     }
+//     else {
+//         rez += txt[i]
+//         console.log('rez', rez);
+
+//     }
+// }
+
+// console.log(rez);//
+
+
+////slice return new array
+// let arr = ['banana', 'Apple', 'pear'];
+// arr.splice(1,0, 'grapes');
+// console.log('arr', arr);
+// console.log('arr2', arr2);
+
+
+
+
+
+
+
+        </script>
+</body>
+</html>

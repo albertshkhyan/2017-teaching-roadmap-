@@ -1,0 +1,89 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>what is bom</title>
+</head>
+<body>
+
+
+<iframe width="1349" height="488" src="https://www.youtube.com/embed/mzoe-I7r5HE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+	<script>
+
+		
+		/*
+		Մենք արդեն գիտենք գլոբալ օբյեկտի մասին (window), որը բաժանվումա 3 մասի՝
+			1․document (DOM)
+			2․BOM
+			3․JavaScript
+
+
+			BOM -ի վերաբերական օբյեկտները
+				⚫ navigator - դա են օբյեկտնա, որտեղ պահվումա բրաուզերի մասին ողջ ինֆորմացիան։
+					navigator-ի ամենա կարևոր հատկությունները՝։
+
+					navigator․userAgent -այս հատկությունը ցույց է տալիս բրաուզերի մասին ողջ ինֆորմացիան։
+					
+					navigator․platform - ցույց է տալիս տվյալ օպերացիոն համակարգի մասին ինֆորմացիա
+
+				⚫ screen object - այս օբյեկտը պահումա ինֆորմացիա էկրանի մասին
+
+
+				⚫ location object - 	այս օբյեկտը պահումա ինֆորմացիա տվյալ կայքի URL-ի մասին,
+						օրինակ՝
+							hosting-ի անունը
+							protocol-ը - http or https
+
+							href - սեռվերի հարցումի անունը -> href: "https://www.google.com/_/chrome/newtab?ie=UTF-8"
+							
+							hash: если строка запроса содержит символ решетки (#), то данное свойство возвращает ту часть строки, которая идет после этого символа
+
+							search: если строка запроса содержит знак вопроса (?), например, то данное свойство возвращает ту часть строки, которая идет после знака вопроса
+								search: "?ie=UTF-8"
+
+
+								location.toString() - "file:///F:/Get-Lessons/BOM/what_is_BOM.html" -> սթրինգի տեսքով վերադաարձբումա կայքի URL-ը։
+
+							⚠ մենք կարող են փոխել կայքի հասցեն, օրինակ
+								document.href = 'https://www.google.com'
+								
+							⚠ նաև հնարավորությոևնա տալիս վերբեռնել կայքը
+							location.reload()
+
+
+		*/
+
+
+// console.log("navigator", navigator);
+// console.log("navigator․userAgent", navigator.userAgent);
+
+// console.log(navigator.platform);//Win32
+
+// console.log("screen", screen.height, screen.width);
+
+
+
+// console.log("location", location);
+// console.log("location", location.href);//"file:///F:/Get-Lessons/BOM/what_is_BOM.html"
+
+
+// let a = 1;
+// if(a == 1) {
+// 	location.reload();
+// }
+
+
+
+//DOM
+console.log(document);
+
+//BOM
+console.log(window.navigator);
+console.log(window.screen);
+console.log(window.history);
+console.log(window.location);
+
+	</script>
+</body>
+</html>

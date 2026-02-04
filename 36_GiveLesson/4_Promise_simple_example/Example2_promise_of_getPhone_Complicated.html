@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example2  promise of getPhone Complicated</title>
+</head>
+<body>
+	
+
+
+
+	<script>
+	let haveMoney = Math.round(Math.random()*1);
+
+	let getPhone = new Promise(function(resolve,rejecte) {
+		if(haveMoney){
+			let buyPhone = {
+				brand : 'samsung S7',
+				color : 'black'
+			}
+
+			resolve(buyPhone);
+		}
+		else{
+			let noMoney = new Error('pox chka');
+			rejecte(noMoney);
+			// rejecte('pox chka');
+		}
+
+	});
+//then - մեթոդը որպես արգումենտներ ընդունումա ֆունկցիաներ
+	getPhone
+		.then(
+			function(resolved) {// ստանումա resolve-ի արժեքը
+				console.log(resolved);
+
+			},
+			function(rejected) {//rejected === noMoney
+					console.log(rejected.message);
+				}
+			)
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

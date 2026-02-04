@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>calculator</title>
+</head>
+<body>
+	<script>
+		//
+
+
+
+
+		////Եթե ուզում ենք մեր սեփական ժամանակահատվածը տանք։
+
+//get and set
+
+//1 տարբերակ
+// let date = new Date(1996, 2, 3, 3, 30);//Sun Mar 03 1996 00:00:00
+// let date2 = new Date('March 3, 1996 03:00:30');
+
+// console.log("date  - ", date2);
+// console.log("date - ", date);//Sun Mar 03 1996 00:00:00 GMT+0400 (Армения, стандартное время)
+
+//or with set and get
+
+
+//2 տարբերակ
+
+// let date = new Date();
+// date.setYear(1996);
+// date.setMonth(2);
+// date.setDate(3);
+
+// console.log(date.getFullYear());
+// console.log("date - ", date);
+
+
+//getter ֆունկցիան վերադրաձնումա արժեք, իսկ setter-ֆունկցիան արժեքը կարում ենք փոխել։
+
+/*
+Date - ին կարեիա տալ նաև արգումենտներ։ Եթե ոչ մի արգումենտ չենք փոխանցել Date-ին ուրեմն ներկայիս ժամանակահատվածով կսցուցադրի։
+
+arguments of Date
+		new Date(year, month, date?, hours?, minutes?, seconds?, milliseconds?)
+
+
+Day of the week (0–6); 0 is Sunday
+month: 0–11 (0 is January, 1 is February, etc.)
+date: 1–31 -> մենակ ամսաթիվնա որ 0 ինդեքսից չի հաշվում։
+
+hours: 0–23
+minutes: 0–59
+seconds: 0–59
+milliseconds: 0–999
+*/
+
+/************Task -  date without timezone (utc)************/
+//// Ժամային գոտին հանել date օբյեկտի մեջից։
+// let date = new Date().toString().split(' ').splice(0,5);
+// console.log("date", date.join(' '));
+
+
+/**************Task get day by word not number**************/
+//// 1 go to Google 🔎 days of the week in english(www.gwydir.demon.co.uk/jo/roman/daysweek.htm) cpoy past
+// let arr = [
+// "Monday",
+// "Tuesday",
+// "Wednesday",
+// "Thursday",
+// "Friday",
+// "Saturday",
+// "Sunday"
+// ];
+
+// let date = new Date();
+// console.log(arr[date.getDay()]);
+
+	</script>
+</body>
+</html>

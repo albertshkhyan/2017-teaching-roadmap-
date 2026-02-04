@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		/**/
+
+
+/*	#elem{
+		width: 100px;
+		height: 100px;
+		background-color: lightgreen;
+	}
+*/
+	
+</style>
+</head>
+<body>
+
+	<div id="elem">
+
+	</div>
+	
+
+	<script>
+		
+		///
+
+		/*
+		JavaScript - ը css-նելա, որպես օբյեկտ հասկանում։ Մենք js-ովել կարող ենք style տանք մեր html տարրերին։
+		⚠ Իրականում style օբյեկտ ուղությունը հետևյալն է՝
+				document.styleSheets[0].cssRules[0].style
+
+
+		*/
+		// console.log(document.styleSheets[0].cssRules[0].style.removeProperty('elem'));//Այս օբյեկտի մեջ գտնվում ենք css-ի բոլոր հատկությունները, ու ետ հատկությունները գրվումա camelCase-ով։
+
+/////// Գրելաձևը՝
+
+let elem = document.querySelector('#elem')
+
+elem.style = `
+		width: 100px;
+		height: 100px;
+		background-color: lightgreen;
+
+`;
+// elem.style[2] = null;
+// console.log(elem.style[2]);//background-color
+
+///// how remove css rule
+//CSSStyleDeclaration object have removeProperty
+console.log(document.styleSheets);
+////ինչպես ստուգել տվյալ հատկությունը կա css -ում թե ոչ։
+// console.log(document.styleSheets[0].cssRules[0].style[2] == 'background-color');//true
+
+// console.log(document.styleSheets[0].cssRules[0].style.removeProperty('elem'));
+// elem.style = '';//ջնջվեց style օբյեկտը
+// elem.style = null;//ջնջվեց style օբյեկտը
+// document.styleSheets[0].cssRules[0].style[0]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// console.log(document.styleSheets);//StyleSheetList
+		// console.log(document.styleSheets[0]);//CSSStyleSheet 
+		// console.log(document.styleSheets[0].cssRules[0]);//CSSStyleRule 
+		// console.log(document.styleSheets[0].cssRules[0].cssText);//#zoom { width: 100px; height: 100px; background-color: tomato; }
+		// console.log(document.styleSheets[0].cssRules[0].style[0]);//width
+
+		// document.styleSheets[0].cssRules[0].cssText = '';
+
+		// zoom.style.cssText = null;
+
+		/*
+* StyleSheetList - 0 ինդեքսի տակ գտնվումա css-ի մեթոդները և հատկուոյւնները։
+* .cssRules[0] հատկության(օբյեկտի) - 0 ինդեքսի տակ գտնվումա style-ի համար պատասխանատու հատկությունը։
+
+
+*document.styleSheets[0].cssRules[0].style
+style: CSSStyleDeclaration
+		0: "width"
+		1: "height"
+		2: "background-color"
+		*/
+	</script>
+</body>
+</html>

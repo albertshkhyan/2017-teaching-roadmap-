@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>when onload</title>
+
+</head>
+<body>
+	
+
+<a href="https://google.com" target="_blank">google.com</a>
+	<script>
+//
+
+		window.onload = function() {
+			alert('բրազերը բեռվեց');
+		}
+
+
+// onunload -> not working ?
+		// window.onbeforeunload = function() {
+		// 	// document.write('hello');
+		// 	alert('goodbye');
+		// }
+
+		/*
+ձկնորսությանը շատ նմանա, դուք սպասում եք մինչև ձուկը բռնվի
+
+onload - ը աշխատումա կայքը refresh անելուց հետո։
+
+		*/
+		
+	</script>
+</body>
+</html>

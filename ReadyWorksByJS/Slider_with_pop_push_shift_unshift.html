@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slider </title>
+
+	<style>
+		/**/
+		* {
+			margin: 0;
+		}
+
+		.carousel {
+			
+		}		
+
+		.carousel button{
+			position: absolute;
+			top: 50%;
+			margin: 0px 10px;
+		}
+		.carousel button:first-child {
+			left:0px;
+		}
+		.carousel button:last-child {
+			right:0px;
+		}
+		.carousel img{
+			width: 100%;
+			height: 100vh;
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<div class="carousel">
+		<button onclick="whenClickLeft(event)"> &lt;&lt; </button>
+		<img src="../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/ImagesFor1366x768/img (1).jpg" alt="">
+		<button onclick="whenClickRight(event)"> &gt;&gt; </button>
+
+	</div>
+	<script>
+		//
+
+		let arrOfImages = [
+			'../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/ImagesFor1366x768/img (1).jpg',
+			'../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/ImagesFor1366x768/img (2).jpg',
+			'../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/ImagesFor1366x768/img (3).jpg',
+			'../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/ImagesFor1366x768/img (4).jpg',
+		];
+		function whenClickLeft(e) {
+			let getImg = e.target.nextElementSibling;
+			let takeLast = arrOfImages.pop();
+			arrOfImages.unshift(takeLast);
+			getImg.src = arrOfImages[0];
+		}
+		
+		function whenClickRight(e) {
+			let getImg = e.target.previousElementSibling;
+			let takeFirst = arrOfImages.shift();
+			arrOfImages.push(takeFirst);
+			getImg.src = arrOfImages[0];
+		}
+
+
+
+
+	</script>
+</body>
+</html>

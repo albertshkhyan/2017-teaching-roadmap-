@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dataset</title>
+
+<style>
+	#wrapper{
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+		}
+		#red{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+
+		#green{
+			width: 100px;
+			height: 100px;
+			background-color: green;
+		}
+
+		#blue{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+
+</style>
+</head>
+
+<div id="wrapper">
+	<div id="red" class="color" data-bg="#ff0000" onclick="changeBg(event)"></div>
+	<div id="green" class="color" data-bg="#00ff00" onclick="changeBg(event)"></div>
+	<div id="blue" class="color" data-bg="#0000ff" onclick="changeBg(event)"></div>
+</div>
+<body>
+	<script>
+/*
+dataset - HTMLElement.dataset հատկությունը թույլ է տալիս կարդալ թեգի data ատրիբուտը, ինչպես նաև փոխել այն։
+
+DOMStringMap -ը դա օբյեկտա, որը նախատեսված է data ատրիբուտները պահելու համար, օրինակ՝
+DOMStringMap {
+bg: "00ff00"
+}
+
+*/
+
+let clr = document.querySelectorAll('.color')
+function changeBg(e) {
+	// console.log(e.target);
+	// console.log(e.target.dataset);//DOMStringMap {bg: "00ff00"}
+	// console.log(e.target.dataset.bg);//working -> #0000ff
+	document.body.style.backgroundColor = `${e.target.dataset.bg}`;
+}
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<img src="../About_My_Lessons_HELP_FILES/OOP/images_of_oop/encapsulation-1-770x360.png" alt="">
+	<script>
+		//
+
+
+		/*
+		Ժառանգականության ժամանակ մենք կարող ենք, կառավարել class-ների հատկությունների և մեթոդների հասանելիությունը։
+			◼ public - հակտությունը կամ մեթոդը հասանելի է, ցանկացած տեղ մեր կոդում։(with this keyword)
+
+			◼ private(անձնական) - հակտությունը կամ մեթոդը հասանելի չէ,  տվյալ class-ից ստացած instance-ների համար։
+					⚠ Լոկալ փոփոխականները նույնպես կարելիա համարել private: (example in 53 line)
+					⚠ Որպեսզի հասանելի լինի տվյալ class-ից ստացած instance-ների համար, պետքա ստեղծել մեթոդ ու ետ մեթոդը վերադարձնի հատկությունը կամ փոփոխականը։ (example in 133 line)
+
+					⚠ private հատկության հանդեպ կարելիա հասանելիություն ստանալ բայց private փոփոխականի հանդեպ ոչ
+
+			◼ protected - հակտությունը կամ մեթոդը հասանելի է, համ  տվյալ class-ի համար համել class-ից ժառանգող օբյեկտների համար։ Բայց ոչ բոլոր կլասսների համար, միայն այն կլասսի համար որի մեջ ստեձղծված է հատկությունը։
+
+
+
+
+
+🔰⚠👁‍🗨 js-ում private, protected և public դրանք ուղակի հասկացողույուններում։ Իսկ ուրիշ ծրագրավորման լեզուներում դրանք բանալի բառեր են։
+ օրինակ PHP-ում՝
+ 		public $public = 'Public';
+    protected $protected = 'Protected';
+    private $private = 'Private';
+
+    Իսկ js-ում private, protected և public սարում են ֆունկցիաների շնորհիվ։
+		*/
+
+
+
+//without variable not private
+
+		// function Auto(m, c, e) {
+		// 	this.marka = m;
+		// 	this.color = c;
+		// 	engine = e;//not private ❌
+		// 	engine = e;//not private ❌
+
+		// }
+
+		// let auto = new Auto('BMW', 'red', '1.8');//👌
+
+		// // console.log(marka); //ReferenceError: marka is not defined
+		// console.log(engine); //Պարտադիր պիտի new արվի որ դառնա window-ի հատկություն  - 1.8
+		// /*>window 
+		// 		engine: "1.8"
+
+		// */
+
+
+
+		/* ++++++++++++++++++++++ private ++++++++++++++++++++++ */
+
+// //⚠private լինելու համար պետքա պարտադիր փոփոխականի մեջ լինի - բայց որպեսզի իրան կարողանանք օգտագործել մեզ պետքա getter և settr մեթոդներ
+		// function Auto(m, c, e) {
+		// 	this.marka = m;
+		// 	this.color = c;
+		// 	// var engine = e;//with var IS PRIVATE ✔
+		// 	let engine = e;//with let IS PRIVATE ✔
+			//without var or let not private
+
+		////// how create private method /////////
+		// let go = function() {
+		// 	console.log('avton gnac');
+		// }
+
+
+		// }
+
+		// let auto1 = new Auto('BMW', 'red', '1.8');
+		// auto1.go();
+
+
+
+
+
+
+
+
+
+		/* ********************* can be poperty private ********************* */
+
+
+
+
+// 		function Auto(m, c, e) {
+// 			this.marka = m;
+// 			this.color = c;
+// 			// var engine = e;//with var IS PRIVATE ✔
+// 			// let engine = e;//with let IS PRIVATE ✔
+// 			//without var or let not private
+
+
+
+
+// 		}
+
+
+
+
+// Auto.engine = '2.1';//IS PRIVATE - որովհետր հանանելիա միայն տվյալ class-ի համար
+// console.log("Auto.engine", Auto.engine);//output 2.1 - 
+
+
+// 		let auto = new Auto('BMW', 'red', '1.8');
+// 		console.log("auto", auto);
+////////////////
+// console.log("engine", engine);
+
+
+// Auto.engine = '2.1';//constructor-ի մեջ ավելացավ հատկությունը
+// console.log("auto.engine", auto.engine);//կա բայց չի գտնում
+
+//⚠ Եթե ուզում ենք օբյեկտի համարել հասանելի լինի պետքա գրել prototype-ի մեջ, բայց ետ դեպքում private չի լինի այլ public
+ // Auto.prototype.engine = '2.1';
+ // console.log("auto.engine", auto.engine);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------------------*/
+ /*private-ը դա հատկություններ և մեթոդներ են որոնց հանդեպ հասանելիություն կարող ենք ստանալ միայն օբյեկտի մեթոդի միջոցով։ ✔✔
+
+ */
+
+
+
+//  		function Auto(m, c) {
+// 			this.marka = m;
+// 			this.color = c;
+
+// 			this.showPrivate = function() {
+// 				console.log("engine", Auto.engine);
+// 				return Auto.engine;
+// 			}
+
+// 		}
+
+
+
+
+// Auto.engine = '2.1';//
+// let auto = new Auto('BMW', 'red');
+
+
+// // console.log("auto.engine", auto.engine);//undefiend
+// auto.showPrivate();
+
+
+
+
+
+/* protected */
+
+
+	</script>
+</body>
+</html>

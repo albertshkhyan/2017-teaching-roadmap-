@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ondblclick</title>
+
+	<style>
+	*{
+		margin: 0;
+	}
+		
+		img {
+			height: 100vh;
+		}
+	</style>
+</head>
+<body>
+
+	<img src="../.../../../../IMAGES_and_ICON/smallBeautyImages/img2.jpg" ondblclick="foo()">
+	<script>
+		
+		//
+
+let image = document.querySelector('img');
+function foo() {
+image.style = `
+width:100%;
+`;
+}
+
+	</script>
+</body>
+</html>

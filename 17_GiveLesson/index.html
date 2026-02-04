@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+//
+
+
+/* 
+
+*/
+///////// Task -> Իչպես զանգվածի երկաորությունը կարճացնել
+// let arr = [1,2,3,4,5,6,7,8,9];
+// console.log("arr", arr);
+// arr.length = 3;
+// console.log("arr", arr);
+
+///////////// ինչպես ստանալ զանգվածի մեջից պատահական տարր ///////////
+
+// let arr = ['a','b','c','d','e','f','g','h','i'];
+// let randomElem = Math.round(Math.random() * arr.length);
+// console.log(arr[randomElem]);
+
+
+////// Ինչ կցուցադրի սա՝
+// var arr = [1, 2, 3];
+
+// var arr2 = arr;
+// arr2[0] = 5;
+
+// alert( arr[0] );
+// alert( arr2[0] );
+// console.log(arr);
+// console.log(arr2);
+
+
+// let a = 5;
+// let o = {a : 5};
+
+///////// search in array
+// let arr = ["test", 2, 1.5, false];
+
+// function findInArr(arrOfIndex, valueOfElem) {
+// 	for(let i = 0; i < arrOfIndex.length; ++i) {
+// 		if(arrOfIndex[i] == valueOfElem) {
+// 			return arrOfIndex[i];
+// 		}
+// 	}
+// 	return 'chka et tarry arr-i mej';
+// }
+
+// console.log(findInArr(arr, 1.2));
+		
+
+
+////// Ինչի ներքին օբյեկտի հատկությունները չի գտնում
+		// let obj = {
+		// 	a : {
+		// 		b : {
+		// 			c : 10
+		// 		}
+		// 	}
+		// }
+
+		// console.log(obj);	
+
+/*
+Object
+a:
+	b:
+		c: 10
+		__proto__: Object
+	__proto__: Object
+__proto__: Object
+*/
+
+
+		// console.log('c' in obj.a.b); //false
+		// console.log('c' in obj); //false
+
+
+
+/*********************************************/
+
+// reference ??? - երբ լեկալում փոխում էինք գլոբալում ել էր փոխվում ինչպես վերացնել այդ խնդիրը։
+// Պառ․` ԿԼՈՆ -  Ստեղծում ենք տվյալ օբյեկտի համար մի հատ դատար օբյեկտ ու copy ենք անում ետ գլոբալ օբյեկտում գտնվող հատկությունները մեկ ուրիշ դատարկ օբյեկտի մեջ ու վերջում փոփոխութոյւն ենք անում։ -> prmitive_vs_reference.html
+
+/*********************************************/
+
+// let pen1 = {pen : 'red pen'};
+// let pen2 = {};//սարքւմ են դատարկ օբյեկտ 
+
+// for(let key in pen1) {
+// 	pen2[key] = pen1[key];
+// }
+
+// // console.log("pen2", pen2);//pen: "red pen"
+
+// pen2.pen = 'blue pen';
+
+// //չփոխվեց հիմնական օրինակի մեջ
+// console.log("pen1", pen1);//{pen: "red pen"} 
+// console.log("pen2", pen2);//{pen: "blue pen"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+for in -ը զանգվածի հետ օգտագործել վատ պրակտիկա է ահամարվում, սովարկան for -ը վելի արագ է չնայած նրա որ ավելի բարդ կարուցվածք ունի։
+*/
+
+// var arr = ["Яблоко", "Апельсин", "Груша"];
+
+// for (var key in arr) {
+//   alert( arr[key] ); // Яблоко, Апельсин, Груша
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

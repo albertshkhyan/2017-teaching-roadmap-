@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home work</title>
+</head>
+<body>
+
+<select name="" id="">
+	<option value="Ispaniya">Ispaniya</option>
+	<option value="Vrastan">Vrastan</option>
+	<option value="Hndkastan">Hndkastan</option>
+	<option value="Argentina">Argentina</option>
+	<option value="Hunastan">Hunastan</option>
+	<option value="Avstralia">Avstralia</option>
+	<option value="Chinastan">Chinastan</option>
+	<option value="Anglia">Anglia</option>
+</select>
+
+	<script>
+		////////// How_to_Work_with_DOM_Elements ////////////////
+
+/////////// ատրիբուտի արժեքը ստանալ առանց data- ատռրբուտի//////////
+
+//Task Հենց գտավ հունստանը թող  alert անի հունստան բառը ու իրա ինդեքսը։
+// /!\ getAttrivut-ի փոխարեն dataset է օգտաագործվում
+
+let slc = document.querySelectorAll('select > option');//for object
+slc.forEach(function(elem, i, arr){
+	// console.log(elem.getAttribute('value'));//Ispanya, Hunastan, Vrastan
+	if(elem.getAttribute('value') == 'Hunastan') {
+		alert('Index of Hunastan = ' + i);
+		// console.log(arr);//NodeList(8) -> 8 hat option
+	}
+});
+
+	</script>
+</body>
+</html>

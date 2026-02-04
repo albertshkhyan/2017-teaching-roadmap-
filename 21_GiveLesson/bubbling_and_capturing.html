@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: underline;
+            color:green;
+            font-size: 50px;
+        }
+
+        .d1,
+        .d2,
+        .d3 {
+            outline:1px solid;
+            padding: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .d1 {
+            background-color: cyan;
+        }
+        .d2 {
+            background-color: magenta;
+        } 
+        .d3 {
+            background-color: yellow;
+        }
+
+        h2 {
+            color:red; 
+        }
+
+        h3{
+            text-indent: 40px;
+            color:blue;
+            font-style: italic;
+        }
+
+
+        /*--------------------*/
+        
+
+
+        .dd1 {
+            background-color: cyan;
+        }
+        .dd2 {
+            background-color: magenta;
+        } 
+        .dd3 {
+            background-color: yellow;
+        }
+
+        .dd1,
+        .dd2,
+        .dd3 {
+            outline:1px solid;
+            padding: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /*---------------------*/
+        
+        .ddd1 {
+            background-color: cyan;
+        }
+        .ddd2 {
+            background-color: magenta;
+        } 
+        .ddd3 {
+            background-color: yellow;
+        }
+
+        .ddd1,
+        .ddd2,
+        .ddd3 {
+            outline:1px solid;
+            padding: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- 
+    * մի event-ը վարաքում մյուս event-ին։
+ -->
+<h1>bubbling and capturing</h1>
+
+ <img src="../Images_by_Lessons/bubbling1.gif" alt="bubbling"> <br><br>
+ <img src="../Images_by_Lessons/capturing1.png" alt="capturing1">
+ <img src="../Images_by_Lessons/capt2.PNG" alt="capturing2">
+ <img src="../Images_by_Lessons/capt3.PNG" alt="capturing3">
+
+
+<h2>Այստեղ կատարվում է bubbling - onclick ատրիբուտով</h2>
+<div class="d1" onclick="alert('d1')">d1
+    <div class="d2" onclick="alert('d2')">d2
+        <div class="d3" onclick="alert('d3')">d3</div>
+    </div>
+</div>
+
+<div>
+    <div>
+        <div></div>
+    </div>
+</div>
+<br>  
+<br>  
+<br>
+<br>
+<hr>  
+<br>  
+<br>  
+<br>
+
+<h2> addEventListener մեթոդով իրադարձությունները։ </h2>
+<h3>addEventListener-ով ելա կատարվում bubbling</h3>
+<h3>
+    Երբ addEventListener - ին 3 պատռամետր չենք տալիս, ուղղակի bubbling է կատարվում։ <br>
+    Բայց եթե ուզում ենք ամենաներսինի վրա click անելուց հետո վերեվից իջնի ներքև այլ ոչ թե նեքրվից վերև ապա addEventListener-ին պետք է տալ 3 պառամետր, որպես <b>true</b>
+</h3>
+<div class="dd1 forLoop">dd1
+    <div class="dd2 forLoop">dd2
+        <div class="dd3 forLoop">dd3</div>
+    </div>
+</div>
+
+<br>  
+<br>  
+<br>
+<br>
+<hr>  
+<br>  
+<br>  
+<br>
+
+<h2>ինչպես կանգնեցնել bubbling-ը</h2>
+<h3>when give addEventListener 3 parametr, true or false <br>
+	⚫ true - The event handler is executed in the capturing phase <br>
+	⚫ false- Default. The event handler is executed in the bubbling phase <br>
+
+</h3>
+<div class="ddd1 forCapturing">ddd1
+    <div class="ddd2 forCapturing">ddd2
+        <div class="ddd3 forCapturing">ddd3</div>
+    </div>
+</div>
+
+
+
+<h2>իս եթե ուզում ենք ոչ bubbling կատարվի ոչ ել capturing, ապա պետք է օգտագործել stopPropogation() մեթոդը։</h2>
+
+<br>  
+<br>  
+<br>
+<br>
+<hr>  
+<br>  
+<br>  
+<br>
+
+<div class="dddd1 forStopBubbling">dddd1
+    <div class="dddd2 forStopBubbling">dddd2
+        <div class="dddd3 forStopBubbling">dddd3</div>
+    </div>
+</div>
+
+
+    <script>
+        //
+
+
+
+
+        
+// 
+/*
+classList - ը վերադարձնումա տվյալ տարրին տված բոլոր կլասսները, անհատական ամեն մի կլասսին կպնելու համար։
+
+*/
+
+let getdd = document.querySelectorAll('.forLoop');
+for(let i = 0; i < getdd.length; ++i) {
+    // console.log(getdd[i]);
+    // console.log(getdd[i].className == 'dd1');//dd1forLoop
+    // console.log(getdd[i].classList[0]);//dd1
+    getdd[i].addEventListener('click', () => {
+        if(getdd[i].classList[0] == 'dd1') {
+            alert('dd1');
+        }
+        else if(getdd[i].classList[0] == 'dd2') {
+            alert('dd2');
+        }        
+        else if(getdd[i].classList[0] == 'dd3') {
+            alert('dd3');
+        }
+    });
+}
+
+
+
+let getddd = document.querySelectorAll('.forCapturing');
+let x = 1;
+for(let i = 0; i < getddd.length; ++i) {
+    // console.log(getddd[i]);
+    getddd[i].addEventListener('click', (e) => {
+        (i == 0) ? alert('ddd1') : "";
+        (i == 1) ? alert('ddd2') : "";
+        (i == 2) ? alert('ddd3') : "";
+        e.stopPropagation();
+
+//TypeError: e.stopPropogation is not a function
+// console.warn("e", e.stopPropogation());
+
+////////////////
+// event.stopPropogation is not a function
+
+    // });
+    // },true);//կատարվում է capturing
+    },false);//dafault կատարվում է bubbling
+
+
+}
+
+
+
+
+/* ⚠ հեշտ հիշելու համար կարելիա պատկերացնել, որ addEventListener-ը մեզ հարզնումա ասումա՝
+ - addEventListener ։  Ուզում ես վերեվից իջնի ներքև
+ - դու։ Հա
+*/
+
+    </script>
+</body>
+</html>

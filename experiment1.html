@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+
+<p>
+	Lorem  ipsum dolor, sit amet consectetur adipisicing elit. Aperiam exercitationem, laborum commodi, reiciendis odio alias doloribus mollitia non, sint necessitatibus dicta? Est nostrum perspiciatis maxime neque dolorem quisquam labore accusantium saepe praesentium, deserunt officia illum sunt a asperiores ea provident.
+</p>
+
+<input type="text">
+
+<div>
+</div>
+
+
+<body>
+
+
+	<script>
+
+let getP = document.querySelector('p');
+let getInp = document.querySelector('input');
+let getDiv = document.querySelector('div');
+
+let getPText = getP.innerText;
+// console.log('arrPText', arrPText);
+
+// let arrPText = getPText.split(' ');//❌😭 - span>span
+getInp.oninput  = e => {
+	let arrPText = getPText.split(' '); 
+	console.log('arrPText', arrPText);
+	// arrPText = arrPText2;
+	getDiv.innerHTML = '';  
+
+	for(let i = 0; i < arrPText.length; ++i) {
+		let arrSmall = arrPText[i].toLowerCase();
+		let inpSmall = getInp.value.toLowerCase();
+		if( arrSmall.indexOf(inpSmall) != -1  && inpSmall != ''){
+			getDiv.innerHTML += `
+			<h4> ${arrPText[i]} </h4>
+			`;
+			
+			
+			arrPText[i] = `<span style="color:red">${arrPText[i]}</span>`;
+			
+			
+		}
+		
+		
+	}
+	getP.innerHTML = arrPText.join(' ');
+
+}
+
+
+
+
+		</script>
+
+</body>
+</html>

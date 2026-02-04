@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*++++++++++++++++++++++++++Very easy task by Arrays++++++++++++++++++++++++++*/
+
+////🔰 arr զանգվածի մեջից արտածել Hello, world!, ոչ թե Hello, ,world,!
+// var arr = ['Hello, ', 'world', '!'];
+// alert(arr);//Hello, ,world,!👎
+// alert(arr[0] + arr[1] + arr[2]);//Hello, world!👍
+
+
+////🔰 arr զանգվածի մեջի Hello տարրը փոխել սարքել Godbay և արտածել, Goodbay, world!
+
+////🔰 Ստեղծել arr զանգված հետևյալ տարրերով 2, 5, 3, 9
+        //բազմապատկել զանգվածի առաջին տարրը երկրորդով
+        //երրերդ տարրը չորորդով
+        //Հետո result փոփոխականի մեջ պահել առաջին ու երկրրդ և երորդ ու չորորդ տարրերի գումարը, և արտածել result փոփոխականը
+        // 2*5=10
+        // 3*9=27
+        // result = 10+27=37
+        // alert(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*++++++++++++++++++++++++++++Simple Tasks by Array++++++++++++++++++++++++++++*/
+
+////🔰 - Արտածել զանգվածի մեջի թվերի միջին թվաբանականը։
+    ////⚠ թվերի միջին թվաբանականը - դա երբ որ թվերի գումարը բաժանում ենք թվերի քանակի վրա։ Օրինակ՝ 2 6 1 -> 2+6+1=9/3 = 3
+
+// var averageNumbs = [10,12,25,18];//10+12+25+18 = 65/4 = 16.25
+// var sum = 0;
+// for(var i = 0; i < averageNumbs.length; ++i) {
+//     sum = sum +  averageNumbs[i];
+// }
+// alert(sum/averageNumbs.length);
+
+
+////🔰 - Արտածել զանգվածի մեջի 0 ների քանակը։
+// let arr = [10, 101, 1101, 0];
+// let qanak = 0;
+// for(var i = 0; i < arr.toString().length; ++i) {
+//     if(arr.toString()[i] === '0') {
+//       qanak++;
+//     }
+// }
+// console.log(qanak);
+
+
+////🔰 - Սորտավորել այս զ/ծ-ը օգտագործելով sort մեթոդը։
+// let arr = ['b','c','f','k','t','z'];
+
+
+////🔰 - Դուրս բերել զ/ծ-ի բոլոր զույգ թվերը
+
+
+////🔰 - Դուրս բերել այս զ/ծ-ի մեջից 5 թիվը
+// let arr = [
+//     [1,2,3],
+//     [4,5,6],
+//     [7,8,9],
+// ]
+
+////🔰 - Դուրս բերել զ/ծ-ի բոլոր կենտ թվերը
+    
+////🔰 -  Արտածել  զանգվածի թվերի արտադրյալը
+// var arr = [1, 2, 3, 4];
+// var result = 1;
+// for (var i = 0; i < arr.length; i++) {
+// 	result = result * arr[i];
+// }
+// alert(result);
+
+////🔰 - [2, 5, 9, 15, 0, 4 ] - Դուրդ բերել են թվերը, որը մեծ է 3 բայց փոքրա 10-ից
+
+// var arr = [2, 5, 9, 15, 0, 4];
+// for (var i = 0; i < arr.length; i++) {
+// 	if (arr[i] > 3 && arr[i] < 10) {
+// 		alert(arr[i]);
+// 	}
+// }
+
+
+////🔰 - Արտածել  զ/ծ-ի ամենա փոքր տարրը
+
+// var arr = [2, 5, 9, 15, 0, -2];
+// var smallest = arr[0];
+// for(var i = 0; i < arr.length; ++i) {
+//     if(smallest > arr[i]) {
+//         smallest = arr[i]
+//     }
+
+// }
+// alert(smallest);
+
+
+
+////🔰 - Արտածել զ/ծ-ի ամենա մեծ տարրը
+// var arr = [2, 5, 9, 15, 0, -2];
+// var greatest = arr[0];
+// for(var i = 0; i < arr.length; ++i) {
+//     if(greatest < arr[i]) {
+//         greatest = arr[i]
+//     }
+
+// }
+// alert(greatest);
+
+
+
+
+////🔰 Տպել զանգվածում բոլոր զույգ թվերի արտադրյալը
+// var arr = [1,2,3,4,8];
+// var res = 1;
+// for(var i = 0; i < arr.length; ++i) {
+//     if(arr[i] % 2 == 0) {
+//         res = res * arr[i];
+//     }
+// }
+
+// console.log(res);
+
+
+
+
+
+
+
+
+
+
+
+
+////🔰 Զանգվածի բոլոր բացասական թվերը դարձնել 0
+    //Օրինակ․՝ [1,2,-5,-6,8] -ի դեպքում կստանանք [1,2,0,0,8]
+
+    // var arr = [1,2,-5,-6,8];
+    // for(var i = 0; i < arr.length; ++i) {
+    //     if(arr[i] < 0) {
+    //         arr[i] = 0;
+    //     }
+    // }
+
+    // console.log(arr);
+
+
+
+
+////🔰Տպել զանգվածի այն տարրերը որոնք ավելի մեծ են քան զանգվածի տարրերի միջին թվաբանականը
+    //Օրինակ․՝ [1,2,3,4,5] -ի դեպքում միջին թվաբանականը կլինի (1+2+3+4+5)/5 = 3 ուստի պետք է տպել 4 և 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+////🔰Զանգվածից հեռացնել կրկնվող տարրերը ✔
+    //Օրինակ․՝ [55,44,55,30,30] -ի դեպքում կստանանք [55,44,30]
+
+// var arr =  [55,44,55,30,30,10, 23, 10, 100, 100, 100, 55, 'alik', 'alik'];
+// var arr =  [10,20,10,30,10,10,10,10,10];
+
+// var arr =  ['Donald', 'Donald', 'Artur', 'John','Artur', 'Donald', 'Tom', 'Donald' , 'Samon','John', 'Artur'];
+// // console.log(arr.splice(2,1));
+// // console.log("arr", arr);
+// for(var i = 0; i < arr.length; ++i){
+//     // console.log( arr.indexOf(arr[i]) != arr.lastIndexOf(arr[i]) );
+//     for(var j = i; j < arr.length; ++j) {
+//         if(arr.indexOf(arr[i]) != arr.lastIndexOf(arr[i])) {
+//                 // console.log(arr[i]);
+//                 arr.splice(arr.lastIndexOf(arr[i]),1);
+
+//         }
+//     }
+
+// }
+
+// console.log("arr", arr);
+
+
+
+
+////with one Loop
+
+// var arr = [10,20,10,30,10,10,10,10,20,10,10,30,10,45];
+// var arr =  ['Donald', 'Donald', 'David',  'Artur', 'John', 'David', 'Donald', 'Tom', 'Donald' , 'Samon','John', 'Artur'];
+// for(var i = 0; i < arr.length; ++i) {
+//   if( arr.indexOf(arr[i]) != arr.lastIndexOf(arr[i]) ) {
+//     arr.splice(arr.lastIndexOf(arr[i]),1);
+//     i = (i >= 1) ? i - 2 : i;
+
+//   }
+
+// }
+// console.log('arr', arr);
+
+
+
+var arr = [
+            // 'Donald',
+            // 'Donald',
+            // 'David',
+            // 'Artur',
+            // 'John',
+            // 'David', 
+            // 'Donald',
+            // 'Tom',
+            // 'Donald',
+            // 'Samon',
+            // 'John',
+            // 'Artur'
+
+            // 7,
+            // 5,
+            // 8,
+            // 7,
+            // 5,
+
+        ];
+
+
+        for (let i = 0; i < arr.length; ++i) {
+            console.log(arr.indexOf(arr[i]), arr.lastIndexOf(arr[i]));
+            if (arr.indexOf(arr[i]) != arr.lastIndexOf(arr[i])) {
+                arr.splice(i, 1);
+            }
+        }
+        console.log(arr);
+
+
+
+
+
+
+
+
+
+
+
+
+////🔰Հայտարարել զանգված՝ կազմված թվերից ։ Փոխել զանգվածի մեծագույն և փոքրագույն տարրերի տեղերը
+    //Օրինակ․՝ [1,2,3,4] -ի դեպքում կարող ենք ստանալ [4,2,3,1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////🔰Զանգվախի մեջից դուրս բերել պարզ թվերը։✔
+
+
+////⚠ քանի որ ցանկացած թիվ մեկի կլոր բաժանվումա պետք չի մեկնել հաշվել, թող հաշվենք են թվերը որոնք բաժանվում ենք միայն իրենք իրենց վրա։
+////Correct working
+// var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+// var arr = [2,,1,2,3,4,5,6,7,8,9,10,3];
+// ////  2, 3, 5, 7, 11, 13, 17
+// for(var i = 0; i < arr.length; ++i) {
+//     var qanak = 0;
+//     for(var j = 2; j <= arr[i]; ++j) {
+//         if(arr[i] % j) {
+//             continue;
+//         }
+//         qanak++;
+
+//     }
+//     if(qanak == 1) {
+//         document.writeln(arr[i]);
+//     }
+    
+// }
+
+
+
+///// aynpes anel vor users-i mejic igakanery avelanan igakan zangvaci mej, arakannery arakan isk anchapahasnery anchapahas zangvaci mej
+// let users = [
+//      ['Narek','Hakobyan', 25, 'arakan'],
+//      ['Aram' ,'Karapetya', 17, 'arakan'],
+//      ['Gayane' ,'Vardanyan', 20, 'igakan'],
+//      ['Anna' ,'Ayvazyan', 14, 'igakan'],
+//      ['Hakob','Hakobyan', 19, 'arakan'],
+
+// ];
+
+// let igakan = [];
+// let arakan = [];
+// let anchapahas = [];
+// console.log('users', users);
+
+// console.log('igakan', igakan);
+// console.log('arakan', arakan);
+// console.log('anchapahas', anchapahas);
+
+// console.log(users.slice(2,3));//gayane
+// console.log(users.slice(3,4));//anna
+
+// for(let i = 0; i < users.length; ++i) {
+//     if(users[i][3] == 'igakan' ) {
+//         let takeIgk = users.slice(i,i+1);
+//         igakan.push(takeIgk);
+
+//     }
+//     if(users[i][3] == 'arakan') {
+//         let takeArk = users.slice(i,i+1);
+//         arakan.push(takeArk);
+//     }
+//     if(users[i][2] < 18) {
+//         let anchap = users.slice(i,i+1);
+//         console.log("anchap", anchap);
+//         anchapahas.push(anchap);
+//     }
+
+// }
+
+// // console.log("users", users);
+// // console.log("igakan", igakan);
+// // console.log("arakan", arakan);
+// // console.log("anchapahas", anchapahas);
+// console.log(igakan,arakan,anchapahas);
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

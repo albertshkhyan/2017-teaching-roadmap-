@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		/**/
+
+/*		
+		form,div, p {
+			border: 1px solid #000;
+			padding: 30px;
+			text-align: center;
+		}
+*/
+
+	</style>
+</head>
+<body>
+
+<!-- <form id="frm" action=""  onclick="foo(event)">FORM
+	<div>DIV
+		<p>P</p>
+	</div>
+</form>
+ -->
+
+ <!-- <input id="inp" type="text"> -->
+
+ <!-- <div id="div1" style="width: 100px;height: 100px;background: red;"></div> -->
+
+
+
+
+
+
+	<script>
+		//
+// frm.addEventListener('click', foo, true);
+
+
+
+//Երբ որ p-ին click տանք իրա ծնողի վրա չի աշխատի պիտ ծնողին տանք որ իրա child-ի վրա ազդի։
+
+
+		// function foo(e) {
+		// 	alert(e.target.tagName + ' ' + e.eventPhase);
+		// }
+
+///// how di capturing
+
+
+
+
+
+//4
+// ինչպես ջնջել event-ը -> drag and moove
+
+////////// ... spread and rest ??
+
+// new Object(true);
+
+
+
+
+/****************** Ամփոփոում *****************
+
+⚫ Ինչա preventDefault() - այս մեթոդը բրաուզերի սեփական կողմից իրադարձությունը չեղյալ հայտարարելու համար։
+⚠ preventDefault  -ը չի կարա դադաեցնի event-ի տարածումը դրա համար կա event.stopPropagation() մեթոդը։ ()
+
+2 Ձև կա իրադարաձությունը cancel անելու՝
+		1․ event.preventDefault()
+		2․եթե event-ը տվածա addEventListener -ով ուղղակի ետ դեպքոում կարող ենք return false-անել։
+
+Ավտոմատ կերպով առաջացած event-ները
+	ondblclcik -ը տեքստի վրա selection է անում
+	input-ային դաշտի վրա ինչ որ ստեղնաշարի վրա սեղմելիս ավտոմատ կերպով առաջանումա սիմվոլ։
+	window-ի վրա scroll անելուց ավտոմատ իջնումա ներքեվ։
+
+
+*/
+
+// div1.onmouseout = function() {
+// 	div1.style = 'display:none'
+// }
+
+
+
+
+
+
+
+
+
+
+/*New Theme 
+
+Բացատրել թե որ event-ը որի հետա օգտագործվում։ 
+	Օրինակ՝
+		onload-ը 
+		🔎 25_GiveLesson/DOM_Lesson7.html
+
+
+*/
+
+
+	</script>
+</body>
+</html>

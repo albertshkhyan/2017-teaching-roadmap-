@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+	body{
+		margin: 0;
+	}
+
+
+	div {
+		border:2px solid;
+	
+	}
+
+</style>
+</head>
+<body>
+
+
+	<div></div>
+
+
+	<script>
+
+
+		//
+
+////Task -> Իրար հետևից թող հաջորդաբար td-ներ տպի համարկալված
+
+
+// 				var a=0;
+// 		var b=0;
+// 		var tablerow;
+// 		var tabledata;
+// 		function f(){
+// 			if(a==0){
+// 				document.write(`<table style="
+// 					width:100%; 
+// 					height:100vh;
+// 					border-collapse: collapse;
+// 					">`);
+// 			}
+
+// 			if(b==0){
+// 				document.write('<tr>');
+// 			}
+
+
+// 			b++
+// 			a++;
+
+// 			document.write('<td style="width:50px; height:50px; border:2px solid;">'+a+'</td>');
+
+// 			if(b==10){
+// 				document.write('</tr>');
+// 				b=0;
+// 			}
+// // b=0;
+
+
+// if(a==50){
+// 	document.write('</table>');
+// 	clearInterval(set);
+// }
+
+// }
+// var set=setInterval(f,100);
+
+/****************************************/
+//another varinat timer table
+
+// 	let a = 0;
+// let b = 0;
+// let stop = setInterval(function () {
+
+// 	if(a == 0) {
+// 		document.write(`<table border=1 width=500 height=500">`);
+// 	}
+
+// 	if(b == 0){
+// 		document.write(`<tr>`);
+// 	}
+// 	a++;
+// 	b++;
+// 	document.write(`<td style="background:lightgreen;">${a}</td>`);
+	
+// 	if(b == 8){
+// 		document.write(`</tr>`);
+// 		b = 0;
+
+// 	}
+
+
+// 	if(a == 64) {
+// 		document.write(`</table>`);
+// 		clearInterval(stop);
+
+// 	}
+
+// },100);
+
+
+
+/*****************************/
+
+// let a = 0;
+// let b = 0;
+// setInterval(function () {
+// 	if(a == 0) {
+// 		document.write(`<table border=1 width=500 height=500>`);
+// 	}
+
+// 	if(b == 0) {
+// 		document.write(`<tr>`);
+// 	}
+// 	a++;
+// 	b++;
+// 	document.write(`<td>${a}</td>`);
+
+// 	if(b == 8) {
+// 		document.write(`</tr>`);
+// 		b = 0;
+// 	}
+
+
+// 	if(a == 64){
+// 		document.write(`</table>`);
+// 	}
+
+
+
+// },100)
+
+
+
+/************************************************/
+////Ունեք մի հատ div html-ում, նենց ենք անում որ prompt-ի մեջ ինչ գրենք ետ գրածը հայտնիվի ետ div-ի մեջ h1 -ի տեսքով։
+let p = prompt('write some text');
+let getH1 = document.getElementsByTagName('div')[0];
+getH1.innerHTML = `<h1>${p}</h1>`;
+
+
+
+</script>
+</body>
+</html>

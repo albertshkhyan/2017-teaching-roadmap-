@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function 7</title>
+</head>
+<body>
+	
+
+
+	<script>
+		
+		/******************Named Function Expression******************/
+// # function expression - ին կարլիա տալ անուն, ու ինքը կկոչվի Named Function Expression։
+// # NFE - ը նախատեսվածա ռեկուրսիաների հետ աշխատելու համար։
+
+
+// * NFE - հասանելիա միայն ֆունկցիայի մեջ։
+// var f = function foo(name) {
+//   alert( foo ); // изнутри функции - видно (выведет код функции)
+// };
+
+// f();
+// foo();//աշխատումա միայն ր ֆունկցիայի մեջ
+// alert( foo ); // с
+
+//# 
+
+
+
+/*-----------------function-ի անունը դա փոփոխական է-----------------*/
+// function foo() {
+// 	alert('hello');
+// }
+// console.log(foo);
+// foo = 'world';
+// console.log(foo);
+// foo();//foo is not a function - քանի որ արժեքը փոխին
+
+
+// /!\ NFE - ի անունը չի կարելի փոխել։ Օրինակ՝
+
+// var func = function foo(name) {
+//   // foo = "Hello"; // попытка перезаписи
+//   alert( foo ); // function... (перезапись не удалась)
+// };
+// func();
+
+/*-------------------------------------------*/
+//function expression-ին անուն տալիս են որ հետահայումա կարողանան կանչեն ուրիշ ֆունկիաների մեջ
+///////????
+// function f(x) {
+// 	if(x == 0 || x == 1) {
+// 		return x;//x * 3 * 2 * 1(if) = 24
+// 	}
+// 	else {
+// 		return x *  f(x-1);
+// 	}
+
+// }
+
+
+// var g = f;
+// // alert(g(4));//24 -> working
+// f = null;
+// g();//f is not a function
+
+/////////// ???
+// var foo = function f(x) {
+// 	if(x == 0 || x == 1) {
+// 		return x;//x * 3 * 2 * 1(if) = 24
+// 	}
+// 	else {
+// 		return x *  f(x-1);
+// 	}
+
+// }
+
+// var g = foo;
+// // alert(g(4));//24 -> working
+// foo = null;
+// alert(g(4));//24
+/*-------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***************************** callback function*****************************/
+
+/*
+callback - ֆունկցիան թուլ է տալիս մի ֆունկցիան, որպես պարամետր փոխանցել մեկ ուրիշ ֆունկցիայի:
+*/
+// let arr = [2, 10, 101, 0.8, -25];
+// arr.sort((a,b) => a - b);//[-25, 0.8, 2, 10, 101]
+// console.log("arr", arr);
+
+
+/*-------Example 2--------*/
+// // # ֆունկցիան որպես պառամետր փոխանցինք մեկ ուրիշ ֆունկիցիյի։
+// 		function first(y){
+// 			console.log(1);
+// 			y();
+// 		}
+
+// 		function second(){
+// 			console.log(2);
+// 		}
+
+// 		first(second);
+
+/*-------Example 3 -կամ սենց --------*/
+
+		// function first(y){
+		// 	console.log(1);
+		// 	y();
+		// }
+		// first(function() {
+		// 	console.log(2);
+		// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************Զանգվածի տարրերի վրայով անցնելու համար կա ժամանակաից մեթոդներ*************,*/
+/////////// EcamScript5 են հելե
+//forEach() -> обход,շրջանցել նապանապես են աշխատում //map()
+//filter() -> return կարելիա անել
+
+//some(), every()?
+//reduce(), reduceRight()?
+/*
+Այս բոլոր մեթոդները ընդունում են callBack ֆունկցիա և ոչ մեք չեն փոխում սկզբնական զանգվածը։
+// Ընդունում են 3 արգումենտ՝
+1․ Առաջինը զ/ծ-ի տարրնա
+2․ Զանգվածի ինդեքսնա 
+3․ Դա են զանգվածնա որի որով անցնում ենք
+
+/!\ Վերոհիշյալ զ/ծ-ի մեթոդները ոչ-մի բան չեն վերադարցնում, այսինքն return չի լինում անել
+*/
+
+/*++++++ forEache metod ++++++++*/
+//Զանգվածների վրայով ավելի հեշտ անցնելու համար կա forEach() մեթոդը։
+//forEach մեթոդը նախատեսված է զ/ծ-ի բելոր տարրերի վրայով շրջանցլեու համար։
+//Զանգվածի տարրերի վրայով անցնելու ավելի էլեգանտ տարբերակնա։
+// let erkirner = [
+// 'Ispaniya',
+// 'Fransia',
+// 'Hunastan',
+// 'Rusasta',
+// 'Vrastan'
+// ];
+
+
+// ///// with loop
+// console.time('erkir1');
+// for(let erkir = 0; erkir < erkirner.length; ++erkir) {
+// 	console.log(erkirner[erkir]);//correct working
+// }
+// console.timeEnd('erkir1');
+
+
+// //// with forEach metod
+// console.time('erkir2');
+// erkirner.forEach(function (erkir) {
+// 	console.log(erkir);
+// });
+// console.timeEnd('erkir2');
+
+
+//////////// Task with forEach()
+
+// let arr = [1,2,3,4,5];
+// let arr2 = [];
+// arr.forEach(function (elem) {
+// 	arr2.push(elem*elem);
+// })
+
+// // console.log("arr", arr);//[1,2,3,4,5]
+// console.log("arr2", arr2);//[1, 4, 9, 16, 25]
+
+
+///////Task2
+// console.time('with loop');
+// let arr1 = [1,2,3,4,5,6,7,8,9,10];//55
+// let sum1 = 0;
+// for(let i = 0; i < arr1.length; ++i) {
+// 	sum1 += arr1[i];
+// }
+// console.log(sum1);//55 working correct
+// console.timeEnd('with loop');//ցիկլը վաելի արագա
+
+
+// console.time('with forEach');
+// let arr2 = [1,2,3,4,5,6,7,8,9,10];
+// let sum2 = 0;
+// arr2.forEach(function(elem) {
+// sum2 += elem;
+// });
+
+// console.log("sum", sum2);
+// console.timeEnd('with forEach');
+
+//////Օրինակ որտեղ կարող է պեք գալ այս մեթոդը՝
+
+// let users = [
+// {
+// 	"index" : 0,
+// 	"isActive" : true,
+// 	"name" : "Vazgen",
+// 	"age" : 21,
+// 	"gender" : "male"
+// },
+// {
+// 	"index" : 1,
+// 	"isActive" : false,
+// 	"name" : "Tigran",
+// 	"age" : 18,
+// 	"gender" : "male"
+// },
+// {
+// 	"index" : 2,
+// 	"isActive" : true,
+// 	"name" : "Anahit",
+// 	"age" : 18,
+// 	"gender" : "female"
+// },
+// {
+// 	"index" : 2,
+// 	"isActive" : false,
+// 	"name" : "Lilit",
+// 	"age" : 15,
+// 	"gender" : "female"
+// }
+// ];
+//////// Ենթադրենք ուզում նեք նոր զանգվածի մեջ պահել բոլոր user-ներ անունները
+//// with loop
+// let usersName = [];
+// for(let i = 0; i < users.length; ++i) {
+// usersName.push(users[i].name);
+// }
+// console.log("usersName", usersName);
+//// Ցիկլով պիտի սկիզբ տանք, պայման տանք, քայլ տանք -> իսկ forEach ավտոմատ ետքան բանը անումա
+
+//// with forEach()
+// let usersName = [];
+// users.forEach(function(elem) { //զ/ծ-ի առաջին տարրը պահվումա elem-ի մեջ իսկ eles-ը օբյեկտա
+// 	usersName.push(elem.name);
+// });
+// console.log("usersName", usersName);
+
+
+
+
+
+
+
+/*+++++++++++++ filter() մեթոդ զ/ծ-ի ++++++++++++++*/
+//Այս մեթոդը ստեղծումա նոր զանգված, ու եթե callback ֆունկցիան վերադարձնումա true ուրեմն զանգվածի տարրը մնումա զանգվածի մեջ, եթե false ջնջվումա։
+// var arr = [1, -1, 2, -2, 3];
+
+// let drakanTiv = arr.filter(function(drakan) {
+// 	return drakan > 0;
+// });
+
+// console.log("drakanTiv", drakanTiv);
+
+//#Task  - 10 ից մեծ թվերը թող առանձին զ/ծ-ի մեջ պահի։
+// var filtered = [12, 5, 8, 130, 44].filter((elem) => elem > 10);
+// console.log("filtered", filtered);
+
+
+
+
+/*+++++++++++++ map() մեթոդ զ/ծ-ի ++++++++++++++*/
+//Ի տարբերություն forEach-ի map կարա վերարաացնի իր աշխատաքնի արդյունքը (return can use)
+
+//map մեթոդը ավելի ճկունա համամատած forEach մեթոդի քանի որ map կարումա իր արդյուքնը return անի։
+// /!\ են խնդիրը որը լուծվումա forEach-ով կարա լուծվի նաև map-ով
+
+
+// let arr = [1,2,3,4,5];
+// let arr2 = [];//Քանի որ ինքը չի կարում նոր զանգված վերադարցնի, դրա համար մենք են ստեղծում զ/ծ-ը։
+// arr.forEach(function (elem) {
+// 	arr2.push(elem*elem);
+// })
+// console.log("arr2", arr2);//[1, 4, 9, 16, 25]
+
+////// with map matod
+// ամեն անգամ պետք չի push անենք նոր տարրը զանգվածի
+
+// let arr = [1,2,3,4,5];
+// let arr2 = arr.map(function(elem) {
+// 	return elem *= elem;
+// });
+
+// console.log("arr2", arr2);//[1, 4, 9, 16, 25]
+
+
+//////Օրինակ որտեղ կարող է պեք գալ map մեթոդը՝
+//// Ենթադրենք մենք ուզում են նոր զանգվածի մեջ պահել մեր օգվողների անունները ու տարքիները
+// let users = [
+// {
+// 	"index" : 0,
+// 	"isActive" : true,
+// 	"name" : "Vazgen",
+// 	"age" : 21,
+// 	"gender" : "male"
+// },
+// {
+// 	"index" : 1,
+// 	"isActive" : false,
+// 	"name" : "Tigran",
+// 	"age" : 18,
+// 	"gender" : "male"
+// },
+// {
+// 	"index" : 2,
+// 	"isActive" : true,
+// 	"name" : "Anahit",
+// 	"age" : 18,
+// 	"gender" : "female"
+// },
+// {
+// 	"index" : 2,
+// 	"isActive" : false,
+// 	"name" : "Lilit",
+// 	"age" : 15,
+// 	"gender" : "female"
+// }
+// ];
+
+
+//like ract
+////վերադարցնումա զ/ծ մեր նշած տարրերով
+// let newElems = users.map((elem) => {
+// 	return ({
+// 		name  : elem.name,
+// 		age	  : elem.age
+// 	});
+// });
+
+// console.log("newElems", newElems);
+
+//////// with forEach
+
+// let newElems = [];
+// users.forEach((elem)=>{
+// 	newElems.push({
+// 		name : elem.name,
+// 		age  : elem.age
+// 	});
+// });
+// console.log("newElems", newElems);
+
+
+	</script>
+</body>
+</html>

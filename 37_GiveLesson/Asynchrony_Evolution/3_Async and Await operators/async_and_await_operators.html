@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>async and await</title>
+</head>
+
+<body>
+
+    <h1>Async JavaScript</h1>
+    <hr>
+    <button id="load">Click and download users from server</button>
+    <hr>
+
+
+    <!--  * ⚠ մենք արդեն HTML-ում կստեղծենք դատարկ ul, որի մեջ կպահվի մեր ուզած տվյալները -->
+    <ul id="list"></ul>
+
+
+
+
+    
+    
+    
+    
+    <script>
+
+
+        /*
+
+        ⚫ jsonplaceholder - նախատեղված է json տվյալներ ստանալու համար սեռվերիվ։
+        
+        
+        */
+
+        // document.querySelector('#load').addEventListener('click', load);
+
+
+        // function load() {
+        //     console.log('Loading started');
+        //     let url = 'https://jsonplaceholder.typicode.com/users';
+
+        //     fetch(url)
+        //         .then(function (res) {
+        //             console.log('Պատասխան -  ', res);
+        //             return res.json()
+
+        //         })
+        //         .then(function (data) {//data -ն զանգված է, մեջը օբյեկներ 
+        //             var ul = document.querySelector('#list');
+        //             //մենք պետքա data զանգվախի տարրերի վրայով անցնենք՝
+        //             var html = data.map(function (item) {//item === {id: 2, name: "Ervin Howell", username:
+        //                 return `<li>${item.id} ${item.name}  ${item.email}</li>`;
+        //             })
+
+        //             // console.log(html.join(' - '));
+        //             ul.insertAdjacentHTML('afterbegin', html.join(''));//կցուցադրի user-ները։ - ⚠⚠⚠ DOM ծառի մեջ ավելացրինք սեռվերից եկած տվյալները
+
+        //         })
+
+
+
+        // }
+
+
+        /*
+
+        * fetch -ը վերադարձնումա մեզ promise, ու իրա հետ then Response-ը(սեռվերի պատասխանը) parsing ենք անում(Respose-ից սարքում ենք data )
+
+        async և await -ով կարելիա, այս օրինակը ահագին հեշտացնել: 
+            Դրա համար մենք պետքա անենք 2 գործողություն։
+                1․Են function-ը, որի մեջ գտնվումա ինչ-որ promise մենք պետքա այդ ֆունկցան սարքենք ասինխրոն։
+                    Ասնխրոն սարքլու համար մենք ուղղակի ֆունկցիայից առաջ պետքա դնենք, async բանալ բառը։
+                2․
+        
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // async function load() {//տվյալ ֆունկցիան դառավ ասինխրոն async օպերատորի շնորհիվ։
+        //     console.log('Loading started');
+        //     let url = 'https://jsonplaceholder.typicode.com/users';
+
+        //     fetch(url)
+        //         .then(function (res) {
+        //             console.log('Պատասխան -  ', res);
+        //             return res.json()
+
+        //         })
+        //         .then(function (data) {//data -ն զանգված է, մեջը օբյեկներ 
+        //             var ul = document.querySelector('#list');
+        //             //մենք պետքա data զանգվախի տարրերի վրայով անցնենք՝
+        //             var html = data.map(function (item) {//item === {id: 2, name: "Ervin Howell", username:
+        //                 return `<li>${item.id} ${item.name}  ${item.email}</li>`;
+        //             })
+
+        //             // console.log(html.join(' - '));
+        //             ul.insertAdjacentHTML('afterbegin', html.join(''));//կցուցադրի user-ները։ - ⚠⚠⚠ DOM ծառի մեջ ավելացրինք սեռվերից եկած տվյալները
+
+        //         })
+            
+        //     /*+++++++++++++++++++++defference async and then+++++++++++++++++++++*/
+            
+        //     //1. async await - ով մենք նորից սարքում ենք fetch, բայց իրանից հետո չենք գրում  fetch(url).then()
+        //     //Մենք գիտենք արդեն, որ առաջին then-ի մեջ ընկնելու Response օբյեկտը։ Դրա համար մենք կգրենք հետևյալ կերպ՝
+        //         // Ու երպեսզի res-ի մեջ ընկնի մեր ուզած արդյունքը։ Մենք ուղղակի պետքա գրենք await օպերատորը։
+        //     let res = await fetch(url);//⚠ await-ը ասումա սպասի միչև fetch-ը կատարվի նոր իրա արդյունքը վերագրի res-ին
+        //     console.log('res - ',res);
+            
+        //     //Այս օրինակները իրար համարժեք են 
+        //     // let res = await fetch(url) === fetch(url).then(function (res) {return res.json() })
+
+
+        //     // 2. Իսկ հիմա պետքա res(Response) օբյեկտը parsing անենք։ Այսինքն ըստանանք json ֆայլ
+
+        //     let data  = await res.json();// ⚠ await-ը ասումա սպասի միչև Response օբյեկտը սարքեմ json() նոր վերագրի
+        //     //մենք ըտացանք data օբյեկտը առանց callback—ների ու then-ի
+        //     console.log('data, parsin արած Response օբյեկտը - ',data);
+
+        //     ////Մնացած լոկգիկան նույն ձևա
+        //             var ul = document.querySelector('#list');
+        //             //մենք պետքա data զանգվախի տարրերի վրայով անցնենք՝
+        //             var html = data.map(function (item) {//item === {id: 2, name: "Ervin Howell", username:
+        //                 return `<li>${item.id} ${item.name}  ${item.email}</li>`;
+        //             })
+
+        //             // console.log(html.join(' - '));
+        //             ul.insertAdjacentHTML('afterbegin', html.join(''));//կցուցադրի user-ները։ - ⚠⚠⚠ DOM ծառի մեջ ավելացրինք սեռվերից եկած տվյալները
+
+
+        //     /*
+            
+        //     * await-ը ասումա սպասի միչև ասինխրոն պատասխանը կատարվի, եթե հաջողությամբ կտարվի մեր ուզած արդյունքը կպահվի փոփոխականի մեջ, իսկ եթե անհաջող կատարվի ոչ մի բան չի պահվի։
+
+        //     * aeait-ից օգվելու համար մենք կարող ենք ուղղակի ֆունկցիայից առաջ գրել async օպերատորը։
+
+        //     * Ցանկացած խնդիր, որ անում ենք promis-ով կարելիա անել async և  await-ով։
+            
+        //     */
+
+
+
+        // }
+
+
+
+
+
+
+
+
+
+        // NOTE  working wtiht onclick
+
+        document.querySelector('#load').addEventListener('click', load);
+        async function load() {//տվյալ ֆունկցիան դառավ ասինխրոն async օպերատորի շնորհիվ։
+            let res = await fetch('https://jsonplaceholder.typicode.com/users');
+            // console.log('res', res);//միանգամից Response է դառնում
+            let dataArr  = await res.json();
+            // console.log('dataArr', dataArr);
+            // console.log('մշակումա Response օբյեկտը, ստանում ենք promise-ի աչժեքը- ',dataArr);
+                    var ul = document.querySelector('#list');
+                    var html = dataArr.map(function (item) {
+                        return `<li>${item.id}, ${item.name},  ${item.email}</li>`;
+                    })
+                    // ul.insertAdjacentHTML('afterbegin', html.join(' '));//
+                    getUl.innerHTML = arrOfUsers;
+
+        }
+
+
+
+let btn = document.querySelector('button');
+btn.addEventListener('click', load);
+let getUl = document.querySelector('#list');
+
+
+
+// async function load() {
+//     let promise = await fetch('https://jsonplaceholder.typicode.com/users');
+//     let hadleResponse = await promise.json();
+//     console.log("hadleResponse", hadleResponse);
+
+//     let arrOfUsers = hadleResponse.map( (objElem) => {
+//         return `<li> ${objElem.id}, ${objElem.name}, ${objElem.email}   </li>`;
+//     } ).join(' ');
+
+// console.log("arrOfUsers", arrOfUsers);
+
+
+// getUl.innerHTML = arrOfUsers;
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******************************************/
+
+
+
+        // let loadUsers = async () => {
+        //     let getResponse = await fetch('https://jsonplaceholder.typicode.com/users');
+        //     let handlingResponse = await getResponse.json();
+        //     let getUl = document.querySelector('#list');
+        //     let newArr = handlingResponse.map((item) => {
+        //         return `<li>${item.id}, ${item.name}, ${item.email}</li>`;
+        //     }).join(' ');
+        //     getUl.insertAdjacentHTML('afterbegin', newArr);
+        // }
+        
+        
+
+        /*************************************************/
+        ////առանց return callback-hell է ստեղծվում:
+
+
+        //// REVIEW with return
+        // let loadUsers = async () => {
+        //     let getResponse = fetch('https://jsonplaceholder.typicode.com/users');
+        //     getResponse.then( (getResponse) => {
+        //         // let readResponse = getResponse.json();
+        //         return  getResponse.json();
+        //     })
+        //     .then((arrOfUsers)=> {
+        //        let newArr =  arrOfUsers.map((item) => {
+        //             return `<li>${item.id}, ${item.name}, ${item.email}</li>`;
+        //         }).join(' ');
+        //         let getUl = document.getElementById('list');
+        //         getUl.insertAdjacentHTML('afterbegin', newArr);
+        //     });
+        // }
+
+        
+
+
+        //// REVIEW without return 
+        // let loadUsers = async () => {
+        //     let getResponse = fetch('https://jsonplaceholder.typicode.com/users');
+        //     getResponse.then( (getResponse) => {
+        //         let readResponse = getResponse.json();
+        //         console.log('readResponse', readResponse);
+        //         readResponse.then((arrOfUsers) => {
+        //             let getUl = document.querySelector('#list');
+        //             let newArr = arrOfUsers.map((item) => {
+        //                 return `<li>${item.id}, ${item.name}, ${item.email}</li>`;
+        //             }).join(' ');
+        //             getUl.insertAdjacentHTML('afterbegin', newArr);
+        //         })
+        //     })
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Деструктуризация</title>
+</head>
+<body>
+
+
+
+	<script>
+		//
+
+				/*
+
+		⚫ Деструктуризация - սա նոր վորագրման սինտակսիսա, որը թույլա տալիս զանգվածը կամ օբյեկտը միանգամից վերագրել մի քանի փոփոխականների, իրանց մասերի բաժանելով։
+		
+		Destructuring
+			default value
+
+		difference between spred and rest
+
+		*/
+
+
+		// let users = ['valod', 'gagik'];
+		// let  user1 = users[0];
+		// let  user2 = users[1];
+
+		
+		// let [user1, user2] = users;
+		// let [user1, user2, user3 = 'Rafo'] = ['valod', 'gagik'];
+		// console.log("user1", user1);
+		// console.log("user2", user2);
+		// console.log("user3", user3);
+
+
+		// let a = 1, b = 2;
+		// [a,b] = [b,a];
+		// console.log("a", a);
+		// console.log("b", b);
+
+
+		// let [n1, n2, n3, ...rest] = [1,2,3,4,5,6,7,8,9];
+		// console.log("rest", rest);
+
+		//// variables without destructuring 😭
+		// let name = 'Valod', 
+		// sname = 'Valodyan',
+		// age = 20;
+
+		//// variable with destructuring 😁
+
+
+		// let [name, sname, age] = ['Valod','Valodyan',20];//
+		// console.log("name - ", name);
+		// console.log("sname - ", sname);
+		// console.log("age - ", age);
+
+
+		//// եթե արժեքները ավելի քիչա քան փոփոխականները, ուրեմն ետ փոփոխականի կվերագրվի undefined
+
+		// let [name, sname, age] = ['Valod','Valodyan'];//
+		// console.log("name - ", name);
+		// console.log("sname - ", sname);
+		// console.log("age - ", age);//undefined
+
+		//// Ho to fix - ավել փոփոխականին կարելիա տալ default value, օրինակ՝
+		// let [name, sname, age = 20] = ['Valod','Valodyan'];//
+		// console.log("age", age);//20
+
+
+		////🔰👍 Նաև destructuring-ը թույլա տալիս փոփոխակնների արժեքների տեղերը փոխել
+		////⚠ առանց destructuring-ի 3-րդ փոփոխական է պետք։
+		// let a = 1;
+		// let b = 2;
+		// [a,b] = [b,a];
+		// console.log("a = 1 -> ", a);
+		// console.log("b = 2 -> ", b);
+
+
+/*++++++++++++++++++++++ destructuring of objects ++++++++++++++++++++++*/
+
+
+//// ⚠ Ի տարբերություն զ/ծ-ի օբյեկտները destructuring անելու համար պետքա գրել {}
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/////// Փոփոպականի ու հատկության անունը պետքա նույն լինի։
+// let {user1, user2} = {user1 : 'Valod', user2 : 'Gagik'};
+// console.log('user1', user1);
+// console.log('user2', user2);
+
+////// հատկությունը վերագրում ենք փոփխականի
+
+// let users = {
+// 	user1 : 'Valod',
+// 	user2 : 'Gaigik',
+// }
+// let {user1 : valod, user2 : gagik} = users;
+// console.log("gagik", gagik);
+// console.log("valod", valod);
+
+
+// let {user1 : x, user2 : y} = {user1 : 'Valod',user2 : 'Gaigik'}
+// console.log("y", y);
+// console.log("x", x);
+// console.log("user1", user1);
+// console.log("user2", user2);
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+// console.log("userName - ", userName);
+
+
+// const {name, x, y, z} = {name : 'Valod', x:50, y:44};
+// console.log("name", name);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----destructuring with spread and rest operators----*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

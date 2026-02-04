@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getter and setter with new standart {...}</title>
+</head>
+<body>
+	<!-- <script type="text/babel" src="foo.js"></script> not working-->
+	<script>
+		//
+
+		/*
+⚫ Նոր ստանդարտով getter և setter մեթոդներ սարքում ենք get և set օպերատորներով, մեթոդից առաջ դրվումա get կամ set բանալի բառերը։
+
+
+?? get -ը հատկությունը կապնումա մեթոդի հետ, որպեսզի ետ հատկությունը հետագայում կարողանանք տենալ։
+
+
+Syntax 
+ get prop
+ 		prop - հատկության անունն է, որը պետքա կապվի մեր ֆունկցիայի հետ
+			⚠ get մեթոդը չպետքա ոչ մի պառամետր ունենա։
+
+
+		*/
+
+
+
+/*
+
+⚠ getter-ը կանչելուց () չի դրվում
+
+⚠ getter մեթոդը հատկությունա ստեղծում մեր օբյեկտում։
+			console.log(obj.hasOwnProperty('latest'));//true -> getParol: (...)
+
+⚠ Удаление геттера оператором delete
+
+⚠ private չկա class-ներում
+
+⚠ նոր ստանդարտի getter-ը և setter-ը չենք կարող function-construcor-ների մեջ գրել ( հին ստանդրտով ), բայց associative մեջ կարելիա է։
+	
+*/
+////Example in object 
+////// 🔰QUSESTION - WHAT SHOW THIS CODE
+
+
+// 		var obj = {
+// 			log: ['a', 'b', 'c'],
+//   get latest() {//latest-ը obj օբյեկտի հատկությունը է
+//   	if (this.log.length == 0) {
+//   		return undefined;
+//   	}
+//   	return this.log[this.log.length - 1];
+//   }
+// }
+
+// console.log(obj.latest);//✔
+// console.log(obj.latest());//❌ -> is not function
+// console.log("obj", obj);
+
+// console.log(obj.hasOwnProperty('latest'));//true
+
+
+/*--------------------------
+latest: (...) -> latest: "c"
+get latest: ƒ latest()
+
+---------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*++++++++++++++++++++++++getter, setter and static in classes++++++++++++++++++++++++ */
+////good example
+
+/*➕➕➕ getter and setter with new standart & static method ➕➕➕*/
+
+class User{//no have paramters
+	constructor(n,s,a){
+		this.name = n;
+		this.sname = s;
+		this.age = a;
+
+	}
+
+	get getInfo(){//geter metod put keyword get
+		// console.log(this.name,this.sname,this.age);
+		return `${this.name} ${this.sname} ${this.age}`;
+		// return `${this.name + ' ' +  this.sname + ' ' + this.age}`;//working
+	}
+
+	set setInfo(changeInfo){//tox poxi anun azganuny
+		// [this.name, this.sname, this.age] = changeInfo.split(' ');//
+
+		this.name = changeInfo.split(' ')[0];
+		this.sname = changeInfo.split(' ')[1];
+		this.age = changeInfo.split(' ')[2];
+
+	}
+
+		static guest(n,s,a){//why static method use - 
+			return new User(n,s,a);//Որպեսզի նոր class չսարքենք հյուրի համար
+		}
+
+		// guest(n,s,a){//working like static 
+		// 	return new User(n,s,a);//Որպեսզի նոր class չսարքենք հյուրի համար
+		// }
+
+}
+
+var user1 = new User('Valod','Valodyan', 53);
+console.log("user1" , user1);
+////Հենց ուզենան ուրիշ օգվողները մեր user1-ի մասին ինֆորմացիա տենան թող աշխատի getter
+// console.log(user1.getInfo);//valod valodyan 53
+
+////Ենթադրենք մեր ուզում իրա մասին ինֆորմացիան փոխի ետ ժամանակ թող աշխատի setter-ը
+// user1.setInfo = 'Gagik Gagikyan 20';
+// console.log(user1.getInfo);//
+
+// var guest1 = User.guest('Ptxuncik', 'Xasabyan',  20);//why in variable because guest is return
+// console.log("guest1", guest1);//{name: "Hyur", sname: "unknown", age: 20}
+
+
+// console.log("user1", user1);//հյուրը գալուց չի փոխվում ուղղակի որպեսզի նոր class չսարքենք հյուրի համար 
+
+
+
+
+
+// console.log("guest1", guest1);
+
+
+//static մեթոդը instenc-ների համար հասանելի չի մենակ class-ի մեջից միայն։
+
+/*
+
+◼ Ստեղծեցինք valod','valodyan' user-ին
+◼ why we use static method for guest
+		❓ Ենթադրենք ունենք user1-ը user2-ի ընկերնա(друзя), 
+		Կա user1 և user2 օգվողները ու որպեսզի user2-ը կարանա նայի user1-ի ընկերների ցուցակը, դրա համար user1-ը և  user2-ը պետքա  << друзя >> լինեն։ Ու ենթադրենք հետո դառան друзя
+		user1-ը և  user2-ը (fc-ու բոլոր user-ները զանգվածի մեջ օբյեկտի տեսքով պահված են) ։ Որպեսզի user2-ը կարողանա նայի user1-ի ընկերների ցուցակը պետքա user2.__proto__ = user1, որովետև user1-ի ընկերների ցուցակը հատկությունների տեսքով պահված են user1-ի մեջ։ Եվ այսպես մենք քանի որ user1-ի հետ друзя ենք կարանք նայենք իրա ընկերների ցուցակը։ Բայց կարողա user3.__proto__ = user2 հետա կապված, այսինքն շղթայական կապով user3-նել կարա նայի user1-ի друзя-ները։ Որպեսզի դա տեղի չունենա մենք կարող ենք static մեթոդ կրառել, որը իրա հերթին ցույցա տալիս 
+
+
+		👁‍🗨Որպեսզի user1-ը որը user2-ի ընկերնա(друзя), չկարողան նայի user2-ի << гости >> -ները
+		դրա համար մենք static մեթոդ ենք օգտագործում, դա կատարվում է նրա շնորհիվ որ static մեթոդը հասնալեի չի instence-ների։
+*/
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iterable</title>
+</head>
+
+<body>
+    <script>
+
+        //
+
+
+
+        // let object = {
+        //     male: 'John',
+        //     female: 'Gina',
+        //     rel: 'Love'
+        // };
+
+        // for (let p of object) {
+        //     console.log(`Property ${p}`);//Uncaught TypeError: object is not iterable
+        // };
+
+
+        /*++++++++++++++++How to fix this problem++++++++++++++++*/
+
+
+        ///// FIXME  -  Առանց Map կոլեկացիայի ինչպես անցնել զանգվածի ատարրերի վարյով։
+
+//// 1. for...of աշխատումա մեր օբյեկտի հետ ուրմեն իտարացիայի ենթակա է։ 👍✔
+        // let users = {
+        //     user1: 'John',
+        //     user2: 'Natali',
+        //     user3: 'Donald',
+        //     // ku: function () {//❌ for... of not working
+        //     [Symbol.iterator] : function () {//👍 for..of working
+        //         // get the properties of the users 
+        //         let properties = Object.keys(this);//this === users
+        //         // console.log('properties', properties);//['user1', 'user2', 'user3']
+        //         let count = 0;//հաշվումա user-ի ների քանակը, եթե ավել հաշվի isDone-ը կդառնա true
+        //         isDone = false;
+
+        //         let next = () => {
+        //             // վերջին property-ին կառավարելու համար
+        //             if (count >= properties.length) {
+        //                 isDone = true;
+        //             }
+        //             ////next մեթոդը վերադարձնումա օբյեկտ որը ունի done և value
+        //             // console.log('properties[count++] - ', properties[count++]);//user1,2,3
+        //             // console.log(users[ properties['user1'] ];
+        //             //// properties-ն առանձին զանգված է  - մենք մեր users օբյեկտի key-երը պահում ենք առանձին զանգվածի մեջ քանի որ օբյեկտի key -երը համարակալված չեն։
+        //             return { done: isDone, value: this[properties[count++]] };
+        //         }
+
+
+        //         // [Symbol.iterator] ֆունկցիան պետքա վերադարձնի next օբյեկտ
+        //         return { next };
+        //     }
+
+        // }
+
+
+        // console.log(users[Symbol.iterator]());//👍
+        // console.log(users[Symbol.iterator]().next());//👍
+        // console.log(users[Symbol.iterator]().next().value);//👍 John
+        // console.log(users[Symbol.iterator]().next().value);//👍 John - որպեսզի 2-րդ next-ը վերադարձնի հաջորդ անունը պետքա users[Symbol.iterator]() պահել փոփոխականի մեջ։
+
+        // console.log(users.[Symbol.iterator]());//Unexpected token [ ❌ 
+        // console.log(users.ku().next());//{done: false, value: "John"} - վերադարձնում է մեզ next() -ը բայց առանց [Symbol.iterator] գրելու for...of-ը չի աշխատում։
+
+
+        
+        // let iter = users[Symbol.iterator]();
+        // console.log(iter.next().value);//John
+        // console.log(iter.next().value);//Natali
+        // console.log(iter.next().value);//Donald
+        // console.log(iter.next().value);//undefined
+
+
+        // console.log('---------------------------------------------');
+        ///// working when first return
+        /////  Ստգումմ արդյոք դառավ իտեացվող։
+        // for (let v of users) {
+        //     console.log(`Property ${v}`);//
+        // };
+
+
+
+
+
+
+
+// //// return կարելիա անել սկզբից՝
+// 	let users = {
+//             user1: 'John',
+//             user2: 'Natali',
+//             user3: 'Donald',
+//             // ku: function () {//❌ for... of not working
+//             [Symbol.iterator] : function () {//👍 for..of working
+//                 let properties = Object.keys(this);
+//                 let count = 0;
+//                 isDone = false;
+
+// 			return {
+//                  next : function() {
+//                     if (count >= properties.length) {
+//                         isDone = true;
+//                     }
+//                     return { done: isDone, value: users[properties[count++]] };
+//                 }
+// 			}
+// 			}
+// 		}
+		
+///// working correct
+//         for (let v of users) {
+//             console.log(`Property ${v}`);//
+//         };
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*++++++++++++Դուրսնել կարելիա սարքել իտերացվող օբյեկտ++++++++++++*/
+        //  users[Symbol.iterator] = function(){
+
+        //     // get the properties of the users 
+        //     let properties = Object.keys(this);//this === users
+        //     let count = 0;//հաշվումա user-ի ների քանակը, եթե ավել հաշվի isDone-ը կդառնա true
+        //     isDone = false;
+
+        //     let next = () => {
+        //        // վերջին property-ին կառավարելու համար
+        //        if(count >= properties.length){
+        //           isDone = true;
+        //        }
+        //        ////next մեթոդը վերադարձնումա օբյեկտ որը ունի done և value
+        //        return {done:isDone, value: this[properties[count++]]};
+        //     }
+
+
+        //     // [Symbol.iterator] ֆունկցիան պետքա վերադարձնի next օբյեկտ
+        //     return {next};
+        //     };
+
+
+        // for (let property of users) {
+        //     console.log(`Properties -> ${property}`);
+        // }
+
+
+        //  console.log(users[Symbol.iterator]().next());//{done: false, value: "John"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /***************************************************************/
+
+
+        /*
+        new Map([['user1','John']]).entries().next()
+        {value: Array(2), done: false}
+        done: false
+        value: (2) ["user1", "John"]
+        */
+
+        // let count = 0;//հաշվումա հատկությունները, որ շատ ելավ isDone թղ դառնա true         
+        // let users = {
+        //     user1: 'John',
+        //     user2: 'Natali',
+        //     user3: 'Donald',
+        //     [Symbol.iterator]: function () {
+        //         let properties = Object.keys(this);//["user1", "user2", "user3"]
+        //         let isDone = false;
+
+
+        //         //     let next = () => {
+        //         //         // վերջին property-ին կառավարելու համար
+        //         //         if (count = properties.length) {
+        //         //             isDone = true;
+        //         //         }
+        //         //         ////next մեթոդը վերադարձնումա օբյեկտ որը ունի done և value
+        //         //         return {value: this[properties[count++]],  done: isDone};//this === users ->    this[properties[count++]] === users['user1']
+        //         //     }
+
+        //         //     return {next};//Symbol.iterator -ը պետքա վերադարձնի օբյեկտ
+
+        //         // }
+
+
+        //         /////OR ????
+        //         return {
+        //             next() {
+        //                 return {
+        //                     value: [properties[count++], users[properties[count++]]],//value: (2) ["user1", "Natali"]
+        //                     done: (count > properties.length) ? isDone = true : isDone = false,
+        //                 }
+        //             }
+        //         }
+
+
+        //     }
+
+        // }
+
+
+
+
+        // for(let property of users){
+        //    console.log(`Properties -> ${property}`);
+        //  }//not working for of
+
+
+
+
+
+        // console.log(users[Symbol.iterator]().next());
+        //  console.log(users[Symbol.iterator]().next());
+        //  console.log(users[Symbol.iterator]().next());
+        //  console.log(users[Symbol.iterator]().next());  
+
+
+
+
+
+
+
+
+
+
+
+
+        /*********************************************/
+        //Another Variant
+        // let count = 0;
+        // let users = {
+        //     user1: 'John',
+        //     user2: 'Natali',
+        //     user3: 'Donald',
+        //     user4: 'Robert',
+        //     user5: 'Nicole',
+        //     [Symbol.iterator]: function () {
+        //         let keysArr = Object.keys(this);
+        //         let isDone = false;
+        //         return {
+        //             next: function () {
+        //                 return {
+        //                     value: users[keysArr[count++]],
+        //                     done: isDօne = (count > keysArr.length) ? true : false// <=❌ -- < ✔
+        //                 }
+        //             }
+        //         }
+
+        //     }
+        // }
+
+        // // console.log(users[Symbol.iterator]().next());
+        // // console.log(users[Symbol.iterator]().next());
+        // // console.log(users[Symbol.iterator]().next());
+        // // console.log(users[Symbol.iterator]().next());
+        // // console.log(users[Symbol.iterator]().next());//Nicole - show
+        // for(let p of users) {
+        //     console.log(p);
+            
+        // }
+
+        /*
+        My mistakes
+        ◼ done: isDօne = (count >= keysArr.length) ? true : false// <=❌ -- < ✔
+            մեծ կամ հավասարի դեպքում for...of-ը վերջին հատկությունը չի ցուցադրում
+
+
+        
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+        
+	let users = {
+		user1 : 'Natali',
+		user2 : 'Robert',
+		user3 : 'Kate',
+		[Symbol.iterator] : function() {
+			let keysOfusersArr = Object.keys(this);//["user1", "user2", "user3"]
+			let isDone;
+			let count = 0;
+			return {
+				next : () =>{
+					// console.log('this', this);//next
+					return {
+						value : users[ keysOfusersArr[count] ],//users['user1'] - count++ ❌
+
+						done  : isDone = (keysOfusersArr[count++] == undefined) ? true : false,
+						// done  : isDone = (keysOfusersArr[count++] == undefined) ? true : false,
+					}
+				}
+			}
+
+
+			
+
+		}
+	}
+
+
+
+
+		// let iter = users[Symbol.iterator]();
+        // // console.log('iter', iter);
+        // console.log(iter.next());//John
+        // console.log(iter.next());//Natali
+        // console.log(iter.next());//Donald
+        // console.log(iter.next());//undefined
+
+
+        // console.log('---------------------------------------------');
+		// /////  Ստգումմ արդյոք դառավ իտեացվող։
+		///եթե isDone միշտ false եղավ անվերջ ցիկլ կֆռա։
+        for (let v of users) {
+            console.log(`Property ${v}`);//
+        };
+
+
+
+        /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+    </script>
+
+</body>
+
+</html>

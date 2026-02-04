@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="inp1" type="text">	
+	<p id="p1"></p>
+
+	<script>
+		
+		//
+//// oninput - իրադարձությունը տեղի է ունենում փոփոխության հետ միաժամանակ
+// inp1.oninput = function() {
+// 	p1.innerText = inp1.value;
+// 	console.log(inp1.value);
+// }
+
+
+//// onchange - իրադարձությունը տեղի է ունենում երբ փոփոխությունը ավարտվումա, 
+inp1.onchange = function() {
+	p1.innerText = inp1.value;
+	console.log(inp1.value);
+}
+
+	</script>
+</body>
+</html>

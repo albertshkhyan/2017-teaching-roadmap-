@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+//// What is object (window, methods, property), creatre own objects with associative array
+
+////////////////////////////////////////////// Օբյեկտներ - ասոցացվող զանգվածներ
+
+//Օբյեկտ, հատկություն և մեթոդ
+/*
+Իրական կյանում մեքենան օբյեկտա և ունի հատկություններ ու մեթոդ, 
+	Ինչ հատկուոյուն ունի, օրինակ՝
+		գույն
+		քաշ
+		մոդել 
+			իսկ ետ ավտոյի հատկությունները ունեն արժեքներ, օրինակ՝
+				գույն = սպիտակ
+				քաշ = 500kg
+				մոդել = bmws
+
+		/!\ Բոլոր մեքենաները ունեն հատկություն նույն հատկությունները, բայց իրենց արժեքները տարբեր են 
+
+
+	Ինչ մեթոդներ ունի մեքենանա 
+			Խոդի է ընկնում
+			քշվումա
+			կանգնումա
+			/!\ Բոլոր մեքենանները ունեն նույն մեթոդները բայց ետ մեթոդները կատարվում են տարբեր ժամանակներում
+*/
+
+// JavaScript - ում օբյեկտները նույնպես փոփոխականներ են, ուղղակի իրանք ունեն հատկություն և արժեք, օրինակ՝
+
+// var car = {
+	// color : 'white',
+	// weight : '500kg',
+	// model : 'bmw'
+// }
+// console.log(car);
+// console.log(typeof car);//object
+
+//# օբյեկտի արժեքը ցանկացած տվյալի տեսակ կար լինի 
+//# 
+//#
+//#
+
+// var car = {
+// 	weight : '500kg',
+// 	model : 'bmw'
+// }
+
+// car.color = 'white';//{weight: "500kg", model: "bmw", color: "white"}
+// // delete car.weight;//jnjec weight հատկությունը
+// console.log(car);
+
+
+/*++++++++++++++++++++++Հատկությունը տենալու համար++++++++++++++++++++++*/
+// var car = {
+// 	color : 'white',
+// 	weight : '500kg',
+// 	model : 'bmw'
+// }
+
+// console.log(car.color);//white
+// console.log(car["color"]);//white - 
+
+/*++++++++++++++++++++++++++++++Մեքենայի Մեթոդներ++++++++++++++++++++++++++++++*/
+
+// var car = {
+// 	color : 'white',
+// 	weight : '500kg',
+// 	model : 'bmw',
+// 	xodi_ynkav : function() {
+// 		alert('meqenan xodi ynkav');
+// 	}
+// }
+
+	</script>
+</body>
+</html>

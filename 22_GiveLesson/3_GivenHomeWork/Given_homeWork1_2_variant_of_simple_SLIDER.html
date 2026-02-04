@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Small slider wthout button (with timer)</title>
+
+		<style>
+
+	#wrapper {
+
+	}
+
+	#wrapper{
+		display: flex;
+		height: 100vh;	
+	}
+
+	#wrapper >  img{
+		margin: auto;
+		width: calc(100% / 2);
+		height: 600px;
+	}
+</style>
+
+</head>
+<body>
+
+
+	<div id="wrapper">
+		<img src="../../IMAGES_and_ICON/girls/img (1).jpg">
+	</div>
+
+	<script>
+		/////////// Carousel with arrays /////////////
+
+
+//Create a Simple Slider using JavaScript - 
+//slider without button only img with timer
+//small_slider_without_buttons_only_rigth_go_with_timer
+
+let arrOfImgs = [
+'../../IMAGES_and_ICON/girls/img (1).jpg',
+'../../IMAGES_and_ICON/girls/img (2).jpg',
+'../../IMAGES_and_ICON/girls/img (3).jpg',
+'../../IMAGES_and_ICON/girls/img (4).jpg'
+];
+let currentIndex = 0;
+
+// let a = document.querySelector('img').src;
+// let a = document.querySelector('img').getAttribute('src');
+console.log(document.querySelector('img').getAttribute('src') == arrOfImgs[currentIndex])
+// console.log(a.toString());
+// console.info(document.querySelector('img').src == arrOfImgs[currentIndex]);
+
+// console.log(document.querySelector('img').src);
+
+// console.log(arrOfImgs[currentIndex]);
+// function slideShow() {
+// 	document.querySelector('img').src = arrOfImgs[currentIndex];
+// 	currentIndex++;
+// 	(currentIndex == arrOfImgs.length) ? currentIndex = 0 : '';
+// }
+// setInterval(slideShow, 1000);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>give hoem work</title>
+</head>
+<body>
+
+
+	<script>
+		//
+
+		/*===============random colors on the screen==================*/
+
+		setInterval(function f(){
+	var r = Math.round(Math.random()*255);
+    var g = Math.round(Math.random()*255);
+    var b = Math.round(Math.random()*255);
+    var l=Math.abs(Math.round(Math.random()*window.innerWidth-(30)));//Որ ներքեվը sroll - ի չունենա
+    var t=Math.abs(Math.round(Math.random()*window.innerHeight-(30)));//
+    //30 -ը դա մեր լայնություննա և բարձրությունը
+	// document.write("<div style='width:10px; height:10px; position:absolute; top:"+t+"; left:"+l+";  background-color:rgb("+r+","+g+","+b+");'></div>");
+
+	document.write(`<div style="
+
+	width:30px; 
+	height:30px;
+	 background:rgb(${r}, ${g}, ${b});
+	 position:absolute;
+	 top:${t};
+	 left:${l};
+
+	 "></div>`)
+
+	},100);
+
+	/*------------------------------*/
+
+	// 		setInterval(function f(){
+	// var r = Math.round(Math.random()*255);
+ //    var g = Math.round(Math.random()*255);
+ //    var b = Math.round(Math.random()*255);
+ //    var l=Math.abs(Math.round(Math.random()*window.innerWidth-(30)));//Որ ներքեվը sroll - ի չունենա
+ //    var t=Math.abs(Math.round(Math.random()*window.innerHeight-(30)));
+	// // document.write("<div style='width:10px; height:10px; position:absolute; top:"+t+"; left:"+l+";  background-color:rgb("+r+","+g+","+b+");'></div>");
+
+	// document.write(`<div style="
+	// 	width:1px;
+	// 	height:40px;
+	// transform:rotate(20deg);
+	//  background:skyblue;
+	//  position:absolute;
+	//  top:${t};
+	//  left:${l};
+
+
+	//  "> </div>`)
+
+	// },5);
+
+	/*======================================================*/		
+	//table_with_timer_100x100
+// 	let tablerow = 0
+// 	let tabledata = 0;
+// 	function f(){
+// 		if(tabledata==0 ){
+// 			document.write('<table>');
+// 		}
+
+// 		if(tablerow==0){
+// 			document.write('<tr>');
+// 		}
+// 		tablerow++
+// 		tabledata++;
+
+// 		document.write('<td style="width:50px; height:50px; border:2px solid;">'+tabledata+'</td>');
+
+// 		if(tablerow==10){
+// 			document.write('</tr>');
+// 			tablerow=0;
+// 		}
+
+
+// if(tabledata==100){
+// 	document.write('</table>');
+// 	clearInterval(set);
+// }
+
+// }
+// let set=setInterval(f,10);
+
+
+
+// let obj = Object('');
+
+// let obj = {
+// 	h
+// }
+
+
+
+</script>
+
+</body>
+</html>

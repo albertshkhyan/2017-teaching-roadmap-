@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Difference_NodeList_and_HTMLCollection.html</title>
+</head>
+<body>
+
+	<!-- Difference NodeList and HTMLCollection -->
+	<div id="elem">
+		<span>1</span>
+		<span>2</span>
+	</div>
+	<script>
+		//
+
+		/**************** Difference between NiodeList and HTMLCollection, Example ****************/
+
+// let childNodes = elem.childNodes;
+// let children = elem.children;
+
+// /!\ querySelector() -ի մեջ նույն ձև ինչպես css, exmaple -> querySelector('ul > li')
+
+let node_list = document.querySelectorAll('span');
+let html_collect = document.getElementsByTagName('span');
+elem.appendChild(document.createElement('span').innerText = 'hello');
+
+console.log("node_list", node_list);
+console.log("html_collect", html_collect);
+
+
+
+
+// console.log("node_list 2", node_list);//NodeList օբյեկտի մեջ չի ավելացել
+// console.log("html_collect 2", html_collect);
+
+console.log("node_list.length", node_list.length);
+console.log("html_collect", html_collect.length);//HTMLCollction - ի մեջ ավելացա նոր տարր։
+
+/*****************************************************************************************/ 
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <style>
+    /**/
+
+    
+    </style>
+</head>
+<body>
+
+        <img id="nkar" src="../Get-Lessons/ReadyWorksByJS/images/fid_spinner.png" alt="">
+
+
+    <script>
+        //
+        var nkar = document.querySelector('#nkar');
+        let set = 0;
+        let deg = 0;
+
+        function* spinner() {
+            yield set = setInterval(() => {
+                nkar.style.transform = `rotate(${deg++}deg)`;
+            });
+
+            yield clearInterval(set);
+
+            yield set = setInterval(() => {
+                nkar.style.transform = `rotate(${deg--}deg)`;
+            });
+
+            yield  clearInterval(set);
+
+            
+        }
+
+        let iterSpin = spinner();
+        // iterSpin.next();
+        // iterSpin.next();
+        // iterSpin.next();
+        // iterSpin.next();
+
+
+        nkar.onclick = function() {            
+            let n = iterSpin.next();
+            // console.log('iterSpin.next()', iterSpin.next());//clearInterval is undefiend
+            if(n.done === true) {
+                iterSpin = spinner();
+                iterSpin.next();
+            }
+        }
+
+
+
+var z = 7;
+console.log(z++ + z++);
+        </script>
+</body>
+</html>

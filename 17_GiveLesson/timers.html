@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>timers</title>
+</head>
+<body>
+	
+
+
+	<script>
+//demic callback function bacatrel
+
+		//window.open()  
+		// window.open(url, name, params) -> անուն պետաքա տաենք եթե ուզում ենք պառամետր տալ 
+			// params - պառամետրտրերը պետքա ստորակետներով իրարից բաժանել , օրինակ ՝ "width=400, height=400"
+		//window.close() - փակումա ինքը իրա
+// window.open("https://www.google.am", "myWindow", "width=400, height=400");
+
+
+
+
+
+			/* ************ eval  *********************
+			Why is using the JavaScript eval function a bad idea? 
+			Իչու խորհուրդ չի տրվում օտգագործել eval
+				/!\ eval-ը ավելի դանդաղ է կատարվում
+				/!\ debugging չի լինում անել
+				/!\ eval-ով գրած կոդը կոմպիլյացիա չի արվում, չի կեշավորում, օպտիմիզացինաեր չի անում
+				/!\ անվտանգ չի, 
+
+				*/
+
+				// eval('alert(a);');
+				//evaluates  - հաշվարկում
+
+				/*—————————————————————————————————————————————————————————————————————————————*/
+
+			/********** window - Ի մեթոդներ  setTimeout և setInterval (թայմեռներ) **********/
+			//
+
+		// # setTimeout() Method - կատարումա ֆունկցիան մեր նշած ժամանակհատվածում, ասյինքն եթե տվել ենք 3000մլվ ինքը 3000-ից շուտ չի կարա կատարվի, 
+			 // func >= 3000 - կարա զադյեռժկեն ավելի շատ տեվի քան նշված է
+
+			 /*_________________________________________________________________________*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+setTimeout(func)
+	func - պարտադիր function լինի առանց ,
+		կամ չակերտների մեջ գրում ենք են կոդը, որը որ ուզում ենք կատարվի ետ պարագայում պարտադիր չի function նշել, բայց՝
+			Why don't write withw quotes ''
+				Որովհետև տակից eval է աշխատում
+
+	/!\ Եթե պառամետրը string-ա ետ ժամանակ կանի առանց function գրած կեդը, երբ որ մեքն string-ի մեջ ենք պահում ինտերպրետատորը ավտոմատ ստեղծումա անանուն function  ու պահումա ետ string-ով արտահայտությունը ետ աբստրակտ կերպով ստեղծած ֆունկցիայի մեջ։
+	*/
+		// setTimeout(alert('hello world'), 3000);//անմիջականորենա կատարվում, նույն բաննա ինչ-որ չունենա թայմեռ
+		// setTimeout("alert('hello world')", 3000);//Իսկ սենց կաշխատի թայմեռը
+
+
+
+////// Example of setTimeout
+// setTimeout(function() {
+// 			console.log('hello world');
+// },3000);//3 վարկյան հետո կարտածի 'hello world' 
+
+// *երբ տանք 0 ինքը չի կարա 0 միլիվարկյանումա կատարվի մինիմում 4մլվ կուշանա
+//* կարելիա նաև միլիվարկյանը չնշել, ինքը 4 է հասկնում
+//*setTimeout-ը одноразы է ։
+//*setInterval - ը կատարվումա ենքան ժամանակ միչև իրան կանգնեցնեք
+
+/*++++++++++++++++ինչպես արգումենտ փոխանցել մեր ֆունկցիային ++++++++++++++++*/
+
+// setTimeout(function(hi) {
+// 	alert(hi);
+
+// },2000,'hello world'); 
+
+//// կամ կարելիա նաև սենց գրել
+
+// function f(hi) {
+// 	alert(hi);	
+// }
+
+// setTimeout(f, 2000);//why show undefined 
+// setTimeout(f, 2000, 'hello world');
+
+// /!\ IE -ում թայմեռով արգումենտ չի լինում տալ
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+//#Task - թող 2 վարկյան հետո նոր պատուհան բացվի մեջնել գրած են ինչ մենք փոխանցում ենք
+
+// function f(param) {
+// let wdn = window.open('', 'myWindow', 'width=400, height=400');//եթե անուն չենք տալիս նաև պառամետրներ չենք տալիս, որովհետև առանց անուն(myWindow) target-ի տակ է բացում։
+// wdn.document.write(param);//բացվող պատուհանի մեջ ինչ-որ բան գրելու համար
+// }
+// setTimeout(f, 2000, '<h1>Barev axper</h1>');
+
+
+//# Task - ինչպես փակել պատուհանը
+// let wdn;
+// function f(param) {
+// wdn = window.open('', 'myWindow', 'width=400, height=400');//եթե անուն չենք տալիս նաև պառամետրներ չենք տալիս, որովհետև առանց անուն(myWindow) target-ի տակ է բացում։
+// wdn.document.write(param);//բացվող պատուհանի մեջ ինչ-որ բան գրելու համար
+
+// }
+// setTimeout(f, 2000, '<h1>Barev axper</h1>');
+
+// setTimeout(function(){
+// 	wdn.close();
+// },3000);
+
+/*++++++++++++++++++++++ recursiv setTimeout ++++++++++++++++++++++++*/
+
+ // Իսկ ինչ անել, որ օրինակ 2 վարկյան հետել փակվի
+
+// let wdn;
+//  function f(param) {
+// wdn = window.open('', 'myWindow', 'width=400, height=400');
+// wdn.document.write(param);
+
+// setTimeout(function(){
+// 	wdn.close();
+// },3000);
+
+// }
+// setTimeout(f, 2000, '<h1>Barev axper</h1>');
+
+//////////Task -  with recursiv setTimeout
+let txt = 'Lorem ipsum dolor sit amet.';
+let txtFl = 0;
+setTimeout(function f() {
+	document.write(txt[txtFl]);
+	txtFl++;
+	if(txtFl == txt.length) {
+		txtFl = 0;
+		document.write(' ');
+	}
+	setTimeout(f, 200);
+
+},200);
+
+
+
+
+
+
+/*++++++++++++++++ clearTimeout() +++++++++++++++++*/
+///////// setTimeout in variable /////////
+
+
+
+// # serTimeout - ը փոփոխականի մեջ պահում են, որ հետո իրան կարանան ջնջենք։
+
+// var timerId = setTimeout(function() { alert(1) }, 1000);
+// console.log(timerId); // число - идентификатор таймера
+
+// clearTimeout(timerId);//ոչ մի բան ցույց չի տալիս, որովհետև միանգամից ջնջում եքն, չենք նշում ինչքան ժամանակ հետո ջնջի
+// console.log(timerId); // всё ещё число, оно не обнуляется после отмены
+
+/*-----------*/
+//setTimeout- ը վերադարձնումա թվային արժեք ինչքան իրան կանչում ենք ետքան թիվը աճումա
+// /!\ քանի դեռ setTimeout-ը 0 է ինքը րի կատարվել դեռ։
+// let timerId = setTimeout(() => console.log('hello im setTimeoout'),100);
+// console.log("timerId", timerId);//1
+// timerId= setTimeout(() => console.log('hello im setTimeoout'),100);
+// console.log("timerId", timerId);//2
+// timerId= setTimeout(() => console.log('hello im setTimeoout'),100);
+// console.log("timerId", timerId);//3
+
+///!\ Թայմեռը աշխատացնումա բրաուզերը
+
+// /!\ Թայմեռի օբյեկտ ցույց չի տալիս, որովհետև թայմեռը javascript-ի դոկումենտացիայի մեջ չկա, այլ կերպ ասած թայմեռը javascript-ի չի այլ բրաուզերինա, ինքը ուղղակի window-ի մեջ կա զուտ նրա համար որ մենք կարողանանք օգտագործենք թայմեռ 
+/*
+Օրինակ nodeJS-ոմ թայմեռները վերադարձնում են տվյալ թայմեռի օբյեկտ
+setTimeout {
+	metods of timer
+}
+*/
+/*------------------------------------------------------------------*/
+
+
+
+/*++++++++++++++++++++++++ setInterval() ++++++++++++++++++++++++*/
+
+
+/*
+setInterval() -ը ունի նույն setTimout-ի  գրելաձևը, ուղղակի տարբերությունը ենա որ ինքը anynfat e կատարվում։ Միչև իրան չկանգնեցնեք ինքը չի կանգնի
+
+/!\ setInterval -ի ժամանակների միջև միջկայքը միշ նույնա լինելու
+*/
+
+
+///////#դառնումա 100 նորից 0 իցա սկսում
+// let n = 0;
+// setInterval(function foo() {//
+// 	document.writeln(n);
+// 		n++;
+// 		(n == 101) ? n = 0 : '';
+// },100,1);
+
+
+///////#Infinity number
+// let n = 0;
+// let set = setInterval(function foo() {
+// 	document.writeln(n);
+// 		n++;
+// },100);
+
+// console.log("set", set);
+
+
+
+// 
+
+/* +++++++++++++recursive setTimeout vs setInterval+++++++++++++
+
+
+//setInterval - ը 
+
+recursiv setTimeout - ը ավելի ճկունա քան setInterval, քանի որ կարելիա կառավարել ժամանակահատվածները, օրինակ՝ հարցում ենք կատարում ինչ-որ սեռվերի 5 վարկյանը մեկ, որ ինչ-որ տվյալներ ստանալու համար, եթե սեռվերը ծանրաբեռվածա թող 10,20,50 վարկյանը մեկ հարցում կատարի սեռվերին, սա արվում է recursiv setTimeout-ով։
+
+// /!\ recursiv setTimeout - ը պաուզաները պահպանումա, իսկ setInterval չէ։
+
+--------------------------------------------------------------------------------------------------
+/!\ recursiv setTimeout - ը մեզի գառանտիայա տալիս, որ միչև մեր նշած գործողությունը չավարտի,մյուս ֆունկցիան չի կանչվի 
+		Իսկ
+Իսկ setInterval-ով թեթ function-ը չհասցրեց ավարտի իր գործողությունը setInterval-ը չի սպաի ավարտի, իրա ժամանակը լռացավ նորնա կանչում։
+--------------------------------------------------------------------------------------------------
+
+*/
+///////Համեմատություն recursiv setTimeout - ի և setInterval-ի /////////
+
+///////// փորձումա սահմանված ժամանակահատվածում անի
+// var startTime = Date.now();
+// setInterval( function() {
+//     console.log( ( Date.now() - startTime ) + 'ms elapsed' );
+// }, 1000 );
+
+/////// գնալով մեծքանումա մլվ-ները քանի որ սպասումա մինչև ֆունկցիան ավարտվի
+// var startTime = Date.now();
+// setTimeout( function f() {
+//     console.log( ( Date.now() - startTime ) + 'ms elapsed' );
+//     setTimeout(f,1000);
+// }, 1000 );
+
+// /!\ Oօգտագործեն են, որը որ ավելի խելքին մոտիկա
+
+/*############# campare in real life recursiv setTimeout - ի և setInterval ############
+
+Կարելիա պատկերացնել, որ երկուսնել մրցավարներ են ուղղակի recursiv setTimeout-ը բարի մրվցավարա, որ մասնակիցները չեն հասցնում լրացաուցիչ ժամանակա տրամադրում, իսկ setInterval-ը վատ մռցավարա հենց ժամանակը լռացավ ասումա վսյո անցանք հաջորդին, լրացուցիչ ժամանակ չի տալիս։
+
+######################################################################################
+
+*/
+
+// lern js-ով ցույց տալ սա —> Минимальная задержка таймера -> https://learn.javascript.ru/settimeout-setinterval
+//4 մլվ-ից շուտ չի կատարվի,
+//Большинство браузеров (десктопных в первую очередь) продолжают выполнять setTimeout/setInterval, даже если вкладка неактивна.
+
+
+////////////////////////////////////////////////////////////////////////
+
+
+/*Խնդիրներ timer-ների
+
+1.    -> l,o,r,e,m
+
+
+*/
+
+
+//Task -> letter by letter
+//////////Որ կանգնի
+// let txt = 'Lorem ipsum dolor sit amet.'
+// let i = 0;
+// setInterval(function() {
+// 	if(i < txt.length) {
+// 		document.write( txt[i]);
+// 		i++;
+// 	}	
+// },100);
+
+//////////Որ շարունակվի
+// let txt = 'Lorem ipsum dolor sit amet.'
+// let i = 0;
+// setInterval(function() {
+// 	document.write( txt[i]);
+// 	i++;
+// 	(i == txt.length) ? i = 0 : '';
+// },100);
+
+</script>
+
+
+</body>
+</html>

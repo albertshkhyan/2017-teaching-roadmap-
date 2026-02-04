@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>perspective և rotate</title>
+
+	<style>
+		/**/
+
+		.cnox {
+			padding:50px;
+			background: cyan;
+			transform:perspective(300px) rotateY(45deg);
+			     /*transform:rotateY(45deg); */
+
+			position: absolute;
+		}
+
+		.vordi {
+			background: magenta;
+			position: absolute;
+			padding:40px;
+			/*   transform:rotateY(60deg) */
+		}
+	</style>
+</head>
+<body>
+
+	<div id="wrapper">
+		<div class="cnox">cnox
+			<div class="vordi"> vordi</div>
+		</div>
+	</div>
+
+
+	<!-- perspectve հակտությունը կամ ֆունկիցան օգտագորխվում տարրերին 3դ տարածություն տալու համար։ 
+		⚠ perspective-ը մենակ z առանցքի հետ օգտագործելու համար չի։ 
+		Օրինակ՝
+		transform:perspective(300px) rotateY(45deg); //պտտվում է և չի փոքրանում
+    	transform:rotateY(45deg);//պտտվում է փոքրանալով
+    	-- >
+
+    </body>
+    </html>

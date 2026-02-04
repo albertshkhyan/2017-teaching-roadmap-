@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        td{
+            width: 100px;
+            height: 100px;
+            
+        }
+        
+        
+    </style>
+    
+</head>
+
+<body>
+
+    <table border="2">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+
+    </table>
+
+    <script>
+        //
+
+
+        var td = document.getElementsByTagName('td')
+        var a = 0;
+        var b = 4;
+        function f() {
+
+            for (var i = 0; i < td.length; i++) {
+                td[i].style.background = 'white'
+            }
+            if (a >= 25) {
+                a = 0
+                b = 4
+            }
+            td[a].style.background = 'red'
+            td[b].style.background = 'blue'
+            a += 6;
+            b += 4;
+
+        }
+        setInterval(f, 500)
+
+    </script>
+</body>
+
+</html>

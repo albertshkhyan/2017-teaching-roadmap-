@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>difference between insertBefore and appendChild</title>
+</head>
+<body>
+
+	<ul id="abc">
+		<li>0</li>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li> 
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+		<li>11</li>
+	</ul>
+	<script>
+		//
+//// add element with appendChild
+		// let myList = document.getElementById('abc');
+		// let newLi = document.createElement('li');
+		// myList.appendChild(newLi);
+		// console.log("myList", myList);
+
+
+//// add element with insertBefore
+		////Սկզբում ստեղծում ենք նոր տարրը
+		let newLi = document.createElement('li');
+		////հետո կպնում ենք են ծնող տարրին որի մեջ ուզում ենք ավելացնել նոր տարր
+		let myList = document.getElementById('abc');
+		////Իսկ հետո նշում ենք թե որ տարրից առաջ պետքա ավելանա
+		let listLI = myList.getElementsByTagName('li')[3];//այսինքն 3 ինդեքսով տարրից առաջ կավելացնի (3 -րդ ինեքսով տարրի վերեվի հարեվաննա լինելու)
+		////add element
+		myList.insertBefore(newLi, listLI);
+
+		console.log("myList", myList);
+
+		//// /!\ Հիմնականում appendChild է օգտագործվում, իսկ insertBefore-ը հազվադեպ,պետքա իմանալ
+
+
+		/*
+		insertBefore ընդունումա 2 պառամետր՝
+			1 առաջին պառամետրը նշում ենք են տարրը, որը որ ուզում ենք ավելացնել։
+			2 երկրորդ պառամետրը նշում ենք տարրը, որից առաջ ուզում ենք ավելացնել մեր ստեղծած տարրը։
+
+			Synatax
+				ParentNode .insertBefore ( newNode , referenceNode );
+		*/
+
+
+	</script>
+</body>
+</html>

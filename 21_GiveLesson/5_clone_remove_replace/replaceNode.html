@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>replace()</title>
+</head>
+<body>
+	
+<ul class="listItem">
+	<li>0</li>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>6</li>
+	<li>7</li>
+	<li>8</li>
+	<li>9</li>
+	<li>10</li>
+	<li>11</li>
+</ul>
+
+	<script>
+
+		/*
+		⚫ replaceChild() - նորը փոխարինվում հինով։
+replacedNode = ParentNode .replaceChild ( newChild , oldChild );
+		*/  
+
+/* +++++ how place to change of elements js replaceChild +++++ */
+////variant 1
+////0 and 3 replace - working correct 👍👍✔
+//  let takeUl = document.querySelector('ul');
+// let takeLi0 = document.getElementsByTagName('li')[3];
+// let takeLi3 = document.getElementsByTagName('li')[7];
+// let remindLi0 = takeLi0.innerText;
+// takeLi0.innerText = takeLi3.innerText;
+// takeLi3.innerText = remindLi0;
+
+
+
+
+
+////variant 2
+
+////////////// correct working 👍✔
+// let takeUl = document.querySelector('ul');
+// let changeElem1 = document.getElementsByTagName('li')[3];
+// let changeElem2 = document.getElementsByTagName('li')[7];
+// let cloneElem2 = changeElem2.cloneNode(true);
+// takeUl.insertBefore(cloneElem2,changeElem1);
+
+// takeUl.replaceChild(changeElem1, changeElem2);
+
+
+
+
+//
+let getUl = document.querySelector('.listItem');
+let getLi = document.querySelectorAll('.listItem > li');
+
+let newChild = getLi[0];//
+let olChild = getLi[11];//
+newChild.style.color = 'red';
+olChild.style.color = 'blue';
+let cloneOfOldChild = olChild.cloneNode(true);//
+getUl.insertBefore(cloneOfOldChild,newChild);
+getUl.replaceChild(newChild,olChild);
+
+
+/////with cloneNode
+	</script>
+</body>
+</html>

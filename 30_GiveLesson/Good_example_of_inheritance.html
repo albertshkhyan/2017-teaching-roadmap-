@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+		/*
+		Ծրագրավորման լեզուներու ամենա տարածված ժառանգականության ձևը դա prototype-ժառանգականությունն է։
+
+		*/
+
+
+
+
+
+/////////// Տալ սա որպես առաջադրանք
+		function AbstAuto(m,c){
+			this.model = m;
+			this.color = c;
+			this.go = function(){//public e 
+				start();//ete kanchenq private metody
+				console.log('avton gnac');//this - cuyc kta Kran-i contexty - Inchu? - 
+			}
+
+			////public
+			// this.start = function(){//եթե this-ը դնենք դրսում կլինի կանչել -> cat.start();
+			// 	console.log('starting ' + this.model )
+			// }
+
+				////private - Kran-ը չի ժառանգի 
+					// let start = function(){//
+					// 	console.log('starting ' + this.model )
+					// }
+					// start = function(){//առանց փոփոխական գլոբալ կոնտեքստում է գտնվում։
+					// 	console.log('starting ' + this.model )
+					// }
+
+			/*-------------- 1 ---------------*/
+			//// 1 variant
+			let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+			function start(){//not working - this.start
+				console.log('starting ' + t.model );//Kran.model -> staring cat
+			}
+			//// 2 variant
+			// let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+			// let start = function(){//not working - this.start -> 
+			// 	console.log('starting ' + t.model );//Kran.model -> staring cat
+			// }
+			/*-------------- 2 ---------------*/
+			////bind and Function Expression
+			// var start = function(){
+			// 	console.log('starting ' + this.model );//output - cat(this.model) - սրա this-ը Kran է 
+			// }.bind(this);
+			/*-------------- 3 ---------------*/
+			// start = () => console.log(this.model);
+		}
+
+
+
+
+Kran.prototype = Object.create(AbstAuto.prototype);//create __proto__: AbstAuto
+		// console.log(Kran.prototype.constructor.name);//AbstAuto - սխալա պետքա իրա վրա ցույցա տա
+Kran.prototype.constructor = Kran;
+// Kran.prototype = AbstAuto.prototype;
+
+// console.log(Kran.__proto__);
+		function Kran(m,c,k){
+			AbstAuto.call(this, m, c);
+			this.kran = k;
+		}
+
+		var cat = new Kran('cat','yellow','10m');
+
+		console.log("cat", cat);
+		cat.go();
+
+// console.log(AbstAuto.parol2);//private հատկության հանդեպ կարելիա հասանելիություն ստանալ բայց private փոփոխականի հանդեպ ոչ
+
+/*Explanation
+
+⚫ prototype-ի մեջի constructor  հատկությունը պետքա ցույց տա 
+⚠ Մեր Kran-ի prototype-ի constructor  հատկությունը պետքա ցույցա տա Kran բառը, ասինքն մեր կոնստրուկտոր-ֆունկցաիյի անունը։
+
+Kran.prototype = Object.create(AbstAuto.prototype);//create __proto__: AbstAuto
+		// console.log(Kran.prototype.constructor.name);//AbstAuto - սխալա պետքա իրա վրա ցույցա տա
+Kran.prototype.constructor = Kran;
+
+
+
+
+
+*/
+
+
+
+
+
+	</script>
+</body>
+</html>

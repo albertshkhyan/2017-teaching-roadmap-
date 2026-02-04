@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6: Операторы Spread и Rest</title>
+</head>
+<body>
+	
+
+	<script>
+		/* ... operator */
+/*
+spread - ընդլայնում
+rest - մնացորդ
+
+*/
+
+// /!\ Առաջ զ/ծ-ները իրար միցնվում էին concat -ով
+// var names = [1,2,3];
+// var moreNames = [4,5,6,7];
+// var allNames = names.concat(moreNames);
+// console.log(allNames);
+//with ES 6
+// var names = [1,2,3];
+// var moreNames = [4,5,6,7];
+// var allNames = [...names,...moreNames];
+// console.log(allNames);//[1, 2, 3, 4, 5, 6, 7]
+
+
+
+		//որ copy past չանեքն, 
+		// var arr1 = [1,2,3,4,5,6,7,8,10];
+		// var arr2 = [...arr1];//ես պարագայում ընդլայնեց մեր զ/ծ-ը
+		// console.log("arr2", arr2);
+
+		// var arr2 = [...[1,2,3,4]];//[1, 2, 3, 4]
+		// console.log(arr2);
+
+		// var arr1 = [1,2,3,4,5,6,7,8,10];
+		// var arr2 = [...arr1,11,12,13,14,15];//(14) [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15]
+		// console.log("arr2", arr2);
+
+		/*++++++++մինչև ... operator-ը օգտագործելը apply էին օգտագործում, Օրինակ՝++++++++*/
+// var log = function(a, b, c) {
+//   console.log(a, b, c);
+// };
+
+// // log(...['Spread', 'Rest', 'Operator']); // Spread Rest Operator
+// log.apply(null, [1, 2, 3]); // 1 2 3
+// // Равнозначно
+// log(...[1, 2, 3]); // 1 2 3
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+		// In functions
+		// եթե պետքա վեկալել ավելորդ աարգումենտները  օգտագործել ... res օպերատորը։
+		// function f(a,b, ...args) {
+		// 	console.log(...args);//3,4
+
+		// }
+		// f(1,2,3,4)
+
+
+//Օրինակ՝ եթե ունենզ մի զ/ծ ու ուզում ենք մեր ֆունկցիայի պառամետրեր արժեքները լինեն ատ զանգվածի արժեքները, հո ֆունկցիան կանչելուց չենք բռնելու ողջ զանգվածի տարրը գրենք, կարողա հազարատա 
+
+//spread operator - եթե ուզում ենք զ/ծ-ի ամեն մի տարրը փոխանցել ամեն մի պառամետրին պետքա օգտագործել spread օպերատորը։
+		// var arr = [1,2,3,4];
+		// function log(a,b,c,d) {
+		// 	console.log(a,b,c,d);
+		// }
+		// f(...arr);
+		////⚠ ինչպես ինչպես ամեն մի պառամետրին փոխանցել զ/ծ-ի տարրերը առանց spread
+		// log.apply(null, [1, 2, 3, 4]);
+
+		/************************************************************************/
+		// function foo() {
+		// 	// let a = arguments.join();
+
+		// 	return Array.prototype.join.call(arguments);//Դառավ string
+		// }
+		// let a = foo(1,2,3,4);
+		// console.log(typeof a);
+
+		// ////// or with rest operator ////////
+		// function foo(...args) {
+		// 	return args.join();
+		// }
+		// let a = foo(1,2,3,4);
+		// console.log(typeof a);
+
+		/************************************************************************/
+		/*----------------------------------------------------*/
+
+//Example of default value and spread operator
+// let list = [4, 6, 7];
+
+// function myFunc(x=1, y=2, z=3) {
+//   console.log(`${x}, ${y}, ${z}`);
+// }
+
+// myFunc(...list);
+
+// let list2 = [9, 8, ...list];
+// alert(list2);
+
+/*------------------------------*/
+
+// let groupOfArrays = [
+//   [1,2,3,4,5],
+//   [6,7,8,9,10],
+//   [11,12,13,14],
+//   [15,16,17,18]
+// ];
+
+
+// Օբյեկտի հատկությունները նույնպես կարելիա վեկալել
+// let obj1 = {
+//   foo: 'bar',
+//   baz: 'boo'
+// }
+
+// let obj2 = {
+//   ...obj1,
+//   foobar: 'foobaz'
+// }
+
+// console.log(obj2);
+
+
+
+
+/*---------------------------*/
+
+
+////⚠ spread - օպերատորը աշխատումա միայն iterable օբյեկտների հետ։
+// var log = function(a, b, c) {
+//   console.log(a, b, c);
+// };
+
+// log(...{name : 'Vaold', sname : 'Valodyan', age : 20});// Found non-callable @@iterator}
+
+
+
+/*++++++++++++++++++++++++++++++++++++++++*/
+
+
+    ///// ... - rest - mnacord
+    // function foo(a,b, ...rest) {
+    //     console.log(rest);//vorpes zangvac 
+    //     // console.log(...rest);//menak tvery
+    // }
+
+
+    // foo(1,2,3,4,5,6,7,8);
+
+
+
+    // var arr = [1,2,3,4,5,6,7,8];
+    // console.log(...arr);
+    // // console.log(...arr);
+    // function foo(mek, erku, ereq) {
+    //     console.log(mek);
+    //     console.log(erku);
+    // }   
+
+
+    // foo(...arr);
+
+
+
+// let arr1 = [1,2,3,4,5];
+// let arr2 = [...arr1, 6,7,8,9,10];
+// console.log(arr2);
+
+
+
+</script>
+</body>
+</html>

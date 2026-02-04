@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>object</title>
+</head>
+<body>
+	
+
+
+	<script>
+		//եթե 'ru' է թող հերթակնությամբ տպի ռուսերենի շաբաթվա օրերեը
+		let pthkLezu = Math.round(Math.random()) == (1) ? 'ru' : 'en';//working
+		let objOfLezu = {
+			ru :['пн', 'вт', 'ср','чт', 'пт', 'сб', 'вс'],
+			en :['mn', 'ts', 'wd', 'th', 'fr', 'st', 'sn'],
+		};
+
+// console.log(objOfLezu);
+//objOfLezu[key].length -> 7
+//objOfLezu[key] -> ["пн", "вт", "ср", "чт", "пт", "сб", "вс"]
+for(let key in objOfLezu) {
+	if(pthkLezu == 'ru') {
+		if(key == 'ru') {
+			for(let i = 0; i < objOfLezu[key].length; ++i) {
+				// document.writeln(`<span style="
+				// 	font-size:40px;
+				// 	color : red;
+				// 	">
+				// 	${objOfLezu[key][i]}
+				// 	</span>`);
+				alert(objOfLezu[key][i]);
+			}
+		}
+	}
+	else if(pthkLezu == 'en') {
+		if(key == 'en') {
+			for(let i = 0; i < objOfLezu[key].length; ++i) {
+				// document.writeln(`<span style="
+				// 	font-size:40px;
+				// 	color : blue;
+				// 	">
+				// 	${objOfLezu[key][i]}
+				// 	</span>`);
+				alert(objOfLezu[key][i]);
+			}
+		}
+	}
+}
+
+
+
+// var person = {};
+// person.age = 25;
+// person.key = 'age';
+
+// alert( person[key] );
+// alert( person.key );
+// alert( person.key );
+// alert( person[key] );
+
+//like facebook id
+// function idOfPersons() {
+// 			let id = 0;
+// 			for(let i = 0; i < users.length; ++i) {
+// 					users[i].id = parseInt(Math.random().toString().slice(2,14));//2-րդ ինդեքսից սկսած միչև 14-րդ
+// 			}
+
+// 		}
+
+// 		let users = [
+// 		{
+// 			name:'valod',
+// 			sname:'valodyan',
+// 			check:true,
+// 			id : 549643287893
+//     },
+
+//     {
+//     	name:'ani',
+//     	sname:'araqelyan',
+//     	check:false,
+//     },
+//     {
+//     	name:'narek',
+//     	sname:'sargsyan',
+//     	check:true,
+//     }
+
+//     ];
+//     idOfPersons();
+//     console.log("users", users);
+
+
+
+//recursiv home work
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //
+        
+        
+        
+        // var armLetter = prompt('Enter only arm letters');
+        // // console.log(armLetter.charCodeAt());
+        // // console.log('Ա'.charCodeAt());//1329
+        // // console.log('ֆ'.charCodeAt());//1415
+
+        // var res = '';
+        // var notArm = '';
+        // for(var i = 0; i < armLetter.length; ++i) {ղ
+        //     if(armLetter[i].charCodeAt() < 1329 || armLetter[i].charCodeAt() > 1415) {
+        //         res += armLetter[i];
+        //         //+ ' not is arm letter❌'
+        //     }
+        //     else {
+        //         notArm += armLetter[i] ;
+        //         //all is arm letter ✔👍
+        //     }
+        // }
+        // // alert(res);
+        // if(notArm.charCodeAt() > 1329 || notArm.charCodeAt() < 1415) {
+        //     alert(notArm);
+        // }
+
+
+
+        
+        // console.log(notArm);
+        // console.log(res);
+        
+
+        /////////////////////////
+
+
+         
+        var armLetter = prompt('Enter only arm letters');
+        // console.log(armLetter.charCodeAt());
+        // console.log('Ա'.charCodeAt());//1329
+        // console.log('ֆ'.charCodeAt());//1415
+
+        var res = '';
+        var isArm = '';
+        for(var i = 0; i < armLetter.length; ++i) {
+            if(armLetter[i].charCodeAt() < 1329 || armLetter[i].charCodeAt() > 1415) {
+                res = 'մեջը օտար լեզու կա ';
+            }   
+            else {
+                isArm += armLetter[i];
+                res = isArm + ' հայերեն է';
+            }
+
+        }
+
+        alert(res );
+        
+        </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>parallel change</title>
+</head>
+<body>
+
+	<input oninput="change(event)" type="text">
+	<!-- պիտի պարտադիր գրվի event,  -->
+	<p></p>
+
+
+	<script>
+		//
+		function change(e) {
+			// prg.innerText = inp.value;//with id
+			console.log(e.target.nextElementSibling.innerText = e.target.value);
+
+		} 
+	</script>
+	
+</body>
+</html>

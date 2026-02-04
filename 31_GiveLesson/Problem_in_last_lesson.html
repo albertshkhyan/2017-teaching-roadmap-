@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+		// kran.start() global context not work
+/*		get и defineProperty - Использование ключевого слова get и Object.defineProperty() дает похожие результаты, но при использовании в classes между ними есть тонкая разница.
+
+При использовании get свойство будет определено в прототипе объекта, в то время, как при использовании Object.defineProperty () свойство будет определено в экземпляре, к которому применяется.
+
+
+*/
+
+
+
+
+/*++++++++++++++++ how to fix ++++f++++++++++++++++++++++*/
+////ուղղակի start պետքա սարքեն static մեթոդ js-ով
+/////////// Տալ սա որպես առաջադրանք
+		function AbstAuto(m,c){
+			this.model = m;
+			this.color = c;
+			this.go = function(){//public e 
+				start();//ete kanchenq private metody
+				console.log('avton gnac');//this - cuyc kta Kran-i contexty - Inchu? - 
+			}
+
+			////public
+			// this.start = function(){//եթե this-ը դնենք դրսում կլինի կանչել -> cat.start();
+			// 	console.log('starting ' + this.model )
+			// }
+
+				////private - Kran-ը չի ժառանգի 
+				// let parol = 1234;
+					// let start = function(){//
+					// 	console.log('starting ' + this.model )
+					// }
+					// start = function(){//առանց փոփոխական գլոբալ կոնտեքստում է գտնվում։
+					// 	console.log('starting ' + this.model )
+					// }
+
+			/*-------------- 1 ---------------*/
+			//// 1 variant
+			// let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+			// function start(){//not working - this.start
+			// 	console.log('starting ' + t.model );//Kran.model -> staring cat
+			// }
+			//// 2 variant
+			// let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+			// let start = function(){//not working - this.start -> 
+			// 	console.log('starting ' + t.model );//Kran.model -> staring cat
+			// }
+			/*-------------- 2 ---------------*/
+			////bind and Function Expression
+			// var start = function(){
+			// 	console.log('starting ' + this.model );//output - cat(this.model) - սրա this-ը Kran է 
+			// }.bind(this);
+			/*-------------- 3 ---------------*/
+			// start = () => console.log(this.model);
+		}
+
+		// AbstAuto.parol2 = 4321;
+
+Kran.prototype = Object.create(AbstAuto.prototype);//create __proto__: AbstAuto
+		// console.log(Kran.prototype.constructor.name);//AbstAuto - սխալա պետքա իրա վրա ցույցա տա
+Kran.prototype.constructor = Kran;
+// Kran.prototype = AbstAuto.prototype;
+
+// console.log(Kran.__proto__);
+		function Kran(m,c,k){
+			AbstAuto.call(this, m, c);
+			this.kran = k;
+		}
+
+		var cat = new Kran('cat','yellow','10m');
+
+		AbstAuto.start = function(){//static method պետքա սարեքենք
+				console.log('starting ' + this.model )
+		}.bind(cat);
+		// AbstAuto.hasOwnProperty('start');//true
+
+		console.log("cat", cat);
+		// cat.go();
+		AbstAuto.start();//Ինչպես անել, որ start-ը հասանելի լինի աբտրակտ constructor-ի մեջից
+		// cat.start();//insetence-ի համար հասանլելի լինելու համար պետքա prototoype-ի մեջ ստեղծել մեթոդ , public
+
+
+		/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+///// Բացատրել անցած դասի բացտողածը ->  30_GiveLesson/Good_example_of_inheritance.html (constructor-ի պահը)
+	</script>
+</body>
+</html>

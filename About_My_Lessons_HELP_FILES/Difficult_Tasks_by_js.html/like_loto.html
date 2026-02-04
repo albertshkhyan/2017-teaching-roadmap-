@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+
+		//
+
+		
+
+//Task 
+var n=prompt("mutqagrel tiv")
+var z=n.split(",");
+var arr=[];
+while(arr.length<10){
+	let c=Math.round(Math.random()*50);
+	for(var i=0; i<arr.length; ++i){
+		if (c==arr[i]) {
+		    break;
+		}
+	}
+	if (i==arr.length) {
+		arr.push(c);
+	}
+}
+var n=0;
+for(var j=0; j<z.length; ++j){
+	for(var k=0; k<arr.length; ++k){
+		if (z[j]==arr[k]) {
+			n++
+		}
+	}
+}
+console.log(arr, z, n)
+	</script>
+</body>
+</html>

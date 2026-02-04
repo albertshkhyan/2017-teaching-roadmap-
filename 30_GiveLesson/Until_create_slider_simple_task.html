@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<button>click me</button>
+	<script>
+		//
+
+
+
+////// մինչև slider-ի տանայինը  անելը տալ այս առաջադրանքը, -> click ենք անում button-ի վրա, ցույցա տալիս ետ User constructor-ի անունը և ետ user-ի անունը։
+
+function User(n,b){//arr,l,r,img tags
+	this.name = n;
+	this.button = b;
+	this.button.onclick = function() {
+		console.log(this.constructor.name + ' - ' + this.name);//առանց bind this-ը դառնումա button օբյեկտը
+	}.bind(this);
+
+}
+
+let btn = document.querySelector('button');
+var user = new User('Valod', btn);
+
+	</script>
+</body>
+</html>

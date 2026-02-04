@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+
+		/*
+		  ⚫EcmaScript 5 -  Object.create ()
+				  ◼ Ձևակերպում 1 - 	Object.create () - մեթոդը ստեղծումա նոր օբյեկտ մեր նշած օբյեկտի __proto__-ով։
+
+
+				  ◼ Ձևակերպում 2 - 	Object.create () - մեթոդը վերադարձնումա նոր օբյեկտ մեր նշած օբյեկտի պրոտոտիպով։
+
+		  🔰 Object.create () օգտագործվում է պրոտոտիպնի ժառանգության իրականացման համար:
+
+
+			Syntax
+
+				Object.create (obj.prototype [, propertiesObject])
+
+					obj.prototype - վերադարձնումա նոր օբյեկտ մեր նշած օբյեկտի պրոտոտիպով:
+					propertiesObject - նշում ենք թե որ հատկությունները պետքա ավելանան մեր ստեղծած օբյեկտի մեջ։
+
+					*/
+
+
+		// Examples 
+
+
+		// function Fruits() {
+		// 	this.name = 'fruit 1';
+
+		// }
+
+
+		// function Apple() {
+		// 	Fruits.call(this);
+		// }
+
+		// let apple = new Apple();
+		// console.log("apple", apple);
+		// console.log(apple.name);//fruit 1
+
+/*----------------- with Object.create() -------------------*/
+
+		// function Fruits() {
+		// 	this.name = 'fruit 1';
+			
+		// }
+
+
+		// function Apple() {
+		// 	Fruits.call(this);
+		// }
+
+		// Apple.prototype = Object.create(Fruits.prototype);
+
+		// let apple = new Apple();
+		// console.log(apple.name);//fruit 1
+
+
+		// console.log("apple", apple);
+
+/*Output
+Apple {name: "fruit 1", season: "summer"}
+	name: "fruit 1"
+	__proto__: Fruits
+		proto__: 
+			constructor: ƒ Fruits()
+			__proto__ : Object
+
+
+*/
+
+
+/*------------------ without Object.create() ------------------*/
+
+		// function Fruits() {
+		// 	this.name = 'fruit 1';
+		// 	this.season = 'summer';
+			
+		// }
+
+
+		// function Apple() {
+		// 	Fruits.call(this);
+		// }
+
+		// Apple.prototype = Fruits.prototype;
+
+		// let apple = new Apple();
+		// console.log(apple.name);//fruit 1
+		// console.log(apple.season);//summer
+
+
+		// console.log("apple", apple);
+
+
+
+/*Output
+Apple {name: "fruit 1", season: "summer"}
+		name: "fruit 1"
+		__proto__: 
+		constructor: ƒ Fruits()
+		__proto__: Object
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		function Fruits() {
+			this.name = 'fruit 1';
+			// go = function() {
+			// 	console.log('Apple eating');
+			// }
+
+		}
+
+		Fruits.a = 3;
+
+
+		function Apple() {
+			Fruits.call(this);
+
+		}
+
+		Apple.prototype = Object.create(Fruits.prototype);
+
+		let apple = new Apple();
+		
+console.log("apple.a", apple.a);
+		console.log("apple", apple);
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<button>click me</button>
+	<script>
+		//
+
+
+		
+////arrow function and this
+
+////⚫ with simple function 
+// let user = {
+// 	name : 'Valod',
+// 	sname : " Valodyan",
+// 	info : function () {
+// 		console.log(this.name + this.sname);
+		
+// 	}
+// }
+// user.info();//Valod Valodyan
+
+////⚫ with arrow function 
+////⚠ arrow func-ը նմանատիպ դեպքերի համար չի 
+// let user = {
+// 	name : 'Valod',
+// 	sname : ' Valodyann',
+// 	info : () => {
+// 		////this -ը arrow function -ով undefined է , որովհետև arrow function-ը իրա this-ը չունի։
+// 		console.log(this);//window
+// 		console.log('hi my name is ' + this.name + this.sname);
+// 	}
+// }
+// user.info();
+
+
+////⚫ with arrow function - REAL EXAMPLE
+// let user = {
+// 	name : 'Valod',
+// 	sname : ' Valodyann',
+// 	info : function(){
+// 		setTimeout( () => {
+// 			console.log(this);//
+// 			console.log('hi my name is ' + this.name + this.sname);
+// 		} );
+// 	}
+// }
+// user.info();
+
+
+
+
+
+
+
+
+
+
+// let takeButton = document.querySelector('button');
+
+
+
+// function ClickOnBtn(tbtn) {
+// 	this.button = tbtn;
+// 	////🔰 js function
+// 	// this.button.onclick = function() {//Ինչի վրա որ click արինք ետել դառավ իրա this-ը։
+// 	// 	alert(this.constructor.name);//HTMLButtonElement
+// 	// }//պետքա իրան bind անել, որ click-ի ժմնկ դառնա ClickOnBtn
+
+// 	/////🔰 es6 function -  arrow function
+// 	this.button.onclick = () => {
+// 		alert(this.constructor.name);//ClickOnBtn
+// 	}
+// }
+
+
+
+/*Սովորական ֆունցիայի և Arrow function-ի տարբերություները
+
+◼ Չունի իրա this-ը (այսինքն եթե օբյեկտի մեջ մեթոդ սարքենք arrow function-ով իրա this-ը կլնի window)
+◼ new չի լինում անել
+◼ չունի arguments հատկությունը
+
+⚠ arrow function-ը, որ կոնտեքստում որ հայտարարվածա ետա իրա this-ը 
+		Օրինակ՝ եթե սովրակա ֆունկիան գրենք a օբյեկտի մեջ տվյալ ֆունցիայի this-ը կլինի a-ն, իսկ եթե a օբյեկտի մեջ գրենք arrow function իրա this-ը կլնի windown:
+
+
+*/
+
+// let clickOnBtn = new ClickOnBtn(takeButton);
+
+
+/*--------------------------------------------------------------*/
+
+// foo = () => {alert(this)};//window -> default bindig կատարվումա
+// foo();
+
+/*---------------------------------------------------*/
+// let person = {
+// name : 'Vaold',
+// sname : 'Vaoldyan',
+// // getFullName : function() {
+// // 	console.log(this);//person object
+// // }
+
+// getFullName : () => {
+// 	console.log(this);//window 🤷‍
+// }
+
+////how to fix -> give Task
+
+// getFullName : (t) => {
+// 	console.log(t.name);//working this variant -> Valod
+// }
+
+
+// }
+
+// person.getFullName(person);
+
+
+/*++++++++++++++++++++++++ argumetnts => ++++++++++++++++++++++++*/
+
+// //🔰 simple function
+// function foo() {
+// console.log(arguments);// ✔ working - Arguments[1,2,3,4,5]
+// }
+
+// foo(1,2,4,5);
+
+
+// ////🔰 with arrow function
+// foo = () =>{
+// console.log(arguments);//Error - arguments is not defined
+// }
+
+// foo(1,2,4,5);
+
+// ////🔰 how to fix 
+// foo = (...args) =>{
+// // console.log(arguments);//Error - arguments is not defined
+// console.log(args);// [1, 2, 4, 5] ✔👍
+// }
+
+// foo(1,2,4,5);
+
+
+/*--------------------------------------------------------------*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>given home work</title>
+
+	<style>
+		
+		form, div, p {
+			padding: 30px;
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+	</style>
+</head>
+<body>
+
+	<form onclick="foo(event)">FORM
+		<div onclick="foo(event)">DIV
+			<p onclick="foo(event)">P</p>
+		</div>
+	</form>
+	<script>
+		/**/
+
+
+		//// bubbling - դադարեցնել
+
+
+		/*
+		stopPropagation() method - ադարեցնում է event-ի bubbling կամ capturing լինելը։
+
+		*/
+///// պարտադիր addEventListener -ով կանգնեցնել ?? 
+
+///// Home Work No1 -  ինչպես դարդաեցնել bubbling-ը
+
+		function foo(e) {
+				alert(e.currentTarget.tagName);//p>div>form - որովհետև currentTarget ետի են տարրնա որի վրա դրվածա տվյալ event-ը։
+				// alert(e.target.tagName);//p>p>p - որովհետև target-ը ետի են տարրնա որի պատճառով առաջացելա տվյալ event-ը։
+
+				e.stopPropagation();////որ bubbling չլինի
+		}
+
+
+
+
+///////////////////////////////////////////////////////
+
+
+
+
+	</script>
+</body>
+</html>

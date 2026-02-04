@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CheckerBoard</title>
+
+
+	<style>
+		
+		#main_block{
+			width: 560px;
+			height: 560px;
+			border: 1px solid #000;
+		}
+
+
+		.squere{/*շախմատի քառակուսիները պետքա ստեղծել ու նենց անել որ իրար կող լինի*/
+			width: 70px;
+			height: 70px;
+			float: left;
+
+		}
+		
+		/* Squere colors */
+		.black{
+			background-color: #000;
+		}
+		.white{
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	
+<div id="main_block"></div>
+
+
+	<script>
+ 
+		function drawChess() {
+			let checkBorder = document.querySelector('#main_block');//սա այն բլոկն է, որտեղ մենք պիտի ավելացնենք մեր տարրերը
+			let squere;//ստեղծված քառակուսիները տեղադրելու համար է 
+			//Ավելի հարմար ձև գույն տալու համար՝
+			let addColor = true;
+
+
+			//2 ցիկլով ավելի հեշտ  է կառավարել գույները
+			for(let i = 0; i < 8; ++i) {
+				for(let j = 0; j < 8; ++j) {
+					(j==0) ? addColor = !addColor : '';//ոՐ սևը ուղղահայաց չտպվի  - 2,3 ․․․ տողերը փոխվի
+					//Իսկ հիմա մենք պետք է ստեղծենք block-ը։
+					squere  = document.createElement('div');
+
+					//Իսկ հիմա պետքա գույն տամք մեչ քառակուսիներին
+					if (addColor) {
+						squere.className = 'squere black';//block և black-ը առանձին class-ներ են։
+						//․block - ը append անելու համար 
+						//.white կամ black - ը  գույն տալու համար
+
+					}
+					else{
+						squere.className = 'squere white';
+					}
+					//^ Բայց վերոհիշյալ պայմանից կաշխատի միայն if-ը քանի որ flag = true
+
+					//Իսկ հիմա մենք պետք է արտածել քառակուսիները
+					checkBorder.appendChild(squere);
+
+					//Սև ու սպիտակ տպելու համար քառակուսիները
+					addColor = !addColor; // կաշխատի բայց միայն ուղղահայանց կտպվի, դրա համար պետք է գրել պայման․․․
+
+				}
+			}
+
+		}
+
+		drawChess();
+
+		/*
+		# false -ի դեպքում սպիտակա տպում իսկ true -ի դեպքում սև
+		# հենց ներէին ցիկլը ավարվումա հաջորդ տողինա անցնում
+
+		# Պետքա քառակուսիների չափ նենց լինի որ շախմատի սեղանի վրա 8*8-ի վրա տեղավորվի
+		Հարց։ եթե մեր շախմատի սեղանի չափը 720*720-ի վրա է, բա դաշտերը(պուճուր քառակուսիները) ինչքան պետքա լինի, որ 8*8-ի վրա տեղավորվի?????
+
+		720/8 = 90 (8*9=72)
+
+
+
+		*/
+
+
+		/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+		
+
+	</script>
+</body>
+</html>

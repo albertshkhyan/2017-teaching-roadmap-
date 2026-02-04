@@ -1,0 +1,116 @@
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<title></title>
+	<style>
+	body{
+		margin: 0;
+		padding: 0;
+	}
+	.slider{
+		width: 100%;
+		height: 100vh;
+		position: relative;
+	}
+	.icon{
+		color: #127421;
+		font-size: 50px;
+		z-index: 99;
+		position: absolute;
+		/*top: 400px;*/
+		top: 50%;
+		transition: all ease-in-out 300ms;
+	}
+	#icon2{
+		right: 0px;
+	}
+	.icon:hover{
+		cursor: pointer;
+		color: #3FCC25;
+	}
+		.slider > img{
+			width: 100%;
+			height: 100%;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="slider">
+			<i class="fas fa-backward icon" id="icon1" onclick="slideLeft()"></i>
+			<img src="../../IMAGES_and_ICON/animals/img (1).jpg" alt="">
+			<i class="fas fa-forward icon" id="icon2" onclick="slideRight()"></i>
+		</div>
+
+		<script>
+
+/*----------------------------------------------------------------*/
+
+		let image = document.querySelector('.slider > img');
+		let img = [
+		'../../IMAGES_and_ICON/animals/img (1).jpg',
+		'../../IMAGES_and_ICON/animals/img (2).jpg', 
+		'../../IMAGES_and_ICON/animals/img (3).jpg',
+		'../../IMAGES_and_ICON/animals/img (4).jpg',
+		'../../IMAGES_and_ICON/animals/img (5).jpg'
+		];
+
+		// console.log(image.getAttribute('src'));
+///// Ձած click - ի ժամանակ error տալիս - ReferenceError: slideLeft is not defined
+		function slideRight(){
+			for(let i = 0; i < img.length; ++i){
+				if(image.getAttribute('src') == img[i]){
+					if(i == img.length - 1){
+						i -= img.length;//4 - 5 = -1
+					}
+					image.src = img[i + 1];//-1 + 1 = 0
+					break;
+
+				}
+			}
+		}
+		function slideLeft() {
+			for(var i = 0; i < img.length; ++i){
+				if(image.getAttribute('src') == img[i]){
+					if(i == 0){//
+						i = img.length;
+					}
+					image.src = img[i - 1];//-1 + 1 = 0
+					break;
+
+				}
+			}
+		}
+/*----------------------------------------------------------------*/
+
+// let img1 = document.createElement('img');
+// img1.setAttribute('src', 'img/img1.jpg');
+
+// let img2 = document.createElement('img');
+// img2.setAttribute('src', 'img/img2.jpg');
+
+// let img3 = document.createElement('img');
+// img3.setAttribute('src', 'img/img3.jpg');
+
+// let img4 = document.createElement('img');
+// img4.setAttribute('src', 'img/img4.jpg');
+
+// let img5 = document.createElement('img');
+// img5.setAttribute('src', 'img/img5.jpg');
+
+// img = [img1, img2, img3, img4, img5];
+
+// let div = document.getElementsByClassName('slider')[0];
+
+// div.appendChild(img[0]);
+// if(img[i] == img[0]) {
+// }
+// function slideRight(){
+	
+// }
+
+	</script>
+</body>
+</html>

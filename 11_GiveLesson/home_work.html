@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home work</title>
+</head>
+<body>
+	
+
+
+	<script>
+		
+		/* **********************Example in real life use function********************** */
+
+			function f() {
+				// var erang1 = 'rgb(120, 70, 15)';
+				// var erang2 = 'rgb(15, 85, 255)';
+				// var diveriQanak = 10;
+
+				// var arrOfErang1 = erang1.slice(4, -1).split(',');
+				// var arrOfErang2 = erang2.slice(4, -1).split(',');
+
+				//Random Color
+var diveriQanak = 10;
+var arrOfErang1 =[Math.round(Math.random()*255), Math.round(Math.random()*255),Math.round(Math.random()*255)];
+var arrOfErang2 =[Math.round(Math.random()*255), Math.round(Math.random()*255),Math.round(Math.random()*255)];				
+
+		var red = (arrOfErang1[0] - arrOfErang2[0])/diveriQanak ;//10.5 -> 120 - 15 = 105 / 10 = 10.5
+		var green = (arrOfErang1[1] - arrOfErang2[1])/diveriQanak ;//-1.5 -> 70 - 85 = -15 / 10 = -1.5
+		var blue = (arrOfErang1[2] - arrOfErang2[2])/diveriQanak ;//-24 -> 15 - 255 = -240 / 10 = -24
+
+
+		var r,g,b;//վերջնական գույնը ըստանալու համար
+		for(var i = 0; i <= diveriQanak; ++i){//i <= 15
+			r = arrOfErang1[0] - (i * red);
+			g = arrOfErang1[1] - (i * green);
+			b = arrOfErang1[2] - (i * blue);
+
+
+			// document.write('<div style="background-color:rgb('+r+','+g+','+b+'); width:50px; height:50px;float:left"></div>')
+
+						document.write(`
+							<div style="
+								width:50px; 
+								height:50px; 
+								float:left;
+								background-color:rgb(${r}, ${g}, ${b});
+							"></div>
+						`);
+		}
+
+	}
+f();
+document.write('<div style="clear:both"></div>');//vor irar kox chlini h1 u div
+document.write('<h1>Hello</h1>');//
+f();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Give home work
+//#
+//tnayin 0 neri qankay hashvel zangvaci
+console.time('qanak')
+var arr = [0.10, 10, 101, 100, 0, 0.102];
+var qanak = 0;
+for(var i = 0; i < arr.length; ++i){
+	var n = Math.round(arr[i]);
+	(n == 0) ? qanak++ : '';
+		while(n != 0) {// || havasare 0 
+			if(n % 10 == 0 || n == 0) {
+				qanak++;
+
+			}
+			n = (n - n % 10) / 10;
+		}
+	}
+
+
+console.log("qanak", qanak);
+console.timeEnd('qanak');
+/*__________________________________________________*/
+//եթե մնացորդի վերջում 0 է լունում դա չի հաշվում։
+
+// console.time("qanak2");
+// var  arr =  [0.10, 10, 101, 100, 0, 0.102];//9
+// // var  arr =  ['0.10, 10, 101, 100, 0, 0.102'];// all String 
+// // var b = 1;
+// var qanak = 0;
+// for(var i = 0; i < arr.length; ++i) {
+// 	var c = arr[i].toString();
+// 	// var d = arr[i].toString().length;
+// 	for(var j = 0; j < c.length; ++j) {
+// 		if( arr[i].toString().charAt(j) === '0') {
+// 			qanak ++;
+// 		}
+// 	}
+// }
+// console.log(qanak);
+
+// console.log(0.10);//0.1
+// console.timeEnd("qanak2");//ավելի արագա աշխատում
+
+//0.10.toFixed(2).length -> 4
+
+// var n = 0.10;
+// var k = n.toFixed(i).length == t;
+// for(var i = 0; i < )
+// n.toFixed(2)
+
+
+// var str = String(0.10);
+// console.log("str", str);
+// console.log("str.length", str.length);
+
+	// console.log(qanak);
+
+/*__________________________________________________*/
+
+
+
+
+	</script>
+</body>
+</html>

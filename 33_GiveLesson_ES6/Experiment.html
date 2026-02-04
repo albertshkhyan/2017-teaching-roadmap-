@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+		
+		//
+
+		
+
+		// for(let v of ['a', 'b', 'c']) {
+		// 	alert(v);
+		// }
+		
+
+		
+		// for(let v of 'BAREV') {
+		// 	alert(v);
+		// }
+		
+
+		// let arr = ['a', 'b', 'c'];
+		// let iterArr  = arr.entries();
+		// // console.log(iterArr.next());
+		// console.log(iterArr.next().value[1]);
+		// console.log(iterArr.next());
+		// console.log(iterArr.next());
+		// console.log(iterArr.next());
+
+		///// if string
+		
+		// let str = 'hello';
+		// let iterStr  = str[Symbol.iterator]();
+		// // console.log(iterArr.next());
+		// console.log(iterStr.next());
+		// console.log(iterStr.next());
+		// console.log(iterStr.next());
+		// console.log(iterStr.next());
+		// console.log(iterStr.next());
+		// console.log(iterStr.next());
+		// console.log(iterStr.next());
+
+
+
+		/********************************************************/
+		
+
+
+
+
+
+
+
+		// let users = {
+		// 	user1 : 'Natali',
+		// 	user2 : 'Robert',
+		// 	user3 : 'Valod',
+		// 	[Symbol.iterator] : function() {
+		// 		let arrOfUsersKeys = Object.keys(this);
+		// 		// console.log(arrOfUsersKeys);
+		// 		let count = 0;
+		// 		let isDone;
+		// 		return {
+		// 			next : function() {
+		// 				return {
+		// 					value: [count, users[ arrOfUsersKeys[count++] ]],
+		// 					done : isDone = (count > arrOfUsersKeys.length ) ? true : false,
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+
+		// }
+
+		// console.log(users[Symbol.iterator]());
+		// let iter = users[Symbol.iterator]();
+		// console.log(iter.next());
+		// console.log(iter.next());
+		// console.log(iter.next());
+		// console.log(iter.next());
+		// for(let v of users) {
+		// 	alert(v);
+		// }
+
+
+
+
+		/*+++++++++++++++++++++++ Map  ++++++++++++++++++++*/
+
+
+		let foo = function(p){alert(p)}
+		let map = new Map([
+			['name','Valod'],
+			['srname','Valodyan'],
+			[null, 'not online'],
+			[true, 'is online'],
+			[function foo(p){alert(p)}, 'hello my name is valod'],
+			['user1', 'Natli']
+		]);
+
+		console.log(map);
+		// console.log('----------------------------------------');
+
+
+		// console.log(map.get('name'));
+		// console.log(map.get('srname'));
+		// console.log(map.get(true));
+		// console.log(map.get(null));
+		// console.log(map.get( foo()) );
+
+
+		// console.log('----------------------------------------');
+
+		//// entries(), keys(), values() method
+		// for(let v of map.values()) {
+		// 	console.log(v);
+		// }
+
+
+		// console.log('----------------------------------------');
+		
+
+		///global contextic e kanchum foo functian 
+		// map.get( foo( map.get(foo) ) );
+
+		//// identy resul❌
+		// console.log(map.entries().next());
+		// console.log(map.entries().next());
+		// console.log(map.entries().next());
+		// console.log(map.entries().next());
+
+
+		/// ✔
+		// let iter = map.entries();
+		// console.log(iter.next());
+		// console.log(iter.next());
+		// console.log(iter.next());
+
+
+
+
+
+		/////
+		// console.log( Array.from(new Map([[true, 'Valod']])) );
+
+
+
+
+	
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		
+		//
+/*What is constructor (շինարար)
+
+⚠ Ցանկացած ֆունկցիա ունի f.prototype հատկությունը, որը իրանից ներկայցնումա օբյեկտ իսկ ետ prototype օբյեկտը ունի constructor, որը հավասարե մեր ֆունկցիաին։
+
+*/
+
+//⚫instaceof օպերատորը թույլա տալիս ստուգել թե, որ construcotr-իցա ստեղծվել տվյալ օբյեկտը։ 
+//⚫Оператор instanceof проверяет, принадлежит ли объект к определённому классу(construcotr). 
+// console.log([] instanceof Array);//true
+
+// ////or like this check
+// console.log([].constructor == Array);true
+// console.log([].constructor);//ƒ Array() { [native code] }
+
+
+// console.log(function foo() {} instanceof Function);//true
+
+// console.log({} instanceof Object);//true
+
+ 
+// console.log("new Boolean() instanceof Boolean", new Boolean() instanceof Boolean);//true -> բուլյան օբյեկտը ժառանգումա Boolean constructor-ից։
+
+
+/* -------------------- typeof -ը միշտ օբյեկտա վերադարձնում -------------------- */
+// console.log("typeof []", typeof []);//object
+
+// console.log("typeof {}", typeof {});//object
+
+// console.log("typeof new Boolean()", typeof new Boolean());//object
+
+
+
+/*-------------------*/
+
+
+function f() {
+
+}
+
+console.log("f.prototype", f.prototype);
+
+let obj =  {
+	name : 'valod'
+}
+
+console.log("obj", obj);
+
+
+	
+	</script>
+</body>
+</html>

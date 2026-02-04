@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	
+
+	<!-- <img id="nkar" src="images/fid_spinner.png" alt=""> -->
+	<img id="nkar" src="../../JavaScript___Alik/ReadyWorksByJS/images/fid_spinner.png" alt="">
+
+	<script>
+
+		/*
+			
+	//generator-ը կանչվում է iterator - ով
+	//  onclick="spin()" - img թեգին պետք չի տալ onclick
+	// Եթե done false է ուրեմն գործողւթյունը դեռ չի ավառվել
+	// generator.next() - վերդարձնում է հաջորդ yield-ը
+	//generator - ի մեջ կարելի է գրել return
+	
+	//generator ֆունկցիան դուք չէք կարող հետ կանչել, բայց կարելի է ստեղծել նոր
+	
+	// /!\ Քանի որ մենք գրելենք next() մեթոդը,իսկ մենք գիտենք որ next() մեթոդը իտերացվող օբյեկտում է, սա նշանակու է որ generator-ը իտերացվող օբյեկտ է:
+		*/
+
+
+		//working without event
+		var nkar = document.querySelector('#nkar');
+		var stop;
+		var deg = 0;
+		function* spin() {
+			yield stop = setInterval(function () {
+				nkar.style.transform = `rotate(${deg++}deg)`;
+				(deg == 360) ? deg = 0 : '';//working
+			});
+
+			yield clearInterval(stop);
+
+			yield stop = setInterval(function () {
+				nkar.style.transform = `rotate(${deg--}deg)`;
+				(deg == -360) ? deg = 0 : '';
+			});
+
+			yield clearInterval(stop);
+		}
+		var gen = spin();
+
+		// gen.next();
+		// gen.next();
+
+		nkar.onclick = function () {
+			var x = gen.next();
+			console.log(gen);//spin {<suspended>}
+
+			if (x.done == true) {//gen.next().done = true -> spin {<closed>}
+				// console.log(gen.next());//վերջում ինչքան clcik անենք ետքան true կտա
+				//1
+				////Սենց կսկսի արագանալ
+				////անընդհատ վերջին yield-նա անում նոր փոփոխականով
+				// var newGen = spin();//ինչքան click անենք անընհատ spin {<closed>} է լինելու
+				// newGen.next();
+
+				//2
+				////հնի արժեքը պետքա փոխվի, որ չսկսի արագանալ, նոր փոփոխական պետք չի
+				gen = spin();
+				gen.next();
+
+				
+
+			}
+		}
+
+
+
+////suspended -> կանգնեցված
+
+/*
+* suspended - 
+* closed - When a generator is closed it frees the suspended execution context (as well as all other held variables). (Когда генератор закрывается, он освобождает контекст приостановленного выполнения (а также все другие хранимые переменные).)
+
+*/
+
+
+
+	</script>
+</body>
+
+</html>

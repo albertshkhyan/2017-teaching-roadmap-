@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function4</title>
+</head>
+<body>
+	
+
+
+
+	<script>
+		
+					/*
+																					19.function
+																						arguments
+																						պարամետրական ֆունկցիա
+																						return
+																						expression , decleration
+																						
+																						ինքն իրեն կանչող ֆունկցիա
+																						տողային ֆունկցիա (ES6) - arrow function
+																						default value (ES6)
+
+																						ռեկուրսիա
+																						closure
+																						scope
+																						hoisting
+
+																						*/
+
+
+//EcamaScript 6 - ը կանկատենացիա անելու ավելի հարմար ձևա մեզի տրամադրում
+// var str = 'Lorem ipsum dolor sit amet.';
+// document.write('<h1>'+str+'</h1>');//js
+// //es6
+// document.write(`
+// <h1>${str}</h1>
+// `);
+
+
+
+
+
+
+
+
+//Task - ֆունկիցան կանչոլուց նշում ենք քանիսը քանիսի վրա սարքի div, ու ինչ գույն
+// function f(a,b,c){
+// 	document.write("<div style='width:"+a+"px; height:"+b+"px; background-color:"+c+";'></div>");
+// }
+// f(300, 400,"red");
+// f(300, 400,"black");
+// f(800, 200, "green");
+
+//Նույն խնդիրը EcmaScript  գրելաձևով
+// /!\ Պարտադիր չակերտները պետքա դրվի style=""
+// function f(a,b,c){
+// 	document.write(`
+// 		<div 
+// 		style="
+// 			width:${a}px; 
+// 			height:${b}px; 
+// 			background-color:${c};
+// 		">
+// 		</div>
+// 		`);
+// }
+
+// f(200, 200, 'red');
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////// #տողային ֆունկցիա (ES6) - arrow(սլաք) function ////////////////////
+
+// /!\ arrow ֆունկիցաները միշտ անանուն են։
+
+
+/*
+/!\ arguments չունեն
+/!\ new չի լինում անել
+/!\ Ինքը իրա this-ը չունի
+*/
+
+// # Քանի որ arrw function-ները միշ անանուն են իրենց կանչելու հմար պետքա պահել փոփոխականի մեջ կան ինքը իրան կանչել։
+// * arrow ֆունկցիան փոփոխականի մեջ
+// var f = () => {
+// 	// arguments;//is not defiend
+// 	alert('hello');
+// }
+// f();
+
+// * arrow ֆունկցիան ինքը իրան կարա կանչի
+ // (() => {
+ // 	alert('hello');
+ // })()
+
+
+ let b = () => () => 10;
+ let x = b();
+ let j = x();
+ console.log('j', j);
+
+
+// * arrow ֆունկցիան եթե պառամետր չունի իրանից առաջ փակագծերը պարտադիր են։
+//  => {//Unexpected token =>
+// 	alert('hello');
+// }
+
+//* եթե պառամետրը մի հատ է կլոր փոկագծերը պարտադիր չեն
+// var f = param => param**2;//10*10
+// f(10); //Բան չի ցուցադրում քանի որ return է արել, 
+// //alert(f(10));
+// var f2 = f(10);
+// console.log("f2", f2);
+
+
+//* եթե պառամետրը մի հատից ավելա է կլոր փոկագծերը պարտադիր պիտի դրվի
+//Task - 200x100 - վրա div սարքել EcmaScript գերլաձևով
+// var f = (a,b,c) => {
+// 	document.write(`
+// 	<div style="
+// 		width:${a}px;
+// 		height:${b}px;
+// 		background-color:${c};
+// 	">
+// 	</div>
+// 	`);
+// }
+// f(200,100,'magenta');
+
+
+
+//#arrow return operator
+//* Եթե ձևավոր փակագծերը չենք դնում, ասյինքն մի տողի վրա ենք գրում return գերլու կարիք չկա
+// // var f = (a,b) => return a - b;//Unexpected token return
+// var f = (a,b) =>  a - b;
+// console.log("f(10,7)", f(10,7));
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

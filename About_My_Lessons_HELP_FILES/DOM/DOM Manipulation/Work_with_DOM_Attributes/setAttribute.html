@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setAttribute</title>
+</head>
+
+<input id="inpElem" type="text">
+<body>
+	<script>
+		//
+
+/*setAttribute() - ավելացնումա ատրիբուտ կամ արդեն գույություն ունեցող ատրիբուտի արժեքը փոխումա։
+	Синтаксис
+		element.setAttribute(name, value);
+	
+*/
+
+
+//// ինչպես փոխել ատրբուտի արժեքը
+let inp1 = document.getElementById('inpElem');
+inp1.setAttribute('type', 'range');
+
+//// ինչպես ավելացնել նոր ատրբուտ
+inp1.setAttribute('value', '100');
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>stexnashari slaqnerov tarri karavarum</title>
+
+
+	<style>
+		*{
+			margin: 0;
+		}
+		#zone{
+			width: 100%;
+			height: 100vh;
+			border: 1px solid #000;
+			position: relative;
+			margin: 0 auto;
+			background: url(https://i.imgur.com/NW0mK39.gif) no-repeat ;
+			background-size: cover;
+
+
+		}
+
+		#move{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			bottom: 0;
+			/* bottom:70px; */
+		}
+
+
+
+	</style>
+</head>
+<body><!-- onkeydown="f(event)" -->
+	
+<div id="zone">
+	<img src="../ReadyWorksByJS/beauty_images/runing_mario.gif" alt="" id="move">
+</div>
+
+
+
+	<script>
+
+	var zone = document.querySelector('#zone');
+	var move = document.querySelector('#move');
+
+	var horiz = zone.offsetWidth - move.offsetWidth;
+	var verti = zone.offsetHeight - move.offsetHeight;
+	
+	var n = 0;
+	var x = 0;
+	var y = 0;
+	// document.body.onkeydown = function(e){
+
+	// 	if(e.which == 39 && x < horiz){
+	// 		x+=5;
+	// 		move.style.left = x+'px';
+	// 	}
+
+	// 	else if(e.which == 37 && x > 0){
+	// 		x-=5;
+	// 		move.style.left = x+'px';
+
+	// 	}
+
+	// 	else if(e.which == 40 && y < verti){
+	// 		y+=5;
+	// 		move.style.top = y+'px';
+	// 	}
+
+	// 	else if(e.which == 38 && y > 0){
+	// 		y-=5;
+	// 		move.style.top = y+'px';
+	// 	}
+	// }
+	
+/////////////////////////////
+
+document.body.onkeydown = function(e){
+	// console.log('e.which', e.which);
+
+if(e.which == 39 && x < horiz){//right
+	x+=20;
+	move.style.left = x+'px';
+}
+
+else if(e.which == 37 && x > 0){//left
+	x-=20;
+	move.style.left = x+'px';
+
+}
+
+else if(e.which == 40 && y > verti){//down  620 > 640
+	console.log('y', y);
+	console.log('verti', verti);
+	verti-=20;
+	move.style.bottom = verti+'px';
+}
+
+else if(e.which == 38 && y < verti){//top
+	console.log('yy', y);
+	y+=20;
+	move.style.bottom = y+'px';
+}
+}
+
+
+ 
+
+</script>
+</body>
+</html>

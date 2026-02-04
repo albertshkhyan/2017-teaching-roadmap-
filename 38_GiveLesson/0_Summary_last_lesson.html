@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>summary</title>
+</head>
+<body>
+    <script>
+    //
+
+    ////ինչ կցուցադր այս կոդը
+    let requsetPromise = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                console.log('Client : Սեռվեր տուր ինձ user-ների ցանկը');
+                console.log('․․․');
+                // console.log('Server : հարցնում եմ  DataBase-ին user-ների ցանկը ունի թե չէ  ');
+                // console.log('․․․');
+                resolve();
+            }, 1000);
+        })
+         .then(function () {
+                let requsetPromise2 = new Promise(function () {
+                    setTimeout(() => {
+                        console.log('Server : հարցնում եմ  DataBase-ին user-ների ցանկը ունի թե չէ  ');
+                        console.log('․․․');
+                        // resolve();
+                    }, 500);
+                })
+
+            })
+    
+    </script>
+</body>
+</html>

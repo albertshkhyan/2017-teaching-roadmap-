@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+		
+		//Ancac dasi ampopum
+		// arr = "a,b,c".split(','); // inch ktpi ["a", "b", "c"]
+		// index - 'abc' - minus meky vor indeqsi taka gtnvum
+
+		// var arr=['barev',123,false,['a','b','c']];
+		// arr[3][1]; //b
+
+		// var arr=['barev',123,false,['a','b','c']];
+// arr[3][1]; //b
+
+
+
+
+
+
+
+
+
+
+
+
+/*+++++++++++++++++++++++ Զանգվածի մեթոդներ +++++++++++++++++++++++++*/
+
+//harcnel array-i metodnery
+
+
+/*
+>window
+	>Array : f Array()
+		arguments
+		length
+		name : Array
+		>prototype
+			>join() - string է սարքում և միացում է իրար մեր զ/ծ-ը մեր նշած սիմվոլոներով
+			>indexOf()
+			>lastIndexOf()
+			>pop()
+			>push()
+			>shift()
+			>unsift
+			>slice()
+			>splice()
+			>sort()
+			>reverse()
+
+			//դեռ պետք չի
+			>toString()
+			>forEach()
+
+
+			*/
+
+////////// # join() method
+// var auto  = ['30', '01', '19'];
+// var str = auto.join('-');//30-01-19 string է սարքում
+// console.log("str", str);
+
+
+////////// # indexOf() method
+// Մանա գալիս մեր նշած տարրի ինդեքսը, եթե չի գտնում մեր նշած տարրը տալիսա -1
+// var array = ['bugati','bmw','merc','bmw'];
+// console.log(array.indexOf('b'));//-1 ? 
+// console.log(array.indexOf('bmw'));// 1 -  առաջին գտած տարրի ինդեքսը
+
+
+////////// # lastIndexOf() method
+// var array = ['bugati','bmw','merc','bmw'];
+// console.log(array.lastIndexOf('bmw'));// 3 -  վերջին գտած տարրի ինդեքսը
+
+
+// pop, push, shift, unsfit
+//Task1
+// var images = ['img1', 'img2', 'img3', 'img4'];
+// var takeLastImg = images.pop();
+// // console.log("images", images);//4 -րդ տարրը ել չկա
+// images.unshift(takeLastImg);//["img4", "img1", "img2", "img3"]
+//  console.log("images", images);
+// task2
+// var images = ['img1', 'img2', 'img3', 'img4'];
+// var takeFirstImg = images.shift();//'img1' - [img2', 'img3', 'img4']
+// images.push(takeFirstImg);//["img2", "img3", "img4", "img1"]
+// console.log("images", images);
+
+
+
+////////// # slice() method
+// var mrger = ['xndxor', 'xaxox', 'banan', 'nur', 'mandarin'];
+// var takeFruit = mrger.slice(1,4);//xaxaix minchev nur
+// console.log("takeFruit", takeFruit);	
+
+
+////////// # splice() method
+// * փոխումա զ/ծ-ի պարունակությունը, հներոը ջնջումա ոազեքնա ավելացնում
+// /!\ ի տարբերություն slice—ի splice-ը առաջին պառամետրի իդնեքսնելա ջնջում, իսկ slice-ը ետ ինդեքսից հետեայա սկսում ջնջել
+// var mrger = ['xndxor', 'xaxox', 'banan', 'nur', 'mandarin'];
+// // 'xaxox' ջնջել մինջև 'nur', և դրանց փոխարեն ավելացնել 'tandz'
+// mrger.splice(1,3,'tandz');//["xndxor", "tandz", "mandarin"]
+// // mrger.splice(tvyal indqeqsica sksuma jnjel ,verjin kdrvac indeqsi hamary,'tandz');
+// console.log("mrger", mrger);
+
+
+
+
+
+/////////// # sort - սոռտավորել - հաջորդաբար 
+// var arr = ['Narek', 'Hayko', 'Gor', 'Vahag', 'Hoso'];
+// var arr = ['Հայկո', 'Նարեկ', 'Գոռ', 'Վահագ', 'Հոսո', 'Ալիկ'];//Հայերենի այբուբենի տառերին համապատասխանա տեսակավորում։
+// console.log(arr.sort());//
+// /!\ Թվերը սխալ է սոռտավորում (string -ի նման)
+// alert('3' > '20');//true
+
+// var numbers = [10, 3, 200];
+// console.log(numbers.sort());//[10, 200, 3] -> փոքրից մեծա սոռտավորում
+
+
+
+/////////// # reverse() - հակառակ հերթականությամբ է սարքում զ/ծ-ի տարրերը, այսինքն ամենաառաջինը դառնումա ամենա վեռջինը
+// var tver = [1,2,3,4,5,6,7,8,9];
+// tver.reverse();
+// console.log(tver);//[9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+//Առանց reverse մեթոդի ավելացնել 
+// var arr = [1,2,3,4,5,6,7,8,9];
+// var result = [];
+// for (var i = arr.length - 1; i >= 0; i--) {
+// 	result.push(arr[i]);
+// }
+// console.log(result);//[9, 8, 7, 6, 5, 4, 3, 2, 1]
+/*
+var i = arr.length - 1 - վերջին ինդեքսովը վեկալումա
+
+*/
+
+
+//Task
+//0-10 tvery qcel datark zangvaci mej
+// var zang=[];
+// for(var i=j=0; i<10; i++,j+=10){
+// 	zang[i]=j;
+// }
+// console.log(zang)
+
+
+
+
+
+
+	</script>
+</body>
+</html>

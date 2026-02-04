@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<input type="text"  value=""><br><br>
+	<input type="mail" id="email" value="your mail"><br><br>
+	<input type="password" value="">
+	<script>
+		//
+
+		// onfocus and onblur -> 
+		/*
+			Կան որոշ ռեգիստարցիոն դաշտեր, որոնց տեքստի տասհտում արդեն նախապես տեքստա գրած, հենց մտնում ենք ետ input -ի մեջ անհետանումա ետ տեքստը և հակառաակը հենց դուրս ենք գալիս հայտնվումա դա շատ հեշտ կարելիա անել onfocus և onblur event-ներով։
+
+			/!\	Հենց դուրս ենք գալիս տվյալ input-ի դաշտից կատարվումա onblur
+
+			-----------------------
+			onfocus - ը կատարվումա երբ օգտվողը կենտրոնանումա ինչ-որ տարրի վրա, այսինքն երբ ինչ-որ տարրի վրա click ես անում։
+			onfocus VS onclick
+			* The onfocus event occurs when an element gets focus.
+			------------------------
+			onblur - ը դա onfocus-ի հակռակնա,կատարվումա երբ օգտվողը շեղվումա տվյալ տարրից
+
+				*/
+
+				////Սկզբում պետքա կպնել մեր տարրին
+				let e_mail = document.getElementById('email');
+				//
+/*				e_mail.onclick = function() {
+					if(e_mail.value == 'your mail') {
+						e_mail.value = '';
+					}
+				};//onclick - ի ժամանակ Tab - ով չի անհետանում
+ */
+ 				//// կկատարվի երբ օգտվողը կենտորոնաան տվյալ տարրի վրա (tab, onclick)
+				e_mail.onfocus = function() {
+					if(e_mail.value == 'your mail') {
+						e_mail.value = '';
+					}
+				};//Tab - ով անհետանումա 
+
+				////Հենց օգտվողը դուրս գա տվյալ input-ից (շեղվի) թող նորից հայտնվի մեր արտահայտությունը (Tab)
+				e_mail.onblur = function() {
+					if(e_mail.value == '') {
+						e_mail.value = 'your mail';
+					}
+				}
+
+
+
+	</script>
+</body>
+</html>

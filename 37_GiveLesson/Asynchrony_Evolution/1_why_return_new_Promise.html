@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise requset on server</title>
+</head>
+<body>
+    
+    <h1> Promisification </h1>
+    <img src="./1_why_return new Promise_image_explain.png" alt="someImg">
+
+
+    <script>
+        //
+
+
+        
+/* FIXME: 
+ինչպես անել, որ ճիշտ հերթականությամբ աշխատի առանց return անելու,
+    Պատ՝․ փոփոխականներով
+*/
+
+// let requsetPromise = new Promise(function(resolve, reject) {
+//     setTimeout(() => {
+//         console.log('1 client - տուր ինձ user-ների ցանկը');
+//         console.log('...');
+//         resolve();
+//     },1000);
+// });
+// requsetPromise.then(function() {
+//     let requsetPromise = new Promise(function(resolve, reject) {
+//             setTimeout(()=> {
+//                 console.log('2 server - database տուր ինձ user-ների ցանկը');
+//                 console.log('...');
+//                 resolve();
+//             },500);
+//     })
+//     .then(function() {
+//         let requsetPromise = new Promise(function(resolve, reject) {
+//             setTimeout(() => {
+//                 console.log('3 DataBAse - ստանում եմ user-ների ցանկը');
+//                 console.log('...');
+//                 resolve();
+//             },5000);
+//         })
+//         .then(function() {
+//             let requsetPromise = new Promise(function(resolve, reject) {
+//                 setTimeout(()=> {
+//                     console.log('4 Server - ձևակերպում եմ user-ների ցանկը, որ տամ clinet-ին');
+//                     console.log('...');
+//                     resolve();
+//                 },1000);
+//             })
+//             .then(function() {
+//                 setTimeout(()=> {
+//                     console.log('5 Server - ստացա user-ների ցանկը 👍');
+//                     console.log('...');
+//                 },500);
+//             })
+//          })
+
+//     })
+    
+// })
+
+
+
+
+
+
+
+
+
+
+/*callback-hell*/
+
+// setTimeout(()=>{
+//     console.log('1 client: սեռվեր տուր ինձ օգվողների ցանկը');
+//     console.log('․․․');
+
+//     setTimeout(() => {
+//         console.log('2 Server: DataBase տուր ինձ օգվողների ցանկը');
+//         console.log('․․․');
+
+//         setTimeout(() => {
+//             console.log('3 DataBase: փնտրում եմ օգվողների ցանկը, որ տամ սեռվերին');
+//             console.log('․․․');
+
+//             setTimeout(() => {
+//                 console.log('4 Server: Ձևակերպում եմ օգվողների ցանկը, որ տամ client-ին');
+//                 console.log('․․․');
+
+//                 setTimeout(() => {
+//                     console.log('5 Client: Ստացա օգվողների ցանկը 👍');
+//                 },500);
+
+//             },1000);
+
+//         },5000);
+
+//     },500);
+
+// },1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* REVIEW : Promisification
+prmise with return
+
+*/
+
+
+        /****************** Promisification ******************/
+        /*
+
+         երբ որ return ենք անում ինքը մինչև մեր promise-ը չանի, հաջորդ promise-ին չի անցնի։ 
+
+                    ◼ ⚠ 1,2,4,3 - with variables
+                    ◼ ⚠ 1,2,3,4 - with return
+        
+        */
+
+
+        // let requsetPromise = new Promise(function (resolve, reject) {
+        //     setTimeout(() => {
+        //         console.log('1 - Client : Սեռվեր տուր ինձ user-ների ցանկը');
+        //         console.log('․․․');
+        //         resolve();
+        //     });
+        // });
+        // requsetPromise.then(function () {
+        //     let requsetPromise = new Promise(function (resolve,reject) {
+        //             setTimeout(() => {
+        //                 console.log('2 - Server : հարցնում եմ  -ին user-ների ցանկը ունի թե չէ  ');
+        //                 console.log('․․․');
+        //                 resolve();
+        //             }, 2000);
+        //         })
+        //     .then(function() {
+        //         return new Promise(function (resolve,reject) {
+        //             setTimeout(() => {
+        //                 console.log('3 -  : ստանում եմ   user-ների ցանկը, որ փոխաանցեմ server-ին։');
+        //                 console.log('․․․');
+        //                 resolve();
+        //             }, 1000);
+        //         })
+        //     })
+        //     .then(function(){
+        //         return new Promise(function(resolve,reject){
+        //         setTimeout(() => {
+        //             console.log('4 - server : ձևակերպու եմ   user-ների ցանկը    որ փոխաանցեմ client-ին։');
+        //             console.log('․․․');
+        //             resolve();
+        //             }, 5000);
+        //         })//  }, 5000); <- դրա համար չի կատարվում ճիշտ ժամանակին
+        //     })
+        //     .then(function(){
+        //         setTimeout(() => {
+        //         console.log('5 - client : ստացա սեռվերից user-ների ձևակերպած    ցանկը');
+        //         },3000);
+        //     });
+        // });
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fetch</title>
+</head>
+
+<button onclick="getUsers()">get users list from server</button>
+
+<ul id="list"></ul>
+
+<body>
+    <script>
+
+        //
+        
+
+
+        /* FIXME 
+        ⚫ fetch() մեթոդը նախատեսվածա սեռվերին հարցում կատարելու համար, fetch-ը XMLHttpRequest-ի ավելի կատտարելագործված տարբերակնա։
+            ⚠ fetch() մեթոդի տակից promise է աշխատում։
+            ⚠ fetch() մեթոդը կանչի ժամանակ վերադարձնումա promise օբյեկտ։
+            ⚠ Երբ, որ fetch() մեթոդի հարցումա հաջողությամբ է կատարվում, մեզ սեռվերից գալիսա Response օբյեկտը
+            ⚠ Why return response.json() - Եթե return չանենք callback - hell կստեղծվի։
+
+
+
+                Syntax 
+                    let promise = fetch(url[, options])
+
+                    ◾ url – URL, սա այն է ինչի վրա որ հարցում ենք կատարում։
+                    ◾ options - ոչ պարտադիր պառամետր, որի արժեքը օբյեկտա այս օբյեկտա մեր հարցման մասին ինֆորմացիա է պարունակում։
+
+                option object -  list of preoperty 
+                    ◾ method – метод запроса,
+                    ◾ headers – заголовки запроса (объект),
+                    ◾ body – тело запроса: FormData, Blob, строка и т.п.
+                    ◾ mode – одно из: «same-origin», «no-cors», «cors», указывает, в каком режиме кросс-доменности предполагается делать запрос.
+                    ◾ credentials – одно из: «omit», «same-origin», «include», указывает, пересылать ли куки и заголовки авторизации вместе с запросом.
+                    ◾ cache – одно из «default», «no-store», «reload», «no-cache», «force-cache», «only-if-cached», указывает, как кешировать запрос.
+                    ◾ redirect – можно поставить «follow» для обычного поведения при коде 30x (следовать редиректу) или «error» для интерпретации редиректа как ошибки.
+
+
+        
+        */
+
+
+
+
+
+
+
+
+
+
+        
+        //// why return  - Եթե return չանենք callback - hell կստեղծվի։
+
+
+        // let getButton = document.querySelector('button');
+
+        // getButton.onclick = function() {
+        //     let promise = fetch('https://jsonplaceholder.typicode.com/users');
+
+        //     promise
+        //         .then((response) => {
+        //             // console.log('response', response);
+
+        //             let jsonResponse = response.json();
+        //             // console.log('jsonResponse', jsonResponse);
+
+        //             return jsonResponse;//???
+
+        //         })
+
+        //         .then((collectionOFUsers) => {
+        //             // console.log('valueOfResponse', valueOfResponse);
+
+        //             let getUl = document.querySelector('#list');
+
+        //             let arrOfusers = collectionOFUsers.map(function(objElem) {
+        //                 return `<li> ${objElem.id}, ${objElem.name}, ${objElem.address} </li>`;
+        //             }).join(' ');
+
+        //             getUl.insertAdjacentHTML('afterbegin', arrOfusers);
+
+
+
+        //         });
+
+        // }
+
+
+
+/////////////////////////////////////////
+
+
+function getUsers() {
+    let promise = fetch('https://jsonplaceholder.typicode.com/users');
+
+    promise
+    .then((getResponse) => {
+        console.log("getResponse", getResponse);
+        let getValueOfResponse = getResponse.json();
+        console.log(getValueOfResponse);
+        return getValueOfResponse;
+
+    })
+    .then((dataArr) => {
+        console.log('dataArr - ', dataArr);
+        var ul = document.querySelector('#list');
+        let newArrOfUser = dataArr.map(function(item) {
+            return `<li>${item.id}, ${item.name}, ${item.email}</li>`;
+        })
+
+                ul.insertAdjacentHTML('afterbegin', newArrOfUser.join(' ') );//✔
+
+            })
+
+}
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////
+
+ 
+        /*
+        ⚫ Ի՞նչա fetch-ը։
+            ◼ fetch-ը դա ֆունկցիա է, որ նախատեսված է սեռվերնեին հարցում կատարելու համար։ fetch-ը XMLHttpRequest օբյեկտի ավելի կատարելագործված տեսակնա։ 
+                
+                fetch Syntax 
+                   let promise =  fetch('url')
+                    ⚠ Հասցեն պետքա լինի չակերտների մեջ։
+        */
+
+        //// ➕ fetch -ը վերադարձնումա նոր promise։ Օրինակ՝
+        /*
+       ⚠ Բոլոր հարցումենրը սեռվերներին կատարվումա promise-ի միջոցով։ 
+            Քանի, որ մեր հարցում չի կարա համ գա, համել չգա։ Պետքա մի բան լինի resolve կամ reject իսկ Promise -ը դրա հնարովորությունը տալիսա։
+                Կապ չունի մենք async await ենք օգտագործում թե fetch, իրանց տակից  promise է աշխատում։
+        */
+
+        // console.log(fetch('https://www.google.com/'));//Output : Promise {<pending>} - վերադարձրոց նոր promise
+        //error - CORS 
+        ////⁉ cors-ը - դա բրաուզերնեի հատուկ տեխնալոգիա է, որը թույլ չի տալիս որ կայքի տվյալները գողացվի։
+
+        /*⚠ Դրա համար կան հատուկ ոչ cors կայքեր, որոնք թույլ են տալիս հարցում կատարել տվյալ կայքի սեռվերին։
+        Օրինակ այդ կայքերից մեկը՝
+            https://jsonplaceholder.typicode.com/
+        */
+
+
+
+
+
+
+        ////▶ 2 stage
+        // let promise = fetch('https://jsonplaceholder.typicode.com/users');
+        // console.log(promise);//տենանք մեր հարցում հաջողությամբ կատարվեց
+
+        /*
+        ⁉ Ի՞նչա Response-ը
+            Response
+    
+                Response - ը - դա սեռվերից եկած պատասխաննա, ետ պատասխանը իրանից օբյեկտա ներկայացնում, որից մեր ուզած տվյալները ստանալու համար պետքա մշակվի։ Իսկ մշակելու համար Response օբյեկտը ունի json() մեթոդը։
+                    Իսկ json() մեթոդը վերադարձնումա նոր promise,  որի value-ի մեջ կպահվի մշակված response-ը։
+                        ⚠ json-ը կարդումա Response-ը։
+        */
+
+        /* ⁉ Ի՞չպես ստանալ Response օբյեկտը՝
+        Response {type: "cors", url: "https://jsonplaceholder.typicode.com/users", redirected: false, status: 200, ok: true, …}
+        */
+
+        /*Remind
+            Եթե fetch ֆունկցիայի հարցումա հաջողությամբա կատարվումա ինքը մեզ վերադարձնումա Response օբյեկտ, որի մեջ պահվումա հատուկ հատկություններ և մեթոդնոր, որոնք թույլ են տալիս աշխատել սեռվերից եկած տվյալների հետ։
+                Օրինակ Response օբյեկտը ունի՝
+                    url: "https://jsonplaceholder.typicode.com/users"
+                    status: 200 -> սա նշանակումա որ հարցում հաջողությամբ է կատարվել
+                        json() - մշակումա սեռվերից եկած պատասխանը։
+    
+        
+        😁Հարց։ Response երբ տալիս
+                Պատ՝․ երբ որ կատարվումա resolved , ասյիքն երբ հարցումը հաջողույամբ է կատարվում։ (100%)
+        
+        */
+        // let promise = fetch('https://jsonplaceholder.typicode.com/users');
+        // promise.then(function(getResponse){
+        //     console.log(getResponse);
+        //     console.log(getResponse.json());
+
+        // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////▶ 3 stage
+
+        /* Ի՞նչպես օգտագործել մշակված response-ը։
+            Օրինակ արտածել : id, name, mail
+        */
+
+        /*Remaind
+        1. եթե կատարվեց resolved 
+        2․ կարդում Response օբյեկտը, որ ստանանք մեր user-ների տվյալները։    
+             😥 Բայց մենք user-ների տվյալները ըստանում ենք promise-ի տեսքվով։
+                Այսպես՝
+                    [[PromiseValue]]: Array(10)
+    
+        😁⚠⁉ Հարց։ Ե՞րբ, որ մենք ֆունկցիա է սարքում ու ետ ֆունկցիաի արժեքը ուզում ենք ստանաքն ինչ ենք գրում
+            Պատ․՝ return 
+    
+        3․ 
+        
+        */
+
+
+
+        // function getUsers() {
+        // let promise = fetch('https://jsonplaceholder.typicode.com/users');
+        // promise.then((getResponse) => {
+        //     // console.log('getResponse - ', getResponse);//working
+        //     //Response-ից մեր տվյալներ ըստանալու համար պետքա մշակել այն՝
+        //     let getValueOfResponse = getResponse.json();
+        //     console.log(getValueOfResponse);
+        //     //մշակում ենք ու return ենք անում, որ կարողանանք ըստանալ [[PromiseValue]]: Array(10)
+        //     return getValueOfResponse;
+
+        // })
+        //     //Իսկ հիմա մենք կստանաքն user-ները promise-ի մեջից։        
+        //     .then((dataArr) => {
+        //         console.log('dataArr - ', dataArr);
+
+                //Իսկ հիմա պետքա արտածել ul-ի մեջ մեր user-ների տվյալները, Ի՞նչպես դա անել
+                //1-ին հերթին նախ պետքա կպնել ul-ին, որ կորողանանք ավելացնել մեջը li-երը
+
+                // FIXME 
+                // var ul = document.querySelector('#list');
+                // for (let i = 0; i < dataArr.length; ++i) {
+                //     ul.innerHTML += `
+                //     <li>
+                //         ${dataArr[i].id.toString() }, 
+                //         ${ dataArr[i].name.toString() }, 
+                //         ${ dataArr[i].email.toString() }
+                //     </li>
+                //     `;
+                // }
+
+                // REVIEW - better
+
+
+                ////Կամ ավելի կարճ տարբերակով։
+                // var ul = document.querySelector('#list');
+
+                // let newArrOfUser = dataArr.map(function(item) {
+                //     return `<li>${item.id}, ${item.name}, ${item.email}</li>`;
+                // })
+                // // console.log(newArrOfUser);
+                // // console.log(newArrOfUser.join(' - '));//
+
+                // //
+
+                // // ul.insertAdjacentElement('afterbegin', newArrOfUser.join(' ') );//❌
+                // ul.insertAdjacentHTML('afterbegin', newArrOfUser.join(' ') );//✔
+
+                // console.log('sfldk', sfldk);
+                
+                // getUlFromHtml.innerHTML += 'newArrOfUser';//(in promise) TypeError: Cannot read property 'innerHTML' of null ❌
+
+                // promise-ների մեջ չի կարելի innerHTML գրել
+                // getUlFromHtml.createTextNode('newArrOfUser');
+
+
+                
+                
+
+
+        //     })
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /////resolve-ի և reject-ի 2-ի դեպքում էլ Response է տալիս??????
+
+    // let promise = fetch('https://jsonplaceholder.typicode.com/users');
+    // promise.then(function(resolvedResponse) {
+    //     console.log('resolvedResponse ', resolvedResponse);
+    //     return resolvedResponse.json();
+
+    // }).then(function(getResolvedArray) {
+    //     console.log('getResolvedArray - ', getResolvedArray);        
+    // })
+    // .catch(function(rejectResponse) {
+    //     console.log('rejectResponse ', rejectResponse);
+
+    // });
+
+
+
+
+    </script>
+</body>
+
+</html>

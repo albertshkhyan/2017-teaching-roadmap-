@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drag and move</title>
+
+
+	<style>
+		
+		img[ alt="img1"]{
+			width: 100px;
+			height: 100px;
+
+			position: absolute;
+			/* Էական չի թե ինչ պազիցիա տաս */
+		}
+
+		img[ alt="img1"]:hover{
+			cursor:move;
+		}
+
+
+	</style>
+</head>
+<body>
+	
+	<img src="images/ball.png" alt="img1">
+
+<script>
+
+	var ball = document.querySelector('img');
+
+	document.onmousedown = function(){ 
+	window.onmousemove = function(event){
+			ball.style.left = event.pageX - ball.offsetWidth/2 +'px';
+			ball.style.top = event.pageY - ball.offsetHeight/2  +'px';
+
+		
+	}
+
+}
+//onmouseup - երբ որ մկիկը click ես անում ու թողումես:
+		ball.onmouseup = function(){
+			
+			// document.onmousemove =null;
+			
+		}
+
+
+</script>
+</body>
+</html>

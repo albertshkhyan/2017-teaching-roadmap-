@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>errors</title>
+</head>
+<body>
+	
+
+	<script>
+/*Error objects 
+
+Որտեղից են գալիս են կարմիր գույնի սխալենրը, javascript-ում կա հատկուկ սխալենրիներ համար օբյեկտ, որը կոչվում Error, բոլոր error-ների տեսակները ժառանգվում են Error.prototype-ից
+
+*/
+
+//// ինչպես ստեղծել մեր սեփական սխալլը
+let commonErrorConstructor = new Error('404 not found', 'ստանդարտիզացված չի (fileName)', 'ստանդարտիզացված չի (line number)');
+
+// console.log(commonErrorConstructor);
+alert(commonErrorConstructor.message);
+
+/*
+Error օբյեկտը թույլա կոդի կատարման ժամանակ ստանալ ինֆորմացիա սխալի մասին։
+++++++++++ Error parametrs +++++++++++++
+Свойства объекта нестандартной ошибки
+Mozilla и Microsoft определяют некоторые нестандартные свойства объекта ошибки:
+
+fileName (Mozilla)
+lineNumber (Mozilla)
+columnNumber (Mozilla)
+стек (Mozilla)
+описание (Microsoft)
+номер (Microsoft)
+
+/!\ Не используйте эти свойства на общедоступных веб-сайтах. Они не будут работать во всех браузерах.
++++++++++++++++++++++++++++++
+
+*/
+
+
+
+
+
+//// Syntax of Error object
+// let commonErrorConstructor = new Error('Սխալը նկարագրելու համար','sonlkfds');//քանի որ Error -ը օբյեկտա դրա համար պետքա դնել new օպեռատորը
+// /!\ new -ով օբյեկները constructro-ներ են կոչվում։
+// console.log(commonErrorConstructor);
+// console.log(commonErrorConstructor.message);//'Սխալը նկարագրելու համար'
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+		// let er1 = new ReferenceError();
+		// console.log("er1", er1);
+		/*
+ReferenceError.prototype
+	constructor: ƒ ReferenceError()
+	message: ""
+	name: "ReferenceError"
+	toString: ƒ toString()
+	__proto__: Object
+		*/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+//Բացի հիմնական Error կոնստրուկորից կան ևս 7 հիմնական սխալների կոնստրուկորներ կան, բայց ամենա շատ հանդիպողներց են 3 են ։
+/*
+1․RefferenceError -> երբ ինչ-որ բան չի գտնում
+2․SyntaxError -> երբ ինչ-որ տպագրական սխալ ենք անում
+3․TypeError - > Երբ ինչ-որ ֆունկցիայի անուն սխալ ենք գրում
+
+4․EvalError
+5․RangeError
+6․URIError
+7․InternalError
+*/
+
+////////// when show 2․SyntaxError //////////////
+// alert(//Uncaught SyntaxError: Unexpected end of input
+
+// function{//SyntaxError: Unexpected token {
+
+// }
+
+///////////////////////////////
+
+// foo();// ReferenceError: foo is not defined
+// console.log(a);// ReferenceError: a is not defined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/************************************try catch************************************/
+//try - փորձել
+//catch - բռնել
+
+//catch(e) - ը պահումա տվյալի սխալի մասին ինֆորմացիա օբյեկտի տեսքով։ Եթե օրինակ syntaxError-ա ցույցա կտա դա։
+
+		/* jascript - ինտերպրետատորը հենց ինչ որ errror է գտնում js-ի աշխատանքը դադարում է, սխալից հոտո գրած ճիշտ կոդը չի ցուղադրվում - Մենք կարող ենք բռնել տվյալ սխալը, որ ծրագիրը շարունակի իր աշխատանքը  ->   */
+///// Իսկ ինչպես անել որ սխալից հետո ցուցադրվի ճիշտ կոդը
+
+//// How wrking js when see error ///////////
+///// example 1 
+
+// var user = {
+// 			message(){//metod of user
+// 				console.log('barev');
+// 			}
+// 		}
+// user.mesage();// Uncaught TypeError: user.mesage is not a function - 
+// console.log(1 + 2);
+
+
+/*-------------- Ինչպես անել որ console.log(1 + 2) ցուցադրվի --------------------*/
+
+//try - ի մեջ մենք գրում ենք այն կոդը որը կարա տա սխալ (բացառություն)
+//catch - ի մեջ բռնումվում է սխալը.catch-ի պառամետրը դա տվյալ բացառությունն է որը պահում է ինֆորմացիա տվյալ erroe-ի վերաբերյալ
+
+//ete try chist elav catchy chi ashxati
+
+//// example 2 
+
+// var user = {
+// 			message(){//metod of user
+// 				console.log('barev');
+// 			}
+// 		}
+
+
+// 		try{
+// 		// user.message();//barev
+// 		user.mesage();//TypeError: user.mesage is not a function
+// 		}
+// 		catch(e){//exception(բացառություն) - e parametr
+// 			console.log('catch - ' + e);//e - argument -> որ տենանք տվյալ սխալի ինֆորմացիան
+// 		}
+
+// 		console.log(1 + 2);
+
+
+/*Սախլից հետո մնացաց ճիշտ կոդը ցուցադրվում է
+TypeError: user.mesage is not a function
+    at setImmidiate_js.html:45
+setImmidiate_js.html:51 3
+
+*/
+
+
+
+
+
+
+
+
+
+/*++++++++++++++++simple variant+++++++++++++++++++++*/
+
+////example 1 
+
+// console.lg('hello world');
+// console.log(1+3);//not show but is true
+
+/*--------------- with try catch --------------------*/
+////example 2
+
+// try{
+// 	console.lg('hello world');
+// }
+// catch(e){
+// 	console.log(e + ' - произошла ошибка');
+
+// }
+
+// console.log(1 + 2);
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+	</script>
+</body>
+</html>

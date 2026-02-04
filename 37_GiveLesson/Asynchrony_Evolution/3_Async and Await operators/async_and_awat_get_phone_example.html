@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>async await get phone</title>
+</head>
+
+<body>
+    <script>
+        //
+
+        /*With promise*/
+
+
+        // 	let haveMoney = Math.round(Math.random());
+        // let getPhone = new Promise(function(resolve, reject){
+        //     if(haveMoney) {
+        //         let phone = {
+        //             brand : 'samsung S7',
+        //             color : 'black',
+
+        //         }
+        //         resolve(phone);
+        //     }
+        //     else{
+        //         reject('Mom dont\'t have money');
+
+        //     }
+        // })
+
+        // // then - ի արգեումենները՝
+        // // 	onFulfilled -ը դա մեր resolve-ն է
+        // // 	onRejected - ը դա մեր reject -ն  է
+
+
+        // getPhone
+        // .then(function(resolved){
+        //     console.log('resolved - ', resolved);//resolved === resolve(phone object)
+        // },
+        // function(rejected){
+        //     console.log('resolved - ',rejected);//rejected = "Mom dont't have money"
+        // }
+        // )
+
+
+
+        /*+++++++++++++++++++++With async and await+++++++++++++++++++++*/
+
+
+        // let haveMoney = Math.round(Math.random());
+        // async function BuyOrNot() {//Պետքա անուն տալ ու կանչել մեր ֆունկցիան
+        //     let buyPhone = async function () {//working
+        //     // let buyPhone = function () {//working
+        //         if (haveMoney) {
+        //             return {
+        //                 brand: 'samsung S7',
+        //                 color: 'black',
+        //             }
+        //         }   
+        //         else {
+        //             return new Error('pox chka');
+
+        //         }             
+
+        //     }
+
+
+        //     console.log(buyPhone());//կանչելուց ցւյցա տալիս undefiend կամ մեր օբյեկտը
+
+        // }
+        // console.log(BuyOrNot());//Promise {<pending>}
+        // // console.log(BuyOrNot());//Promise {<resolved>: undefined} - եթե սենցա գրած -> async function BuyOrNot() {}
+
+        
+        
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>array js</title>
+</head>
+<body>
+	
+
+	
+
+	<script>
+		
+
+		/*======================Array======================*/
+
+		//Օբյեկտները ունեն մի քանի տեսակներ Array ետ տեսակներից մեկնա
+
+// # Զանգվածենրը օգտագործվում են մի փոփոխականի մեջ մի քանի արժեք պահելու համար։
+//Օրինակ՝
+
+
+// var auto1 = 'bmw';
+// var auto2 = 'mercedes';
+// var auto3 = 'aston martin';
+// ///////// or //////////////////
+// // var auto = ['bmw', 'mercedes', 'aston martin']; 
+
+// var auto = [
+// 	'bmw',//0 - index
+// 	'mercedes',// 1 - index
+// 	'aston martin'// 2 - index
+// ];
+
+// console.log("auto", auto);
+/*
+Array(3)
+	0: "bmw"
+	1: "mercedes"
+	2: "aston martin"
+	length: 3
+	__proto__: Array(0) - stored properies and methods in prototype
+
+	*/
+
+
+
+// 
+// var arr = [];
+// arr[0] = 'xndzor';
+// arr[1] = null;
+// arr[2] = 'nur';
+// arr[3] =  349;
+// arr[4] = true;
+// console.log(arr);//["xndzor", null, "nur", 349, true]
+
+// var arr = ['a', 'b', 'c'];
+// alert(arr);//a,b,c
+// alert(typeof arr);//Object
+
+// var arr = [10, 10, 10, 10];
+// alert(arr[0] + arr[1] + arr[2] + arr[3]);//40
+
+
+
+// var arr = ['bmw', 'merc', 'opel', 'nissan'];
+// console.log(arr.length);//4
+// for(var i = 0; i < arr.length; ++i) {
+// 	alert(arr[i]);
+// }
+
+
+
+
+
+// for(var i = arr.length-1; i >= 0; --i) {
+// 	alert(arr[i]);//hakarak hertakanutyamb
+// }
+
+
+
+
+
+
+/*+++++++++++++++++ String method split() ++++++++++++++++++++++*/
+// /!\ split մեթոդը նախատեսվածա strig -ը զանգված սարքելու համար։
+// split() կարա ընդունի 2 ոչ պառտադիր պառամետր
+// var str = 'Narek, Hayko, Gor, Hoso, Vahag';
+// var arrOfStr = str.split();//0: "Narek, Hayko, Gor, Hoso, Vahag"
+// var arrOfStr = str.split('');//tar ar tar
+// var arrOfStr = str.split(' ');//(5) ["Narek,", "Hayko,", "Gor,", "Hoso,", "Vahag"]
+// var arrOfStr = str.split(',');//(5) ["Narek", " Hayko", " Gor", " Hoso", " Vahag"]
+// var arrOfStr = str.split(' ', 3);//["Narek,", "Hayko,", "Gor,"]
+// var arrOfStr = str.split('o');//o տառերը ջնջումա
+// console.log("arrOfStr", arrOfStr);
+
+/*+++++++++++++++++++++++++++++++++++++++*/
+
+
+//# Old version of Array creating
+// var auto = new Array('bmw', 'mercedes', 'aston martin');
+
+
+//# take first letter 
+// var auto = [
+// 	'bmw',//0 - index
+// 	'mercedes',// 1 - index
+// 	'aston martin'// 2 - index
+// ];
+// console.log(auto[0]);
+// console.log(auto[0][0]);//b
+
+
+//# change bmw value
+// var auto = [
+// 	'bmw',//0 - index
+// 	'mercedes',// 1 - index
+// 	'aston martin'// 2 - index
+// ];
+// auto[0] = 'bugati';
+
+//# length of array
+// var auto = [
+// 	'bmw',//0 - index
+// 	'mercedes',// 1 - index
+// 	'aston martin'// 2 - index
+// ];
+// console.log(auto.length);//3
+// console.log(auto.length-1);//2
+// console.log("auto", auto);
+
+
+
+
+
+/*++++++++Задача No_5 Многомерные массивы - Բազմաչափ զանգված - Multidimensional arrays++++++++*/
+
+		// var matrix = [
+		//   [1, 2, 3],
+		//   [4, 'hello', 6],
+		//   [7, 8, 9]
+		// ];
+//Task 1
+		// alert( matrix[1][1] ); // центральный элемен - output hello
+		// alert( matrix[1][1][0] ); // output h
+
+//Task 2
+				/*Ստեղծել զանգված 2, 5, 3, 9 տարրերով զանգվածի առաջին տարրը բազմապատկել երկրորդ
+		տարրի վրա իսկ երրերդ տարրը չորորդ տարրի վրա և նրանց արդյունքը գումարել իրար վրա
+		արդյունքը վերագրել result փոփոխականին*/
+		// var arr = [2, 5, 3, 9];
+		// a = arr[0] * arr[1];
+		// b = arr[2] * arr[3];
+		// result = a+b;
+		// alert(result);
+
+		// var arr = [2, 5, 3, 9];
+		// var result = arr[0] * arr[1] + arr[2] * arr[3];
+		// alert(result);
+
+		/*++++++++++++++++++++++++++++++++++++++====*/
+
+
+		/*+++++++++++++++ Array - ի մեթոդներ և հատկություններ ++++++++++++++++++++++*/
+// console.log(typeof []);//object
+// console.log(typeof {});//object
+
+// Array - ը գլոբալ օբյեկտա այսինքն window-ի մեջ անմիջականորեն։
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			/*=========== Զանգվածի խնդիրներ =========== */
+
+/////////// # 1 - Դուրզ բերել զանգվածից ամենա նվազագույն տարրը
+// /!\Օգտագործել ենթադրելու սկզբունք - տրամաբանական խնդիրները լուծելու մեթոդներից մեկնա <<ենթադրելը>>, ու ենթադրելու սկզբունքը կարելի է օգտագործել ոչ միայն գլուխկոտրուկներ լուծելուց։
+
+
+// // var arr = [12, 4, 24, 0.5];//Ենթադրենք զ/ծ-ի ամենա առաջին տարրը ամենա փոքրնա։ Ու ետ ամենառաջին տարրը սկսում ենք համեմատել մնացած բոլոր տարրերի հետ։
+// var arajinTar = arr[0];
+
+// for(var i = 0; i < arr.length; ++i) {
+// 		if(arr[i] < arajinTar) {
+// 			// arr[i] = arajinTar;
+// 			arajinTar = arr[i];
+// 		}
+// }
+
+// console.log("arajinTar", arajinTar);//0.5
+
+
+
+
+///////// # 2 - Դուրս բերել ամենամեծ տարրը
+
+// var arr = [12, 4, 24, 0.5];
+// var arajinTar = arr[0];
+// for(var i = 0; i < arr.length; ++i) {
+// 	if(arr[i] > arajinTar) {
+// 		arajinTar = arr[i];
+// 	}
+// }
+// alert(arajinTar);//working
+
+
+/*------------------------*/
+
+
+//զանգվածի մեջ լինի միայն ունիկալ անուններ
+// let uniqueArr = ['Donald','Jon','Thomas','Donald','Natali','Donald','Donald'];
+// // uniqueArr.splice(uniqueArr.lastIndexOf(uniqueArr["Donald"]),1);
+// // uniqueArr.splice(3,1);
+// // uniqueArr.splice(5,1);
+// // uniqueArr.splice(6,1);
+// for(let i = 0; i < uniqueArr.length; ++i) {
+// 	let a = uniqueArr.indexOf(uniqueArr[i]);
+// 	let b = uniqueArr.lastIndexOf(uniqueArr[i]);
+// 	if(a != b) {
+// 		uniqueArr.splice(b,1);
+// 	}
+// }
+// console.log("uniqueArr", uniqueArr);
+
+
+
+</script>
+</body>
+</html>

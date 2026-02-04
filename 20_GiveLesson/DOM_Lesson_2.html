@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dom 2</title>
+</head>
+<body>
+
+
+
+	<script>
+		
+		///
+
+/*Ամփոփոում
+
+/*
+
+
+*Ինչա dom-ը
+*ինչա NodeList ու HTMLCollection և տարբերությունը
+*
+
+DOM methods and property
+
+			•	DOM properties
+			•	NodeList (childNodes) and HTMLCollection (children) 
+			•	document.getElementsByTageName()
+			•	document.getElementsByClassName()
+			•	document.getElementById()
+			•	document.querySelector()
+			•	document.querySelectorAll()
+			•	innerText և innerHTML ( changing HTML contents )
+
+*/
+
+
+
+/*****************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************/
+/*
+DOM Attributes and dataset property
+			•	hasAttribute()
+			•	getAttribute()
+			•	setAttribute()
+			•	removeAttribute()
+			•	data- ( DOMStringMap )
+*/
+
+//////// Work with attributes /////////////
+//// dom էլէմենտների ատրիբուտներ
+// 	hasAttribute() - վերադարձնումա բուլյան արժեք, եթե մեր նշած տարրը ունի տվյալ ատրիբուտը։
+// 	getAttribute() - Վերադարձնումա տվյալ ատտրիբուտի արժեքը եթե տվյալ տարրի մեջ կա մեր նշած ատտրիբուտը
+
+/*setAttribute() - ավելացնումա ատրիբուտ կամ արդեն գույություն ունեցող ատրիբուտի արժեքը փոխումա։
+Синтаксис
+	element.setAttribute(name, value);
+
+*/
+// 	removeAttribute() - Ջնջումա մեր նշած տարրի ատրիբուտը։
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************/
+////////////// dom property /////////////
+///// Sibling - родной брат
+//className - վերադարձնումա տվյալ class-ի արժեքը
+//nextSibling -> վերադարձնում տվյալ տարրը որպես օբյեկտ
+//previousSibling -> վերադարձնում տվյալ տարրը որպես օբյեկտ
+// nextElementSibling - վերադարձնումա հենց տարրը
+//previousElementSibling - վերադարձնումա հենց տարրը
+//dataset 
+
+/******************************************************************************/
+
+
+/*++++++++++++++++++ className property +++++++++++++++++++*/
+
+//// className - այս հատկությունը թույլ է տալիս վերադարձնել տվյալ տարրի կլասսը կամ նոր կլասս տալ։
+/*Syntax
+elem.className
+ele.className = 
+*/
+	/*
+
+nextElementSibling - վերադարձնումա մեր նշած noed-ի հաջորդ տարրը, իսկ nextSibling-ը վերադարձնումա հենց node-ը (#text, comment, div.div1) այսինքն որպես օբյեկ։
+		*/
+
+/*++++++++++++++++++ nextSibling and nextElementSibling property +++++++++++++++++++*/
+
+// nextSibling-ը վերադարձնումա հենց node-ը (#text, comment, div.div1) այսինքն որպես օբյեկտ։
+//nextElementSibling վերադարձնումա մեր նշած noed-ի հաջորդ տարրը:
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+/*+++++++++++++++++++++++++dataset property+++++++++++++++++++++++++*/
+/*
+dataset - HTMLElement.dataset հատկությունը թույլ է տալիս կարդալ թեգի data ատրիբուտը, ինչպես նաև փոխել այն։
+
+DOMStringMap -ը դա օբյեկտա, որը նախատեսված է data ատրիբուտները պահելու համար, օրինակ՝
+DOMStringMap {
+bg: "00ff00"
+}
+
+Example
+	data-bg="#ff0000"
+	<div id="div1" data-bg="#ff0000"></div>
+	console.log(div1.dataset)
+*/
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+/******************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+/*+++++++++++++++++++++++++dataset property+++++++++++++++++++++++++*/
+/*
+dataset - HTMLElement.dataset հատկությունը թույլ է տալիս կարդալ թեգի data ատրիբուտը, ինչպես նաև փոխել այն։
+
+DOMStringMap -ը դա օբյեկտա, որը նախատեսված է data ատրիբուտները պահելու համար, օրինակ՝
+DOMStringMap {
+bg: "00ff00"
+}
+
+Example
+	data-bg="#ff0000"
+	<div id="div1" data-bg="#ff0000"></div>
+	console.log(div1.dataset)
+*/
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Example promise of getPhone</title>
+</head>
+
+<body>
+
+
+
+	<script>
+		// console.log(new Promise(()=>{}));//Promise {<pending>}  ✔
+		// console.log( new Promise() );//TypeError: Promise resolver undefined is not a function ❌
+
+
+		////⚠ ինտերպրետատորը, որը  առաջին callback-ֆունկցաին տեսավ ետա կատարում
+		// new Promise((resolve, reject)=>{resolve(10)})//Promise {<resolved>: 10}
+		// new Promise((resolve, reject)=>{reject(5)})//Promise {<reject>: 5}
+
+
+		////⚠ promise -ը ավտոմատ է կանչվում իրան պետք չի կանչել
+		// let promise = new Promise((resolve, reject) => {
+		// 	// console.log('hi');
+		// 	// throw new Error('404');//status: "rejected"
+		// 	// reject(new Error('404'));//status: "rejected" -> error-ը պետքա մշակվի, որ կեդը աշխատի (catvh արվի)
+		// 	// resolve('hi');//resolved -> status : "resolved"
+		// });
+
+		// // console.log('promise', promise);
+		// console.log(promise.then());
+
+
+		/*
+
+		* resolve կամ reject ֆունկցիաների արգումենտները փոխանցումա then-ի ֆունկցիաներին։
+		then մեթոդով մշակում ենք resolve-ը կամ reject-ը։
+
+		* console.log(p.then());//then մեթոդը վերադարձնումա որ promise -> Promise {<pending>}
+
+		
+		*/
+
+
+
+		// let p = new Promise((resolve, reject) => {
+
+		// 	// resolve(10);//10 արգումենտը փոխանցումա then -ի առաջին ֆունկցիայի պառամետրին։ 👁‍🗨 
+		// 	// console.log(resolve(10));//undefied
+		// 	// console.log(resolve());//undefied
+
+
+
+
+		// })
+
+		// console.log(p);
+		
+		// console.log(p.then());
+		// p.then(function (resolved) { //resolved = 10
+		// 	console.log(resolved);
+		// });//10
+
+		// p.then((resolved)=> {alert(resolved)});//10
+
+
+		/**************************************************/
+
+		let haveMoney = Math.round(Math.random()*1);
+
+		let getPhone = new Promise(function(resolve, reject){
+			if(haveMoney) {
+				let phone = {
+					brand : 'samsung S7',
+					color : 'black',
+
+				}
+				resolve(phone);
+			}
+			else{
+				reject('Mom doesn\'t have money');
+
+			}
+		})
+
+		// then - ի արգեումենները՝
+		// 	onFulfilled -ը դա մեր resolve-ն է
+		// 	onRejected - ը դա մեր reject -ն  է
+
+
+		getPhone
+			.then(function(resolved){
+				console.log(resolved);//resolved === resolve(phone object)
+			},
+			function(rejected){
+				console.log(rejected);//rejected = "Mom dont't have money"
+			}
+		)
+
+
+
+		/*************************************************/
+
+		////🔰Առանց Promise ավելի կարճ կլինի
+		// let haveMoney = Math.round(Math.random());
+		// function foo(hv) {
+		// 	if (hv) {
+		// 		return {
+		// 			brand: 'samsung S7',
+		// 			color: 'black',
+
+		// 		}
+		// 	}
+		// 	else {
+		// 		// throw new Error('Pox chka');//working
+		// 		let error = new Error('Pox chka');
+		// 		return error.message;
+		// 	}
+		// }
+		// console.log(foo(haveMoney));
+
+
+
+
+
+
+
+	</script>
+</body>
+
+</html>

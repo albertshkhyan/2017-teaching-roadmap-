@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clone node</title>
+</head>
+<body>
+
+	<div id="container">
+		<button onclick="foo()">Click me</button>
+		<button onclick="foo2()">Click me</button>
+		<div id="div1">
+			<p>HELLO</p>
+		</div>
+	</div>
+
+	<script>
+
+		////
+
+		function foo() {
+			console.time('inner1');
+			let takeBtn = document.querySelector('button[onclick="foo()"]');
+			takeBtn.nextElementSibling.innerHTML += '<p>HELLO</p>';
+
+			console.timeEnd('inner1');//0.3...
+		}
+
+
+///////// or with cloneNode
+let takeBtn = document.querySelector('button[onclick="foo()"]');
+let takeDiv = document.querySelector('#div1');
+	let container = document.querySelector('#container');////պարադիր պիտի div-ի մեջ լինի է, որ մի հատ կլոնավաորի
+	function foo2() {
+		console.time('inner2');
+		let a = container.appendChild(takeDiv.cloneNode(true));
+		console.timeEnd('inner2');//0.0,0.1 etc -> ավելի արագա աշխատում քան innerHTML
+	}
+
+
+
+
+
+</script>
+</body>
+</html>

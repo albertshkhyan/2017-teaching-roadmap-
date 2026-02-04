@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dom lesson 3</title>
+</head>
+<body>
+
+<!-- 	<ul id="abc">
+		
+	</ul> -->
+
+
+	<!-- <img class="i1" src="../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/640x480/img (1).jpg" alt=""> -->
+	<!-- <img class="i2" src="../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/640x480/img (2).jpg" alt=""> -->
+
+	
+<!-- <ul>
+	<li>1</li>
+	<li>2</li>
+</ul>
+ -->
+
+	<script>
+//
+
+
+let getImg1 = document.querySelector('.i1');
+// getImg1.style = `
+// 		border:10px solid magenta;
+// 		width:300px;
+// 		height:300px;
+// 		position:absolute;
+// 		top:calc(50% - 150px);
+// 		left:calc(50% - 150px);
+
+
+// `;
+
+getImg1.style.border = '10px solid red';
+
+
+console.log(getImg1.style);
+// <img style="">
+
+// img {
+// 	style:
+// }
+
+
+// let getImg1 = document.querySelector('.i1');
+// console.log("getImg1", getImg1);
+// let getImg2 = document.querySelector('.i2');
+// console.log("getImg2", getImg2);
+// // document.body.replaceChild(getImg1, getImg2);
+// document.body.replaceChild(2, 1);
+
+
+/////replacedNode = parentNode.replaceChild(newChild, oldChild);
+
+ // let getImg = document.querySelector('img');
+ // document.body.removeChild(getImg);
+ // getImg.remove();
+
+
+
+
+
+
+		// let getImg = document.querySelector('img');
+		// // console.log("getImg", getImg);
+		// document.body.innerHTML = `${getImg}`;
+
+
+		// let getImg = document.querySelector('img');
+		// let cloneImg = getImg.cloneNode(true);
+		// document.body.appendChild(cloneImg);
+
+		//
+
+		// let getImg = document.querySelector('img');
+		// getImg.src = '../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/640x480/img (1).jpg';
+
+		// img {
+		// 	src : '../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/640x480/img (1).jpg'
+		// }
+
+/**********************************************/
+
+// console.time('t');
+// 		let newElem = document.createElement('h1');
+// 		// document.body.appendChild(newElem);
+// 		let getImg = document.querySelector('img');
+// 		document.body.insertBefore(newElem, getImg);
+// 		newElem.innerText = "hello";
+// console.timeEnd('t');
+
+
+
+
+// console.time('t');
+// 		let newElem = document.createElement('h1');
+// 		// document.body.appendChild(newElem);
+// 		let txtOfh1 = document.createTextNode('hello');
+// 		newElem.appendChild(txtOfh1);
+// 		let getImg = document.querySelector('img');
+// 		document.body.insertBefore(newElem, getImg);
+// console.timeEnd('t');
+
+
+
+
+   
+/* About Node
+node - հանգույց, կապ
+ցանկացած document բաղկացածա node-երից	
+
+Ինչ է node-ը - կորող է լինել  թեգի ատրիբուտ, comment, տեքստը
+DOM -ում գոյություն ունի 12 տիպի node, բայց մեզ պետքա միայն 3-ը
+Node.ELEMENT_NODE 
+Node.ATTRIBUTE_NODE 
+Node.TEXT_NODE 
+*/
+
+		/*New Theme
+		DOM էլէմենտների հետ աշխատելու ձևեր
+				•	document.createElement()
+				•	document.createTextNode()
+				•	appendChild()
+				•	insertBefore()
+
+//GiveLessons%20%2821%29/clone_remove_replace
+				•	cloneNode()
+				•	removeChild()
+				•	remove()
+
+				•	replaceChild()
+
+
+				*/
+		/*
+innerHTML հատկությունով մենք կարող ենք թեգ ստեղծել, մենք դա նաև կարող ենք անել ուրիշ եղանակով։
+Թեգ ստեղծելը բաղկացածա 2 փուլից՝
+	1․ Ստեղծել տարրը
+		* Երբ որ ինչ-որ բան ենք ստեղխում ետ մեր ստեղծածւ DOM-ի մի մասը չի կազմում, որպեսի մեր ստեղծած տարրը դառան DOM - ի node պետքա իրան ավելացնել
+	2․ Ավելաացնել տարրը
+
+
+	*/
+//// Ինչպես ԴԻՆԱՄԻԿ տարր ավելացնել
+	// let myList = document.getElementById('abc');
+	// 	let myNewElement = document.createElement('li');//Ստեղծել տարրը
+	// 	myList.appendChild(myNewElement);//Թեգը լինելու դատարկ, քանի որ մենք իրան ոչ մի տեքստ չենտք տվել
+		//// տեքստ տալու համար մենք կարող ենք օգտագործել innerHTML
+		// myNewElement.innerHTML = 'barev';
+		////բայց կա ավելի լավ ձև տեքստ տալու, և այց ձևը ավելի ճիշտա համարվում
+		//// NODE_ELEMENT-ը ստեղծելուց հետո մենք պետքա ստեղծենք տեքստային հանգույց (TEXT_NODE)
+		//// /!\ տեքտտը նույնպես ստեղծելուց հետո պետքա իրան ավելացնել, appendChild անել
+		// let textOFNewElement = document.createTextNode('barev');
+		// myNewElement.appendChild(textOFNewElement);
+
+		//// Կա նաև այլ տարբերակ տարր ավելացնելու -> insertBefore() մեթոդը
+		////insertBefore - ը ավելի ճկուն համեմատած appendChild-ի հետ, քանի որ appendChild-ը միշտ տարրը ավելացնումա միշտ ամենա վերջում։ Իսկ insertBefore-ով մենք կարանք նշենք թե, թր տարրից հետո ավելացնի
+		/*
+		Syntax of insertBefore
+		#սկզբում նշում ենք թե որ տարրի մեջ պետքա ավլացնի ( ծնող տարրը	 )
+		#insertBefore - ը ընդունումա 2 պարտադիր պառամետր
+			parent.insertBefore(newElement, beforeElement)
+		*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
+
+	</script>
+</body>
+</html>

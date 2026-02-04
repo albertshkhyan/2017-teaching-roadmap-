@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		#size{
+			width: 500px;
+			height: 300px;
+			border: 1px solid;
+			padding: 20px;
+			box-sizing: border-box;
+			position: relative;
+		}
+		#size img{
+			width: 100%;
+			height: 100%;
+		}
+		#r_b{
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background-color: black;
+			position: absolute;
+			top: 100%;
+			left: 100%;
+			cursor: se-resize;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="size">
+		<div id="r_b"></div>
+		<img src="img1.jpg">
+	</div>
+
+	<script>
+		
+		r_b.onmousedown = (e) => {
+			let width = size.offsetWidth;
+			let height = size.offsetHeight;
+			let x1 = e.pageX;
+			let y1 = e.pageY;
+			window.onmousemove = (e) => {
+				let x2 = e.pageX;
+				let y2 = e.pageY;
+				let x = x2 - x1;
+				let y = y2 - y1;
+				size.style.width = width + x + "px";
+				size.style.height = height + y + "px";
+			}
+		}
+		window.onmouseup = () => {
+			window.onmousemove = null;
+		}
+	</script>
+
+</body>
+</html>

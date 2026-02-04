@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		/**/
+
+
+		main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont {
+  width: 500px;
+  height: 500px;
+  border:1px solid;
+}
+.clearFix {
+  clear: both;
+}
+.cont div img {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+.cont div {
+  outline:1px solid red;
+  width: 50px;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  
+}
+	</style>
+</head>
+<body>
+
+
+<div id="wrapper">
+  <main>
+    <div class="cont">
+<!--       <div>
+        <img src="http://www.winwallpapers.net/w1/2012/12/Download-Samsung-Galaxy-Mini-wallpaper-640x480-545.jpg" alt="">
+      </div> -->
+    </div>
+    <div class="clearFix"></div>
+  </main>
+  
+  <button onclick="foo()">rotate</button>
+
+</div>
+
+
+	<script>
+		//
+
+
+		let cont = document.querySelector('.cont');
+		let arrOfImgs = [
+		'http://www.winwallpapers.net/w1/2012/12/Download-Samsung-Galaxy-Mini-wallpaper-640x480-545.jpg'
+		];
+		for(let i = 0; i < 10; ++i) {
+			let createDiv = document.createElement('div');
+			let createImg = document.createElement('img');
+			cont.appendChild(createDiv);
+			createDiv.appendChild(createImg);
+			createImg.src = arrOfImgs[0];
+			createImg.style.left = -i * 35 +'px';
+
+		}
+		let forNextClick = 0;
+		let foo = () => {
+			let getDiv = document.querySelectorAll('.cont div');
+			for(let i = 0; i < getDiv.length; ++i) {
+				setTimeout(() => {
+					getDiv[i].style.transition = '1s linear';
+    // getDiv[i].style.transform = 'rotateY(360deg)';
+    getDiv[i].style.transform = (forNextClick % 2) ? 'rotateY(360deg)' : 'rotateY(-360deg)';
+    console.log(forNextClick);
+  },i * 100);
+
+			}
+
+
+			forNextClick++;
+
+		}
+
+
+
+		/*
+
+		* մի թայմեռով div-երը հաջորդաբար չեն պտտվում , այսինքն հերթականությունը չի պահպանվում։ 
+
+
+
+		*/
+	</script>
+</body>
+</html>

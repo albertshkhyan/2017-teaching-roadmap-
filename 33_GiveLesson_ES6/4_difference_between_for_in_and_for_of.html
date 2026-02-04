@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+/*
+
+
+⚫ Ինչ է անում for...in-ը
+	◼ անցնում օբյեկտի մեջ գտնվող բոլոր հատկությունների վրայով պատահական հերթականությամբ,հետո մտնումա __proto__ և այնտեղ է փնտրում։ 
+		⚠ for...in-ը պետք չի օգտագործել զանգվածների տարրերի վրայով անցնելու համար։ Գառանտիա չկա, որ for...in կվերադարձնի զ/ծ-ի ինդեքսները ճիշտ հերթականությամբ։
+		⚠ for...of-ը կարելիա break անել։
+
+
+//for...of - ES6 feature
+⚫ Ինչ է անում for...of-ը - անցնումա բոլոր իտերացվող օբյեկտերի վրայով ճիշտ հերթականությամբ։
+
+
+⚠ Տարբերությունը՝
+	◼for...of - անցնումա value-ների վրայով
+	◼for...in-  անցնումա key-երի վրայով։
+
+*/
+
+		/////Մտնումա __proto__
+		// let arr = [10,20,30,40];
+		// arr.__proto__.num = 5;
+		// console.log(arr.__proto__);
+		// for(let i in arr) {
+		//   console.log(arr[i]);
+		// }
+
+
+		/////չի մտնում __proto__
+		let arr = [10,20,30,40];
+		arr.__proto__.num = 5;
+		for(let i of arr) {
+			console.log(i);//i is value of arr
+			// console.log(arr.indexOf(i));//եթե ուզում ենք ինդեքսների վրայով անցնի
+		}
+
+
+
+
+
+
+	</script>
+</body>
+</html>

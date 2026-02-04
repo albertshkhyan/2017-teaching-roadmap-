@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //
+
+
+        //// ⚫privat - երբ որ տվյալ մեթոդը կամ հատկություն հասանելի է միայն constructor-ից ստացված օբյեկտի համար։
+
+        /*
+        ◾ private variant1 - (private,getter and setter) - ժառանգվում է։
+        ◾ private variant2 - եթե ուզում ենք private-ը չժառանգվի։
+        
+        */
+        function Kran(m) {
+            this.marka = m;
+            this.start = function () {
+                console.log(this.marka + ' xodi ynkav');
+            }
+    ////🔏👶️How to create private - VARIANT 1️⃣
+        // let go = function() {
+            // console.log(this.marka + ' n gnac');
+        // }
+        }
+    ////🔏📞🚫uniHow to create private - VARIANT 2️⃣
+        ////հասանելի է kran օբյեկտի համար
+        // Kran.prototype.go = function () {
+        //     console.log(this.marka + ' n gnac');
+        // }
+        ////հասանելի չէ kran օբյեկտի համար
+        /////Static (with instance not working)
+        // Kran.go = function () {
+        //     console.log(this.marka + ' n gnac');
+        // }
+        // Kran.go();//undefined n gnac
+
+
+
+        function Bmw(mk, door) {
+            Kran.call(this, mk);
+            this.door = door;
+        }
+
+        let kran = new Kran('CAT');
+        let bmw = new Bmw('BMW', 2);
+        // console.log(bmw);
+        // console.log(kran);
+
+        bmw.start();//BMW xodi ynkav
+        // bmw.go();//❌bmw.go is not a function
+        kran.go();//go միայն kran օբյեկտի հաար է հասանելի։
+
+        ////prvate- ը չի ժառանգվում
+        bmw.go();//bmw.go is not a function 
+        // Bmw.go();//Bmw.go is not a function 
+
+
+
+        /////⚫static method or property - երբ որ մեթոդը միայն կլասսի համար է հասանելի այլ ոչ թե իրա instance -ների համար
+
+        ////how create static property in ES5
+        // Kran.id = '001CAT';//static in es5
+        // console.log(Kran.id);
+        ////how create static method in ES5
+        // Kran.go = function() {//jarangvum e static nuynpes call aneluc
+        //   console.log(this.marka + ' n gnac');
+        // }
+        // Kran.go();//naturally be worked
+        
+
+        ////// static in es6
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>logikayi operator</title>
+</head>
+<body>
+	
+
+
+	<script>
+/*--------------- Լոգիկայի օպեռատորներ ---------------*/
+
+
+// &&, ||, ! - և, կամ, ժխտում
+
+
+
+
+/*----- ժխտում ------*/
+
+//եթե զույգ ժխտման քանակը տալիս նույն բուլյանը ինչը որ դեմից էր, կենտի ժամանակել հակռակնա ցուցադրում
+// console.log(!!!!true);//true
+// console.log(!!!!!false);//true
+
+
+/*------------------------------*/
+
+// console.log(!'hello');//false
+// console.log(!10);//false
+// console.log(!true);//false
+// console.log(!!true);//true
+
+
+
+// console.log(5 != 10);//true 	
+
+/**********************************************************/
+
+// Boolean('hello');
+
+// // var txt = 'hello';
+// // var n = 5264;
+
+// if (0) {
+// 	alert('gnaci man galu');
+// }
+// else if ('ete shat hova' && ' ete ետքանել  hova chi ' && 0) {
+// 	alert('kmtacem');
+// }
+// // else if ('ete ետքանել  hova chi') {
+// // 	alert('kmtacem');
+// // }
+// else  {
+// 	alert('chme gnum man galu');
+// }
+
+
+
+// alert(0 || null || 1);
+// alert(0 && null && 1);
+
+
+
+
+//  console.log( 10 != 8);
+
+// ++
+// --
+
+
+//// incrment++ decrement--
+
+// 1+1+1
+var x = 1;
+console.log(++x);//2
+
+
+var x = 1;
+console.log(x++);
+console.log(x);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------- && ---------*/
+//⚫ && Ձևակերպում 1 - օպերատորը եթե սաղ ճիշտ են վերադարձնումա վերջին գտած ճիշտը, իսկ եթե գենե  մի հատ սխալ պայման կա չի կատարվումա վերադարձնումա վերջին false-ը։
+
+// console.log( 1 && 2 && null && 3 ); // null - verjin false-y
+// console.log( 1 && 2 && true && 3 ); // եթե սաղ ճիշտա վերջին true պայմաննա վերադարձնում
+
+
+// if( 1 && 2 && true && 3) {
+// 	console.log('hello');
+// }
+
+// if( 1 && 2 && true && 0) {
+// 	console.log('hello');
+// }
+
+
+
+/*--------- || ----------*/
+//⚫Կամ օպերատորը  վերդարձնումա առաջին գտած true գտածը։ Իսկ եթե մեջը true պայման չկա ոչ մի բան(null): ⚠ կատարվելու համար գոնե մեջը 1 հատ պայման պետքա ճիշտ լինի։
+// 
+
+
+// console.log( 0 || 2 || true || 3 ); // 2
+// console.log( 1 || 2 || null || 3 );//output 1 - 
+// console.log( 0 || undefined || false || null ); //  ouput null - 
+
+
+
+	</script>
+</body>
+</html>

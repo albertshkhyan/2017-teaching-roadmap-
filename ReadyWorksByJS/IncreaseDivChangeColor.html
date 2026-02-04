@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>increac div and change color</title>
+</head>
+<body>
+
+
+
+	<script>
+		function f(a){
+			return(a>1)?f(a-1)+f(a-2):1
+		}
+		document.writeln(f(4))
+
+
+
+		var a=10;
+		var b=0;
+		function f(){
+			if (b==0) {
+				document.write('<div style="width:'+a+'; height:'+a+'; background-color:red;"></div>')
+				b++
+			}
+			else if(b==1){
+				document.write('<div style="width:'+a+'; height:'+a+'; background-color:green;"></div>')
+				b++
+			}
+			else if(b==2){
+				document.write('<div style="width:'+a+'; height:'+a+'; background-color:blue;"></div>')
+				b=0;
+			}
+			a+=10;
+		}
+		setInterval(f,1000)
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>genarators</title>
+
+    <style>
+    * {
+        margin: 0;
+    }
+
+    .gen1 span {
+        color:red;
+        text-transform: capitalize;
+    }
+    .gen2 {
+        text-align: center;
+        color: blue;
+        text-transform: capitalize;
+        font-size:40px ;
+    }
+    .gen2 img {
+        width: 100%;
+        height: 100vh;
+    }
+    
+    </style>
+</head>
+
+
+<body>
+
+
+    
+<video preload="auto" width="100%"  controls  loop poster="generator_understanding.jpeg">
+        <source src="./generator.webm" type="video/webm">
+</video>
+    
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+<div class="gen1">
+    <h2>
+        <span>suspended - приостановлено, կանգնեցված </span> - Երբ, որ generator-ֆունկցիան yield է անում, ուրեմն իրա status-ը suspended է։
+
+    </h2>
+</div>
+
+
+    
+<br>
+<br>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="gen2">
+<h2>Difference between Iterator and Generator</h2>
+<img src="./gen_vs_iter.jpeg" alt="">
+</div>
+    
+    
+    <script>
+        //
+
+
+        /*Generator
+        ⚫ What is generator
+        ⚫ generator vs iterator
+        ⚫ next(), genearator work like iterator
+        ⚫ yield operator, what is meaning yield (3)
+        ⚫ generator expression
+        ⚫ generator delegation -> yield*
+        ⚫ generator compostion
+        
+        */
+
+        /* ES6
+        ?? Генераторы в ES6 и асинхронный код по-новому
+        ?? function* - աստղանիշով ֆունկիցաները դրանք generaor-ներն են։
+        ⚫ Generator- ները դրանք նոր ֆունկիցաների տեսակներ են։ 
+
+
+        
+        ⚠ Սովորական ֆունկիցաները մինչև վերջ են կատարվում, կամ մինչև հասնեն return—ի։
+
+        Generator-ները դրանք es6-ի նոր ֆունկցիաներ են, որոնք տարբերվում ենք սովորկանից նրոնով, որ generator ֆունկցիաները կարողանում կանգնեցնել  իրենց կատարումը։ (⏸ pouse) Ու gneerator - ֆունկցիան չի շարունակի կարդալ կոդը այնքան ժամանակ միչև մենք next() մեթոդը չկանչենք։
+
+         Որ պահին որ կանգնեցնում ենք իրան հենց ետ պահի արդյունքնա ցույցա տալիս, ու հետո ինքը կարա իրա գործը շարունակի (▶ play) մինչև մյուս միջանկյալ արժեքը վերադարձնի։
+
+        
+        */
+
+        // 🔰 Սովորական ֆունկիցաները մինչև վերջ են կատարվում, կամ մինչև հասնեն return—ի։
+        //example
+
+        // function generate() {
+        //     console.log('Start');
+        //     console.log('Finish');
+        // }
+        // generate();//սաղ միանգամից կատարվեց - output : start, finish
+        // 🔰 generator-ները դրանք ֆունկցիաներ են, որոնք կարողանում կանգնեցնել իրենց կատարումը։
+        //pouse and play
+
+
+        ///// generator is function
+        // function* generate() {
+        // }
+        // console.log(typeof generate);//function
+
+
+/*---------------------------------------------------------------*/
+
+        /////👁‍🗨  show result when call simple function
+        // function generate() {
+        //      return console.log('hello');
+        // }
+        // generate();//output -  hello
+
+
+
+        ////👁‍🗨 with function genrator -> not  show enything
+        // function* generate() {
+        //     return console.log('hello');
+        // }
+        // // generate();//output -  hello
+
+
+        // // generate();//ոչ մի բան չի անում, դրա համար տեսենք ինչա վերդարձնում generate()-ը
+
+        // console.log( generate());//generate {<suspended>}
+
+        //⚠ generate() ֆունկցիայի մեջ չի մտնում։ Ֆունկցիայի մեջ մտնելու համար, մեզ պետքա ֆունկցիայի կանչի հետևանքով առաջացած Iterator օբյեկտից մեջից կանչել next() մեթոդը։
+
+/*---------------------------------------------------------------*/
+
+
+        /*
+        Երբ որ generator-ֆունկցիան կանչվումա իրա պարունակությունը չի կատարվում, այլ այդ generator-ֆունկցիայի կանչը վերադարնձնում Generator օբյեկտ։ Այդ օբյեկտը ունի next() մեթոդը, որով կարելիա իտերացվող օբյեկտների վրայով անցնել։
+        
+        ⚠ generator-ի տաիկից Iterator-ն է աշխատում, քանի եչ generator օբյեկտը ունի next մեթոդը։
+
+        Generator-ը ունի հետևյալ մեթոդները՝
+            next()
+            return()
+            throw()
+        */
+
+
+        // function* generate() {
+        //     yield 1;
+        //     yield 2;
+        //     yield 3;
+        // }
+            
+        // let iter = generate();
+        // console.log(iter.next());//{value: 1, done: false}
+        // console.log(iter.next());//{value: 2, done: false}
+        // console.log(iter.next());//{value: 3, done: false}
+        // console.log(iter.next());//{value: undefined, done: true}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*+++++++++++++++++++++++++ Generator and Iterator  +++++++++++++++++++++++++*/
+
+
+    // console.log((function* generate() {})());//generate {<suspended>}
+    /*output
+    generate {<suspended>}
+    __proto__: Generator
+    [[GeneratorLocation]]: Experiment.html:15
+    [[GeneratorStatus]]: "suspended"
+    [[GeneratorFunction]]: ƒ* generate()
+    [[GeneratorReceiver]]: Window
+    [[Scopes]]: Scopes[2]
+
+        * suspended - հետաձգված ( условный, կասեցված )
+
+    ⚫ generator ֆունկցիաները կանչելուց վերադարձնում են generator {} օբյեկտ -> generate {<suspended>}
+    Генератор – итератор
+        ⚠ generator-ի պրոտոտիպի մեջ կա next() մեթոդը, որը մեզ հուշում է այն մասին որ generator-ը կապվածա iterator-ի հետ։ Ավելի կոնկրետ ինքը իտերացվող օբյեկտա, այսինքն իրա մեջից անմիջապես կարելիա կանչել next() մեթոդը, օգտագործել for..of
+            Հիշեցում
+                իտերացվող օբյեկտ - նշանակումա որ իրա մեջից անմիջապես կարելիա կանչել next() մեթոդը։
+                 Ի տարբերություն օրինակ զանգվածի։ Զանգվածի մեջից չի լինի անմիջապես կանչել next() մեթոդը, օրինակ՝
+                 [1,2,3].next() ❌
+                 նախ և առաջ զանգվածը պետքա սարքել իտերացվող օբյեկտ -> ArrayIterator {}
+                 Օրինակ՝
+                 [1,2,3].entries()
+                 իտերացվող օբյեկտ սարքելուց հետ պետքա նոր կանչել next() մեթոդը
+                 [1,2,3].entries().next() ✔
+
+
+
+    */
+    
+    //// 🔰 իրա մեջից անմիջապես կարելիա կանչել next() մեթոդը։
+    // function* generate() {};
+    // let iter = generate();
+    // console.log(iter);//generate {<suspended>}
+    // console.log(iter.next());
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // console.log(iter.next());//{value: undefined, done: true} 
+        /*
+        value : undefiend -> որովհետև  yield-ը ոչ մի բան չի վերադարձնում։
+
+        */
+
+
+        //⚠ value: -ի արժեքը yield-ի վերադարձրածն է՝ Օրինակ
+        // function* generate() {
+        //     // yield console.log('Start');//{undefined: "Finish", done: false}
+        //     yield 'Start';//{value: "Start", done: false}
+        //     yield 'Finish';//{value: "Finish", done: false}
+        // }
+        // let iter = generate();
+        // console.log(iter.next());
+        // console.log(iter.next());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*++++++++++++++++ difference between Iterator and generator +++++++++++++++++*/
+
+        ///// Generator-ը Iterator-ի ավելի կատարելագործված տեսակն է։ 
+        //Example with genrator
+
+        // function* genrate() {
+        //     console.log('Start');
+        //     yield 1;
+        //     yield 2;
+        //     yield 3;
+        //     console.log('Finish');
+        // }
+
+        // let iter = genrate();
+        // console.log(iter.next());
+        // console.log(iter.next());
+        // console.log(iter.next());
+        // console.log(iter.next());//Finish -> true
+
+
+        /* + +++++++++++++++Նույն խնդիրը iteratro-ով։  +++++++++++++++*/
+
+        //working correct
+
+        // function generate() {
+        //     let current = 1;
+        //     console.log('Start');
+        //     return {
+        //         [Symbol.iterator]() {//is method
+        //             return {
+        //                 next() {
+        //                     let result = {value : undefined, done:false};
+
+        //                     if(current <= 3) {
+        //                         result.value = current;
+        //                         result.done  = false;
+        //                         current++;
+        //                     }else{
+        //                         result.value = undefined;
+        //                         result.done  = true;
+        //                         console.log('Finish');
+        //                     }
+        //                     return result;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        // console.log(typeof generate);
+        // let iterator = generate()[Symbol.iterator]();
+        // console.log(iterator.next());
+        // console.log(iterator.next());
+        // console.log(iterator.next());
+        // console.log(iterator.next());//
+
+
+        //// ⚠ Generator-function-ոով 5 տողա, իսկ iterator սարքելով 15 տողա։
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*++++++++++++++++++++++++++ genertaor-function and parametrs +++++++++++++++++++++*/
+////// generator-ի և iterator-ի գրելաձևի տարբերությունը։
+        ////👍 with generator
+        // function* range(start, end) {
+        //     let current = start;//սա նրա համար է, որ ուղղակի start-ի արժեքը չփոխենք
+        //     while(current <= end) {//start <= end   -> working
+        //         yield current++;
+        //     }
+        // }
+        // let iter = range(1,10);
+        // console.log(iter.next());
+        // // console.log(iter.next());
+        // // console.log(iter.next());
+        // // console.log(iter.next());
+        // // console.log(iter.next());
+        // // console.log(iter.next());
+        // // console.log(iter.next());
+        // // console.log(iter.next());
+        // // console.log(iter.next());
+        // // console.log(iter.next());
+        // // console.log(iter.next());
+        
+        // for(let num of range(1,10)) {
+        //     console.log(num);//1,2,3,4,5,6,7,8,9,10
+        // }
+
+
+        //👎 without generaotr -> Task
+
+        // function range(start, end) {
+        //     let current = start;
+
+        //     return {
+        //         [Symbol.iterator]() {
+        //             return {
+        //                next() {//??? with function keyword
+        //                     let result = {value:undefined, done:true};
+        //                     if(current <= end) {
+        //                         result.value = current;
+        //                         result.done = false;
+        //                         current++;
+
+        //                     }
+        //                     return result;
+        //                 }
+        //         }
+
+        //         }
+        //     }
+
+        // }
+
+        // let symIter = range(1,10);
+        
+        // for(num of symIter) {
+        //     console.log(num);
+        // }
+
+
+        /*Explanation
+        առանց generator գրելու համար՝
+        *նախ պետքա ինքդ քեզ հարց տաս ինչա անում genrator-function երբ իրան կանչում ենք։
+            Վերադարձնումա iterator օբյեկտ
+                return {
+                    [Symbol.iterator]() {
+
+                    }
+        * Iterator-ը վերադարձնումա օբյեկտ։ ✔
+        * Իսկ ետ Iterator-ը ունի next() մեթոդը։
+
+        *Իսկ ետ iteraotor օբյեկտը վերադարձնումա next() {} մեթոդը  
+
+        *Իսկ ետ next() մեթոդը վերադարձնումա օբյեկտ, որը ունի value և done հատկությունները։
+
+        *
+        *
+        */
+
+
+
+
+
+        
+        /* 
+         աստղանիշը կարելիա դնել 3 տեղերում
+            1․ function* - ֆունկիցայից հետո
+            2․ ֆունկցիայի ուն ֆունկիցայի անունի մեշտեղը - function * gen(){...}
+            3․ ֆունկիցիյի անունից առաջ function *gen(){...}
+            ⚠ Սրանց տարբերությունը միայն Syntax-ն է
+
+            -------------- Genertor function expression ---------------
+
+
+            Կան բայց ևս մի քանի եղանակ generator ստեղծելու
+            * անանուն ֆունկցիան նույպես կարա generator լինի։
+                    let gen = function* () {
+                    }
+            *genrator-function-ը կարա ստեղծվի նաև օբյեկտի մեջ, որպես մեթոդ
+                    let obj = {
+                        f
+                    }
+
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /******************* yield operator ************************/
+        // ⚫ yield  - օպեռատորը դադարեցնում generator-function-ի աշխատանքը ու վերադարձնումա կանգնեցված պահի արժեքը։
+        //⚠ yield-ը հեշտ հասկանալու համար կարելիա համաեմատլ ֆունկիցիայի return-ի հետ։ Որովհետև երկուսնել ինչ-որ բան են վերադարձնում։
+            /* Երբ որ մենք մեր generator-function-ը next() ենք անում, next մեթոդը value հատկության արժեքը yield -ի ետ պահի վերադարձցրածնա։
+
+                value - ն դա yield-ի վերադարձցրած արդյունքնա(միջանկյալ արժեք), օրինակ
+                    yield 1; —> value : 1
+                done - ը ցույց տալիս ավարտվել են yield-երը թե ոչ, բայց եթե չեն ավարվեն ու true է վերադարձնում ուրեմն սխալա կատարվել function-generator-ը։
+
+                ◼ հենց function-generator-ը հանդիպումա yield-ին իրա շախատանքը կանգնումա, մինչև մենք չկանչենք next() մեթոդը։
+            */
+                    
+        /*
+        Syntax
+            yield արտահայտություն
+        */
+        /*
+        FIXME 
+        yield -ի 3 իմաստները և բացատրությունը
+            yield -ը ունի 2 իմաստ՝
+            1) տալ, արտադրել, ինչ-որ ինֆորմացիա կամ արդյունք տալ
+            2)զիջել, հսկողությունը տալ, պատասխանատվություն ինչ-որ բանի համար (generatpr delegation)
+            
+            ⚠ Այս 2 նկարագրությունները լավ բացատրում են թե ինչա անում yield բանալի բառը
+        
+        */
+
+
+        ////◼ Ամեն մի next()-ը վերադարձնումա հաջորդ yield-ը։
+        // function* genrate() {
+        //     yield;
+        // }
+
+        // let iter = genrate();
+        // console.log(iter);
+        // console.log(iter.next());//done : false
+        // console.log(iter.next());//done : true
+
+        ////⚠ Երբ մենք ասում ենք function-generator-ը վերադարձնումա միջանկյալ արդյունէշք, Օրինակ՝
+        //// Միջանկյալ արդյունքը դա yield-ից հետո գրվող արտահայտություննա։
+        // function* genrate() {
+        //     yield 1;
+        // }
+        // let iter = genrate();
+        // console.log(iter);//value:1, done:false
+        // console.log(iter.next());//done : true
+
+
+
+
+
+
+
+
+        /*+++++++++ Մենք yield-ով ոչ միայն կարող ենք վերադարձնել արժեք այլ նաև ստանալ++++++++*/
+
+        ////⚠ Մենք yield-ով ոչ միայն կարող ենք վերադարձնել արժեք այլ նաև ըստանալ, օրինակ՝
+        //Ըստանալու համար մենք ուղղակի yield-ը պետքա պահենք փոփոխականի մեջ։
+        // function* genrate() {
+        //     let result = yield 1;
+        //     console.log(`Result :${result} `)
+        // }
+        // let iter = genrate();
+        // console.log(iter.next());//{value: 1, done: false}
+
+        ////Or like this
+        // //gen.next(value) - մենք կարող ենք նաև next() մեթոդին պառամետր փոխանցել, որը կպահվի yield-ի փոփոխականի մեջ։
+        // function* genrate() {
+        //     let result = yield;
+        //     // yield 1;
+        //     // console.log(`Result : ${result} `)
+        // }
+        // let iter = genrate();
+        // // console.log(iter.next());//առաջինի մենք արժեք չենք կարող փոխանցել, որովհետև ամենա առաջին next()-ը generator ֆունկցիան է միացնում։
+        // console.log(iter.next(1));//Result : 1 
+
+
+
+////երբ որ yield պահվումա փոփոխականի մեջ առանց արժեք, առաջին next-ը (արժեք տված) generator ֆունկցիան է միացնում, երեկրդը նոր yield-ի արժեքը բերումա։
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*++++++++++++++++++++++++++++++ Delegation of generator - yield* ++++++++++++++++++++++++++++++*/
+/*+++++++++++++++ Why use delagation +++++++++++++++*/
+        ////ինչպես վերադարձնել ամեն մի զ/ծ-ի տարրը - делегирование генератора
+
+// FIXME 
+
+		// let gen = function* () {//👎
+		// 	yield 1;
+		// 	yield 2;
+		// 	yield 3;
+		// 	yield 4;
+		// 	yield 6;
+		// 	yield 7;
+		// }
+
+		//// yield* - generator delagation 
+		// let gen = function* () {//👍
+		// 	yield* [1,2,3,4,5,6,7,8,9,10];
+		// }
+
+
+		// let iter = gen();
+		// console.log(iter.next());
+		// console.log(iter.next());
+		// console.log(iter.next());
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+        //// Example  when we yield objects
+
+        // function* generate() {
+        //     // yield 1;
+        //     yield [1,2,3];
+        // }
+
+        // let iter = generate();
+        // // console.log(iter.next().value);//1    
+        // console.log(iter.next().value);//[1,2,3] 😭 ինչպես վերադարձնել ամեն մի զ/ծ-ի տարրը
+
+
+        // Function and generator delegates for ES6
+
+        //// այս խնդիրը կարելիա լուծել ցիկլով կամ ավելի կարճ ձևով,
+
+        //generator delegation-ի հաամար պեքա yield օպերատորից հետո գրել * 
+        //Այստեղ yield-ի 2-րդ իմաստը -  2)զիջել, հսկողությունը տալ, պատասխանատվություն ինչ-որ բանի համար (generatpr delegation)
+
+        // function* generate() {
+        //     // yield 1;
+        //     yield* ['a',2,3];//😍
+        // }
+
+        // let iter = generate();
+        // // console.log(iter.next().value);//1    
+        // console.log(iter.next().value);// a 😊👍
+        // console.log(iter.next().value);// a 😊👍
+        
+        // console.log(iter.next().value);//1😊👍
+        // console.log(iter.next().value);//1😊👍
+  
+
+        ////generator-function-ի մեջ կարելիա գրել ուիրշ generaotr-function
+
+
+
+
+
+
+
+
+
+/*+++++++++++++++++++++++++Композиция генераторов - +++++++++++++++++++++++++*/
+/*+++++++++++++++++++++++++ Generator Composition - +++++++++++++++++++++++++*/
+////🔰 Դա երբ generator-ի մեջ generator ենք ստեղծում։
+
+
+
+//// ??????? how solve this problem
+        // function* g1() {
+        //     yield 1;
+        //     yield g2();
+        //     yield 4;
+        // }
+
+        // function* g2() {
+        //     yield 2;
+        //     yield 3;
+        // }
+
+        // let iter = g1();
+        // console.log(iter.next());1
+        // console.log(iter.next());//{value: g2, done: false}
+        // console.log(iter.next());//4
+        // console.log(iter.next());//undefined
+		
+
+        /***********************************************************/
+        
+
+		// //// but when use delegation  👍✔😁
+		// function* g1() {
+        //     yield 1;
+        //     yield* g2();
+        //     yield 4;
+        // }
+
+        // function* g2() {
+        //     yield 2;
+        //     yield 3;
+        // }
+
+        // let iter = g1();
+        // console.log(iter.next());//1
+        // console.log(iter.next());//2
+        // console.log(iter.next());//3
+        // console.log(iter.next());//4
+        // console.log(iter.next());//5
+        
+
+        //// Correct variant
+        // function* g1() {
+        //     yield 1;
+        //     yield g2();//մենք ուղղակի yield-ին պիտի ասենք, որ քո արրժեքնելա generator
+        //     yield 4;
+        // }
+
+        // function* g2() {
+        //     yield 2;
+        //     yield 3;
+        // }
+
+        // let iter = g1();
+        // console.log(iter.next());
+        // console.log(iter.next());
+        // console.log(iter.next());
+        // console.log(iter.next());
+        // console.log(iter.next());
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getBoundingClientRect</title>
+
+	<style>
+		/**/
+
+
+		body {
+			margin: 0;
+			/*x : 0, y : 0*/
+			/*margin-top: 10px;*/
+
+			/*{x: 10, y: 10*/
+			/*margin-left: 10px; */
+
+			padding: 25px;
+		}
+	</style>
+</head>
+<body>
+
+<!---------- like position but not position ---------->
+	<img src="../../IMAGES_and_ICON/raznoye/getBoundinClientRect1.PNG" alt="">
+	<img src="../../IMAGES_and_ICON/raznoye/postion_Rect.png" alt="">
+
+<!--------------------------------------------------->
+
+
+
+
+
+	<script>
+
+
+
+/*getBoundingClientRect
+//DOMRect object -> properties -> left, top, right, bottom, x, y, width, height.
+get - ստանալ
+bounding - jump, սահմանափակում
+Rect == rectangle,ուղղանկյուն -> rect - это базовая SVG фигура, используется для отрисовки прямоугольников по координатам угла, длины и высоты прямоугольника.
+
+⚫ get bounding client rectangle coordinates - получить координаты прямоугольника ограничивающего клиента. -> Ստանալ clinet-ի հնարավորությունները սահմանափակող էկրիանի կորդինատները։
+
+
+Ինչա կարլիա է անել getBoundingClientRect մեթոդով՝
+	Ստանալ ցանկացած էկրանի լայնությունը px-ներով։
+
+⚠ Rect - rectangle որովհետև 90% էկրանները  ուղղանկյուն են։ Մեր պարագայում Rect-ը նկատի ունի էկրանը։
+
+
+resolution of screen list
+	640×480,
+	800×600,
+	960×720, 
+	1024×768, 
+	1280×960, 
+	1400×1050, 
+	1440×1080, 
+	1600×1200, 
+	1856×1392,
+	1920×1440
+
+*/
+
+
+
+// Ստանալ ցանկացած էկրանի լայնությունը px-ներով։
+// console.log(document.body.getBoundingClientRect().width);//browser width - 100% == 1350px
+console.log(document.body.getBoundingClientRect());
+/*DOMRect
+		bottom: 8 -> like position but not position
+		height: 0 ✔
+		left: 8 -> like position but not position
+		right: 1358 -> position-ն է
+		top: 8 -> like position but not position
+		width: 1350 ✔
+		x: 8 -> ձախ անկյունիցա սկսում կորդինատները վեկալել
+		y: 8 -> ձախ անկյունիցա սկսում կորդինատները վեկալել
+		__proto__: DOMRect
+
+
+⚠ document.body -ի ձախ անկյունիցա սկսում հաշվել, այլ կերպ ասած body-ի margin-top և margin-left -ը 8px է։
+
+
+*/
+	</script>
+</body>
+</html>

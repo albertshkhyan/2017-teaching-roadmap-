@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+		/*************** Loop in timer************** */
+
+	////// մի վարկյան հետո կտպի ակնթարթորեն 1-10 թվերը
+	// for(let i = 0; i <= 10; ++i) {
+	// 	setTimeout(function() {
+	// 		document.writeln(i)
+	// 	},1000);
+	// }
+	////// իսկ եթե ուզում ենք վարկյանը մեկ տպի 1-10 թվերը
+	//// Տարբերակ 1
+	// for(let i = 0; i <= 10; ++i) {
+	// 	setTimeout(function() {
+	// 		document.writeln(i)
+	// 	},i*1000);
+	// }
+
+	//// Տարբերակ 2
+		// let i = 0;
+		// 	setInterval(function() {
+		// 		// if(i<10) {
+		// 		// 		document.writeln(++i)
+
+		// 		// }
+		// 	},100);
+
+
+		//////////////////////
+
+		//// 6 անգամ 6 իսկ let -ով 1-5
+		// for (var i = 1; i <= 5; ++i) {
+		// 	setTimeout(function(){
+		// 		console.log(i);
+		// 	}, 100);
+		// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/////////////// ցիկլի մեջ թայմեռ ///////////////
+
+		/*
+			Այս կոդը հասկանալու համար պետքա լավ հասկանալե 3 բան՝
+			 1․closure
+			 2․hoisting
+			 3․event loop
+		*/
+
+
+		// for (var i = 1; i <= 5; ++i) {
+		// 	setTimeout(function(){
+		// 		console.log(i);
+		// 	},i* 1000);
+		// }
+
+
+		/*+++++++++++++++++++++++++++++*/	
+
+
+
+		//For loops
+		//// ցիկլի մասին
+		// ինչ կցուցադրի այս կոդը
+
+		// for (var i = 1; i < 5; i++) {
+		// }
+		// console.log(i);//5
+
+
+
+		////// Closures
+		///// այստեղ timer-ի մեջի function-ը տենումա իրա lexical scope-ի փոփոխականները (window)
+
+		////var -ով հայտարարված փոփոխականը գլոբալ է
+		// for (var i = 1; i < 5; i++) {
+		// }
+		// console.log(i);//5
+
+		// for (let i = 1; i < 5; i++) {
+		// 	console.log(this);//window
+		// }
+		// console.log('++++++++++++++++++++++++++++');
+		// for (var i = 1; i < 5; i++) {
+		// 	console.log(this);//window
+		// }
+
+
+
+
+
+		////այս պարագայում 5-ը չենք տենա, քանի որ let-ը լոկալ է
+		// for (let i = 1; i < 5; i++) {
+		// 	console.log(i);
+		// }
+		// console.log(i);//i is not defined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//// ինչու վարկյանը մեկ է տպում, քանի որ i-ն 2-րդ քայլին 2 
+
+
+		/*
+		* սա բացատրելու համար պետքա իմանալ event loop
+		*/
+		for (let i = 1; i <= 5; ++i) {
+			setTimeout(function(){
+				console.log(i);
+			},i* 1000);
+		}
+
+
+	</script>
+</body>
+</html>

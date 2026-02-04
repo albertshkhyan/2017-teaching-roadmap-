@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <style>
+    /**/
+
+    * {
+        margin: 0;
+    }
+    
+    form,
+    div,
+    p {
+        border: 2px solid red;
+        text-align: center;
+        padding: 20px;  
+    }
+    </style>
+</head>
+<body>
+
+
+    <form class="form">
+        form
+        <div class="div">
+            div
+            <p class="p">
+                p
+            </p>
+        </div>
+    </form>
+
+    <script>
+
+/////
+
+// let foo = e => {
+//     // console.log('e.target', e.target);
+//     console.log('e.target', e.currentTarget);
+
+// }
+
+
+///////////////////////////
+
+
+// let form = document.querySelector('form');
+// let div = document.querySelector('div');
+// form.onclick = () => {
+//     alert("FORM");
+// }
+
+// div.onclick = (e) =>{
+//     alert('div');
+// console.log('e', e);
+
+// }
+
+// let getElems = document.querySelectorAll('form, p, div')
+// console.log('getElems', getElems);
+
+
+// getElems.forEach(function(elem) {
+//     elem.onclick = (e) => {
+//         alert(e.target.className);
+//     }
+// })
+
+
+// for(let i = 0; i < getElems.length; ++i) {
+//     getElems[i].onclick = (e) => {
+//         alert(e.target);
+//     }
+// }
+
+
+let getElems = document.querySelectorAll('form, p, div');
+for(let i = 0; i < getElems.length; ++i) {
+    getElems[i].addEventListener('click', function(e) {
+        // alert(e.target.tagName);//😱😭
+        alert(e.currentTarget.tagName);//
+        // alert(getElems[i].tagName);//👍
+    },true);
+}
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

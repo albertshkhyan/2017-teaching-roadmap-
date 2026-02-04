@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        td {
+            width: 150px;
+            height: 150px;
+            font: bold 30px Tahoma;
+            text-align: center;
+            color: white;
+        }
+
+        td:hover {
+            background-color: darkgrey
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border="1" bgcolor="grey" id="box">
+        <tr>
+            <td onclick="f(this)"></td>
+            <td onclick="f(this)"></td>
+            <td onclick="f(this)"></td>
+        </tr>
+
+        <tr>
+            <td onclick="f(this)"></td>
+            <td onclick="f(this)"></td>
+            <td onclick="f(this)"></td>
+        </tr>
+
+        <tr>
+            <td onclick="f(this)"></td>
+            <td onclick="f(this)"></td>
+            <td onclick="f(this)"></td>
+        </tr>
+    </table>
+    <button style="width: 35%; height:150px; background-color: grey;" onclick="delFoo()">NEW GAME</button>
+
+    <script>
+        //
+
+        var b = 0;
+        function f(a) {
+            if (a.innerHTML == "") {
+                b++
+                if (b % 2 != 0) {
+                    a.innerHTML = "X"
+                }
+                else {
+                    a.innerHTML = "0"
+                }
+            }
+            f1()
+        }
+        var arr = [[0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]];
+        var td = document.getElementsByTagName('td');
+        function f1() {
+            for (var i = 0; i < arr.length; i++) {
+                if (td[arr[i][0]].innerHTML == td[arr[i][1]].innerHTML && td[arr[i][1]].innerHTML == td[arr[i][2]].innerHTML && td[arr[i][2]].innerHTML == 'X') {
+                    alert('haxtec X')
+                }
+                else if (td[arr[i][0]].innerHTML == td[arr[i][1]].innerHTML && td[arr[i][1]].innerHTML == td[arr[i][2]].innerHTML && td[arr[i][2]].innerHTML == '0') {
+                    alert('haxtec O')
+                }
+            }
+        }
+
+
+        let delFoo = () => {
+            for (let i = 0; i < td.length; ++i) {
+                td[i].innerHTML = '';
+                b = 0;
+            }
+        }
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

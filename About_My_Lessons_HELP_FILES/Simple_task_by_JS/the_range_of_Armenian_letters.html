@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>հայկակակն տառերի միջակայք</title>
+</head>
+<body>
+	
+
+
+	<script>
+		//
+
+//# Եթե name - ի մեջ բացի հայերենից ուրիշ լեզվին պատկանող տառ կա թող ցուցադրի, օրինակ ՝
+//r -ն չի պատկանում հայերեն տառերի շարքին։
+		var name = 'Նարեfկ';
+//Նախ պետքա իմանալ հայերն տառերի ամենա փոքր կոդը
+//'ա'.charCodeAt(0) // 1377
+// 'Ա'.charCodeAt(0) //1329
+//'ֆ'.charCodeAt(0) //1414
+//'Ֆ'.charCodeAt(0) //1366
+// /!\ Այսինքն հայկական տառերի միջկայքը սկսվումա մեծատառ Ա -ից  մինչև մեծատառ Ֆ
+
+
+		for(var i = 0; i < name.length; ++i) {
+			if(name.charCodeAt(i) < 1329 || name.charCodeAt(i) > 1414) {
+				console.log(name.charAt(i) + ' - ն չի պատկանում հայերեն տառերի շարքին');
+			}
+		}
+
+	</script>
+</body>
+</html>

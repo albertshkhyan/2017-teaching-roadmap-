@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mousemove_and_mouseover.html</title>
+
+
+	<style>
+		
+		main {
+			width: 100px;
+			height: 100px;
+			background-color: chocolate;
+		}
+
+		p{
+			border: 1px solid;
+		}
+	</style>
+</head>
+<body>
+
+	<main onmouseover="foo(event)">
+		<!-- <p onmouseover="alert('hello')">mouseover</p> -->
+		<p>mouseover</p>
+	</main>
+
+		<main onmousemove="foo(event)">
+		<!-- <p onmouseover="alert('hello')">mouseover</p> -->
+		<p>mouseover</p>
+	</main>
+
+	<script>
+		
+		//
+
+		function foo(e) {
+			console.log(e);
+		}
+
+
+
+	</script>
+</body>
+</html>

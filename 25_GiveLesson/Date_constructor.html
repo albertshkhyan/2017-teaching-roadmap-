@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>date contructor</title>
+</head>
+<body>
+	<script>
+		//
+
+//////////what is constructor 
+
+////1
+// let o = {};
+// console.log("o", o.constructor);//Object
+
+// ////2
+// function f() {}
+// console.log("f.constructor", f.constructor);//Function
+
+// ////3
+// let a = [];
+// console.log("a", a.constructor);//Array
+
+// ////4
+// let n = 3.14;
+// console.log("n.constructor", n.constructor);//Number
+
+
+// ////5
+// let bool = true;
+// console.log("bool.constructor", bool.constructor);//Boolean
+
+// ///// null don't have constructor
+// ///// undefined don't have constructor
+
+
+// ////6
+// let sym = Symbol('Valod');
+// console.log("sym.constructor", sym.constructor);//Symbol
+
+// ////7
+
+// let str = 'hello';
+// console.log("str.constructor", str.constructor);//String
+
+
+/////////////// new անելու քանի ձև կա /////////////
+
+
+
+
+console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++');
+
+let data = new Date();
+console.log("data.prototype - ", data.prototype);//undefined -> not working because must be constructor
+console.log("data.constructor.prototype - ", data.constructor.prototype);
+console.log("data - ", data);//Mon Mar 18 2019 03:52:11 GMT+0400 (Армения, стандартное время)
+/*
+Mon	 Mar 		18 				2019 		03:52:11 	GMT+0400
+օրը, ամիսը, ամսաթիվը, տարին, 	ժամը , 		ժամային գոտին
+
+*/
+
+
+console.log("data.getTime()", data.getTime());//1 552 867 100 321 trillion mls
+// 31 536 000 * 1000 = 31 536 000 000 * 49 = 1 545 264 000 000 1.5 տրիլլիոն
+
+
+
+
+/*
+
+1/1/1970 - Unix դարաշջան
+getTime - մեթոդը ցույց տալիս 1970 թ․-ից մինչև եսոր քանի մլվ է անցել, 
+	1970 թ -ը համարվումա ծրագրավորման սկիզբը
+
+
+🔰 Linux -ը դա Unix-ի prototype-ն է։
+	
+	🔰 Եթե IPhone-ի ամսաթիվը փոխեք դնեք 1970 թ․ ու անջատեք ել իրան չեք կարա միացնեք։
+			Պետքա սպասել ակումլյատոռի զարյադկեն լռիվ 0-յանա ու հանվի դրվի, որ նորից միանա։
+ 
+*/
+
+console.log("getDay - ", data.getDay());//շաբաթվա օրը թվի տեսքով 0-6 
+
+console.log("data.getMonth() - ", data.getMonth());//0-11 - ստանումա ամիը
+
+console.log("data.getDate() - ", data.getDate());//ստունումա ամսաթիվը։ - 18
+
+console.log("getFullYear - ", data.getFullYear());//2019
+
+// console.log("data.getYear() - ", data.getYear());//119 - չի օգտագործվում ջնջել են նոր ստանդարտից -> ցույցա տալիս թե 1900 թ-ից քանի տարի անցել։
+
+
+console.log("data.getHours() - ", data.getHours());//ստանում ենք ներկայիս ժամը
+
+console.log("data.getMinutes() - ", data.getMinutes());//ստանում ենք ներկայիս րոպեն
+
+console.log("data.getSeconds() - ", data.getSeconds());//ստանումա ներկայիս վարկյանը
+
+console.log("data.getMilliseconds() - ", data.getMilliseconds());//ստանումա ներկայիս 	 մլվ
+
+
+//// ⚠ Հիմնական օգտագործվողները ես 9 մեթոդներն են։
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************/
+
+
+// var date = new Date();
+// console.log("date - ", date);
+
+// console.log("date.toDateString() - ", date.toDateString());//վերադարձնումա օրը, ամիսը, ամսաթիվը և տարին
+
+
+
+
+
+
+
+
+
+
+
+////////////// Usefull method ///////////////
+
+		console.log(new Date().toLocaleTimeString());//21:10:44
+        console.log(new Date().toLocaleDateString());//18.07.2019
+        console.log(new Date().toTimeString());//"21:13:02 GMT+0400 (Армения, стандартное время)"
+        console.log(new Date().toLocaleString());//"18.07.2019, 21:14:02"
+        
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

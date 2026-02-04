@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <button id="gen">Genrate</button>
+</head>
+<body>
+    <script>
+    //
+    ////🔰 - genrator-ֆունկցիաին որպես արգումենտ փոխանցում ենք 1-10 տպումա 1-ից 10 թվերը, բայց երբ բան չենք փոխանցում որպես արգումենտ թող տպի 0-100 թվերը
+
+    // function* generate(start = 0, end = 100) {
+    //     while(start <= end) {
+    //         yield start;
+    //         start++;
+    //     }
+
+    // }
+    // for(let n of generate()) {
+    //     document.writeln(n);
+    // }//0-100
+
+
+
+    ////🔰 - next() մեթոդը կանչել տպել 1,2,3,4 թվերը բայց 4-ից հետո թող սկսի նորից, այսինքն 5-րդ next()-ը նորից 1-ը պետքա ցուցադրի 
+    //⚠ Արտածել հենց թիվը ոչ թե օբյեկտը։ {value: 1, done: false}
+
+    let getButton = document.querySelector('#gen');
+
+    function* generate() {
+        yield 1;
+        yield 2;
+        yield 3;
+        yield 4;
+    }
+
+    
+    let iter = generate();
+
+    //5-րդ next-ին unedfifined է պում։ 👎
+    getButton.onclick = function() {
+    let result = iter.next();
+    console.log(result);
+
+    if(result.done == true) {
+        iter = generate();//արդեն սկսվածը չեղյալ ենք սարքւոմ ու նորից ենք սկսում
+    }
+    }
+
+
+    ////Ինչպես անել, որ 5-րդ քայլին undefined չտպի։ 👍
+    getButton.onclick = function () {
+            let result = iter.next();
+            if (result.value != undefined) {
+                console.log(result);//ասումա եթե value undfined չի թող ցուցադրվի օբյեկտը
+                //Օրինակ՝ {value: 1, done: false}
+            }
+
+            if (result.done == true) {
+                iter = generate();
+                console.log(iter.next());
+            }
+        }
+
+
+
+ 
+    
+
+    
+
+
+
+
+
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>event and event listener</title>
+</head>
+<body>
+
+<!----------------- HANDLING EVENTS: method 1 ------------------>
+
+<!-- <button onclick="alert('hello world')">Clikc me</button> -->
+
+<!-------------------------------------------------------------------------------------------->
+
+
+
+<!----------------------------- 2․ elemnt.avent ----------------------------->
+
+
+<button>Clikc me</button>
+
+
+<!-------------------------------------------------------------------------------------------->
+
+
+
+	<script>
+		//
+
+				//// Գույություն ունի event տալու կա 3 ձև (обработчик событий)
+/*		1․ օգտագործելով event ատրիբուտները ու կոդը հենց javascript-ում գրելը, սա ամենա վատ ձևնա,
+					վատ պրակտիկայա համարվում html-ի հետ css, javascript խառնելը
+			2․ elemnt.avent
+			3․ օգտագործելով addEventListener() մեթոդը
+				* այս ձևը ունի մի հատ առավելություն մի հատել թերություն
+				  Առավալությունները
+				  		большие преимущества в том что мы можем отслеживать несколько обработчиков событий
+				  		Նաև թույլա տալիս ջնջել event-ը
+				  Թերությունը
+				  		Ոչ բելոր բրաուզեներն են աջակցում
+				  		օրինակ IE-ը չի աջակցում addEventListener մեթդը, դրա փոխարեն atachEvent-ա
+
+*/
+
+
+////HANDLING EVENTS: method 3 ( event տալու 2 ձև -> elemnt.avent )
+
+
+// let btn = document.querySelector('button');
+// btn.onclick = function() {//մենք ըստե ֆունկցիային անուն չենք տալիս քանի, որ արեդեն մենք ասում ենք թե երբ պիտի կատարվի
+// 	//// Այստեղ ինչ գրվումա կոչվումա обработчик событий, event handler
+// 	alert('hello');
+// };// վերջում դրվում կետ ստորակետ, համարյա միշտ ել կոդը աշխատումա երբ ; չենք դնում բայց լավ կլինի դնել այն
+
+
+
+////HANDLING EVENTS: method 3
+
+////addEventListener մեթոդից առաջ գրվում են տարրը , որի վրա ուզում ենք տվյալ իրադարձությունը կատարվի
+//// մենա կարող են addEventListener փոխանցել 3 պառամետր, սկզբի 2 -ը պարտադիր են։
+/*
+1․ event -> առանց on 
+2. function
+3. false - սա նախատեսված է, որոշ բարդ event-ների համար։
+
+syntax
+	document.addEventListener('click', 'anotherFunc', false)
+
+	*/
+// let btn = document.querySelector('button');
+// btn.addEventListener('click', function() {
+// 		alert('hello im addEventListener');
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// onload - կատարվումա երբ կայքը ամվողջովին բեռնված է լինում
+	</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>__proto__ and prototype</title>
+</head>
+<body>
+	<script>
+		//
+
+
+
+/*********************** __proto__ and prototype **********************
+//__proto__ ավելի շատ link-ի դերա տանում, իսկ prototype-ը կոնտեյների։
+
+
+
+*/
+
+function Auto(m,c) {
+	this.marka = m;
+	this.color = c;
+//Ցանկացած ֆունկիցա ունի իրա մեջ f.prototype հատկությունը, որը իրանից ներկայցնումա օբյեկտ, իսկ ետ prototype օբյեկտը ունի constructor հատկությունը, որը հանասար է մեր ֆունկցիաին: ( և իր պարունկությանը )
+}
+
+console.log(Auto.prototype.constructor == Auto);//true
+
+
+console.log(Auto.prototype.constructor);
+/*Auto.prototype.constructor OUTPUT
+ƒ Auto(m,c) {
+	this.marka = m;
+	this.color = c;
+
+	⚠ Այինքն constructor-ը դա ֆունկիցա է։
+
+*/
+
+let auto = new Auto('BMW', 'red');//auto - no have prototype but have __proto__
+//Auto constructor-ը new անելուց հետո իրա մեջի prototype-ը հատկությունը գրանցվումա(զապիսա արվում) տվյալ օբյեկտի __proto__-ի մեջի constructor-ի մեջ։
+/*
+
+function Auto(m,c) {
+	this.marka = m;
+	this.color = c;
+
+prototype { ▶
+	go: ƒ ()
+	constructor: ƒ Auto(m,c)
+__proto__: Object
+	}
+
+}
+⤵⤵⤵
+auto{
+	__proto__
+		{go: ƒ, constructor: ƒ}
+			go: ƒ ()
+			constructor: ƒ Auto(m,c)
+				arguments: null
+				caller: null
+				length: 2
+				name: "Auto"
+				prototype: {go: ƒ, constructor: ƒ} ▶
+}
+*/
+
+console.log("auto object - ", auto);
+
+
+
+
+/*--------------------------------------------------------------------------*/
+
+//⚠//Խորհուրդա տրվում մեթոդները ավելացնել constructor-ի protottype-ի մեջ, ոչ թե հենց օբյեկտի։
+
+// auto.prototype.go = function() {
+// 	console.log('avton gnac');
+// }//Error - Cannot set property 'go' of undefined - ❌
+
+Auto.prototype.go = function() {//Խորհուրդա տրվում մեթոդները ավելացնել constructor-ի protottype-ի մեջ, ոչ թե հենց օբյեկտի։
+	console.log('avton gnac');
+}// ✔
+
+console.log('-----------------------------------------------');
+
+/*----------------------------------------------------------------------*/
+console.log("auto.__proto__ - ", auto.__proto__);//{go: ƒ, constructor: ƒ}
+// ⚠ auto օբյեկտը (instance) -ը prototype չունի auto.prototype === udefined, բայց
+
+console.log("Auto.prototype - ", Auto.prototype);//{go: ƒ, constructor: ƒ}
+//⚠ Auto constructor-ը ունի համ __proto__ համ prototype: prototype-ը հասանելիա միայն ֆունկցիաների համար։
+
+console.log("auto.__proto__ === Auto.prototype - ", auto.__proto__ === Auto.prototype);
+
+
+/*Difference between __prot__ and prototype
+__proto__ - ն հասանելիա ամեն տեղ համ constructro-ի (Auto) համար համ օբյեկտի (auto), Օրինակ՝
+		Auto.__proto__ -> ƒ () { [native code] }
+		auto.__auto__ -> {go: ƒ, constructor: ƒ}
+
+Իսկ prototype - ը հասանելիա չի instace-ների համար, հասանլեիա միայն constructor ֆունցկիաների համար։
+
+
+
+*/
+/*----------------------------------------------------------------------*/
+
+console.log('-----------------------------------------------');
+
+
+// go();//go is not defined ❌
+// Auto.go();// Auto.go is not a function ❌
+// Auto.prototype.go();//avton gnac ✔
+
+
+// console.log("auto.prototype - ", auto.prototype);//undefined -> instace-ը prototype չունի
+
+// console.log("Auto.__proto__ - ", Auto.__proto__);//() { [native code] }
+
+
+
+
+
+function foo() {
+	alert('hello');
+	// ⚠ foo.prototype -> {constructor: ƒ}
+	// ⚠ foo.hasOwnProperty('prototype');
+	// ⚠ foo.hasOwnProperty('__proto__)'); //false
+	// ⚠ '__proto__' in foo -> true
+}
+
+
+//__proto__ ավելի շատ link-ի դերա տանում, իսկ prototype-ը կոնտեյների։
+	</script>
+
+</body>
+</html>

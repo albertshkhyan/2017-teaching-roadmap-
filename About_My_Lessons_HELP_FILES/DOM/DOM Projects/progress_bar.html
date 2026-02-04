@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>progress bar</title>
+
+	<style>
+
+
+	.progress {
+		width: 100%;
+		height: 15px;
+		border:1px solid #454545;
+		margin: 20px 0;
+
+	}
+
+	.progress > div {
+		width: 0%;
+		height: 100%;
+		background-color: red;
+		transition: 2s;
+		/*transtion պետքա տալ որ ակնթարթորեն չկատարվի*/
+	}
+</style>
+</head>
+<body>
+	<div class="progress">
+		<div data-progress="20"></div>
+	</div>
+
+
+	<div class="progress">
+		<div  data-progress="40"></div>
+	</div>
+
+	<div class="progress">
+		<div  data-progress="70"></div>
+	</div>
+
+	<script>
+		//
+
+		let bars = document.querySelectorAll('.progress > div');
+
+		setInterval(function(){
+// console.log("containerProgress", containerProgress[0]);//first div
+
+
+			bars.forEach(function(bar) {
+				// console.log(parseInt(bar.dataset.progress) + 1); working , forEach-ի շնորհիվ
+				let widthOfPrgss = parseFloat(bar.dataset.progress);//for number type
+				// console.log(elem.dataset.progress);//3-ինել մինգամից կպնումա
+				for(let i = 0; i < widthOfPrgss; ++i) {
+					// containerProgress.style = `
+					// 	width:${elem.dataset.progress[i]}%;
+					// `;
+
+					bar.style = `width:${i++}%`;
+				}
+
+					// let i = 0;
+
+					// bar.style = `width:${(i<=widthOfPrgss) ? ++i : ''}%`;
+
+// console.log(typeof elem.dataset.progress);//string 
+// console.log(parseFloat(elem.dataset.progress));
+// console.log("elem.dataset.progress", elem.dataset.progress);//70 20 40
+					// for(let i = 0; i < widthOfPrgss; ++i) {
+					// 	console.log(elem.datasetprogress);
+					// }
+
+			})
+
+			// console.log('adf');
+
+
+		},500);
+
+
+
+	</script>
+</body>
+</html>

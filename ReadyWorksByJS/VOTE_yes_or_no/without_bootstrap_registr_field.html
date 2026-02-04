@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vote list without bootstrap</title>
+
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	.mainSize{
+		width: 80%;
+		margin: 0 auto;
+
+	}
+
+	.container{
+		background-color: yellow;
+		height: 100vh;
+		padding: 10px;
+		/*line-height: 70px;*/
+	}
+	.container > button{
+		width: 70px;
+	}
+
+	.container > input{
+		width: calc(100% - 80px);
+
+	}
+
+	.container table{
+		width: 100%;
+		/*border: 1px solid;*/
+		
+	}
+	.container table > tr, th, td{
+		text-align: left;
+		border-bottom: 1px solid;
+		/*border-collapse: collapse;*/
+
+	}
+
+
+
+</style>
+</head>
+<body>
+
+
+	<div id="wrapper">
+		<div class="mainSize">
+			<div class="container">
+				<h1>yntroxneri cucak <span></span></h1>
+				<input type="text">
+				<button onclick="addPerson()">Add</button>
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Username</th>
+							<th>yntrel/chntrel</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>	
+
+	<script>
+
+//get server data 
+
+// let id = 0;
+// let users = [
+// {
+// 	name : 'Inna',
+// 	username : 'Karapetyan',
+// 	check : false,
+// 	id : ++id,
+// },
+// {
+// 	name : 'Robert',
+// 	username : 'Mnacakanyan',
+// 	check : true,
+// 	id : ++id,
+// },
+// {
+// 	name : 'Karina',
+// 	username : 'Galstyan',
+// 	check : false,
+// 	id : ++id,
+// }
+// ];
+
+
+
+function foo() {
+let promise = fetch('https://jsonplaceholder.typicode.com/users');
+// console.log('promise', promise);
+promise
+.then(function(resolved) {	
+	return resolved.json();
+	
+})	
+.then(function(response) {
+	let users = response;
+	
+	let i;
+	for(i = 0; i < users.length; ++i) {
+		users[i].check = ( Math.round(Math.random()) ) ? true : false;	
+	}
+
+	
+	
+let showLengthOfUsers = document.querySelector('.container>h1>span');
+let tableBody = document.querySelector('.container>table>tbody');
+function showUsers() {
+	tableBody.innerHTML = '';
+	showLengthOfUsers.innerText = users.length;
+	for(let i = 0; i < users.length; ++i) {
+		tableBody.innerHTML += `
+		<tr>
+		<td>${users[i].name}</td>
+		<td>${users[i].username}</td>
+		<td>
+		<input type="checkbox" ${(users[i].check) ? 'checked' : ''} oninput="fYesOrNo(event)"/>
+		<span>${(users[i].check) ? 'ayo' : 'voch'}</span>
+		</td>
+
+		<td>
+		<button onclick="f_yesOrNo(this)" data-id="${users[i].id}">X</button>
+		</td>
+		</tr>
+		`;
+
+	}
+
+}
+showUsers();
+
+//add some person
+
+let addInput = document.querySelector('.container > input');
+function addPerson() {
+	let arrOfNewUser = addInput.value.split(' ');//working
+	// arrOfNewUser[0][0].toUpperCase();//output A
+
+console.log("arrOfNewUser", arrOfNewUser);
+
+	if(arrOfNewUser.length == 2 && arrOfNewUser[1] != '') {//working
+		users.push({
+			name 	: arrOfNewUser[0].charAt(0).toUpperCase() + arrOfNewUser[0].slice(1) ,
+			username 	: arrOfNewUser[1].charAt(0).toUpperCase() + arrOfNewUser[1].slice(1),
+			check 	: false,
+			id 	: ++id
+		});
+		showUsers();
+
+	}
+
+
+}
+
+
+	
+})
+
+
+
+
+
+
+}
+
+
+////////////////// delete appropriate id //////////////////////
+
+
+function f_yesOrNo(t) {
+	//Տվյալ տողը կդրում ենք
+	// Ցիկլա պետք որ հասկանա որ id-ով user-ին ջնջի։
+	//իսկ user-ի id պետք է տանք ջնջող կոճակին։
+	for(let i = 0; i < users.length; ++i) {
+		if(t.dataset.id == users[i].id) {
+			users.splice(i,1);
+// console.log("users", users);//ջնջվեց, հետո նորից կանչում ենք մեր showUsers() ֆունկցիան
+
+		showUsers();
+		}
+	}
+}
+
+
+///////////////// when change check in span output yes or no /////////////
+
+
+function fYesOrNo(e) {
+	// console.log('e', e);
+	// console.log('e.target', e.target);
+e.target.nextElementSibling.innerText = (e.target.checked) ? 'ayo' : 'voch';
+
+// console.log("e.target.nextElementSibling", e.target.nextElementSibling);
+
+}
+
+
+let x = foo();
+// console.log('users', users);
+// console.log(y);
+
+// function usersFoo(objOfUsersFromLoacalEnv) {
+// 	// console.log('objOfUsersFromLoacalEnv', objOfUsersFromLoacalEnv);
+// 	let a = objOfUsersFromLoacalEnv;
+// 	console.log('a', a);
+// 	return a;
+// }
+
+
+
+
+
+
+// console.log("users", users);
+// 
+
+// let showLengthOfUsers = document.querySelector('.container>h1>span');
+// let tableBody = document.querySelector('.container>table>tbody');
+// function showUsers() {
+// 	tableBody.innerHTML = '';
+// 	showLengthOfUsers.innerText = users.length;
+// 	for(let i = 0; i < users.length; ++i) {
+// 		tableBody.innerHTML += `
+// 		<tr>
+// 		<td>${users[i].name}</td>
+// 		<td>${users[i].username}</td>
+// 		<td>
+// 		<input type="checkbox" ${(users[i].check) ? 'checked' : ''} oninput="fYesOrNo(event)"/>
+// 		<span>${(users[i].check) ? 'ayo' : 'voch'}</span>
+// 		</td>
+
+// 		<td>
+// 		<button onclick="f_yesOrNo(this)" data-id="${users[i].id}">X</button>
+// 		</td>
+// 		</tr>
+// 		`;
+
+// 	}
+
+// }
+// showUsers();
+
+// //add some person
+
+// let addInput = document.querySelector('.container > input');
+// function addPerson() {
+// 	let arrOfNewUser = addInput.value.split(' ');//working
+// 	// arrOfNewUser[0][0].toUpperCase();//output A
+
+// console.log("arrOfNewUser", arrOfNewUser);
+
+// 	if(arrOfNewUser.length == 2 && arrOfNewUser[1] != '') {//working
+// 		users.push({
+// 			name 	: arrOfNewUser[0].charAt(0).toUpperCase() + arrOfNewUser[0].slice(1) ,
+// 			username 	: arrOfNewUser[1].charAt(0).toUpperCase() + arrOfNewUser[1].slice(1),
+// 			check 	: false,
+// 			id 	: ++id
+// 		});
+// 		showUsers();
+
+// 	}
+
+
+// }
+
+// ////////////////// delete appropriate id //////////////////////
+
+
+// function f_yesOrNo(t) {
+// 	//Տվյալ տողը կդրում ենք
+// 	// Ցիկլա պետք որ հասկանա որ id-ով user-ին ջնջի։
+// 	//իսկ user-ի id պետք է տանք ջնջող կոճակին։
+// 	for(let i = 0; i < users.length; ++i) {
+// 		if(t.dataset.id == users[i].id) {
+// 			users.splice(i,1);
+// // console.log("users", users);//ջնջվեց, հետո նորից կանչում ենք մեր showUsers() ֆունկցիան
+
+// 		showUsers();
+// 		}
+// 	}
+// }
+
+
+// ///////////////// when change check in span output yes or no /////////////
+
+
+// function fYesOrNo(e) {
+// e.target.nextElementSibling.innerText = (e.target.checked) ? 'ayo' : 'voch';
+
+// // console.log("e.target.nextElementSibling", e.target.nextElementSibling);
+
+// }
+
+</script>
+</body>
+</html>

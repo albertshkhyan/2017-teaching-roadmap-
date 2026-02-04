@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+	
+	form, div, p {
+		padding: 100px;
+		outline: 4px solid red;
+		font-size: 40px;
+		text-align: center;
+	}
+	
+	</style>
+</head>
+<body>
+
+	<h1>target and currentTarget</h1>
+
+
+
+	<!-- <form onclick="foo(event)">
+		FORM 
+		<div>
+			DIV
+			<p>
+				P
+			</p>
+		</div>
+	</form> -->
+
+
+	<button onclick="foo(event)">Number</button>
+	
+	<script>
+		/*
+			⚫ Սկզբում բացատրել event տալու 3 ձևերը(շարունակել կիսատ թողածը)
+
+			⚫Սկզբում բացատրել bubbling հետո նոր target և currentTarget
+		*/
+
+		// function foo(e) {
+		// 	// console.log('e', e.target);
+		// 	console.log('e', e. currentTarget);
+
+		// }
+	
+		let i = 0;
+		let foo = (e) => e.target.innerText = ++i;
+
+
+
+	</script>
+</body>
+</html>

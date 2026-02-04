@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lorem text letter by letter</title>
+</head>
+<body>
+	
+
+
+	<script>
+
+/************letter by letter with charAt()**************/
+
+		// var i = 0;
+// var txt = 'Lorem ipsum i tak dalee';
+// function fu() {
+//   if (i < txt.length) {
+//     document.getElementById("demo").innerHTML += txt.charAt(i);
+//     i++;
+//     setTimeout(fu, 100);
+//   }
+// }
+/**************************/
+
+
+
+/*-------------Տպել lorem-ի տեքստը տառ առ տառ հենց ավարտվի, շարունակի տպել նորից-------------*/
+
+// var str = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora harum fugit quo, sapiente eos blanditiis tempore dolorem';//length122
+// // console.log(str.length);
+// var i = 0;
+
+// setInterval(function f(){
+// 	if(i<str.length){//0 == 122
+// 	document.write(str[i]);
+// 	// i=0;
+// 		// i=str[i];//heto tpum e undefined
+// 		// i=0;//teqsti avartveluc heto mi hat undefined e tpum, isk heto noric tqesty
+// 	}
+// 	i++;
+
+
+// },100);
+
+/*-------------Իսկ եթե ուզում ենք lorem  ի տեքստը չկրկնվի-------------*/
+
+// var str = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora harum fugit quo, sapiente eos blanditiis tempore dolorem';//length122
+// // console.log(str.length);
+// var i = 0;
+
+// setInterval(function f(){
+// 	if(i<str.length){
+// 	document.write(str[i]);
+// 	i++;
+// 	}
+
+// },10);
+
+
+/*----------------vor chsharunakvi---------------------------*/
+// var a=0;
+// var lorem="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod";
+// function f(){
+// 	document.write(lorem[a])
+// 	a++
+// }
+// var set=setInterval(f, 100);
+// setInterval(function f(){
+// 	clearInterval(set)
+// 	},7200);
+
+/*---------------------vor sharunakvi loremi texty---------------------*///chist tarberaky
+
+
+var l="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod;"
+var a=0;
+setInterval(function f(){
+	document.write(l[a])
+	a++;
+	if (a==l.length) {
+		a=0;
+	}
+	
+},100);
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clone node</title>
+</head>
+<body>
+	
+
+	<div id="wrapper">
+
+		<div class="item">
+			<p>Lorem ipsum dolor sit amet</p>
+			<ul>
+				<li>Lorem</li>
+				<li>ipsum</li>
+				<li>dolor</li>
+				<li>sit</li>
+				<li>amet</li>
+			</ul>
+		</div>
+
+	</div>
+
+
+	<script>
+
+		let wrp = document.querySelector('#wrapper');
+		let itm = document.querySelector('.item');
+
+		// let cloneOfItm = itm.cloneNode(true);
+		// console.log("cloneOfItm", cloneOfItm);
+
+				let cloneOfItm = itm.cloneNode(false);// - > մենակ <div class="item"></div> այս տարրը կլոնավորեց false -ի դեպքում 
+		console.log("cloneOfItm", cloneOfItm);
+		
+
+	</script>
+</body>
+</html>

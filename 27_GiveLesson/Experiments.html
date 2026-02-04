@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>	
+
+
+		// let user1 = {
+		// 	name : 'Valod',
+		// 	password  : function() {
+		// 		let _pass = 1234;//inkapsulaacia
+		// 		return _pass;
+		// 	}
+		// }
+
+		// let f = user1.password()
+		// console.log('f', f);
+		// console.log(user1);
+		
+
+
+
+function Auto(m) {
+	this.marka = m;
+
+}
+
+console.log(new Auto);
+
+
+// bmw.engine = 7.1;
+
+function Bmw(m,e) {
+	Auto.call(this);
+	this.egine = e; 
+}
+
+let bmw = new Bmw();
+console.log('bmw', bmw);
+
+
+let merc = new Auto('Mercedec');
+
+console.log('merc', merc);
+
+
+
+
+
+
+// function Auto(m,c) {
+// 	this.marka = m;
+// 	this.color = c;
+// //Ցանկացած ֆունկիցա ունի իրա մեջ f.prototype հատկությունը, որը իրանից ներկայցնումա օբյեկտ, իսկ ետ prototype օբյեկտը ունի constructor հատկությունը, որը հանասար է մեր ֆունկցիաին: ( և իր պարունկությանը )
+// }
+
+// console.log(Auto.prototype.constructor == Auto);//true
+
+
+// console.log(Auto.prototype.constructor);
+/*Auto.prototype.constructor OUTPUT
+ƒ Auto(m,c) {
+	this.marka = m;
+	this.color = c;
+
+	⚠ Այինքն constructor-ը դա ֆունկիցա է։
+
+	*/
+
+
+
+
+
+
+</script>
+</body>
+</html>

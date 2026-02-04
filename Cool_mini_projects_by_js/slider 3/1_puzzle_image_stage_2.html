@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+        #forCenter {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+    #containeOfImage {
+        border: 1px solid #000;
+        width: 500px;
+        height: 500px;
+
+
+
+        
+    }
+
+    #containeOfImage >  div{
+        width: 100px;
+        height: 100px;
+        outline: 1px solid red;
+        float: left;
+        overflow: hidden;
+        position: relative;
+
+    }
+
+    #containeOfImage  div  img{
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        /* left: -100px; */
+
+    }
+    #containeOfImage  div:nth-child(2) img{
+        left: -100px;
+
+    }  
+     #containeOfImage  div:nth-child(3) img{
+        left: -200px;
+
+    }
+    #containeOfImage  div:nth-child(4) img{
+        left: -300px;
+
+    }
+    #containeOfImage  div:nth-child(5) img{
+        left: -400px;
+
+    }
+    #containeOfImage  div:nth-child(6) img{
+        left: -500px;
+
+    }
+    
+    
+    </style>
+</head>
+<body>
+
+
+<div id="forCenter">
+    <div id="containeOfImage">
+        <div>
+            <img src="../../IMAGES_and_ICON/640x480/img (1).jpg" alt="">
+        </div>
+        
+        <div>
+            <img src="../../IMAGES_and_ICON/640x480/img (1).jpg" alt="">
+        </div>
+    
+
+        <div>
+            <img src="../../IMAGES_and_ICON/640x480/img (1).jpg" alt="">
+        </div>
+    
+
+        <div>
+            <img src="../../IMAGES_and_ICON/640x480/img (1).jpg" alt="">
+        </div>
+    
+
+        <div>
+            <img src="../../IMAGES_and_ICON/640x480/img (1).jpg" alt="">
+        </div>
+    
+
+    </div>
+</div>
+    
+</body>
+</html>

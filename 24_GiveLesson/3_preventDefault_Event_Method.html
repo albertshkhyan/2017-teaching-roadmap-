@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<!-- <a href="https://www.google.com" target="_blank">go google</a> -->
+
+
+	<form>
+		<input type="checkbox" id="my-checkbox" onclick="foo(event)"/>
+		<label for="my-checkbox" >Checkbox</label>
+	</form>
+
+	<script>
+
+		/*
+		⚫preventDefault - մեթոդը չեղյալա հայտարարում(cencel,отменяет событие) տվյալ event-ը։ Սա նշանակումա որ տվյալ event-ին վերաբերվող գործողությունը չի կատարվի։
+			prevent - կանխարգելել, block
+		⚠Կան որոշ տարրեր որոնց  աբտոմատ կա իրադարձություն, օրինակ՝
+			* input chackbox
+			* a href - սսիլկի վրա click անելուց բրաուզերը ըստ default-ի ինչ-որ 												գործողությունա անում։
+			* double clikc on text -> selction
+
+		 ⚠ Ու սրա շնորհիվ մենք բրաուզերին ասում ենք արա են ինչ ես եմ քեզ ասում։
+
+		Syntax
+			event.preventDefault();
+
+
+		*/
+		
+		// let takeLink = document.querySelcector('a');
+		// takeLink.onclick = function () {
+
+		// }
+
+
+
+function foo(e) {
+	e.preventDefault();
+	alert('hi');
+}
+
+// 		function stopDefAction(evt) {
+// 			evt.preventDefault();
+// 			alert('hi');
+// 		}
+// //// Իրդարձություն տալու համար։
+// 		document.getElementById('my-checkbox').addEventListener(
+// 			'click', stopDefAction, false);
+
+
+	</script>
+</body>
+</html>

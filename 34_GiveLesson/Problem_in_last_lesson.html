@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+
+/*----Պոլիմորֆ ֆունկցիայի օրինակ duck typeing-ով ----*/
+
+function sayHi(who) {
+
+  if (who.push) {  //who.splice✔, who.push✔,'Саша'.slice😁
+    who.forEach(sayHi); 
+    // 'Саша'.forEach(sayHi);//who.forEach is not a function
+  } else {
+    alert( 'Привет, ' + who );
+  }
+}
+
+sayHi("Вася"); 
+
+// Вызов с массивом
+sayHi(["Саша", "Петя"]); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

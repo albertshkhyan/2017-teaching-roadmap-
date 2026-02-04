@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dom lesson 1</title>
+</head>
+<body>
+
+	<!-- <ul class="ul2"></ul>
+
+ <ul id="ul1" class="ul2">
+ 	<li>0</li>
+ 	<li>1</li>
+ 	<li>2</li>
+ 	<li>3</li>
+ 	<li>4</li>
+ 	<li>5</li>
+ 	<li>6</li>
+ 	<li>7</li>
+ 	<li>8</li>
+ 	<li>9</li>
+ 	<li>10</li>
+ 	<li>11</li>
+ </ul> -->
+
+
+ <!-- <div class="d1">
+	<h1>hello</h1>
+	<ul>
+	  <li>1</li>
+	  <li>2</li>
+	  <li>3</li>
+	  <li>4</li>
+	</ul>
+  </div> -->
+
+
+  <input type="text" class="inp1" onchange="foo()">
+	<script>
+//
+
+// let getD1 = document.querySelector('.d1');
+// let cloneOfD1 = getD1.cloneNode(true);
+// document.body.appendChild(cloneOfD1)
+
+
+
+let inp = document.querySelector('.inp1');
+
+let foo = () => {
+  console.log(inp.value)
+}
+
+
+
+// console.log(ul1.firstChild);
+// console.log(ul1.lastChild);
+
+
+// console.log(ul1.children);//HTMLCollection
+// console.log(ul1.childNodes);//NodeList[text, li,text,li]
+
+
+// console.log(ul1.childNodes[0]);
+// >#text {nextSibling, nextElementSibling, nodeName,firstChild}
+
+// console.log(ul1.children[0]);
+//<li>1</li>
+		//
+
+
+/*Ինչ է DOM -ը՝ Document Object Model
+
+* Document - document-ը դա մեր գրած կոդնա ու իրա արտաքին տեսքը։(html) -> web page and source code
+
+* Object - դա մեր թեգերնեն են, js-ի համար բոլոր թեգերը օբյեկտներ են։
+model (  Կառուցվածքի տիպ ) - model նշանակումա վեկալել ինչ-որ մի հատ բարդ բան ու ետ բարդ բանը ցուցադրել պարզ տեսքով 
+
+* model - ը դա արդեն  ծառի տեսքնա document-ի
+
+⚫ DOM-ը նախատեսվածա html-ը կառավարելու։
+⚫ DOM-ը Դա մի հատ գործիքա, որը թույլա տալիս կառավաերել մեր web էջը, օրինակ՝
+	թեգ ջնջել 
+	թեգ ավելացնել
+	թեգի կպնել ու իրա հետ փոփոխություններ անել
+	իրադարձությունները կառավարել
+
+⚠ վեբ էջը կառավարվումա DOM-ի միջոցով։
+
+Ցանկացած կայք բացելուց, բրաուզերը ետ կայքի համար ստեղծումա  << document object model >>, որը իր մեջ պարունակ-
+ումա բոլոր թեգերը և նրանց ատրբուտները։
+⚠  DOM - ի կառուցվածքը ունի ծառի տեսք։
+
+
+
+
+
+
+****************** Nodes *********************
+node - հանգույց, կապ
+ցանկացած document բաղկացածա node-երից	
+
+Ինչ է node-ը - կորող է լինել  թեգի ատրիբուտ, comment, տեքստը
+DOM -ում գոյություն ունի 12 տիպի node, բայց մեզ պետքա միայն 3-ը
+Node.ELEMENT_NODE 
+Node.ATTRIBUTE_NODE 
+Node.TEXT_NODE 
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let val;
+
+// val = document;//DOM
+// val = document.all;
+// val = document.all[2];
+// val = document.all.length;
+// val = document.head;//<head></head>
+// val = document.body;//<body></body>
+// val = document.doctype;//
+// val = document.URL;
+// val = document.contentType;//"text/html"
+// val = document.domain//Exmple - "www.google.com"
+
+
+// val = document.forms;
+// val = document.forms[0];
+// val = document.forms[0].id;
+// val = document.forms[0].method;
+// val = document.forms[0].action;
+
+// val = document.links;
+// val = document.links[0];
+// val = document.links[0].id;
+// val = document.links[0].className;
+// val = document.links[0].classList[0];
+
+// val = document.images;
+
+// console.log(val);
+
+/*---------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////// 
+// let getUl1 = document.getElementById('ul1');
+// console.log("getUl1", getUl1);
+
+// let getLi = document.getElementsByTagName('li')[3];
+// let getLi = document.getElementsByTagName('li');
+
+
+// let getUl2 = document.getElementsByClassName('ul2');
+// console.log("getUl2", getUl2);
+
+
+/*--------------------------------------------------*/
+
+////// nodeList - i metodi mijocov kpnel tegerin
+
+
+// let getUl1 = document.querySelectorAll('#ul1 > li');
+// console.log("getUl1", getUl1);
+
+
+
+
+// let getUl1 = document.querySelector('#ul1');
+// getUl1.innerText += 'barev';
+// getUl1.innerText = getUl1.innerText +  'barev';
+
+
+// getUl1.innerHTML += `
+// <h1>
+// 	barev
+// 	<a href="">ssila</a>
+// </h1>`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------- Дети: childNodes, firstChild, lastChild----
+
+⚫ childNodes (NodeList) - վերադարձնում տվյալ թեգի որդիների կոլեկցիան։
+
+⚫  children - այս հատկությունը վերադարձնումա HTMLCollection օբյեկտ:
+
+
+---------------------------*/
+
+
+
+
+//# childNodes - > pseudoArray - > return NodeList
+// console.log("childNodes", document.childNodes);//NodeList(2) [<!DOCTYPE html>, html]
+
+//# firstChild
+// console.log("firstChild", document.firstChild);//<!DOCTYPE html>
+
+//#lastChild
+// console.log("lastChild", document.lastChild);//<html> content of html </html>
+
+/*--------------------------------------------------------------------------------------------*/
+
+
+// HTMLCollection  and  NodeList 
+/*
+HTMLCollection-ը և  NodeList-ը 2նել օբյեկտներ են, որոնք իրենց մեջ պահում են մեր document-ի տարրերը։
+	NodeList - ը մեր տարրեը պահումա հանգույցները տեսքով։ Այսինքն text, commnet, սաղ պահվումա NodeList-ի մեջ։
+/!\ Այս օբյեկտները տարբեր կլասսի օբյեկտներ են։	
+Ինչ է node-ը՝
+	node - ը դա մեր document-ում գտնվող թեգերն են, որոնք մեկը մյսուսի հետ հանգույցներով կապված են։
+
+JavaScript-ը բոլոր թեգերը հասկանումա որպես օբյեկտ, իսկ ետ օբյեկտները(թեգերը) պահվում են հատուկ օբյեկտների մեջ, մենք այդ օբյեկտների մեջից ենք հասանելություն ստանում ետ թեգերի հանդեպ, 
+ետ օբյեկտները որտեղ որ պահվում են մեր թեգերը 2 -ն են`
+1․ NodeList պբյեկտը դա մեր document-ի մեջ գտնվող տարրերի ցուցակն է,(կոլեկցիա)
+	childNodes - հատկությունը վերադարձնումա NodeList օբյեկտ, այս հատկությունը թույլա տալիս նայել թեգի մեջ գտնվող մնացած բոլոր թեգերը
+		Example
+			console.log(item1.childNodes);//[text, div.divs, text, div.divs, text, div.divs, text]
+
+2․ HTMLCollection (HTMLCollection.prototype)
+
+	children - այս հատկությունը վերադարձնումա HTMLCollection օբյեկտ
+
+/!\ հիմնական տարբերությունը HTMLCollection-ի և NodeList օբյեկտների միջև ենա, որ NodeList - ը ցանկացած տեսակի node-իրա մեջ պարունակումա իս HTMLCollction-ը միայն թեգերը։
+
+
+
+*/
+
+// Example HTMLCollection  and  NodeList 
+
+// console.log(items.childNodes);//NodeList(7)
+// console.log(items.children);//HTMLCollection(3)
+/*
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ul1.children.item(1)l
+// console.log(ul1.children.item(0));
+// console.log(ul1.children.namedItem());
+
+
+
+
+
+
+// # հիմնական տարբերությունը HTMLCollection-ի և NodeList, Օրինակ
+
+
+/*
+
+NodeList և HTMLCollection ները կոլեկցիաներ են ։
+
+⚫ Կոլեկցիան - դա օբյեկտների զանգված է։
+
+⚠ Կոլեկցիան ասոցացվող զ/ծ-ից տարբերվումա նրանով, որ ունի իր սեփական մեթոդները և հատկությունները։ 
+
+ul1.children.item(1) -> <li>2</li>
+ul1.children[1] -> <li>2</li>
+
+⚠ item() - մեթոդը կպնումա տարրին ըստ ինդեքսի 
+
+
+NodeList -ի և HTMLCollection-ի տարբերությունը ենա՝
+	NodeList - ը ցանկացած տիպի node իրա մեջ կարա պարունակի
+	 Օրինակ՝
+	 12 տեսակի node կա, բայց ամենաշատ օգտագործվողները այս 3 -ն են՝
+	 	1) node.ELEMENT_NODE
+	 	2) node.ATTRIBUTE_NODE
+	 	3) node.TEXT_NODE
+
+	 	node.COMMENT_NODE
+	⚠ NodeList -ը ունի forEach
+
+HTMLCollection - ը իրա մեջ մենակ node element է պարունակում։ (Թեգեր)
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////Թեգերին կպնելու եղանականեր /////////////////
+/*
+DOM methods and property
+
+			•	NodeList (childNodes) and HTMLCollection (children) 
+			•	DOM properties
+			•	document.getElementsByTageName() - > return Object
+			•	document.getElementsByClassName() - > return Object
+			•	document.getElementById()
+			•	document.querySelector()
+			•	document.querySelectorAll()
+			•	innerText և innerHTML ( changing HTML contents )
+
+*/
+
+
+/*+++++++++++ With HTMLCollction +++++++++++++++*/
+
+
+// document.getElementById();// 
+// /!\ Բացի id - ին կպնելուց մնացած դեպքերում element's(բացի id s -ը պարտադիր նշել);
+
+// document.getElementsByClassName();// նշված անունով բոլոր թեգեինա կպնում
+// document.getElementsByTagName();
+
+/*++++++++++++++++++++++++++*/
+
+/*++++++++++++With NodeList++++++++++++++*/
+// /!\ querySelscotr  մեթոդի մեջ պիտի պարտադիր նշվի id, class
+
+// document.querySelectorAll()  
+// document.querySelector() 
+
+/*++++++++++++++++++++++++++*/
+
+//Example
+
+///////// with NodeList
+// let txt = document.querySelector('#lorem');
+// console.log("txt", txt);
+//////// with HTMLCollection
+// let txt = document.getElementById('lorem');
+// console.log("txt", txt);
+
+/////////// with NodeLlist
+// let listItem = document.querySelector('li');//եթե չի նշվում, որ թեգին կպնի, ամեանա առջինինա կպնում
+// let listItem = document.querySelectorAll('li');//[li, li, li, li, li, li, li, li, li, li, li, li]
+// let listItem = document.querySelector('li:nth-child(5)');//<li>5</li>
+// console.log("listItem", listItem);
+
+//////// with HTMLCollection
+
+// let listItem = document.getElementsByTagName('li')[0];//Ամենա առաջինին կպնելու համար
+// let listItem = document.getElementsByTagName('li')[4];//<li>5</li>
+// let listItem = document.getElementsByTagName('li');//[li, li, li, li, li, li, li, li, li, li, li, li]
+// console.log("listItem", listItem);
+
+
+
+
+
+/***********************Ինչպես թեգի մեջի պարունակությունը փոխել***********************/
+//innerText and innerHTML property
+
+/*
+innerText հատկությունը վերադարձնումա կամ փոխումա թեգի մեջ գրած տեքստի բովանդակութունը։
+*/
+
+// let txt = document.getElementsByTagName('li')[0];
+// // let txt = document.getElementsByTagName('li')[0].innerText;
+// //or 
+// // txt.innerText;
+// txt.innerText = 'hello';//փոխվեց տեքստը
+// console.log(txt);//1
+
+/*
+innerHTML հատկությունը վերադարձնումա կամ փոխումա թեգի պարունակությունը։
+*/
+
+// let txt = document.getElementsByTagName('li')[0];
+// // let txt = document.getElementsByTagName('li')[0].innerHTML;////1 -> like innerText
+// //or 
+// txt.innerHTML = '<b><i>hello</i></b>';//
+// console.log(txt);
+
+/***************************************************/
+
+
+
+
+
+/*-------- prototype of NodeList and HTMLCollection --------*/
+
+
+
+/*---- HTMLCollection-ը  value  հատկությունը չունի-----*/
+// let inp = document.getElementsByTagName('input').value;
+// console.log(inp);//undefined -> որովհետև HTMLCollection -ը value հատկություն չունի 
+
+// let inp = document.querySelector('input').value;
+// console.log(inp);//ունի value
+/*---------*/
+
+/*
+>HTMLCollection.prototype
+	item: ƒ item() *
+	length: (...)*
+	namedItem: ƒ namedItem()
+	constructor: ƒ HTMLCollection()
+	Symbol(Symbol.iterator): ƒ values()
+	Symbol(Symbol.toStringTag): "HTMLCollection"
+	get length: ƒ length() *
+	__proto__: Object
+
+
+>NodeList.prototype
+	item: ƒ item() *
+	length: (...)*
+	entries: ƒ entries()
+	forEach: ƒ forEach()
+	keys: ƒ keys()
+	values: ƒ values()
+	constructor: ƒ NodeList()
+	Symbol(Symbol.iterator): ƒ values()
+	Symbol(Symbol.toStringTag): "NodeList"
+	get length: ƒ length() *
+	__proto__: Object
+
+*/
+
+	/*--------------------------------------------------*/
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//// click on document and get cordinate
+
+
+		// document.onmousemove = function (e) {
+		// 		// console.log("e.pageX", e.which);
+		// 		// console.log("e.pageY", e.which);
+		// 		console.log(e.code);//undefined
+		// }
+
+
+		document.onclick = function (e) {//onmousemove -> not work keyCode
+				// console.log("e.pageX", e.which);
+				// console.log("e.pageY", e.which);
+				console.log(e.keyCode);//working with onkeydown
+				console.log(e.keyCode);//undefind with onclik
+		}
+	</script>
+</body>
+</html>

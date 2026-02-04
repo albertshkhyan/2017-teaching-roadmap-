@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gradient with js</title>
+</head>
+<body>
+	
+
+
+
+	<script>
+		
+// var rgb1 = 'rgb(40, 10, 100)';//առաջին div -ի գույնը
+// var rgb2 = 'rgb(20, 40, 10 )';//վերջին div - ի գույնը
+// var countDiv = 10;
+// //skzbum petq e rgb stringi sarqen zangvac 
+// // *split zangvace sarqum
+// //*slice kdrum e, stringi ev array-i metode
+
+// var color1 = rgb1.slice(4,-1).split(',');//["235", " 19", " 24"] - spliti storkety nshanakum e vor array-i tarreri iraric anjatvac
+// var color2 = rgb2.slice(4,-1).split(',');
+
+// var rr = (color1[0]-color2[0])/countDiv;//skzbum hanum petq e katari heto bajanum 235-12=223, 223/40=5,575
+// var gg = (color1[1]-color2[1])/countDiv;//19-242=-223, -223/40=-5,575
+// var bb = (color1[2]-color2[2])/countDiv;//24-24=-1, -1/40=-0,025
+// //hima rgb petq e sarqenq amboxj tiv 
+
+// //* cikl diveri qnaki hamar
+// //*minus angam minus havasar e plus
+// //*petq e tpi tvyal guynov divy
+
+// /*
+// // Ինչու են բաժանում div-երի քանաակի, որ color1-ից պլավնի գնա մինչև color2, ռեսկի գույնը չփոխվի
+// ----------------?inchu hanac-----------------
+// arajin guynic(rgb1) hanum enq (rr*i) __ 235-5,575*i(mibcev diveri anakin)
+
+// */
+// //ete color1-y meky sax 0 exav moxraguyn erenagnerov kcucadrvi
+
+// var r,g,b;
+// for(var i = 0; i<=countDiv; ++i){
+// r = color1[0]-(rr*i);//?inchu hanac - եթե + լիներ 255 -ը կանցներ, իսկ եթե 255-ից մեծ է լինոիմ եանգը 255 է հասկանում, իսկ գնալով գումարվելով նույն գույնն է ստացվելեու
+// g = color1[1]-(gg*i);//19-(-223) = 242 - minus - minus = + - դրական թիվը - մինուսով թվի հետ կտա +
+// b = color1[2]-(bb*i);//
+// /*
+// color1 - փոխարեն կարար լիներ color2 փոփոխականը կամ համ color1 ու color2 : Օրինակ
+// /!\ կապ չունի որ գույնն ենք դնում, մենք ուղղակի գույնն են ընտրում թե որ գույնից սկսի, դրա
+// համար կենկրետ գույնի համար սաղ color1 ենք նշում:
+// r = color1[0]-(rr*i);
+// g = color2[1]-(gg*i);
+// b = color1[2]-(bb*i);
+
+// -----Բայց rr,gg և bb դրանք մեր գույբի երանգներն են:
+
+// */
+
+
+
+// document.write('<div style="width:35px; height:35px; background:rgb('+r+','+g+','+b+'); float:left;"></div>');//js greladzev
+
+// // document.write(`<div style="width:35px; height:35px; background:rgb(${r},${g},${b}); float:left;"></div>`);//ES greladzev
+// }
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////
+////ինչպես տալ 3 երանգ ????????????/
+
+		
+var rgb1 = 'rgb(120, 50, 10)';
+var rgb2 = 'rgb(80, 20, 200)';
+// var rgb3 = 'rgb(10, 0, 255)';
+var countDiv = 10;
+
+
+var color1 = rgb1.slice(4,-1).split(',');
+var color2 = rgb2.slice(4,-1).split(',');
+// var color3 = rgb3.slice(4,-1).split(',');
+// console.log('color3', color3);
+
+var rr = (color1[0] - color2[0])/countDiv;//6.125
+var gg = (color1[1] - color2[1])/countDiv;//-6.375
+var bb = (color1[2] - color2[2])/countDiv;//-6.625
+console.log(rr,gg,bb);
+
+
+var r,g,b;
+for(var i = 0; i<=countDiv; ++i){
+r = color1[0]-(rr*i);
+g = color1[1]-(gg*i);
+b = color1[2]-(bb*i);
+
+document.write('<div style="width:35px; height:35px; background:rgb('+r+','+g+','+b+'); float:left;"></div>');
+
+}
+
+
+	</script>
+</body>
+</html>

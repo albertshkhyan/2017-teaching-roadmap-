@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	.outer {
+		background-color: #3977ad;
+	}
+	.middle {
+		background-color: #fe3266;
+	}
+	.inner {
+		background-color: #1f2531;
+	}
+
+	.box {
+		padding: 30px;
+		max-width: 500px;
+		text-align: center;
+		border: 1px solid;
+	}
+/*
+max-width - ադապտացվողա սարքում եմեր նշած թվի միջակայքում, օրինակ՝
+	մեր պարագայում max-width: 500px նշանակումա որ էկրանը դառավ օրինակ 300px ինքը կադապտանա 300px - ի չափոին, բայց եթե եղավ 500px -ից բարձր ել չի կարա ադատպտանա։
+	*/
+
+</style>
+</head>
+<body>
+<!-- <h1>currentTarget և target</h1>
+	<div id="wrapper">
+		
+	</div> -->
+
+		<div class="outer box" onclick="foo(event)">Outer
+			<div class="middle box" onclick="foo(event)">middle
+				<div class="inner box" onclick="foo(event)">inner</div>
+			</div>
+		</div>
+
+	<div id="resultOfTargets"></div>
+
+
+
+	<script>
+		/*
+		⚫target - թիրախ - դա են տարրնա որի վրա կատարվելա տվյալ իրադարձությունը։
+			# Ձևակերպում 2 - target հատկությունը ետի են տարրնա, որի պատճառով առաջացելա տվյալ event-ը։
+			⚠ bubuleing - ի ժամանակ անփոփոխա։
+
+
+		⚫currentTarget - ներկայիս թիրախ
+				currentTarget ասում մեզի եթե իրդադրձությունունը եփումա (bubling, բլբթումա) 
+				# Ձևակերպում 2 - currentTarget  ետի են տարրնա, որի վրա դրվածա տվյալ event-ը։
+
+		⚠Համարյա բոլոր իրադարձությունները լող են տալիս։( bubling են լինում ) 
+				Օրինակ՝ focus-ը չի լողում։
+		⚠ Իրադարձությունը միշտ լողալով հելնումա վերեվ մինչև հասնի html թեգին։
+
+
+		----------------
+event.target
+		capturing events (with target)
+
+
+				⚠Чтобы поймать событие на стадии перехвата, нужно использовать третий аргумент addEventListener:
+						Если аргумент true, то событие будет перехвачено по дороге вниз.
+						Если аргумент false, то событие будет поймано при всплытии.
+
+						*/
+
+						/*************************************************/
+
+// 		let tds = document.querySelectorAll('.td1,.td2,.td3');//length 3 
+
+// // e.target.style.backgroundColor = 'red';
+// for(let i = 0; i < tds.length; ++i) {
+// tds[i].addEventListener('click', clicked);
+// }
+
+// function clicked(e) {	
+// // console.log("e.target", e.target);//identy result
+// // console.log("e.currentTarget", e.currentTarget);//identy result
+
+// }
+
+
+/********** better example ***********/
+
+
+let takeOuter = document.querySelector('.outer');
+let resultOfTargets = document.querySelector('#resultOfTargets');
+function foo(e){
+if(e.target === takeOuter && e.currentTarget === takeOuter) {
+resultOfTargets.innerHTML += `
+	<p style="color:red;">
+	Արտաքին տարրի վրա կատարվեց click, արտաքին տարրը համ e.tarrget է և e.currentTarget
+	</p>
+`;
+console.log('target - ', e.target.className);
+console.log("e.currentTarget - ", e.currentTarget.className);
+
+
+
+}
+
+if(e.target !== takeOuter && e.currentTarget === takeOuter) {
+console.log('target - ', e.target.className);
+console.log("e.currentTarget - ", e.currentTarget.className);
+resultOfTargets.innerHTML += `
+<p style="color:green;">
+Արտաքին տարրը ներկայիս տարրնա ( takeOuter === currentTarget ) բայց իրա վրա click չենք արել։
+</p>
+`;
+}
+
+}
+
+/*
+Ձևակերպում 1
+	e.currentTarget - ը ի տարբորություն e.target-ից։ currentTarget են տարրը չի որի վրա կատարվելա տվյալ իրդարձությունը, այլ ետի են տարրնա որին կապվածա իր տվյալ իրադարձությունը։
+*/
+
+
+</script>
+</body>
+</html>

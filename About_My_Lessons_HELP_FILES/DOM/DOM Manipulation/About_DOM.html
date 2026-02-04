@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM1</title>
+</head>
+<body>
+
+<!-- 
+<div id="elem">
+	comment
+	hello
+	<span>div1</span>
+	<span>div2</span>
+	<span>div3</span>
+</div>
+
+<input type="password"></input>
+ -->
+<div id="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, harum.</div>
+<ul>
+	<li>0</li>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>6</li>
+	<li>7</li>
+	<li>8</li>
+	<li>9</li>
+	<li>10</li>
+	<li>11</li>
+</ul>
+
+	<script>
+		
+		/*Ինչ է DOM -ը՝
+Դա մի հատ գործիքա, որը թույլա տալիս կառավաերել մեր web էջը, օրինակ՝
+	թեգ ջնջել 
+	թեգ ավելացնել
+	թեգի կպնել ու իրա հետ փոփոխություններ անել
+	իրադարձությունները կառավարել
+
+Մի խոսքով վեբ էջը կառավարվումա DOM-ի միջոցով։
+
+Ցանկացած կայք բացելուց, բրաուզերը ետ կայքի համար ստեղծումա  << document object model >>, որը իր մեջ պարունակ-
+ումա բոլոր թեգերը և նրանց ատրբուտները։
+/!\ DOM - ի կառուցվածքը ունի ծառի տեսք, 
+
+
+*/
+
+
+// let val;
+
+// val = document;//DOM
+// val = document.all;
+// val = document.all[2];
+// val = document.all.length;
+// val = document.head;//<head></head>
+// val = document.body;//<body></body>
+// val = document.doctype;//
+// val = document.URL;
+// val = document.contentType;//"text/html"
+// val = document.domain//Exmple - "www.google.com"
+// val = document.cookie//օգտվողի մասին տվյալներ պահելու համար է։
+
+
+// val = document.forms;
+// val = document.forms[0];
+// val = document.forms[0].id;
+// val = document.forms[0].method;
+// val = document.forms[0].action;
+
+// val = document.links;
+// val = document.links[0];
+// val = document.links[0].id;
+// val = document.links[0].className;
+// val = document.links[0].classList[0];
+
+// val = document.images;
+
+// console.log(val);
+
+/*---------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+/*-------------------- Дети: childNodes, firstChild, lastChild-------------------------------*/
+
+//# childNodes - > pseudoArray - > teturn NodeList
+// console.log("childNodes", document.childNodes);//NodeList(2) [<!DOCTYPE html>, html]
+
+//# firstChild
+// console.log("firstChild", document.firstChild);//<!DOCTYPE html>
+
+//#lastChild
+// console.log("lastChild", document.lastChild);//<html> content of html </html>
+
+/*--------------------------------------------------------------------------------------------*/
+
+
+// HTMLCollection  and  NodeList 
+/*
+HTMLCollection-ը և  NodeList-ը 2նել օբյեկտներ են, որոնք իրենց մեջ պահում են մեր document-ի տարրերը։
+	NodeList - ը մեր տարրեը պահումա հանգույցները տեսքով։ Այսինքն text, commnet, սաղ պահվումա NodeList-ի մեջ։
+/!\ Այս օբյեկտները տարբեր կլասսի օբյեկտներ են։	
+Ինչ է node-ը՝
+	node - ը դա մեր document-ում գտնվող թեգերն են, որոնք մեկը մյսուսի հետ հանգույցներով կապված են։
+
+JavaScript-ը բոլոր թեգերը հասկանումա որպես օբյեկտ, իսկ ետ օբյեկտները(թեգերը) պահվում են հատուկ օբյեկտների մեջ, մենք այդ օբյեկտների մեջից ենք հասանելություն ստանում ետ թեգերի հանդեպ, 
+ետ օբյեկտները որտեղ որ պահվում են մեր թեգերը 2 -ն են`
+1․ NodeList պբյեկտը դա մեր document-ի մեջ գտնվող տարրերի ցուցակն է,(կոլեկցիա)
+	childNodes - հատկությունը վերադարձնումա NodeList օբյեկտ, այս հատկությունը թույլա տալիս նայել թեգի մեջ գտնվող մնացած բոլոր թեգերը
+		Example
+			console.log(item1.childNodes);//[text, div.divs, text, div.divs, text, div.divs, text]
+
+2․ HTMLCollection (HTMLCollection.prototype)
+
+	children - այս հատկությունը վերադարձնումա HTMLCollection օբյեկտ
+
+/!\ հիմնական տարբերությունը HTMLCollection-ի և NodeList օբյեկտների միջև ենա, որ HTMLCollection-ը դինամիկ փոփոխվումա։ 
+
+
+
+*/
+
+// Example HTMLCollection  and  NodeList 
+
+// console.log(items.childNodes);//NodeList(7)
+// console.log(items.children);//HTMLCollection(3)
+/*
+
+*/
+
+// # հիմնական տարբերությունը HTMLCollection-ի և NodeList, Օրինակ
+
+/////// difference between htmlcollection and nodelist /////////
+// let childNodes = elem.childNodes;
+// let children = elem.children;
+
+// /!\ querySelector() -ի մեջ նույն ձև ինչպես css, exmaple -> querySelector('ul > li')
+// let node_list = document.querySelectorAll('span');
+// let html_collect = document.getElementsByTagName('span');
+// console.log("node_list", node_list);
+// console.log("html_collect", html_collect);
+
+
+// elem.appendChild(document.createElement('span'));
+
+// // console.log("node_list 2", node_list);//NodeList օբյեկտի մեջ չի ավելացել
+// // console.log("html_collect 2", html_collect);
+
+// console.log("node_list.length", node_list.length);
+// console.log("html_collect", html_collect.length);//HTMLCollction - ի մեջ ավելացա նոր տարր։
+
+
+/////////////////////////////////////////////////////////////////////
+
+
+
+
+//////////////Թեգերին կպնելու եղանականեր /////////////////
+
+/*+++++++++++ With HTMLCollction +++++++++++++++*/
+
+
+// document.getElementById();// 
+// /!\ Բացի id - ին կպնելուց մնացած դեպքերում element's(բացի id s -ը պարտադիր նշել);
+
+// document.getElementsByClassName();// նշված անունով բոլոր թեգեինա կպնում
+// document.getElementsByTagName();
+
+/*++++++++++++++++++++++++++*/
+
+/*++++++++++++With NodeList++++++++++++++*/
+// /!\ querySelscotr  մեթոդի մեջ պիտի պարտադիր նշվի id, class
+
+// document.querySelectorAll()  
+// document.querySelector() 
+
+/*++++++++++++++++++++++++++*/
+
+//Example
+
+///////// with NodeList
+// let txt = document.querySelector('#lorem');
+// console.log("txt", txt);
+//////// with HTMLCollection
+// let txt = document.getElementById('lorem');
+// console.log("txt", txt);
+
+/////////// with NodeLlist
+// let listItem = document.querySelector('li');//եթե չի նշվում, որ թեգին կպնի, ամեանա առջինինա կպնում
+// let listItem = document.querySelectorAll('li');//[li, li, li, li, li, li, li, li, li, li, li, li]
+// let listItem = document.querySelector('li:nth-child(5)');//<li>5</li>
+// console.log("listItem", listItem);
+
+//////// with HTMLCollection
+
+// let listItem = document.getElementsByTagName('li')[0];//Ամենա առաջինին կպնելու համար
+// let listItem = document.getElementsByTagName('li')[4];//<li>5</li>
+// let listItem = document.getElementsByTagName('li');//[li, li, li, li, li, li, li, li, li, li, li, li]
+// console.log("listItem", listItem);
+
+
+
+
+
+/***********************Ինչպես թեգի մեջի պարունակությունը փոխել***********************/
+//innerText and innerHTML property
+
+/*
+innerText հատկությունը վերադարձնումա կամ փոխումա թեգի մեջ գրած տեքստի բովանդակութունը։
+*/
+
+// let txt = document.getElementsByTagName('li')[0];
+// // let txt = document.getElementsByTagName('li')[0].innerText;
+// //or 
+// // txt.innerText;
+// txt.innerText = 'hello';//փոխվեց տեքստը
+// console.log(txt);//1
+
+/*
+innerHTML հատկությունը վերադարձնումա կամ փոխումա թեգի պարունակությունը։
+*/
+
+// let txt = document.getElementsByTagName('li')[0];
+// // let txt = document.getElementsByTagName('li')[0].innerHTML;////1 -> like innerText
+// //or 
+// txt.innerHTML = '<b><i>hello</i></b>';//
+// console.log(txt);
+
+/***************************************************/
+
+
+
+
+
+/*-------- prototype of NodeList and HTMLCollection --------*/
+
+
+
+/*---- HTMLCollection-ը  value  հատկությունը չունի-----*/
+// let inp = document.getElementsByTagName('input').value;
+// console.log(inp);//undefined -> որովհետև HTMLCollection -ը value հատկություն չունի 
+
+// let inp = document.querySelector('input').value;
+// console.log(inp);//ունի value
+/*---------*/
+
+/*
+>HTMLCollection.prototype
+	item: ƒ item() *
+	length: (...)*
+	namedItem: ƒ namedItem()
+	constructor: ƒ HTMLCollection()
+	Symbol(Symbol.iterator): ƒ values()
+	Symbol(Symbol.toStringTag): "HTMLCollection"
+	get length: ƒ length() *
+	__proto__: Object
+
+
+>NodeList.prototype
+	item: ƒ item() *
+	length: (...)*
+	entries: ƒ entries()
+	forEach: ƒ forEach()
+	keys: ƒ keys()
+	values: ƒ values()
+	constructor: ƒ NodeList()
+	Symbol(Symbol.iterator): ƒ values()
+	Symbol(Symbol.toStringTag): "NodeList"
+	get length: ƒ length() *
+	__proto__: Object
+
+*/
+
+	/*--------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************DOM Style object********************/
+/*
+style օբյեկտը նախատեսված է թեգերին js-ով սթայլ տալու համար։
+*/
+
+// let header = document.querySelector('#lorem');
+// // # style օբյեկտի բոլոր հատկություններ գրվում են camelCase-ով։
+// // header.style.backgroundColor = 'red';
+
+// //ես ձևով տալիս են երբ ուզում ենք մի քանի սթայլ ունենա
+// header.style = `
+// background-color: green;
+// font-size : 40px;
+// color : white;
+// `;
+
+
+/***************************************************************/
+
+
+
+
+
+
+
+
+
+/*********************************************************/
+//////////// DOM էլէմենտների հետ աշխատելու ձևեր //////////
+
+														// 	insertBefore() -> inserAfter չկա
+														// 	appendChild()
+
+														// 	document.createElement()
+														// 	document.createTextNode()
+
+
+														// 	cloneNode()
+														// 	removeChild()
+														// 	remove()
+														// 	replaceChild()
+
+/*++++++++++ insertBefore() ++++++++++++*/
+
+/*
+before - առաջ
+ **** parentElement.insertBefore(newElement, referenceElement);
+ insertBefore մեթոդը պարտադիր պիտ 2 արգումենտ ունենա (փոփոխականներ պետքա լինեն)
+*/
+
+// let listItem = document.getElementsByTagName('li')[3];//3 index-ով տարրից առաջ 
+// let unorderList = document.querySelector('ul');
+// let newDiv = document.createElement('div');
+// unorderList.insertBefore(newDiv, listItem);
+
+// ծնող.insertBefore(նոր_տարր, որ_տարրից_առաջ);//
+// * unorderList - Նոր տարրի ծնողը (թե որ տարրւ մեջ ենք ավելացնում)
+// * newDiv - մեր ստեղծած տարրը
+// * listItem - նշում ենք թե որ տարից առաջ դնի նոր ստեղծած տարրը
+
+
+
+
+
+/*++++++++++ appendChild() ++++++++++++*/
+/*
+appendChild() - ավելացնումա մեր ստեղծած տարրը կամ տեղափոխումա ամեանա վերջ։
+
+Syntax
+	node.appendChild(node)
+*/
+// let unorderList = document.querySelector('ul');
+// let listItem = document.getElementsByTagName('li')[0];
+// unorderList.appendChild(listItem);// ամենա առաջին li գնաց ամենա վերջ, միշտ ամենա վերջում է ավելացնում, ինչճոր մի տարից առաջ դնելու համար պետքա insertBefore()
+
+//example 2 -> with createElement
+// let listItem = document.querySelector('ul');
+// let span = document.createElement('span');
+// listItem.appendChild(span);//ul -ի ամենա վերջումա անելացավ մեր ստեղծած տարրը
+
+
+
+
+/*++++++++++ document.createElement() ++++++++++++*/
+
+// let newElem = document.createElement('h1');
+// newElem.innerText = 'creatElment';
+// document.body.appendChild(newElem);//body - ի ամենա վերջում ավելցրեց
+
+//h1 - ը ստեղծեց div#lorem-ից հետո
+// let newElem = document.createElement('h1');
+// newElem.innerText = 'creatElment';
+// let unorderList = document.querySelector('#lorem');
+// unorderList.appendChild(newElem);
+
+
+
+/*++++++++++ document.createTextNode() ++++++++++++*/
+// createTextNode - Ի փոխարեն ավելի ահարմարա օգտագործել innerText, բայց եթե հետագայում պետքա ջնջել ետ տեքստը ուրեմնա պետքա օգտագործել createTextNode
+// let newElem = document.createElement('h1');
+// // newElem.innerText = 'creatElment'; //romove - թվ չի ջնջվի
+// let ctn = document.createTextNode('creaElement');
+
+// document.body.appendChild(newElem);
+// newElem.appendChild(ctn);//'creaElement'
+
+// newElem.removeChild(ctn);// createTextNode -ը ջնջեց
+// document.body.removeChild(newElem);//ողջ թեգը ջնջեց
+
+// txnewElemt.parentNode.removeChild(ctn);
+
+
+
+
+
+
+
+/*++++++++++ cloneNode() ++++++++++++*/
+
+/*
+cloneNode() - մեթոդը ստեղծումա մեր նշած տարի copy-ին և վերադարձնումա իրա կլոնը։
+/!\ կլոնավորումա նաև տվյալ տարր ողջ ատրիբուտները և արժեքները։
+true - տվյալ տարրի հետ կապված բոլոր node -երը կլոնավորումա։ Այսինքն եթե եղավ  true տարրի ներսի պարունակություննելա կլոնավորում 
+
+fasle - կլոնավորումա մենակ իրա node-ը ու ատրիբուտները,(մեջի պարունակությունը չի կլոնավորում) , այինքն մեջի պարունակությունը չի կլոնավորում
+*/
+
+// let listItem = document.getElementsByTagName('li')[0];
+// let unorderList = document.querySelector('ul');
+
+// let clone = listItem.cloneNode(true);
+// // console.log("clone", clone.childNodes);//Նայենք տենանք ինչ node-եր ունի, false -ի դեպքում #text նոդը չի կլոնավորում
+
+// clone.style.color = 'red';
+// unorderList.insertBefore(clone, listItem);
+
+
+
+/*+++++++++++++ removeChild() and remove() +++++++++++++*/
+
+/*
+remove() - թեգիը և տվյալ թեգի մեջ գտնվող ժառանգներնելա ջնջում։
+	Syntax 
+		parentElement.remove()
+		parentElement.remove(index)
+*/
+
+/*
+# removeChild() - միայն ջնջումա թեգի մեջ գտնվող ժառանգը թեգերը։
+	Syntax
+		parentElem.removeChild(childElement);
+*/
+
+
+/*+++++++++++ replaceChild() +++++++++++*/
+/*
+Փոխարինումա node-ը մեկ ուրիշ node-ով:
+
+Syntax 
+	parentNode.replaceChild(newCreateElem, replaceNode)
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************/
+//////// Work with attributes /////////////
+//// dom էլէմենտների ատրիբուտներ
+// 	hasAttribute()
+// 	getAttribute()
+// 	setAttribute()
+
+// 	removeAttribute()
+
+/*+++++++++++++++++++++++hasAttribute()+++++++++++++++++++++++*/
+/*
+hasAttribute - վերադարձնումա բուլյան արժեք, եթե մեր նշած տարրը ունի տվյալ ատրիբուտը։
+Syntax
+	element.hasAttribute('attName');
+*/
+
+
+/*+++++++++++++++++++++++getAttribute()+++++++++++++++++++++++*/
+/*
+Վերադարձնումա տվյալ ատտրիբուտի արժեքը եթե տվյալ տարրի մեջ կա մեր նշած ատտրիբուտը
+*/
+
+
+/*+++++++++++++++++++++++removeAttribute()+++++++++++++++++++++++*/
+/*
+Ջնջումա մեր նշած տարրի ատրիբուտը։
+Syntax
+	element.removeAttribute('attrName');
+
+*/
+
+/******************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************/
+////////////// dom property /////////////
+//className
+//nextSibling
+//previousSibling
+// nextElementSibling - ներքեվի հարեվան
+//previousElementSibling - վերեվի հարեվան
+//dataset 
+
+
+/*++++++++++++++++++ className property +++++++++++++++++++*/
+
+//// className - այս հատկությունը թույլ է տալիս վերադարձնել տվյալ տարրի կլասսը կամ նոր կլասս տալ։
+/*Syntax
+elem.className
+ele.className = 
+*/
+	/*
+
+nextElementSibling - վերադարձնումա մեր նշած noed-ի հաջորդ տարրը, իսկ nextSibling-ը վերադարձնումա հենց node-ը (#text, comment, div.div1) այսինքն որպես օբյեկ։
+		*/
+
+/*++++++++++++++++++ nextSibling and nextElementSibling property +++++++++++++++++++*/
+
+// nextSibling-ը վերադարձնումա հենց node-ը (#text, comment, div.div1) այսինքն որպես օբյեկտ։
+//nextElementSibling վերադարձնումա մեր նշած noed-ի հաջորդ տարրը:
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+/*+++++++++++++++++++++++++dataset property+++++++++++++++++++++++++*/
+/*
+dataset - HTMLElement.dataset հատկությունը թույլ է տալիս կարդալ թեգի data ատրիբուտը, ինչպես նաև փոխել այն։
+
+DOMStringMap -ը դա օբյեկտա, որը նախատեսված է data ատրիբուտները պահելու համար, օրինակ՝
+DOMStringMap {
+bg: "00ff00"
+}
+
+Example
+	data-bg="#ff0000"
+	<div id="div1" data-bg="#ff0000"></div>
+	console.log(div1.dataset)
+*/
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+/******************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

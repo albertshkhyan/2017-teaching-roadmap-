@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //
+
+        ////Ակնթարթերեն ցիկլ, sT-> loop
+
+
+        ///⚫մենք ակնկալում ենք, որ այս կոդը մեկից 10 թվերը տպի 100 մլվ հետո։
+        for(var i = 1; i <= 10; ++i) {
+            setTimeout(function foo() {
+                console.log(i);
+            },100);
+
+            
+        }
+
+
+        /*Explanation
+        * քանի webAPIs-ը մեր setTimeout-ի վրա ժամանակա դնում, ցիկլը ետ ընթացքում ավարտվումա ու i արժեքը դառնումա 11, 
+
+        * var -ի դեպքում նույպես timer-ը 10 անգամ գնում webAPIs,
+        
+        */
+
+
+        /*++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+        ////🔰how to fix this problem without let - 1
+        // for (var i = 1; i <= 10; ++i) {
+        //     function foo(current) {
+        //         setTimeout(function () {
+        //             console.log(current);
+        //         }, 100);
+        //     }
+        //     foo(i);
+
+        // }
+        /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+        ////🔰how to fix this problem without let - 2
+        // for (var i = 1; i <= 10; ++i) {
+        //     setTimeout(function foo (current) {
+        //         console.log(current);
+        //     }, 100, i);
+
+        // }
+
+        /*
+        ⚠ http://latentflip.com/loupe/?code=ICAgICAgICBmb3IgKHZhciBpID0gMTsgaSA8PSAxMDsgKytpKSB7DQogICAgICAgICAgICBzZXRUaW1lb3V0KGZ1bmN0aW9uIGZvbyAoY3VycmVudCkgew0KICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKGN1cnJlbnQpOw0KICAgICAgICAgICAgfSwgMTAwLCBpKTsNCg0KICAgICAgICB9!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
+        * Ցիկլի ամեն մի իտերացիային կանչվումա մեր foo ֆունկցիան
+        
+        */
+
+
+        /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+        ////🔰how to fix this problem without let - 3
+        // for (let i = 1; i <= 10; ++i) {
+        //     setTimeout(function () {
+        //         console.log(i);
+        //     },100);
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************** What show this code ********************/
+
+// const arr = [10, 12, 15, 21];
+// for (var i = 0; i < arr.length; i++) {
+//   setTimeout(function() {
+//     console.log('Index: ' + i + ', element: ' + arr[i]);
+//   }, 3000);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+i - 4
+arr[i] - undefiend
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

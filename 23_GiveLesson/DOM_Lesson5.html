@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<a id="link" href="#abd" onclick="foo()">abcd</a>
+	
+
+	<script>
+		//
+
+		/*
+Events list
+//// MouseEvent type
+	•	onclick 			✔
+	•	ondblclick  	✔
+	•	oncontextmenu	✔
+	•	onmousedown 	✔
+	•	onmouseup   	✔
+	•	onmouseover 	✔
+	•	onmouseout  	✔
+	•	onmousemove 	✔
+	•	onscroll 			✔
+
+//// KeyboardEvent type
+	•	onkeydown		✔ - work with all keys
+	•	onkeyup  		✔
+	•	onkeypres		✔ - work only sybol keys
+
+	window events: 
+	•scroll
+	•resize - Էկրանի չաջը փոխելուց
+	•hashchange -աշխտաումա երբ url-ի մեջ #-ից հետ գրածը փոխվումա example -> https://codepen.io/mad-d/pen/WRmyoZ?editors=1111
+	•load
+	•unload ??? 
+
+	touch events (TouchEvent):  -> Сенсорные события 
+	•touchstart, 
+	•touchmove, 
+	•touchend, 
+	•touchcancel
+
+	form events: 
+	•focus,				✔ -  onfocus իրադարձությունը տեղի է ունենում, երբ կետնրոնանում ենք 											ինչ-որ տարրի վրա։
+	•blur, 				✔ - blur իրադարձությունը տեղի է ունենում, երբ շեղվում ենք ինչ-որ 	-> focus-ի հակառակը											տարրից։ most often used with -> <input>, <select>, and <a>
+	•submit				✔ - նախատեսվածա form-աները սեռվեր ուղղարկելու համար։ 
+	•	oninput			✔ -  onchange իրադարձությունը տեղի է ունենում, երբ տարրը փոխվել է:
+	•	onchange		✔ - իրադարձությունը տեղի է ունենում, մուտքագրման ժամանակ
+
+
+
+*/
+
+function foo() {
+	alert('location - ' +  document.location);
+	link.onhashchange = function() {
+		alert('onhashchange');
+	}
+}
+
+
+
+	</script>
+</body>
+</html>

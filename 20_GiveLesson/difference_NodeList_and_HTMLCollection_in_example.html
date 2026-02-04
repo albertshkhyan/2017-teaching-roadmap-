@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		.dialLines {
+			width: 3px;
+			height: 10px;
+			background: red;
+			position: absolute;
+			left: calc(50% - 1.5px);
+
+			transform-origin: 50% 150px;
+
+			/*
+transform-origin -> default value -> 50% 50% 0
+transform-origin : x-axis y-axis z-axis;
+			*/
+		}
+	</style>
+</head>
+<body>
+	
+<div id="clock">
+	<div class="dialLines"></div>
+</div>
+
+
+	<script>
+		
+		/////innrHTML - ov chi acelanum
+		// for(let i = 0; i < 60; ++i) {
+		// 	// let clock = document.querySelector('#clock');
+		// 	// let dialLines = document.getElementsByClassName('dialLines');
+		// 	// let dialLines = document.querySelectorAll('.dialLines');//չի ավելանում
+		// 	clock.innerHTML += `<div class="dialLines"></div>`;
+		// 	dialLines[i].style = `transform:rotate(${i * 6}deg)`;
+		// }
+
+//59*6 = 354 -> ասյինքն 59 -րդ dialline-ը լինելուա 354 աստիճան տակ։
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+////append--v ashxatouma
+		let dialLines;
+		for(let i = 0; i < 60; ++i) {
+			let clock = document.querySelector('#clock');
+			// let dialLines = document.getElementsByClassName('dialLines');
+
+
+			clock.innerHTML += `<div class="dialLines"></div>`;
+			dialLines = document.querySelectorAll('.dialLines');//չի ավելանում
+
+			// let cDiv = document.createElement('div');
+			// cDiv.className = 'dialLines';
+			// clock.appendChild(cDiv);
+			dialLines[i].style = `transform:rotate(${i * 6}deg)`;
+			console.log("dialLines", dialLines[i]);
+
+
+		}
+
+
+
+		/*
+			⚠ innerHTML - ով նույնպես NodeList օբյեկտի մեջ ավելանումա։
+			⚠ dialLines[59] querySelector() - ով աշխատումա: (innerHTML)
+			⚠ dialLines[i] querySelector() - ով աշխատումա: (innerHTML)
+
+			⁉❌ My mistake - div-ը ստեղծելուց հետո կպնել իրան, այսիքն innerHTML- ից հետո գրել querySelector-ը։
+		*/
+
+	</script>
+</body>
+</html>

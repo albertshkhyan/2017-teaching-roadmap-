@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+
+
+/*-----------------------------------------------------*/
+///// problem in last lesson 
+//// ⚠ Եթե ուզում ենք a,b,c փոփոխականները իրանց մեջ ամեն մեկը պահեն առանձին զանգված պետքա սենց անել
+
+
+
+// var log = function(a, b, c) {
+//   console.log(a, b, c);
+// };
+
+// log(['Spread'], ['Rest'], ['Operator']); //["Spread"] ["Rest"] ["Operator"]
+
+var log = function(a, b, c) {
+  console.log(a, b, c);
+};
+
+log(...['Spread', 'Rest', 'Operator']); 
+
+
+// var log = function(a, b, c) {
+//   console.log(a, b, c);
+// };
+
+// log(['Spread', 'Rest', 'Operator']); 
+
+
+
+
+/*---------------------------*/
+
+
+// Task
+
+		// var arr = [1,2,3,4];
+		// function log(a,b,c,d) {
+		// 	console.log(a,b,c,d);
+		// }
+		// // f(...arr);
+		// //// ինչպես ինչպես ամեն մի պառամետրին փոխանցել զ/ծ-ի տարրերը առանց spread
+		// log.apply(null, [1, 2, 3, 4]);
+
+
+		////⚠ոնց ամեմ մի պառամետրին զանգված փոխանցել
+		// function log(a,b,c) {
+		// 	console.log(a,b,c,d);
+		// }
+
+		// log([1,2,3,4,5],[5,6,7,8,9,10],[11,12,13,14,15])
+
+		/*-----------------------------------------------------*/
+
+
+
+		//INCHI CONSTRUCTOR OBYEKTI MEJ => HXVUM IRA OBJEKTI VRA ISK SOVORAKN OBJEKTI MEJ WINDOW arrow function
+
+		////Ինչի constructor-ի մեջ arrow function-ի this հղվումա ֆունկցիա-կոստրուկտորից ստացված օբյեկտի վրա իսկ, ասոցածվող օբյեկներ դեպքում window-ի վրա։
+
+
+		// function Person(n,s) {
+		// 	this.name = n;
+		// 	this.sname = s;
+		// 	this.go = () => {//this-ը օբյեկտա որովետև մենք նշում ենք  arrwo function-ի this-ը։
+		// 		console.log(this);//person -> this.go(because go is public)
+		// 	}
+
+		// 	////private arrow function
+		// 	let go = () => { //այս տարբերակում մենք ֆունկցիայի this-ը չեն նշում
+		// 		console.log(this);//window 😁
+		// 	}
+
+		// 	////private simple function
+		// 	// let go = function() {
+		// 	// 	console.log(this);//person
+		// 	// }
+
+		// 	////how to fix
+		// 	let t = this;
+		// 	let go = () => {
+		// 		console.log(t);//t === person ✔
+		// 	}
+
+
+
+		// }
+
+		// let person = new Person('Valod','Valodyan');
+		// person.go();
+
+		/////////////////
+
+
+		// let person = {
+		// 	name : 'Valod',
+		// 	sname : 'Valodyan',
+			// go : () => {
+			// 	console.log(this);//window🤷‍
+			// }
+
+			// go : function() {
+			// 	console.log(this);//person
+			// }
+
+
+
+			// go : (t) => {
+			// 	// console.log(this);//window🤷‍
+			// 	console.log(t);//person 👍
+			// }
+		// }
+		// person.go.call(person);//not working❌
+		// person.go(person);//✔
+		// person.go(this);//window ❌
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************Remind*************************/
+////⚠ եթե class-ը չունի constructor, ինքը օգվելու իր ծնող constructor-ից։
+
+// 		class Animal {
+// 			constructor(n,t,e) {
+// 					this.name = n;
+// 					this.tail = t;
+// 					this.eye = e;
+// 			}
+// 		}
+// 		class Dog extends Animal {
+// 			info() {
+// 				console.log(`${this.name} ${this.tail} ${this.name}`);
+// 			}
+// 		}
+// let animal = new Animal('erkencax','long tail','yellow eye');
+// let dog = new Dog('buldog','short tail','brown eye');
+// dog.info();
+// //◼ dog-ը իրա class-ի մեջ մանա գալիս չի գտնում, մտնումա ծնողի մեջ 
+// console.log(animal);//չի փոխվել ծնողի հատկությունները
+	</script>
+</body>
+</html>

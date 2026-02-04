@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Carousel transition effect</title>
+
+
+	<style>
+		/*  */
+		body{margin: 0;}
+		.for_center{
+			width: 70%;
+			margin: auto;
+			overflow: hidden;
+			border: 10px solid #454545;
+
+		}
+
+		.slideContainer img{
+			width: 100%;
+			/*height: 100vh;*/
+			height: 500px;
+			/*box-sizing: border-box;*/
+
+		}
+
+		.slideContainer{
+			display: flex;
+			/*transform:translateX(-944px);*/
+
+
+		}
+	</style>
+</head>
+<body>
+
+
+	<div class="wrraper">
+		<div class="for_center">
+			<div class="slideContainer">
+				<img src="../../../IMAGES_and_ICON/640x480/img (4).jpg" id="lastImage">
+				<img src="../../../IMAGES_and_ICON/Desktop_wallpaper/img (1).jpg">
+				<img src="../../../IMAGES_and_ICON/Desktop_wallpaper/img (2).jpg">
+				<img src="../../../IMAGES_and_ICON/Desktop_wallpaper/img (3).jpg">
+				<img src="../../../IMAGES_and_ICON/640x480/img (4).jpg">
+				<img src="../../../IMAGES_and_ICON/Desktop_wallpaper/img (1).jpg" id="firstImage">
+
+			</div>
+		</div>
+
+		<div class="for_buttons">
+			<button id="prev"> &lt;&lt; </button>
+			<button id="next"> &gt;&gt; </button>
+				<!--
+					lt - less then
+					gt - greater then
+				-->
+			</div>
+		</div>
+		<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
++<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//
+
+
+function AbstAuto(m,c) {
+	this.model  =  m;
+	this.color  =  c;
+// 	this.go = function(){//public e 
+// 		console.log('this', this);//Kran
+// 		start();//ete kanchenq private metody
+// 		console.log('avton gnac');//this - cuyc kta Kran-i contexty - Inchu? - 
+// }
+			/*?????????????????????if private?????????????????????*/			
+			// let start = function(){//private լինելու համար փոփոխականը նշել
+			// 	console.log('starting ' + this.model );//this is global -> starting undefined
+			// }
+
+
+			//with public not working -❌
+			// this.start = function(){//not working - this.start
+			// 	console.log('starting ' + t.model );//Uncaught ReferenceError: start is not defined - Why 
+			// }
+
+
+
+	/* ++++++++++++++ how inherit private ✔ ++++++++++++++ */
+			/*-------------- 1 ---------------*/
+			//// 1 variant
+			// let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+			// function start(){//not working - this.start
+			// 	console.log('starting ' + t.model );//Kran.model -> staring cat
+			// }
+			//// 2 variant
+			// let t = this;//t = Kran {model: "cat", color: "yellow", go: ƒ}
+			// let start = function(){//not working - this.start -> 
+			// 	console.log('starting ' + t.model );//Kran.model -> staring cat
+			// }
+			/*-------------- 2 ---------------*/
+			////bind and Function Expression 
+			var start = function(){
+				console.log('starting ' + this.model );//output - cat(this.model) - սրա this-ը Kran է 
+			}.bind(this);
+			/*-------------- 3 ---------------*/
+			// start = () => console.log(this.model);
+
+}
+
+AbstAuto.prototype.go = function () {
+	console.log('this - ',this);//Kran
+	start();
+	console.log('avton gnac');
+
+}
+
+
+// console.log("AbstAuto", AbstAuto.prototype);
+
+function Kran(m,c,k) {
+	AbstAuto.call(this, m, c);
+	this.kran = k;
+}
+
+
+Kran.prototype = Object.create(AbstAuto.prototype);//create __proto__: AbstAuto
+// Kran.prototype.constructor = Kran;
+
+
+let kran = new Kran('CAT', 'yellow', '39m');
+console.log("kran", kran);
+
+//HOW INHERIT GO
+// kran.go();//Uncaught TypeError: kran.go is not a function
+
+// kran.go();//working when inherit prototypes
+
+kran.go();
+
+		
+		</script>
+</body>
+</html>

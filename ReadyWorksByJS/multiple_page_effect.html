@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>multipage js</title>
+
+
+    <style>
+    /**/
+
+    * {
+        margin: 0;
+    }
+    
+.pageHome{
+    background:  red;
+    height: 100vh;
+    width: 100%;
+    display: block;
+}
+
+.pageEducation {
+    background:  green;
+    height: 100vh;
+    width: 100%;
+    display: none;
+
+}
+
+.pageSkills {
+    background:  blue;
+    height: 100vh;
+    width: 100%;
+    display: none;
+    
+}
+
+    
+    </style>
+</head> 
+<body>
+
+
+    <div class="wrapper">
+    <div class="multipage_buttons">
+        <!-- <button   data-selectLink="home">Home</button>
+        <button  data-selectLink="education">Education</button>
+        <button   data-selectLink="skills">Skills</button> -->
+
+        <button onclick="foo(event)"  data-selectlink="pageHome">Home</button>
+        <button onclick="foo(event)"  data-selectlink="pageEducation">Education</button>
+        <button onclick="foo(event)"  data-selectlink="pageSkills">Skills</button>
+    </div>
+
+    <div class="pagesContainer">
+        <div class="pageHome">
+            <h1>Hello im page 1</h1>
+            <a href="#">some link</a>
+
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam ipsa cupiditate fugiat doloremque dignissimos nemo iusto eius accusantium quasi. Deleniti doloribus accusamus at iure enim ea doloremque, perspiciatis tempora nesciunt culpa quisquam qui distinctio? Quaerat, cum non. Maiores, et aut, voluptatum exercitationem deleniti consequuntur, nobis saepe rerum necessitatibus aliquid incidunt porro iure voluptas. Nihil magni commodi dignissimos eligendi dolores optio nulla. Quis ullam tempore obcaecati explicabo harum amet eum unde sequi cupiditate quos, saepe doloribus assumenda officiis ratione, sint voluptate quibusdam debitis qui corporis dolores earum, aut enim repudiandae maiores. Perspiciatis sed facilis, eaque placeat ex excepturi architecto inventore dolor.</p>
+        </div>
+
+        <div class="pageEducation">
+                <h1>pageEducation</h1>
+
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+            
+        </div>
+
+        <div class="pageSkills">
+            <h1>pageSkills</h1>
+            <table border=1>
+                <tr>
+                    <th>table header 1</th>
+                    <th>table header 2</th>
+                    <th>table header 3</th>
+                </tr>
+                <tr>
+                    <td>table data 1</td>
+                    <td>table data 2</td>
+                    <td>table data 3</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    </div>
+
+
+    <script>
+        //
+
+        // let getPages = document.querySelectorAll(`
+        // .pageHome,
+        // .pageEducation,
+        // .pageSkills
+        // `);
+
+        // let getBtns = document.querySelectorAll(`.multipage_buttons > button`);
+        // getPages[0].style.display = 'block';
+        // getPages[1].style.display = 'none';
+        // getPages[2].style.display = 'none';
+        // console.log('getPages', getPages);
+        // for(let i = 0; i < getPages.length; ++i) {
+        //       getBtns[i].onclick = (e) => {
+        //         if( e.target.dataset.selectlink === 'home') {
+        //             getPages[0].style.display = 'block';
+        //             getPages[1].style.display = 'none';
+        //             getPages[2].style.display = 'none';
+        //         }
+        //         if(e.target.dataset.selectlink === 'education') {
+        //             getPages[0].style.display = 'none';
+        //             getPages[1].style.display = 'block';
+        //             getPages[2].style.display = 'none';  
+        //         }
+        //         else if(e.target.dataset.selectlink === 'skills') {
+        //             getPages[0].style.display = 'none';
+        //             getPages[1].style.display = 'none';
+        //             getPages[2].style.display = 'block';  
+        //         }
+
+
+        //     }
+
+
+  
+            
+        // }
+        
+
+        /*++++++++++++++++++or with contiue++++++++++++++++++*/
+        let getPages = document.querySelectorAll(`
+        .pageHome,
+        .pageEducation,
+        .pageSkills
+        `);
+        let getBtns = document.querySelectorAll(`.multipage_buttons > button`);
+        // console.log('getBtns', getBtns);
+
+
+        window.onload = () => {
+
+
+        }
+
+
+        let  foo = e => {
+            // e.currentTarget.style.background = 'yellow';
+            let nameOfData = e.target.dataset.selectlink;
+            for(let i = 0; i < getPages.length; ++i) {
+
+                console.log('getPages[i].className', getPages[i].className);
+                if(getPages[i].className === nameOfData) {
+                    // e.currentTarget.style.background = 'yellow';
+
+                    getPages[i].style.display = 'block';
+                }
+
+                else {
+                    getPages[i].style.display = 'none';
+                }
+
+                if(getPages[i].className === 'pageHome') {
+                    e.currentTarget.style.background = 'yellow'
+                }
+                // getBtns[i].className = '';
+
+            }
+        }
+
+        
+        /*+++++++++++++++++++++++++++++++++++++++++++++++++*/
+        ////////////❌
+        // let getPages = document.querySelectorAll(`
+        // .pageHome,
+        // .pageEducation,
+        // .pageSkills
+        // `);
+
+        // let getBtns = document.querySelectorAll(`.multipage_buttons > button`);
+
+        // let  foo = e => {
+        //     let nameOfData = e.target.dataset.selectlink;
+        //     for(let i = 0; i < getPages.length; ++i) {
+        //         if(getPages[i].className === nameOfData) {
+        //             getPages[i].style.display = 'block';
+        //             // let w = window.innerWidth;
+        //             // setInterval( ()=>{
+        //             //     getPages[i].style.width = w+ 'px';
+        //             //     w -= 20;
+        //             // },10)
+        //         }
+        //         else {
+        //             getPages[i].style.display = 'none';
+                    
+        //         }
+        //     }
+        // }
+
+        
+        
+        </script>
+</body>
+</html>

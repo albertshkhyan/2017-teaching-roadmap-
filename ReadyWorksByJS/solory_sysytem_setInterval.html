@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<style>
+		* {
+			margin: 0;
+		}
+
+		body {
+			width: 100%;
+			height: 100vh;
+			background-image: url(https://stmed.net/sites/default/files/universe-wallpapers-25338-3949451.jpg);
+			background-size: cover;
+		}
+
+
+		#orbits {
+			width: 100%;
+			height: 1000px;
+
+			/*box-sizing: border-box;*/
+		}
+
+		.forCenter {
+			width: 100%;
+			height: 100vh;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.orbitaOfUpiter {
+			width: 500px;
+			height: 500px;
+			border-radius: 50%;
+			/* border: 1px solid white; */
+			border: 1px solid transparent;
+
+			padding: 50px;
+			position: absolute;
+			/* transition: 1s; */
+		}
+
+		#upiter {
+			width: 80px;
+			height: 80px;
+			/*background-color: rgb(255, 153, 102);*/
+			background-image: url(https://www.echalk.co.uk/Science/physics/solarSystem/PlanetsOfTheSolarSystem/images/menuIcons/planetIcons/jupiter.png);
+			background-size: cover;
+			border-radius: 50%;
+			position: relative;
+			left: calc(50% - 40px);
+			top: -90px;
+		}
+
+		.orbita_of_mars {
+			width: 400px;
+			height: 400px;
+			border-radius: 50%;
+			/* border: 1px solid white; */
+			border: 1px solid transparent;
+
+			position: absolute;
+			left: calc(50% - 200px);
+			top: calc(50% - 200px);
+
+
+		}
+
+		#mars {
+			width: 40px;
+			height: 40px;
+			/*background-color: rgb(204, 51, 0);*/
+			background-image: url(http://www.clker.com/cliparts/3/b/O/R/7/M/mars-th.png);
+			background-size: cover;
+			border-radius: 50%;
+			position: relative;
+			left: calc(50% - 20px);
+			top: -20px;
+		}
+
+
+		.orbita_of_earth {
+			width: 300px;
+			height: 300px;
+			border: 1px solid transparent;
+			border-radius: 50%;
+			position: absolute;
+			left: calc(50% - 150px);
+			top: calc(50% - 150px);
+			
+
+		}
+
+		#earth {
+			width: 40px;
+			height: 40px;
+			/*background-color: cyan;*/
+			background-image: url(https://www.freeiconspng.com/minicovers/space-planet-earth-png-21.png);
+			background-size: cover;
+			border-radius: 50%;
+			position: absolute;
+			left: calc(50% - 20px);
+			top: -20px;
+
+			transition-duration: 0.5s;
+		}
+
+		#sun {
+			width: 170px;
+			height: 170px;
+			/*background: radial-gradient(red, yellow) ;*/
+			background-image: url(../../IMAGES_and_ICON/png_images_objects/sun02.png);
+			/* background-image: url(http://www.pngall.com/wp-content/uploads/2/Fireball-PNG-Free-Download.png); */
+			background-repeat: no-repeat;
+			background-size: cover;
+
+			position: absolute;
+			border-radius: 50%;
+			top: calc(50% - 75px);
+			left: calc(50% - 75px);
+
+		}
+	</style>
+</head>
+
+<body>
+	<div id="orbits">
+		<div class="forCenter">
+			<section class="orbitaOfUpiter">
+				<div id="upiter"></div>
+				<section class="orbita_of_mars">
+					<div id="mars"></div>
+					<section class="orbita_of_earth">
+						<div id="earth"></div>
+						<div id="sun"></div>
+					</section>
+				</section>
+			</section>
+		</div>
+	</div>
+
+	<script>
+		//
+
+		let degOfEarth = Math.round(Math.random() * 360);
+		let orbitaOfEarth = document.querySelector('.orbita_of_earth');
+
+		setInterval(() => {
+			orbitaOfEarth.style.transform = `rotate(${degOfEarth++}deg)`;
+			degOfEarth = (degOfEarth >= 360) ? 0 : degOfEarth;
+			orbitaOfMars.style.transform = 'transition:1s linear;';
+
+		}, 100);
+
+
+
+		let orbitaOfMars = document.querySelector('.orbita_of_mars');
+		let degOfMars = Math.round(Math.random() * 360);
+		setInterval(() => {
+			orbitaOfMars.style.transform = `rotate(${degOfMars++}deg)`;
+			orbitaOfMars.style.transform = 'transition:1s linear;';
+			degOfMars = (degOfMars >= 360) ? 0 : degOfMars;
+		}, 200);
+
+
+
+
+
+		let orbitaOfUpiter = document.querySelector('.orbitaOfUpiter');
+		let degOfUpiter = Math.round(Math.random() * 360);
+		setInterval(() => {
+			orbitaOfUpiter.style.transform = `rotate(${degOfUpiter++}deg)`;
+			degOfUpiter = (degOfUpiter >= 360) ? 0 : degOfUpiter;
+			orbitaOfMars.style.transform = 'transition:0.3s linear;';
+
+		}, 50);
+
+	</script>
+
+</body>
+
+</html>

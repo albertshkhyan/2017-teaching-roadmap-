@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		///
+		//Es6
+		// Array.from () - Իտերացվող օբյեկտից սարքումա  նոր զանգված։
+
+		////// objekty sarquma zangvac
+		// let user = {name: 'Valod', sname:'Valllodyan'};
+		// console.log('Object.keys(user)', Object.keys(user));//[name, sname]
+		
+
+
+		////⚫ Զանգվածից ստանումա նոր instence(ասյինքն նոր զանգվածա ստեղծում)
+		// let arr1 = ['a','b','c'];
+		// let arr2 = Array.from(arr1);
+		// console.log('arr2', arr2);
+		// console.log(arr2.__proto__);// is Duck
+		// console.log(arr1 == arr2);//false
+		
+		
+		// Array.from(arr1);
+		// console.log(Array.from(arr1));
+		
+
+//Array.from like split
+// Array.from('a,b,c');// ["a", ",", "b", ",", "c"] 
+
+//իչպես Map-ի key-երը պահել զանգվածի մեջ
+// console.log(Array.from(map.keys()));
+
+
+
+/*
+
+*/
+
+//// ⚠ Օրինա ինչպես Օբյեկը սարքել զ/ծ սարքելու համար։ Սովորական օբյեկտը չի լինի սարքել զ/ծ որովհետև իտերացվող չի։
+		// Array.from(new Map([[true,123]]));//[true, 123]
+		Array.from({user1 : 'Valod,', user2 : 'Gagik'});//[true, 123]
+	</script>
+</body>
+</html>

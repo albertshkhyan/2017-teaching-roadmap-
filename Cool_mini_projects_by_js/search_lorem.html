@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, voluptatum reprehenderit debitis rem deserunt quidem, atque qui explicabo ut eaque voluptas magni nesciunt exercitationem non reiciendis autem perferendis aliquid beatae?Earum, explicabo exercitationem fugit hic ex maiores architecto alias, error natus porro dolorem quasi, illo non maxime. Maiores molestias, molestiae expedita accusantium saepe et. Itaque minima cupiditate cum soluta? Voluptates. Valod</p>
+	<input type="search" oninput="search()">
+	<!-- <button onclick="search()">search</button> -->
+	<h2></h2>
+
+
+	<script>
+		// var p = document.querySelector("p");
+		// var inp = document.querySelector("input");
+		// var h = document.querySelector("h2");
+		// function search(){
+		// 	var text = p.innerText.split(" ");
+		// 	var val  = inp.value.toLowerCase();
+		// 	h.innerHTML = "";
+		// 	for(var i = 0; i < text.length; ++i){
+		// 		var k = text[i][0].toLowerCase()
+		// 		if(val == k){
+		// 			h.innerHTML += text[i] + "<br>";
+		// 			text[i] = "<span style='color:red';>" + text[i] + "</span>";
+		// 		}
+		// 	}
+		// 	p.innerHTML = text.join(" ");
+		// }
+
+
+
+		var p = document.querySelector("p");
+		var inp = document.querySelector("input");
+		var h = document.querySelector("h2");
+		function search(){
+			h.innerHTML = "";
+			var text = p.innerText.split(" ");
+			var val  = inp.value.toLowerCase();
+			for(var i = 0; i < text.length; ++i){
+				if(~text[i].toLowerCase().indexOf(val) && val!=""){
+					h.innerHTML += text[i] + "<br>";
+					text[i] = "<span style='color:red'>" + text[i] + "</span>";
+				}
+			}
+			p.innerHTML = text.join(" ");
+		}
+
+	</script>
+</body>
+</html>

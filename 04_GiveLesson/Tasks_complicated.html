@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script>
+		
+
+		/*=================== Մուտքագրում ենք թիվ և ցույցտալ ետ թիվը պարզա թե չե ===================*/
+		// var n = +prompt("mutagrel parz tiv")
+		// var k = true;
+		// for(var i=2; i<n; i++){
+		// 	if(n%i==0){
+		// 		k=false;break;
+		// 	}
+		// }
+		// alert(k);//sxala	
+
+
+
+/*====Մուտքագրել թիվ և ցույց տալ ետ թիվը ֆիբոնաչի շարքինա պատկանում թե ====*/
+
+//0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144,
+var n = +prompt("mutq tiv")
+var k = 'fibonachi tiv chi dzer mutqagracy';
+var back=0;
+var next =1;
+var fib = back+next;
+
+	while(fib<=n){
+		if(fib==n){//Հենց հասնի մեր նշած թվին
+			k = true;break;
+		}
+		//Սա անում է նրա համար, որ անցի հաջորդ ֆիբոնաչի թիվ
+		back=next;
+		next=fib;
+		fib=back+next;
+	}
+alert(k);//working
+
+/*Explanation
+
+/!\ Հեթով սախ ֆիբենաչի թվերի վրայով անցնումա միչև հասնի մեր նշածին։
+
+/!\ Հենց ցիկլի պայմանը false լինի դուրս կգա ցիկլից
+
+*/
+
+
+
+
+
+
+	</script>
+</body>
+</html>

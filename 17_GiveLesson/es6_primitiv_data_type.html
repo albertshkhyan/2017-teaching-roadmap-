@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>es6 prmitive data type Symbol</title>
+</head>
+<body>
+	
+
+
+	<script>
+		
+		//
+
+
+		
+
+// Պատկերացնենք, որ մենք javaScript-ի ստեղծողներից մեկն ենք ու ուզում ենք js-ի նոր վեռսիան թողարկել,
+//  Նոր վեռսիայում մեզ նոր օբյեկտներ են պետք՝
+//  	Ենթադրենք Ետ օբյեկտի մեջ մենք ուզում ենք նոր հատկություն ստեղծել, որ user-նել կարանա օգտվել ետ հատկությունից, 
+
+ 	let obj = {
+		ownPropertyForUser () {}
+ 	}
+
+ 	// /!\ Բայց ինչ կլինի երբ օգվողը մեր օբյեկտի մեջ նույն անունով հատկություն ստեղծի, օրինակ՝
+ 	 	let obj = {
+ 	 		ownPropertyForUser : 0,
+			ownPropertyForUser () {}
+ 	}
+
+ /*	
+ * իրար հետ չկոնֆլիկտելու համար մենք կարող ենք տակի գծիկ դնել, Օրինակ՝
+ 	 	 	let obj = {
+ 	 		ownPropertyForUser : 0,
+			__ownPropertyForUser () {}
+ 	} Բայց խնդիրը լիարժեք չի վերանա, քանի որ մեր օգվողն էլ կարա տակի գծիկ դնի ActiveXObject
+*/
+/* ------------------------ ունիկալ անուն (identifier) ---------------- */
+
+// # Մենք կարող են ունիկալ տալ մեր հատկությանը, Օրինակ՝
+
+ 	 	 	let obj = {
+ 	 		ownPropertyForUser : 0,
+			['$44879407$12'] () {}
+	 } 
+	 
+//// Ես տարբերոկում ել շատ դժվար կլնինի անունը հիշել
+
+ 	//// -------------------------------------------------------
+/*
+
+ 	Ես ամենի փոխարեն մենք կարող ենք ստեղծել մի հատ նոր տվյալի տեսակ, որի օգնությամբ կարելիա ունիկալ անուններ տալ, (Այսինքն ետ անունից միայն մի հատ լինի) դրա համար ստեղծել Sybol պրիմիտիվ տվյալի տեսակը
+
+*/
+ 	 	 let obj = {
+ 	 		ownPropertyForUser : 0,
+			[Symbol.ownPropertyForUser] () {}
+ 	} 
+
+
+ 	// Sybol-ը թույլա տալիս ունիկալ անուններ (identifier) տալ:
+
+ 	// /!\ Հինականում Sybol-ները օգտագործում են javascript-ի ներսում, դժվեր հետագայում պետք գա։
+		
+
+		// let symbol = Symbol();
+		// // let symbol = new Symbol();//error - sybol is not constructor	
+		// console.log(symbol);//Symbol()
+		// console.log(typeof symbol);//symbol
+
+//// Ամեն սիմվոլ ունիկալ է դրա համար false է ցույց տալիս
+		// let symbol = Symbol('name');//Symbol(name) ->inner value if symbol $dfads23423sedf
+		// let symbol2 = Symbol('name');//Symbol(name) ->inner value if symbol  $rst234werf43r
+		// console.log(symbol == symbol2);//false
+		// console.log(symbol === symbol2);//false
+
+// /!\ Ներքին արժեքը ($dfads23423sedf) չի կարելի տենալ։
+
+
+/*+++++++++ metod for of Sybol +++++++++++*/
+//// 2 Ձև Symbol ստեղծելու
+// let symbol3 = Symbol.for('name');//Symbol(name)
+// let symbol4 = Symbol.for('name');//Symbol(name)
+// console.log(symbol3 == symbol4);//true
+// console.log(symbol3 === symbol4);//true
+
+//2 ձևերնել նույն արդյուքն են ցուցադրում բայց տարբերությունը ենա որ երկրորդ անգամ նույն սիմվոլից կարելիա ստեղծել
+
+
+/*+++++++++++ metod keyFor +++++++++++*/
+//// Մենակ անունի հանդեպ հասանելիություն ստանալու համար
+let symbol = Symbol.for('name');
+let symbolName = Symbol.keyFor(symbol);//name
+console.log(symbolName);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Error</title>
+
+
+	<style>
+	.inps{
+		width: 25%;
+	}
+		
+		.enterName {
+			width: 25%;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+
+
+	<form action="" name="nameOfForm">
+		<input id="nameInp" class="inps" type="text" placeholder="Enter name">
+		<br><br>
+		<input class="inps" type="password" placeholder="Enter password">
+		<br><br>
+		<input class="inps" type="password" placeholder="Repeat your password">
+		<br><br>
+		<span>Gender</span>
+		<label for="male">
+			<input type="radio" id="male" name="onlyOne">
+			Male
+		</label>
+		<label id="wooman" for="female">
+			<input type="radio" id="female" name="onlyOne">
+			Female
+		</label>
+
+
+	</form>
+		<button onclick="foo()">Send</button>
+
+
+	<script>
+		//
+
+
+		////////// մուքագրման դաշտերի մշակում ///////////////
+////Обработка форм 
+
+///// մուտքագրման դաշտերի սովորաաբար մշակում են PHP -ով, քանի որ հնրավորա որ տվյալ բրաուզերի վրա javaScript-ը անջատած լինի։
+
+
+///Պահանջ -> եթե չի գրվել անուննը կամ password-ը թող տեղեկացնի մեզ դրա մասին։
+
+// let lbl = document.querySelector('#wooman').innerText;
+
+
+
+function foo() {
+let form  = document.querySelector('form');
+let nameInp  = document.querySelector('#nameInp');
+	if(nameInp.value == '' || nameInp.value == ' '){
+				nameInp.className = 'enterName';
+		let err = new Error('Enter your name');
+		alert(err);
+	}
+
+}
+
+
+</script>
+
+</body>
+</html>

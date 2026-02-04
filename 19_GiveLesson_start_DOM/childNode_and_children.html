@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+	<div id="parent">
+		<span>child 1</span>
+		<span>child 2</span>
+	</div>
+	<script>
+		//
+
+		/*
+		*սխալ տեսակետ - որ HTMLCollction-ը դինամիկ փոփոխվումա ի տարբերություն NodeList-ի։
+		⚫ Միակ տարբերությունը ենա, որ NodeList-ը ցանկացած տեսակի node իրա մեջ պարունակումա։
+
+
+		*/
+		let getParent = document.querySelector('#parent');
+
+		let cSpan = document.createElement('span');
+		getParent.appendChild(cSpan).innerText = 'child 3';
+
+
+		let seeNodeList = document.querySelectorAll('span');
+		let seeHTMLCollection = document.getElementsByTagName('span');
+
+console.log("seeNodeList", seeNodeList);
+
+console.log("seeHTMLCollection", seeHTMLCollection);
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>onload</title>
+
+	<style>
+		body {
+			margin: 0;
+		}
+
+		#wrapper > div{
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#loading {
+			width: 100px;
+			height: 100px;
+			/*background-color: rgba(120,120,120,0.4);*/
+			border:15px solid rgba(120,120,120,0.4);
+			border-right: 15px solid cyan;
+			border-radius: 50%;
+
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<div id="wrapper">
+		<!-- <div id="loading"></div> -->
+	</div>
+	<script>
+//
+
+
+		// let w = document.body.getBoundingClientRect().width;//Ինչպես ստանա; էկրանի չափը pixel-ով։
+		// // console.log(document.body.getBoundingClientRect());
+		// let createBg = document.createElement('div');
+		// createBg.style = `
+		// width:${w}px;
+		// height:${window.innerHeight}px;
+		// background-color: #06A763;
+		// `; 
+		// 		document.body.insertBefore(createBg, wrapper);//append-ով script թեգի տակնա քցում
+
+
+		// let createBg = document.createElement('div');
+		// window.onload = function() {
+
+		// 	// document.body.style.background = '#06A763';//green
+		// let w = document.body.getBoundingClientRect().width;//Ինչպես ստանա; էկրանի չափը pixel-ով։
+		// // console.log(document.body.getBoundingClientRect());
+		// // #06A763 -> green
+		// createBg.style = `
+		// width:${w}px;
+		// height:${window.innerHeight}px;
+		// background-color: #06A763;
+		// `; 
+		// wrapper.appendChild(createBg);//append-ով script թեգի տակնա քցում
+		// 	// alert('բրաուզերը բեռվեց');
+
+		// };
+
+
+		// let ldng = document.createElement('div');
+		// ldng.setAttribute('id', 'loading');
+		// createBg.appendChild(ldng);
+
+		// let deg = 0;
+		// let stop = setInterval(function () {
+		// 	ldng.style.transform = `rotate(${deg++}deg)`;
+		// });
+
+
+		setTimeout(function () {
+			let t = createBg.style.background = '#262525';//gray fon
+			if(t == '#262525') {
+				// console.log();
+				clearInterval(stop);
+				ldng.style.display = 'none';
+			}
+		}, 2000);
+
+
+///// not working
+// 	window.onload = setTimeout(function() {
+// 		alert('hello');
+// },3000);
+
+////not working
+	// window.onload = function foo() {
+	// 	alert('hello');
+	// }
+
+	// setTimeout(foo, 3000);
+
+
+
+	</script>
+</body>
+</html>

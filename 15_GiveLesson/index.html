@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+
+
+	<script>
+		/*Ամոփոում
+			* Ինչա օբյեկտը
+				Ամբողջ js-ի կառուցվախքը օբյեկտների վրա է հիմնաված(ecapmle of boolean)
+					մենք որտեղից ենք ստանում boolean-ի true կամ false-ը?
+			* Ինչա օբյեկտի հատկութոյւնը
+			* Ինչա օբյեկտի մեթոդը
+			*/
+
+
+
+			// let x = 0;
+			// let stop = setInterval(() => {
+			// 	document.writeln(++x);
+			// 	if(x === 10) {
+			// 		clearInterval(stop);
+			// 	}
+
+			// },100);
+
+
+			// let x = 0;
+			// let stop = setInterval(() => {
+			// 	document.writeln(++x);
+			// },100);
+			// console.log('x', x);
+
+			// document.write('hello');
+			// setTimeout(()=> {
+			// 	clearInterval(stop);
+			// },1000);
+			
+
+			let x = 0;
+			let stop = setTimeout(function rec() {
+				document.writeln(++x);
+				stop = setTimeout(rec,100);
+				if(x == 10) {
+					clearTimeout(stop);
+				}
+
+			},1000);
+
+
+			// setTimeout(() => {
+			// 	clearTimeout(stop);
+			// }, 2000)
+
+
+			// stop : for(let i = 0; i < 10; ++i) {
+			// 	for(let j = 0; j < 10; ++j) {
+			// 		console.log(i,j);
+			// 		if(i == 2 && j == 2) {
+						// break stop;
+			// 		}
+			// 	}
+			// }
+
+
+
+
+
+
+			/*--------------------------Ինչպես ջնջել հատկությունները delete operator--------------------------*/
+//delete opeator
+// delete obj.name.
+// let mard = {
+// 	tariq : 30,
+// 	anun : "Hamlet",
+// 	azganun : 'Nalbandyan',
+// 	ser : 'arakan',
+// 	mazeri_guyn : 'sev'
+// 	// 'mazeri guyn' : 'sev'//mazeri guyn: "sev"
+// }
+
+// console.log("mard", mard);
+
+/*Վերհիշել varible without var*/
+// a = 7;
+// delete window.a;
+// console.log("a", a);//a is not defined
+
+
+/*----------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+////// tesanelutyan tirutyn verabeyal
+
+// let car = {
+// 	marka : 'bmw',
+// 	engine : 'v8',
+// 	color:'red',
+// 	go : function() {
+// 		// return 'gnac '+car.marka+' avton',
+// 		return car.marka + 'avton gnac';
+// 	}
+// }
+
+
+//////////////
+
+
+let car = {
+	marka : 'bmw',
+	engine : 'v8',
+	color:'red',
+	go : function() {
+
+	}
+}
+
+
+// console.log('marka' in car);
+// console.log();
+// console.log('toString' in car);
+// console.log(car.hasOwnProperty('marka'));
+// console.log(car.hasOwnProperty('constructor'));
+
+
+
+	// console.log(car['marka']);
+	// console.log(car.marka);
+
+
+// for(let key in car) {
+// 	if(key == 'engine') {
+// 		console.log(car[key]);
+
+// 	}
+
+// }
+
+// for(let i = 0; )
+
+//in ev hasOwn
+
+
+
+
+
+
+
+
+
+
+
+
+
+// delete car.color;
+// console.log("car", car);
+
+
+
+
+//////reference typen ev primitiv type //////////////
+// reference(object) type ev primitiv type
+
+
+// let a = 10;
+// let b = a;
+// console.log(a == b);//true
+// console.log(a === b);//true
+
+
+// let obj1 = {a : 10};
+// let obj2 = obj1;
+// console.log(obj1 == obj2);
+
+
+// let a = 10;
+// let b = 10;
+
+// let obj1 = {a : 10};
+// let obj2 = {a : 10};
+// console.log(obj1 == obj2);
+//// 001 == 002
+
+////////////////////////////////
+
+
+
+</script>
+</body>
+</html>

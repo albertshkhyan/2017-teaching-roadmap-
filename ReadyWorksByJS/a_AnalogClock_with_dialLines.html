@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Analog clock </title>
+
+	<style>
+#wrapper {
+	height: 100vh;
+	display: flex;
+}
+
+	#clock { 
+		width: 300px;
+		height: 300px;
+		background: cyan;
+		border-radius: 50%;
+
+		position: relative;
+		margin: auto;
+
+	}
+
+	#secondHand {
+		width: 2px;
+		height: 110px;
+		background-color: red;
+		position: absolute;
+		left:calc(50% - 1px);
+		top: calc(50% - 110px);
+		z-index: 40;
+		transform-origin: bottom center;
+
+	}
+
+	#minuteHand {
+		width: 6px;
+		height: 110px;
+		background-color: blue;
+		position: absolute;
+		left:calc(50% - 3px);
+		top:calc(50% - 110px);
+		transform-origin: bottom center;
+	}
+	#hourHand {
+		width: 6px;
+		height: 80px;
+		background: green; 
+		position: absolute;
+		left: calc(50% - 3px);
+		top: calc(50% - 80px);
+		transform-origin: bottom center;
+	}
+	#center{
+		width: 30px;
+		height: 30px;
+		background-color: yellow;
+		border-radius: 50%;
+		position: absolute;
+		left: 50%;
+		top:50%;
+		transform:translate(-50%, -50%);
+		z-index: 50;
+	}
+
+
+	.dialLines:nth-child(5n+2){
+		background-color: green;
+	}
+
+	/* clock numbers */
+	#clock ul{
+		padding: 0px;
+		margin: 0px;
+
+	}#clock ul li{
+		position: absolute;
+		list-style-type: none;
+		color: blue;
+		padding: 0px;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+	}
+
+	#clock ul li:nth-child(12) {
+		color:red;
+		left: calc(50% - 10px);
+		top: 8px;
+		font-weight: bold;
+
+	}#clock ul li:nth-child(6) {
+		color:red;
+		left: calc(50% - 10px);
+		bottom: 8px;
+		font-weight: bold;
+
+	}#clock ul li:nth-child(9) {
+		color:red;
+		left: 8px;
+		top:calc(50% - 10px);
+		font-weight: bold;
+
+	}#clock ul li:nth-child(3) {
+		color:red;
+		right: 8px;
+		top:calc(50% - 10px);
+		font-weight: bold;
+
+	}
+
+	/* ------------ */
+
+#clock ul li:nth-child(1) {
+	right:25%;
+	top: 7%;
+	font-weight: 800;
+
+}#clock ul li:nth-child(11) {
+	left:25%;
+	top: 7%;
+	font-weight: 800;
+
+}#clock ul li:nth-child(5) {
+	right:25%;
+	top: 85%;
+	font-weight: 800;
+
+}#clock ul li:nth-child(7) {
+	left:25%;
+	top: 85%;
+	font-weight: 800;
+
+}
+
+#clock ul li:nth-child(2) {
+	right: 9%;
+	top:25%;
+	font-weight: 800;
+
+}#clock ul li:nth-child(10) {
+	left: 9%;
+	top:25%;
+	font-weight: 800;
+
+}#clock ul li:nth-child(4) {
+	right: 9%;
+	top:70%;
+	font-weight: 800;
+	
+}#clock ul li:nth-child(8) {
+	left: 9%;
+	top:70%;
+	font-weight: 800;
+	
+}#clock ul li:nth-child(10) {
+	left: 9%;
+	top:25%;
+	font-weight: 800;
+	
+}
+
+
+/* ------- time ------- */
+
+#time {
+	width: 100px;
+	height: 24px;
+	box-shadow: inset 5px 5px 10px gray,
+							inset -5px -5px 10px gray;
+	border-radius: 20px;
+	position: absolute;
+	top: calc(50% - 12px);
+	left: calc(25% - 50px);
+	text-align: center;
+	line-height: 24px;
+	font-weight: bold;
+	font-family:arial, sans-serif;
+	color:red;
+}
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+	<div id="wrapper">
+		<main id="clock">
+			<div id="secondHand"></div>
+			<div id="minuteHand"></div>
+			<div id="hourHand"></div>
+			<div id="center"></div>
+			<div id="time"></div>
+			<div class="dialLines"></div>
+
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+				<li>11</li>
+				<li>12</li>
+			</ul>
+		</main>
+	</div>
+
+	<script>
+/* dialLines */
+		for(let i = 0; i < 60; ++i) {
+			let clock = document.querySelector('#clock');
+			let dialLines = document.getElementsByClassName('dialLines');
+			clock.innerHTML += `<div class="dialLines"></div>`;
+			dialLines[i].style = `transform:rotate(${i * 6}deg)`;
+		}
+
+		/* clock and time */
+
+		window.onload = function() {
+			// let cloc = document.querySelector('#clock');
+			let sec = document.querySelector('#secondHand');
+			let min = document.querySelector('#minuteHand');
+			let hour = document.querySelector('#hourHand');
+			let time = document.querySelector('#time');
+
+			function clock(){
+				let d = new Date();
+				let s = d.getSeconds();
+				let m = d.getMinutes();
+				let h = d.getHours();
+
+				sec.style.transform = `rotate(${(s / 60) * 360}deg)`;
+				min.style.transform  = `rotate(${(m / 60) * 360}deg)`;
+				hour.style.transform  = `rotate(${(h / 12) * 360}deg)`;
+
+				// time
+				// time.innerHTML = `${h} : ${m} : ${s} `;
+				let arrOfTime = [
+					(h < 10) ? '0' + h : h,
+					(m < 10) ? '0' + m : m,
+					(s < 10) ? '0' + s : s
+				].join(' : ');
+				time.innerHTML = arrOfTime;
+
+
+
+
+			}
+			setInterval(clock,1000);
+
+		}
+/*-----------------*/
+
+
+
+	</script>
+</body>
+</html>

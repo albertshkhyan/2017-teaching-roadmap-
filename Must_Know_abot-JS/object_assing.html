@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //
+
+        /*
+        ⚫ ES6 - Object.assing() - այս մեթոդը օգտագործվումա , թվարկված հատկությունները copy անելու համար։ Մեկ կամ մեկից ավել օբյեկտներից թիրախային օբյեկտ։ 
+        compy անելուց հետո այս մեթոդը վերադարձնումա target օբյեկտ։
+
+        Syntax
+            Object.assign(target, ...sources)
+
+            target - մեր նշած օբյեկտի մեջ է հատկությունները copy  լինում( target օբյեկտի մեջ)։
+                Целевой объект.
+            sources
+                Исходные объекты.
+
+                Возвращается получившийся целевой объект.
+        */
+        
+
+        var obj = { a: 1 };
+        let newObject  = {};
+        // var copy = Object.assign({}, obj);
+        var copy = Object.assign(newObject, obj);
+        console.log(copy); // { a: 1 }
+        // console.log('obj', obj);
+        console.log('newObject', newObject);
+        
+        
+        
+        
+        
+        
+    </script>
+</body>
+</html>

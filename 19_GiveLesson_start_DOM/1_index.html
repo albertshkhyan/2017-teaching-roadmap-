@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dom exp</title>
+</head>
+<body>
+
+	<form name="f1"></form>
+	<img src="../../../All_files_by__PROGRAMMING/IMAGES_and_ICON/640x480/img (1).jpg" alt="" name="i1">	
+	<a href="" name="a1"></a>
+
+
+<!-- 	not work name with, h1, div
+<div name="hh1"></div>
+ -->	
+
+
+ <script>
+		//
+
+		document.body.bgColor = 'cyan';
+
+		/*
+			name ատտրիբուտը տալուց կարելիա միանգամից name ի անունը գերլ։
+				⚠ name կարելիա տալ հետևյալ թեգերին
+				img	
+				form
+
+				not work with
+					a
+					div
+					h1,h6
+
+			
+		*/
+
+		// console.log(document.f1);//✔
+		////or
+		// console.log(document.forms[0]);//✔
+		// console.log(document.forms['f1']);//✔
+
+
+		// console.log(document.i1);//❌
+		// console.log(document.a1);//❌
+
+
+
+
+		// console.log(document.hh1);//undefined -> with h1,div
+		
+
+
+
+		/*+++++++++++++++++++++++++++++++++++++++++++*/
+
+
+		/*
+		Օրինակ՝ HTML-ում img թեգը ունի ունի src ատտրիբուտը։ Իսկ js-ում images օբյեկտը ունի src-ի հատկությունը։ Այսինքն նկարի հասցեին կպնելու համար պարտադիր չի օգտագործել getAttribute-ը։
+			օրինակ՝
+			document.i1.getAttribute('src')
+				or
+			document.i1.src
+
+		⚠ Նույն եղանակով կարելիա կպնել թեգերր ատտրիբուտներին, 
+		օրիինակ 1`
+			document.getElementsByTagName('table')[0].border = '1px solid';
+
+		օրիինակ 2`
+			// document.i1.onclick = "alert('Hello world')";//❌
+			// document.i1.onclick = () => alert('Hello world');//✔
+
+
+		*/
+
+
+// document.i1.onclick = "alert('Hello world')";//❌
+// document.i1.onclick = () => alert('Hello world');//✔
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /**/
+
+        .sp {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <button>show data of users</button>
+
+    <ul id="list"></ul>
+
+
+    <script>
+        //
+
+
+
+        /////////////////// fetch, получать ///////////////////
+
+
+        let getBtn = document.querySelector('button');
+
+        getBtn.onclick = function () {
+            let promise = fetch('https://jsonplaceholder.typicode.com/users');
+
+            promise
+                .then((resolved) => {
+                    // console.log(resolved);
+                    let handleResponse = resolved.json();//return new Promise which value is array
+                    // console.log(handleResponse);
+                    return handleResponse;//for callback hell
+
+                })
+                .then((arrVal) => {
+                    // console.log(arrVal);
+                    let getUl = document.querySelector('#list');
+                    
+                    let newArrVal =  arrVal.map((objElem) => {
+                        // console.log(objElem);
+                        return `<li> ${objElem.id}, ${objElem.name}, ${objElem.email} </li>`;
+                        
+                        
+                    }).join(' ');
+                    // console.log(newArrVal;
+
+                    getUl.innerHTML = newArrVal;
+
+
+
+
+                })
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //     let request = new Promise(function (resolve, reject) {
+        //         setTimeout(() => {
+        //             console.log('1 client : server give me data of users');
+        //             console.log('...');
+        //             resolve();
+
+        //         }, 1000);
+        //     });
+
+        //     request.then(() => {
+        //         let a = new Promise(function (resolve, reject) {
+        //             setTimeout(() => {
+        //                 console.log('2 server : database give me data of users');
+        //                 console.log('...');
+        //                 resolve();
+
+        //             }, 1000);
+
+
+        //         })
+
+
+
+        //     a.then(function () {
+        //         let b = new Promise(function (resolve, reject) {
+        //             setTimeout(() => {
+        //                 console.log('3');
+        //                 console.log('...');
+        //                 resolve();
+
+        //             });
+
+
+        //         })
+
+
+
+        //         b.then(function() {
+        //             let c = new Promise(function (resolve, reject) {
+        //                 setTimeout(() => {
+        //                     console.log('4');
+        //                     console.log('...');
+        //                     // resolve();
+
+        //                 },300);
+
+
+        //             })
+        //         })
+        //     });
+
+        // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*******************************************/
+
+        // console.log('1. Client : ուզում եմ ստանալ օգվողներ ցանկը')
+        // console.log('2. Server : հարցնում եմ DataBase-ին օգվողներ ցանկը');
+        // console.log('3. DataBase: ձևակերպում եմ օգվողների ցանկը որ փոխանցեմ Server-ին');
+        //  console.log('4. Server : փոխակերպում եմ, որ տամ Client-ին');
+        //  console.log('5. Client: ստացա Server-ից փոխակերպված տվյալները։ Ու հիմա ցուցադրում ենք այդ տվյալները։');
+
+
+
+        // let request = new Promise(function (resolve, reject) {
+        //     setTimeout(() => {
+        //         console.log('1 client : server give me data of users');
+        //         console.log('...');
+        //         resolve();
+
+        //     }, 1000);
+        // });
+
+        // request
+        //     .then(() => {
+        //         return new Promise((resolve, reject) => {
+        //             setTimeout(() => {
+        //                 console.log('2. Server : հարցնում եմ DataBase-ին օգվողներ ցանկը');
+        //                 console.log('...');
+        //                 resolve();
+
+        //             }, 500);
+        //         })
+        //     })
+
+        //     .then(() => {
+        //         return new Promise((resolve, reject) => {
+        //             setTimeout(() => {
+        //                 console.log('3. DataBase: ձևակերպում եմ օգվողների ցանկը որ փոխանցեմ Server-ին');
+        //                 console.log('...');
+        //                 resolve();
+
+        //             }, 200);
+        //         })
+        //     })
+        //     .then(() => {
+        //         return new Promise((resolve, reject) => {
+        //             setTimeout(() => {
+        //                 console.log('4. Server : փոխակերպում եմ, որ տամ Client-ին');
+        //                 console.log('...');
+        //                 resolve();
+
+        //             }, 3000);
+        //         })
+        //     })
+        //     .then(() => {
+        //             setTimeout(() => {
+        //                 console.log('5. Client: ստացա Server-ից փոխակերպված տվյալները։ Ու հիմա ցուցադրում ենք այդ տվյալները։');
+        //                 console.log('...');
+
+        //             });
+        //     });
+
+
+
+
+
+
+
+            //return new Promise((resolve, reject) => {
+
+            // })
+
+
+
+
+        /*******************************************/
+
+
+
+
+    </script>
+</body>
+
+</html>

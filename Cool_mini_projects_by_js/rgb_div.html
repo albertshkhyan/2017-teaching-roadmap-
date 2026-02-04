@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 30px;
+            height: 30px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+   
+   
+   
+   <script>
+      
+      var c1=[Math.round(Math.random()*255),Math.round(Math.random()*255),Math.round(Math.random()*255)];
+      var c2=[Math.round(Math.random()*255),Math.round(Math.random()*255),Math.round(Math.random()*255)];
+
+
+       var k=40;
+
+       // var color1="rgb(200,58,39)";
+       // var color2="rgb(31,16,200)";
+       // var c1=color1.slice(4,-1).split(",");
+       // var c2=color2.slice(4,-1).split(",");
+
+
+       var r=(+c1[0]- +c2[0])/k;
+       var g=(+c1[1]- +c2[1])/k;
+       var b=(+c1[2]- +c2[2])/k;
+       var rr,gg,bb;
+       for(var i=0; i<k; i++){
+           rr=Math.floor(+c1[0]-(r*i));
+           gg=Math.floor(+c1[1]-(g*i));
+           bb=Math.floor(+c1[2]-(b*i));
+           document.write(`<div style="background-color:rgb(${ rr },${ gg },${ bb })"></div>`);
+       }
+       
+       
+    </script>
+    
+</body>
+</html>

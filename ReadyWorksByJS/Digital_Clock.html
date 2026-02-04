@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>digital clock(цифровые часы)</title>
+</head>
+<body>
+
+
+<div id="digitalClock"></div>
+
+	<script>
+
+	var d = new Date();
+	alert(d);//Mon Sep 24 2018 20:14:45 GMT+0300 (Москва, стандартное время)
+
+	var t = d.getTime();
+	alert(t);//1537809347981
+
+	var h = d.getHours();
+	var m = d.getMinutes();
+	var s = d.getSeconds();
+
+	if(h >12){
+		h=h-12;
+	}
+	else if(h === 0 ){
+		h=12;
+	}
+	alert(h);
+
+
+
+
+
+
+	</script>
+</body>
+</html>

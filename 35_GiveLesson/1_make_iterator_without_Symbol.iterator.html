@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>արհեստական(artificial) ietartor</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        
+        ////🔰 
+
+//1. iterator-ը ողջ հատկությունները հաշվումա, այսինքն մեզ հաշվելու համար փոփոխական է պետք
+//2. iterator-ը վերադարձնումա next() մեթոդ
+//3․next() մեթոդը վերադարձնումա օբյեկտ 
+
+
+      function arhestakanIterator(arr) {
+            let hashvich = 0;
+            return {
+                next: function () {
+                    return hashvich < arr.length ?
+                        { value: arr[hashvich++], done: false } :
+                        { done: true };
+                }
+            }
+        }
+
+        var iter = arhestakanIterator(['Jon', 'Donald']);
+        // console.log(iter.next());//{value: "Jon", done: false}
+        console.log(iter.next().value); // Jon
+        console.log(iter.next().value); // Donald
+        console.log(iter.next().done);  // true
+
+
+    </script>
+</body>
+
+</html>

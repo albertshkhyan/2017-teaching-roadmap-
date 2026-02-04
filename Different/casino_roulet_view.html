@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style> 
+    /*  */
+
+    .forCenter {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .circle {
+        /* width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        border:3px solid;
+        position: relative; */
+
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    border:3px solid;
+
+    }
+.circle div {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    /* height: 100px; working */
+    height: 50%; 
+    /* transform-origin: 0 100%; */
+}
+
+
+    .circle div::before {
+        /* content: '2';
+        width: 200%;
+        height: 200%;
+        background-color: red;
+        position: relative; */
+    content: "";
+    position: absolute;
+    /* top: -100%; */
+    /* left: 0; */
+
+    /*width: 300px;կամ 100% - content-ի չափը, ասյինքն ինչքն լցվախ լինի գույնի content-ը*/
+    width: 100%;
+    height: 200%;
+    background: black;
+    transform-origin: 0 100%;
+    transform: rotate(calc(-8.75 * 360deg / 37)) skew(calc(360deg / 37 - 90deg));
+
+    /* առանձին չի աշխատում
+    transform: rotate(calc(-8.75 * 360deg / 37)) ;
+    transform:skew(calc(360deg / 37 - 90deg)); 
+    */
+
+
+    /*
+
+    /*
+    * calc(-8.75 * 360deg / 37) - թաքվածության աստիճանը
+        why -8.75 ???
+
+    * skew - շողում 
+    
+    */
+    }
+
+
+/*
+position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform-origin: 0 100%;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+.wheel div:before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: black;
+    transform-origin: 0 100%;
+    transform: rotate(calc(-8.75 * 360deg / 37)) skew(calc(360deg / 37 - 90deg));
+}
+[id^="c26_"]:checked ~ form .cash:after, .wheel div:nth-of-type(37):after, #sq26:after {
+    content: "26";
+}
+
+*/
+
+    
+    </style>
+</head>
+<body>
+
+<div class="forCenter">
+    <div class="circle">
+        <div></div>
+    </div>
+</div>
+
+    </div>
+    <script>
+        //
+
+
+
+        
+        </script>
+</body>
+</html>

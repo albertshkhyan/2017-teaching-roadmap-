@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        //
+
+        //1. Map կոլեկցիա key-ը  կանչել։ (ինչպես կանչել Map-ի key-ը եթե այն function է։)
+
+        // ////🔰 1 -ին տարբերակ։
+        // let funRef = (p) => alert(p);
+        // let map = new Map([
+        //     ['name', 'Valod'],//Առաջինը key-նա, երկրորդը value-ն
+        //     ['sname', 'Valodyan'],
+        //     [null, 'not online'],
+        //     [true, 'is online'],
+        //     // [()=> alert('hello'), 'my name is Valod']
+        //     [funRef, 'my name is Valod']
+        // ]);
+
+        // console.log(map.name);//undefined - must use get❌
+        // map.get(funRef('hi'));//👍✔
+        // console.log(map.get(funRef));//my name is Valod
+        // map.get(funRef('hi ' + map.get(funRef)));//👍✔ -> my name is Valod
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+ ////🔰 2-րդ տարբերակ
+        ////❓ եթե ֆունկցիան մեջնա լինում
+        let map = new Map([
+            ['name', 'Valod'],//Առաջինը key-նա, երկրորդը value-ն
+            ['sname', 'Valodyan'],
+            // [null, 'not online'],
+            [true, 'is online'],
+            // [()=> alert('hello'), 'my name is Valod']
+            [(p) => alert(p), 'my name is Valod']
+        ]);
+        for (let kv of map.entries()) {
+            // console.log(typeof kv[0]);
+            console.log( kv[0].toString());//null-չի կարում toString() անի
+            // console.log( kv[0]+'');//սենց բոլորնել string է սարքում
+            if( kv[0]+'' === '(p) => alert(p)' ) {
+                kv[0]('hi ' + kv[1]);
+            }
+
+        }
+
+
+
+
+        ////🔰 3-րդ  տարբերակ   MapIterator օգտագործելով։
+
+        ////⚠? Միանգամից չի լինում ֆունցկիա key-ին կպնել։???
+        // let keyMapIter = map.keys();
+        // console.log("keyMapIter", keyMapIter);
+        // console.log(keyMapIter.next().value);
+        // console.log(keyMapIter.next().value);
+        // console.log(keyMapIter.next().value);
+        // console.log(keyMapIter.next().value);
+        // console.log(keyMapIter.next().value);//()=> alert('hello')
+
+
+
+
+
+
+
+
+        /*++++++++++++++++++++++++++2-րդ տանյին++++++++++++++++++++++++++*/
+        ////առանց destructurng-ի 
+        // let map = new Map([
+        //     ['name', 'Valod'],//Առաջինը key-նա, երկրորդը value-ն
+        //     ['sname', 'Valodyan'],
+        //     [null, 'not online'],
+        //     [true, 'is online'],
+        //     // [()=> alert('hello'), 'my name is Valod']
+        //     [(p) => alert(p), 'my name is Valod']
+        // ]);
+        // console.log(map);
+        
+        for (let kv of map.entries()) {
+            console.log(kv);
+        console.log(kv[0], kv[1]);
+
+        }
+        for (let [k,v] of map.entries()) {
+            console.log(k,v);
+        // console.log(kv[0], kv[1]);
+
+        }
+
+    </script>
+</body>
+
+</html>
