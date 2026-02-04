@@ -1,10 +1,10 @@
-# Lesson 30
+# Lesson 30 — ES6 class, inheritance, Object.create
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS/OOP fundamentals.
+ES6 class, inheritance, Object.create.
 
 ## Contents
 

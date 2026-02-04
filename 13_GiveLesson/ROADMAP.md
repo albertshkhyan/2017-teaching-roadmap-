@@ -1,10 +1,10 @@
-# Lesson 13
+# Lesson 13 — Recursion, scope
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Recursion, scope.
 
 ## Contents
 

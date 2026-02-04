@@ -1,10 +1,10 @@
-# Lesson 38
+# Lesson 38 — Summary
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Summary.
 
 ## Contents
 

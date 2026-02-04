@@ -1,10 +1,10 @@
-# Lesson 11
+# Lesson 11 — Functions, homework
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Functions, homework.
 
 ## Contents
 

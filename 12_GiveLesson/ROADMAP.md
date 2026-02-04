@@ -1,10 +1,10 @@
-# Lesson 12
+# Lesson 12 — Functions, use strict
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Functions, `use strict`.
 
 ## Contents
 

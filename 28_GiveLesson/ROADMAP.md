@@ -1,10 +1,10 @@
-# Lesson 28
+# Lesson 28 — Constructors, encapsulation, prototype
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS/OOP fundamentals.
+Constructors, encapsulation, prototype.
 
 ## Contents
 

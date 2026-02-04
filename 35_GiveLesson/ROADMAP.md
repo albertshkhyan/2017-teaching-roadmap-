@@ -1,10 +1,10 @@
-# Lesson 35
+# Lesson 35 — Iterators, generators
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Iterators, generators.
 
 ## Contents
 

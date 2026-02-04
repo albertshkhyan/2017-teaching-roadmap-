@@ -1,10 +1,10 @@
-# Lesson 37
+# Lesson 37 — Async evolution, CallBack Hell, Fetch, async/await
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Async evolution, CallBack Hell, Fetch, async/await.
 
 ## Contents
 

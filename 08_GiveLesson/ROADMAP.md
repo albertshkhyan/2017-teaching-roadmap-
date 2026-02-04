@@ -1,10 +1,10 @@
-# Lesson 08
+# Lesson 08 — defer/async, Math tasks, sort
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+defer/async, Math tasks, sort.
 
 ## Contents
 

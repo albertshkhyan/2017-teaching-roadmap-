@@ -1,10 +1,10 @@
-# Lesson 10
+# Lesson 10 — Functions, gradient, loops, homework
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Functions, gradient, loops, homework.
 
 ## Contents
 

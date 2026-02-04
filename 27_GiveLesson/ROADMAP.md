@@ -1,10 +1,10 @@
-# Lesson 27
+# Lesson 27 — OOP this, call/apply/bind
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS/OOP fundamentals.
+OOP `this`, call/apply/bind.
 
 ## Contents
 

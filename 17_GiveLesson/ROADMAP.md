@@ -1,10 +1,10 @@
-# Lesson 17
+# Lesson 17 — ES6 primitives, timers
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+ES6 primitives, timers.
 
 ## Contents
 

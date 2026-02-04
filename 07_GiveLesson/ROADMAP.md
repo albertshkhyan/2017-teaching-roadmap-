@@ -1,10 +1,10 @@
-# Lesson 07
+# Lesson 07 — Array methods, simple/complicated tasks, homework
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Array methods, simple/complicated tasks, homework.
 
 ## Contents
 

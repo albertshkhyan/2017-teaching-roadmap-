@@ -1,10 +1,10 @@
-# Lesson 14
+# Lesson 14 — Objects (associative), homework
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Objects (associative), homework.
 
 ## Contents
 

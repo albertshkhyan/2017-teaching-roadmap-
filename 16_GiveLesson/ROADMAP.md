@@ -1,10 +1,10 @@
-# Lesson 16
+# Lesson 16 — Primitive vs reference, timers
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Primitive vs reference, timers.
 
 ## Contents
 

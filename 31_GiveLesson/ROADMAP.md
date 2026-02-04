@@ -1,10 +1,10 @@
-# Lesson 31
+# Lesson 31 — Arrow functions, ES6 class get/set/static
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS/OOP fundamentals.
+Arrow functions, ES6 class get/set/static.
 
 ## Contents
 

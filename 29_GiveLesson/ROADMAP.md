@@ -1,10 +1,10 @@
-# Lesson 29
+# Lesson 29 — Getter/setter, __proto__, prototype
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS/OOP fundamentals.
+Getter/setter, `__proto__`, prototype.
 
 ## Contents
 

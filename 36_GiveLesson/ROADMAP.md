@@ -1,10 +1,10 @@
-# Lesson 36
+# Lesson 36 — insertAdjacentHTML, Event Loop, Promise
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+insertAdjacentHTML, Event Loop, Promise.
 
 ## Contents
 

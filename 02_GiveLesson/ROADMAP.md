@@ -1,11 +1,14 @@
-# Lesson 02
+# Lesson 02 — Logic operators, variables
 
 [← Back to Main roadmap](../ROADMAP.md)
 
 ## Topics
 
-JS fundamentals.
+Logic operators, variables.
 
 ## Contents
 
-Open this folder for HTML/JS and other lesson materials.
+- `index2.html`
+- `katarman_hertakanutyuny.html`
+- `logikayi_operatorner.html`
+- `popoxakanneri_texerov_poxely.html`

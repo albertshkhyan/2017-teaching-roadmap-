@@ -8,4 +8,8 @@ Intro to JavaScript, basics, operators, `typeof`, variables.
 
 ## Contents
 
-Open this folder for HTML/JS and other lesson materials.
+- `0_What_is_JavaScript.html`
+- `3_typeof_varable.html`
+- `4_Basic_operators_in_js.html`
+- `experiment.html`
+- `Study_images/`

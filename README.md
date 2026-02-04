@@ -12,7 +12,7 @@ Use the **main roadmap** to jump between lessons (01–38), help & reference, an
 
 ## Structure
 
-- **`01_GiveLesson` … `38_GiveLesson`** — Numbered lesson folders (HTML/JS demos, tasks, homework). Each has a [ROADMAP](ROADMAP.md) for lesson-specific navigation.
+- **`01_GiveLesson` … `38_GiveLesson`** — Numbered lesson folders (HTML/JS demos, tasks, homework). Each folder has a [ROADMAP](01_GiveLesson/ROADMAP.md) for lesson-specific navigation; see [Main roadmap](ROADMAP.md) for the full index.
 - **`About_My_Lessons_HELP_FILES`** — Reference: BOM, DOM, OOP, ES6, RegExp, difficult tasks, JS exercises.
 - **`ReadyWorksByJS`** — Ready-made examples: clocks, sliders, tables, carousels, calculators, etc.
 - **`Cool_mini_projects_by_js`** — Mini projects: sliders, puzzle, zoom, loto, search.
@@ -25,4 +25,4 @@ Open any `.html` file in a browser (local file or via a simple static server). N
 
 ## License
 
-Educational use. See repo for details.
+[MIT](LICENSE) — educational use. See [CONTRIBUTING](CONTRIBUTING.md) to suggest fixes or improvements.
