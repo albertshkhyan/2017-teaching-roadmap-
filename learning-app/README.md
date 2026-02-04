@@ -24,10 +24,18 @@ Open http://localhost:5173
 - `npm run build` — production build to `dist/`
 - `npm run preview` — preview production build locally
 
-## Roadmap (phases)
+## Features (Phase 2 done)
 
-1. **Phase 2:** Lesson navigator (mirror ROADMAP 01–38, Help, Ready works), lesson view, “Run demo” for existing HTML, progress (localStorage).
-2. **Phase 3:** Code playground, quizzes per lesson.
-3. **Phase 4:** Search, bookmarks, optional PWA.
+- **Lesson navigator** — Sidebar with Core lessons (01–38), Help & reference, Ready works, Other. Click to open lesson view.
+- **Lesson view** — Title, topics, “Open folder”, “Run demo”, “Lesson ROADMAP” links (open in new tab).
+- **Progress** — Last viewed lesson and completed state stored in `localStorage`; checkmark toggles “completed”.
+- **Responsive** — Sidebar collapses on mobile; hamburger opens/closes.
 
-Content and demos link to the parent repo (`../01_GiveLesson`, `../ReadyWorksByJS`, etc.).
+## Open / Run demo links
+
+Links point to the parent repo (`../01_GiveLesson`, etc.). For them to work in the browser, serve the **repo root** (e.g. `npx serve .` from repo root and open `/learning-app/`, or deploy the whole repo to GitHub Pages).
+
+## Roadmap (next)
+
+1. **Phase 3:** Code playground, quizzes per lesson.
+2. **Phase 4:** Search, bookmarks, optional PWA.
