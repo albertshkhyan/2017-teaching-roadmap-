@@ -1,24 +1,31 @@
 import './style.css'
 import { COURSE, LESSONS_BASE } from './data/course.js'
+import { QUIZZES, PLAYGROUND_STARTER } from './data/quizzes.js'
 
 const STORAGE_KEY = 'learning-app-progress'
 
 function getProgress() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return { completedIds: [], lastLessonId: null }
+    if (!raw) return { completedIds: [], lastLessonId: null, quizPassed: {} }
     const data = JSON.parse(raw)
     return {
       completedIds: Array.isArray(data.completedIds) ? data.completedIds : [],
       lastLessonId: data.lastLessonId ?? null,
+      quizPassed: data.quizPassed && typeof data.quizPassed === 'object' ? data.quizPassed : {},
     }
   } catch {
-    return { completedIds: [], lastLessonId: null }
+    return { completedIds: [], lastLessonId: null, quizPassed: {} }
   }
 }
 
-function setProgress(completedIds, lastLessonId) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ completedIds, lastLessonId }))
+function setProgress(completedIds, lastLessonId, quizPassed) {
+  const current = getProgress()
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    completedIds: completedIds ?? current.completedIds,
+    lastLessonId: lastLessonId ?? current.lastLessonId,
+    quizPassed: quizPassed ?? current.quizPassed,
+  }))
 }
 
 function toggleCompleted(id, completedIds) {
@@ -77,6 +84,51 @@ function renderLessonView(selected, progress) {
   }
   const done = progress.completedIds.includes(selected.id)
   const url = lessonUrl(selected.path)
+  const quiz = QUIZZES[selected.id]
+  const quizPassed = progress.quizPassed?.[selected.id]
+
+  let playgroundHtml = `
+    <section class="mt-8 border border-gray-200 rounded-lg overflow-hidden bg-white">
+      <h2 class="px-4 py-2 bg-gray-50 border-b border-gray-200 font-semibold text-gray-800">Code playground</h2>
+      <div class="p-4">
+        <textarea id="playground-code" class="w-full h-40 font-mono text-sm p-3 border border-gray-200 rounded resize-y focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" spellcheck="false">${escapeHtml(PLAYGROUND_STARTER)}</textarea>
+        <div class="flex gap-2 mt-2">
+          <button type="button" id="playground-run" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm">Run</button>
+        </div>
+        <iframe id="playground-frame" title="Playground output" class="mt-3 w-full h-48 border border-gray-200 rounded bg-white" sandbox="allow-scripts"></iframe>
+      </div>
+    </section>
+  `
+
+  let quizHtml = ''
+  if (quiz) {
+    const passedBadge = quizPassed ? '<span class="ml-2 px-2 py-0.5 rounded text-sm bg-green-100 text-green-800">Passed</span>' : ''
+    quizHtml = `
+      <section class="mt-8 border border-gray-200 rounded-lg overflow-hidden bg-white">
+        <h2 class="px-4 py-2 bg-gray-50 border-b border-gray-200 font-semibold text-gray-800">Quiz ${passedBadge}</h2>
+        <form id="quiz-form" class="p-4 space-y-4">
+          ${quiz.questions.map((qu, i) => `
+            <div>
+              <p class="font-medium text-gray-800 mb-2">${i + 1}. ${escapeHtml(qu.q)}</p>
+              <div class="space-y-1 pl-2">
+                ${qu.options.map((opt, j) => `
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="q${i}" value="${j}" class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                    <span>${escapeHtml(opt)}</span>
+                  </label>
+                `).join('')}
+              </div>
+            </div>
+          `).join('')}
+          <div class="flex items-center gap-3">
+            <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm">Submit</button>
+            <span id="quiz-result" class="text-sm text-gray-600"></span>
+          </div>
+        </form>
+      </section>
+    `
+  }
+
   return `
     <div class="p-6 max-w-3xl">
       <div class="flex items-start justify-between gap-4 flex-wrap">
@@ -98,6 +150,8 @@ function renderLessonView(selected, progress) {
         </a>
       </div>
       <p class="text-sm text-gray-500 mt-4">Links open the lesson folder or first file in a new tab. For Run demo to work, serve the repo from its root (e.g. GitHub Pages or <code class="bg-gray-100 px-1 rounded">npx serve .</code>).</p>
+      ${playgroundHtml}
+      ${quizHtml}
     </div>
   `
 }
@@ -156,11 +210,46 @@ function render(progress, selected) {
       e.stopPropagation()
       const id = el.dataset.id
       const completedIds = toggleCompleted(id, progress.completedIds)
-      setProgress(completedIds, progress.lastLessonId)
+      setProgress(completedIds, progress.lastLessonId, undefined)
       progress = { ...progress, completedIds }
       render(progress, selected)
     })
   })
+
+  // Playground: Run → set iframe srcdoc
+  const runBtn = document.getElementById('playground-run')
+  const codeEl = document.getElementById('playground-code')
+  const frameEl = document.getElementById('playground-frame')
+  if (runBtn && codeEl && frameEl) {
+    runBtn.addEventListener('click', () => {
+      frameEl.srcdoc = codeEl.value || ''
+    })
+  }
+
+  // Quiz: Submit → score, show result, save passed if score >= 2/3
+  const quizForm = document.getElementById('quiz-form')
+  const quizResult = document.getElementById('quiz-result')
+  if (quizForm && quizResult && selected && QUIZZES[selected.id]) {
+    const quiz = QUIZZES[selected.id]
+    quizForm.addEventListener('submit', (e) => {
+      e.preventDefault()
+      let correct = 0
+      quiz.questions.forEach((qu, i) => {
+        const input = quizForm.querySelector(`input[name="q${i}"]:checked`)
+        if (input && Number(input.value) === qu.correctIndex) correct++
+      })
+      const total = quiz.questions.length
+      const passed = correct >= Math.ceil(total * 2 / 3)
+      quizResult.textContent = `Score: ${correct}/${total}${passed ? ' — Passed!' : ''}`
+      quizResult.className = `text-sm ${passed ? 'text-green-600 font-medium' : 'text-gray-600'}`
+      if (passed) {
+        const newQuizPassed = { ...progress.quizPassed, [selected.id]: true }
+        setProgress(progress.completedIds, progress.lastLessonId, newQuizPassed)
+        progress = { ...progress, quizPassed: newQuizPassed }
+        render(progress, selected)
+      }
+    })
+  }
 }
 
 let progress = getProgress()
