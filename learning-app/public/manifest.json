@@ -1,0 +1,17 @@
+{
+  "name": "2017 Educator Lessons — Learning Tool",
+  "short_name": "Educator Lessons",
+  "description": "Interactive learning web app for 2017 Educator Lessons (JavaScript, DOM, OOP, ES6).",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -7,25 +7,53 @@ const STORAGE_KEY = 'learning-app-progress'
 function getProgress() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return { completedIds: [], lastLessonId: null, quizPassed: {} }
+    if (!raw) return { completedIds: [], lastLessonId: null, quizPassed: {}, bookmarks: [] }
     const data = JSON.parse(raw)
     return {
       completedIds: Array.isArray(data.completedIds) ? data.completedIds : [],
       lastLessonId: data.lastLessonId ?? null,
       quizPassed: data.quizPassed && typeof data.quizPassed === 'object' ? data.quizPassed : {},
+      bookmarks: Array.isArray(data.bookmarks) ? data.bookmarks : [],
     }
   } catch {
-    return { completedIds: [], lastLessonId: null, quizPassed: {} }
+    return { completedIds: [], lastLessonId: null, quizPassed: {}, bookmarks: [] }
   }
 }
 
-function setProgress(completedIds, lastLessonId, quizPassed) {
+function setProgress(completedIds, lastLessonId, quizPassed, bookmarks) {
   const current = getProgress()
   localStorage.setItem(STORAGE_KEY, JSON.stringify({
     completedIds: completedIds ?? current.completedIds,
     lastLessonId: lastLessonId ?? current.lastLessonId,
     quizPassed: quizPassed ?? current.quizPassed,
+    bookmarks: bookmarks ?? current.bookmarks,
   }))
+}
+
+function getAllCourseItems() {
+  const out = []
+  for (const section of [COURSE.core, COURSE.help, COURSE.ready, COURSE.other]) {
+    for (const item of section.items) out.push(item)
+  }
+  return out
+}
+
+function searchCourseItems(query) {
+  const q = query.trim().toLowerCase()
+  if (!q) return []
+  const items = getAllCourseItems()
+  return items.filter((item) =>
+    item.id.toLowerCase().includes(q) ||
+    item.title.toLowerCase().includes(q) ||
+    item.topics.toLowerCase().includes(q)
+  )
+}
+
+function toggleBookmark(id, bookmarks) {
+  const set = new Set(bookmarks)
+  if (set.has(id)) set.delete(id)
+  else set.add(id)
+  return [...set]
 }
 
 function toggleCompleted(id, completedIds) {
@@ -40,28 +68,67 @@ function lessonUrl(path) {
   return base ? `${base}/${path}` : path
 }
 
-function renderSidebar(progress, onSelect, onToggleComplete) {
-  const sections = [
-    { key: 'core', data: COURSE.core },
-    { key: 'help', data: COURSE.help },
-    { key: 'ready', data: COURSE.ready },
-    { key: 'other', data: COURSE.other },
-  ]
+function renderSidebar(progress, searchQuery) {
+  const q = (searchQuery || '').trim()
+  const showSearchResults = q.length > 0
+  const results = showSearchResults ? searchCourseItems(q) : []
+
   let html = '<nav class="flex flex-col gap-4 overflow-y-auto">'
-  for (const { key, data } of sections) {
-    html += `<div><h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">${escapeHtml(data.title)}</h2><ul class="space-y-0.5">`
-    for (const item of data.items) {
-      const done = progress.completedIds.includes(item.id)
-      const active = progress.lastLessonId === item.id
-      html += `<li>
-        <button type="button" data-id="${escapeHtml(item.id)}" data-path="${escapeHtml(item.path)}" data-topics="${escapeHtml(item.topics)}" data-title="${escapeHtml(item.title)}"
-          class="lesson-btn w-full text-left px-3 py-2 rounded-lg text-sm transition flex items-center gap-2 ${active ? 'bg-indigo-100 text-indigo-900' : 'text-gray-700 hover:bg-gray-100'}">
-          <span class="complete-check w-5 h-5 rounded border flex-shrink-0 flex items-center justify-center ${done ? 'bg-green-500 border-green-500 text-white' : 'border-gray-300'}" data-id="${escapeHtml(item.id)}" title="${done ? 'Mark incomplete' : 'Mark complete'}">${done ? '✓' : ''}</span>
-          <span class="truncate">${escapeHtml(item.title)}</span>
-        </button>
-      </li>`
+
+  if (showSearchResults) {
+    html += '<div><h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Search results</h2><ul class="space-y-0.5">'
+    if (results.length === 0) {
+      html += '<li class="px-3 py-2 text-sm text-gray-500">No matches</li>'
+    } else {
+      for (const item of results) {
+        const active = progress.lastLessonId === item.id
+        html += `<li>
+          <button type="button" data-id="${escapeHtml(item.id)}" data-path="${escapeHtml(item.path)}" data-topics="${escapeHtml(item.topics)}" data-title="${escapeHtml(item.title)}"
+            class="lesson-btn w-full text-left px-3 py-2 rounded-lg text-sm transition flex items-center gap-2 ${active ? 'bg-indigo-100 text-indigo-900' : 'text-gray-700 hover:bg-gray-100'}">
+            <span class="truncate">${escapeHtml(item.title)}</span>
+          </button>
+        </li>`
+      }
     }
     html += '</ul></div>'
+  } else {
+    if (progress.bookmarks && progress.bookmarks.length > 0) {
+      const items = getAllCourseItems()
+      html += '<div><h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Bookmarks</h2><ul class="space-y-0.5">'
+      for (const id of progress.bookmarks) {
+        const item = items.find((i) => i.id === id)
+        if (!item) continue
+        const active = progress.lastLessonId === item.id
+        html += `<li>
+          <button type="button" data-id="${escapeHtml(item.id)}" data-path="${escapeHtml(item.path)}" data-topics="${escapeHtml(item.topics)}" data-title="${escapeHtml(item.title)}"
+            class="lesson-btn w-full text-left px-3 py-2 rounded-lg text-sm transition flex items-center gap-2 ${active ? 'bg-indigo-100 text-indigo-900' : 'text-gray-700 hover:bg-gray-100'}">
+            <span class="truncate">${escapeHtml(item.title)}</span>
+          </button>
+        </li>`
+      }
+      html += '</ul></div>'
+    }
+    const sections = [
+      { key: 'core', data: COURSE.core },
+      { key: 'help', data: COURSE.help },
+      { key: 'ready', data: COURSE.ready },
+      { key: 'other', data: COURSE.other },
+    ]
+    for (const { data } of sections) {
+      html += `<div><h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">${escapeHtml(data.title)}</h2><ul class="space-y-0.5">`
+      for (const item of data.items) {
+        const done = progress.completedIds.includes(item.id)
+        const active = progress.lastLessonId === item.id
+        html += `<li>
+          <button type="button" data-id="${escapeHtml(item.id)}" data-path="${escapeHtml(item.path)}" data-topics="${escapeHtml(item.topics)}" data-title="${escapeHtml(item.title)}"
+            class="lesson-btn w-full text-left px-3 py-2 rounded-lg text-sm transition flex items-center gap-2 ${active ? 'bg-indigo-100 text-indigo-900' : 'text-gray-700 hover:bg-gray-100'}">
+            <span class="complete-check w-5 h-5 rounded border flex-shrink-0 flex items-center justify-center ${done ? 'bg-green-500 border-green-500 text-white' : 'border-gray-300'}" data-id="${escapeHtml(item.id)}" title="${done ? 'Mark incomplete' : 'Mark complete'}">${done ? '✓' : ''}</span>
+            <span class="truncate">${escapeHtml(item.title)}</span>
+          </button>
+        </li>`
+      }
+      html += '</ul></div>'
+    }
   }
   html += '</nav>'
   return html
@@ -148,6 +215,9 @@ function renderLessonView(selected, progress) {
         <a href="${escapeHtml(url + '/ROADMAP.md')}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm">
           Lesson ROADMAP
         </a>
+        <button type="button" id="bookmark-toggle" class="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm" title="${progress.bookmarks?.includes(selected.id) ? 'Remove from bookmarks' : 'Add to bookmarks'}">
+          ${progress.bookmarks?.includes(selected.id) ? '★ Remove from bookmarks' : '☆ Add to bookmarks'}
+        </button>
       </div>
       <p class="text-sm text-gray-500 mt-4">Links open the lesson folder or first file in a new tab. For Run demo to work, serve the repo from its root (e.g. GitHub Pages or <code class="bg-gray-100 px-1 rounded">npx serve .</code>).</p>
       ${playgroundHtml}
@@ -168,7 +238,8 @@ function render(progress, selected) {
           </div>
           <button type="button" id="sidebar-close" class="md:hidden p-2 rounded hover:bg-gray-100" aria-label="Close menu">×</button>
         </div>
-        ${renderSidebar(progress, null, null)}
+        <input type="search" id="search-input" placeholder="Search by number, title, topic…" value="${escapeHtml(searchQuery)}" class="w-full px-3 py-2 mb-3 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
+        <div id="sidebar-nav">${renderSidebar(progress, searchQuery)}</div>
       </aside>
       <div class="flex-1 flex flex-col min-w-0">
         <header class="flex-shrink-0 flex items-center gap-2 p-2 bg-white border-b border-gray-200 md:hidden">
@@ -189,32 +260,59 @@ function render(progress, selected) {
     document.getElementById('sidebar')?.classList.remove('-translate-x-full')
   })
 
-  // Click lesson → show view + save last
-  app.querySelectorAll('.lesson-btn').forEach((btn) => {
+  const searchInput = document.getElementById('search-input')
+  const sidebarNav = document.getElementById('sidebar-nav')
+  if (searchInput && sidebarNav) {
+    searchInput.addEventListener('input', () => {
+      searchQuery = searchInput.value
+      sidebarNav.innerHTML = renderSidebar(progress, searchQuery)
+      bindSidebarNav(sidebarNav)
+    })
+  }
+
+  bindSidebarNav(sidebarNav || app)
+
+  function bindSidebarNav(container) {
+    if (!container) return
+    // Click lesson → show view + save last
+    container.querySelectorAll('.lesson-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const id = btn.dataset.id
       const path = btn.dataset.path
       const topics = btn.dataset.topics
       const title = btn.dataset.title
-      setProgress(progress.completedIds, id)
+      setProgress(progress.completedIds, id, undefined, undefined)
       progress = { ...progress, lastLessonId: id }
       selected = { id, path, topics, title }
+      searchQuery = ''
       document.getElementById('sidebar')?.classList.add('-translate-x-full')
       render(progress, selected)
     })
   })
 
-  // Click complete check → toggle (stop propagation so lesson-btn doesn't fire)
-  app.querySelectorAll('.complete-check').forEach((el) => {
+    // Click complete check → toggle (stop propagation so lesson-btn doesn't fire)
+    container.querySelectorAll('.complete-check').forEach((el) => {
     el.addEventListener('click', (e) => {
       e.stopPropagation()
       const id = el.dataset.id
       const completedIds = toggleCompleted(id, progress.completedIds)
-      setProgress(completedIds, progress.lastLessonId, undefined)
+      setProgress(completedIds, progress.lastLessonId, undefined, undefined)
       progress = { ...progress, completedIds }
       render(progress, selected)
     })
   })
+  }
+
+  // Bookmark toggle
+  const bookmarkBtn = document.getElementById('bookmark-toggle')
+  if (bookmarkBtn && selected) {
+    bookmarkBtn.addEventListener('click', () => {
+      const bookmarks = toggleBookmark(selected.id, progress.bookmarks)
+      setProgress(progress.completedIds, progress.lastLessonId, undefined, bookmarks)
+      progress = { ...progress, bookmarks }
+      render(progress, selected)
+    })
+  }
 
   // Playground: Run → set iframe srcdoc
   const runBtn = document.getElementById('playground-run')
@@ -244,7 +342,7 @@ function render(progress, selected) {
       quizResult.className = `text-sm ${passed ? 'text-green-600 font-medium' : 'text-gray-600'}`
       if (passed) {
         const newQuizPassed = { ...progress.quizPassed, [selected.id]: true }
-        setProgress(progress.completedIds, progress.lastLessonId, newQuizPassed)
+        setProgress(progress.completedIds, progress.lastLessonId, newQuizPassed, undefined)
         progress = { ...progress, quizPassed: newQuizPassed }
         render(progress, selected)
       }
@@ -252,6 +350,7 @@ function render(progress, selected) {
   }
 }
 
+let searchQuery = ''
 let progress = getProgress()
 let selected = null
 if (progress.lastLessonId) {
@@ -263,4 +362,12 @@ if (progress.lastLessonId) {
     }
   }
 }
+
+if ('serviceWorker' in navigator) {
+  const base = typeof import.meta.env?.BASE_URL === 'string' ? import.meta.env.BASE_URL : '/'
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(base + 'sw.js').catch(() => {})
+  })
+}
+
 render(progress, selected)
