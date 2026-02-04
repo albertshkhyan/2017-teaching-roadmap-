@@ -12,6 +12,7 @@ Use the **main roadmap** to jump between lessons (01–38), help & reference, an
 
 ## Structure
 
+- **`learning-app/`** — Interactive learning web tool (Vite + Tailwind). [Setup & run](learning-app/README.md).
 - **`01_GiveLesson` … `38_GiveLesson`** — Numbered lesson folders (HTML/JS demos, tasks, homework). Each folder has a [ROADMAP](01_GiveLesson/ROADMAP.md) for lesson-specific navigation; see [Main roadmap](ROADMAP.md) for the full index.
 - **`About_My_Lessons_HELP_FILES`** — Reference: BOM, DOM, OOP, ES6, RegExp, difficult tasks, JS exercises.
 - **`ReadyWorksByJS`** — Ready-made examples: clocks, sliders, tables, carousels, calculators, etc.
