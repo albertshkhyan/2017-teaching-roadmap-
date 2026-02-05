@@ -18,3 +18,21 @@ export const sunSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><circle cx="12"
 
 /** Moon (switch to dark mode). */
 export const moonSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`
+
+/** Circle outline (lesson not completed). */
+export const circleSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><circle cx="12" cy="12" r="10"/></svg>`
+
+/** Circle with check (lesson completed). */
+export const checkCircleSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`
+
+/** Clock (in progress). */
+export const clockSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`
+
+/** Grip horizontal (resize handle affordance). */
+export const gripHorizontalSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0 pointer-events-none"><path d="M6 8h12M6 12h12M6 16h12"/></svg>`
+
+/** Check (correct answer). */
+export const checkSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>`
+
+/** Cross / X (wrong answer). */
+export const crossSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`

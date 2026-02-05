@@ -26,5 +26,6 @@ export function mountPlaygroundEditor(container, initialCode) {
   return {
     getValue: () => editor.getValue(),
     destroy: () => editor.destroy(),
+    resize: () => editor.resize(),
   }
 }

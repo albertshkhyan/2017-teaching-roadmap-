@@ -2,13 +2,22 @@ import './style.css'
 import { COURSE, LESSONS_BASE } from './data/course.js'
 import { QUIZZES, PLAYGROUND_STARTER } from './data/quizzes.js'
 import { mountPlaygroundEditor } from './playground-editor.js'
-import { chevronRightSvg, searchSvg, xSvg, sunSvg, moonSvg } from './icons.js'
+import { chevronRightSvg, searchSvg, xSvg, sunSvg, moonSvg, circleSvg, checkCircleSvg, clockSvg, gripHorizontalSvg, checkSvg, crossSvg } from './icons.js'
 import { animate } from 'motion'
 
 const STORAGE_KEY = 'learning-app-progress'
 const PLAYGROUND_STORAGE_KEY = 'learning-app-playground-code'
+const PLAYGROUND_FRAME_HEIGHT_KEY = 'learning-app-playground-frame-height'
 const SIDEBAR_COLLAPSED_KEY = 'learning-app-sidebar-collapsed'
 const THEME_KEY = 'learning-app-theme'
+
+const PLAYGROUND_FRAME_HEIGHT_MIN = 128
+const PLAYGROUND_FRAME_HEIGHT_MAX = 600
+const PLAYGROUND_FRAME_HEIGHT_DEFAULT = 256
+const PLAYGROUND_EDITOR_HEIGHT_KEY = 'learning-app-playground-editor-height'
+const PLAYGROUND_EDITOR_HEIGHT_MIN = 120
+const PLAYGROUND_EDITOR_HEIGHT_MAX = 500
+const PLAYGROUND_EDITOR_HEIGHT_DEFAULT = 160
 
 /** Ace playground instance; destroyed before re-render. */
 let playgroundEditorRef = null
@@ -75,6 +84,36 @@ function getPlaygroundCode() {
 function setPlaygroundCode(code) {
   try {
     if (typeof code === 'string') localStorage.setItem(PLAYGROUND_STORAGE_KEY, code)
+  } catch {}
+}
+
+function getPlaygroundFrameHeight() {
+  try {
+    const n = parseInt(localStorage.getItem(PLAYGROUND_FRAME_HEIGHT_KEY), 10)
+    if (Number.isFinite(n) && n >= PLAYGROUND_FRAME_HEIGHT_MIN && n <= PLAYGROUND_FRAME_HEIGHT_MAX) return n
+  } catch {}
+  return PLAYGROUND_FRAME_HEIGHT_DEFAULT
+}
+
+function setPlaygroundFrameHeight(px) {
+  try {
+    const n = Math.round(Number(px))
+    if (Number.isFinite(n)) localStorage.setItem(PLAYGROUND_FRAME_HEIGHT_KEY, String(n))
+  } catch {}
+}
+
+function getPlaygroundEditorHeight() {
+  try {
+    const n = parseInt(localStorage.getItem(PLAYGROUND_EDITOR_HEIGHT_KEY), 10)
+    if (Number.isFinite(n) && n >= PLAYGROUND_EDITOR_HEIGHT_MIN && n <= PLAYGROUND_EDITOR_HEIGHT_MAX) return n
+  } catch {}
+  return PLAYGROUND_EDITOR_HEIGHT_DEFAULT
+}
+
+function setPlaygroundEditorHeight(px) {
+  try {
+    const n = Math.round(Number(px))
+    if (Number.isFinite(n)) localStorage.setItem(PLAYGROUND_EDITOR_HEIGHT_KEY, String(n))
   } catch {}
 }
 
@@ -219,7 +258,7 @@ function renderSidebar(progress, searchQuery, collapsedSections = {}) {
         html += `<li>
           <button type="button" data-id="${escapeHtml(item.id)}" data-path="${escapeHtml(item.path)}" data-topics="${escapeHtml(item.topics)}" data-title="${escapeHtml(item.title)}"
             class="${LESSON_BTN_BASE} ${active ? 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-900 dark:text-indigo-200 border-l-2 border-indigo-600 dark:border-indigo-500' : ''} ${done ? 'opacity-90' : ''}">
-            <span class="complete-check w-5 h-5 rounded border flex-shrink-0 flex items-center justify-center ${done ? 'bg-green-500 border-green-500 text-white' : 'border-gray-300 dark:border-gray-600'}" data-id="${escapeHtml(item.id)}" title="${done ? 'Mark incomplete' : 'Mark complete'}">${done ? '✓' : ''}</span>
+            <span class="complete-check w-5 h-5 rounded flex-shrink-0 flex items-center justify-center ${done ? 'bg-green-500 text-white' : 'text-gray-400 dark:text-gray-500'}" data-id="${escapeHtml(item.id)}" title="${done ? 'Mark incomplete' : 'Mark complete'}">${done ? checkCircleSvg : circleSvg}</span>
             ${numberBadge}
             ${isBookmarked ? '<span class="text-amber-500 dark:text-amber-400 flex-shrink-0 text-xs" aria-hidden="true">★</span>' : ''}
             <span class="truncate ${done ? 'text-gray-500 dark:text-gray-400' : ''}">${escapeHtml(item.title)}</span>
@@ -255,13 +294,32 @@ function renderLessonView(selected, progress) {
 
   let playgroundHtml = `
     <section class="mt-8 border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-gray-800">
-      <h2 class="px-4 py-2 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600 font-semibold text-gray-800 dark:text-gray-200">Code playground</h2>
+      <div class="px-4 py-2 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
+        <h2 class="font-semibold text-gray-800 dark:text-gray-200">Code playground</h2>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Edit HTML and run it below.</p>
+      </div>
       <div class="p-4">
-        <div id="playground-editor" class="w-full min-h-[10rem] border border-gray-200 dark:border-gray-600 rounded overflow-hidden focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500"></div>
-        <div class="flex gap-2 mt-2">
+        <div id="playground-editor-wrap" class="flex flex-col">
+          <div id="playground-editor" class="w-full min-h-[7.5rem] border border-gray-200 dark:border-gray-600 rounded-t overflow-hidden focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500"></div>
+          <div id="playground-editor-resize-handle" class="flex-shrink-0 h-2 flex items-center justify-center cursor-ns-resize select-none bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 border-x border-b border-gray-200 dark:border-gray-600 rounded-b text-gray-400 dark:text-gray-500" title="Drag to resize editor" aria-label="Resize editor">
+            ${gripHorizontalSvg}
+          </div>
+        </div>
+        <div class="flex gap-2 mt-3">
           <button type="button" id="playground-run" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm">Run</button>
         </div>
-        <iframe id="playground-frame" title="Playground output" class="mt-3 w-full h-48 border border-gray-200 dark:border-gray-600 rounded bg-white dark:bg-gray-900" sandbox="allow-scripts"></iframe>
+        <div id="playground-output-wrap" class="mt-3 flex flex-col">
+          <div class="relative min-h-[8rem]">
+            <div id="playground-output-empty" class="absolute inset-0 flex items-center justify-center rounded-t border border-b-0 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/80 text-sm text-gray-500 dark:text-gray-400 pointer-events-none">
+              Click Run to see output
+            </div>
+            <iframe id="playground-frame" title="Playground output" class="w-full min-h-[8rem] border border-b-0 border-gray-200 dark:border-gray-600 rounded-t bg-white dark:bg-gray-900" sandbox="allow-scripts"></iframe>
+          </div>
+          <div id="playground-resize-handle" class="flex-shrink-0 h-2 flex items-center justify-center gap-1 cursor-ns-resize select-none bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-600 rounded-b text-gray-400 dark:text-gray-500" title="Drag to resize output" aria-label="Resize output">
+            ${gripHorizontalSvg}
+          </div>
+          <div id="playground-output-error" class="hidden mt-2 text-sm text-red-600 dark:text-red-400" role="alert"></div>
+        </div>
       </div>
     </section>
   `
@@ -274,21 +332,25 @@ function renderLessonView(selected, progress) {
         <h2 class="px-4 py-2 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600 font-semibold text-gray-800 dark:text-gray-200">Quiz ${passedBadge}</h2>
         <form id="quiz-form" class="p-4 space-y-4">
           ${quiz.questions.map((qu, i) => `
-            <div>
+            <div class="quiz-question border-b border-gray-200 dark:border-gray-600 pb-4 last:border-0 last:pb-0" data-question-index="${i}">
               <p class="font-medium text-gray-800 dark:text-gray-200 mb-2">${i + 1}. ${escapeHtml(qu.q)}</p>
               <div class="space-y-1 pl-2">
                 ${qu.options.map((opt, j) => `
-                  <label class="flex items-center gap-2 cursor-pointer text-gray-700 dark:text-gray-300">
+                  <label class="quiz-option-label flex items-center gap-2 cursor-pointer text-gray-700 dark:text-gray-300 rounded px-2 py-1 -mx-2" data-question-index="${i}" data-option-index="${j}">
                     <input type="radio" name="q${i}" value="${j}" class="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500" />
                     <span>${escapeHtml(opt)}</span>
                   </label>
                 `).join('')}
               </div>
+              <div class="quiz-question-feedback mt-1 text-sm hidden" data-question-index="${i}" role="status"></div>
             </div>
           `).join('')}
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3 pt-2">
             <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm">Submit</button>
-            <span id="quiz-result" class="text-sm text-gray-600 dark:text-gray-400"></span>
+            <div id="quiz-result-area" class="flex flex-wrap items-center gap-3">
+              <div id="quiz-result" class="text-sm text-gray-600 dark:text-gray-400" role="status"></div>
+              <button type="button" id="quiz-try-again" class="hidden px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition text-sm text-gray-700 dark:text-gray-300">Try again</button>
+            </div>
           </div>
         </form>
       </section>
@@ -302,7 +364,7 @@ function renderLessonView(selected, progress) {
           <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">${escapeHtml(selected.title)}</h1>
           <p class="text-gray-600 dark:text-gray-400 mt-1">${escapeHtml(selected.topics)}</p>
         </div>
-        <span class="px-2 py-1 rounded text-sm ${done ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}">${done ? 'Completed' : 'In progress'}</span>
+        <span id="lesson-status-badge" class="lesson-status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-sm ${done ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}">${done ? checkCircleSvg + ' Completed' : clockSvg + ' In progress'}</span>
       </div>
       <div class="mt-6 flex flex-wrap gap-3">
         <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
@@ -377,6 +439,14 @@ function render(progress, selected) {
     lessonViewWrap.style.transform = 'translateY(8px)'
     requestAnimationFrame(() => {
       animate(lessonViewWrap, { opacity: 1, y: 0 }, { duration: 0.2, ease: 'easeOut' })
+    })
+  }
+  const statusBadge = document.getElementById('lesson-status-badge')
+  if (statusBadge) {
+    statusBadge.style.opacity = '0'
+    statusBadge.style.transform = 'scale(0.98)'
+    requestAnimationFrame(() => {
+      animate(statusBadge, { opacity: 1, scale: 1 }, { duration: 0.2, delay: 0.08, ease: 'easeOut' })
     })
   }
 
@@ -497,17 +567,114 @@ function render(progress, selected) {
     })
   }
 
-  // Playground: mount after layout (so container has size), Run → set iframe + persist
+  // Playground: mount after layout (so container has size), Run → set iframe + persist, resize handles
   const runBtn = document.getElementById('playground-run')
   const editorContainer = document.getElementById('playground-editor')
+  const editorResizeHandle = document.getElementById('playground-editor-resize-handle')
   const frameEl = document.getElementById('playground-frame')
+  const resizeHandle = document.getElementById('playground-resize-handle')
+  const outputEmpty = document.getElementById('playground-output-empty')
+  const outputError = document.getElementById('playground-output-error')
   if (runBtn && editorContainer && frameEl) {
     const initialCode = getPlaygroundCode()
+    const editorHeight = getPlaygroundEditorHeight()
+    editorContainer.style.height = `${editorHeight}px`
+    const frameHeight = getPlaygroundFrameHeight()
+    frameEl.style.height = `${frameHeight}px`
     runBtn.addEventListener('click', () => {
       const code = playgroundEditorRef?.getValue() ?? ''
-      frameEl.srcdoc = code
-      setPlaygroundCode(code)
+      outputError?.classList.add('hidden')
+      try {
+        frameEl.srcdoc = code
+        setPlaygroundCode(code)
+        outputEmpty?.classList.add('hidden')
+      } catch (e) {
+        if (outputError) {
+          outputError.textContent = 'Could not run code.'
+          outputError.classList.remove('hidden')
+        }
+      }
     })
+    if (editorResizeHandle) {
+      editorResizeHandle.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return
+        e.preventDefault()
+        const startY = e.clientY
+        const startHeight = editorContainer.getBoundingClientRect().height
+        const bodyCursor = document.body.style.cursor
+        const bodySelect = document.body.style.userSelect
+        document.body.style.cursor = 'ns-resize'
+        document.body.style.userSelect = 'none'
+        let rafId = null
+        let pendingH = null
+        const apply = () => {
+          rafId = null
+          if (pendingH != null) {
+            editorContainer.style.height = `${pendingH}px`
+            playgroundEditorRef?.resize?.()
+            pendingH = null
+          }
+        }
+        const onMove = (e2) => {
+          const dy = e2.clientY - startY
+          let h = Math.round(startHeight + dy)
+          h = Math.max(PLAYGROUND_EDITOR_HEIGHT_MIN, Math.min(PLAYGROUND_EDITOR_HEIGHT_MAX, h))
+          pendingH = h
+          if (rafId == null) rafId = requestAnimationFrame(apply)
+        }
+        const onUp = () => {
+          document.removeEventListener('mousemove', onMove)
+          document.removeEventListener('mouseup', onUp)
+          document.body.style.cursor = bodyCursor
+          document.body.style.userSelect = bodySelect
+          if (rafId != null) cancelAnimationFrame(rafId)
+          apply()
+          setPlaygroundEditorHeight(editorContainer.getBoundingClientRect().height)
+          playgroundEditorRef?.resize?.()
+        }
+        document.addEventListener('mousemove', onMove)
+        document.addEventListener('mouseup', onUp)
+      })
+    }
+    if (resizeHandle) {
+      resizeHandle.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return
+        e.preventDefault()
+        const startY = e.clientY
+        const startHeight = frameEl.getBoundingClientRect().height
+        const bodyCursor = document.body.style.cursor
+        const bodySelect = document.body.style.userSelect
+        document.body.style.cursor = 'ns-resize'
+        document.body.style.userSelect = 'none'
+        let rafId = null
+        let pendingH = null
+        const apply = () => {
+          rafId = null
+          if (pendingH != null) {
+            frameEl.style.height = `${pendingH}px`
+            pendingH = null
+          }
+        }
+        const onMove = (e2) => {
+          const dy = e2.clientY - startY
+          let h = Math.round(startHeight + dy)
+          h = Math.max(PLAYGROUND_FRAME_HEIGHT_MIN, Math.min(PLAYGROUND_FRAME_HEIGHT_MAX, h))
+          pendingH = h
+          if (rafId == null) rafId = requestAnimationFrame(apply)
+        }
+        const onUp = () => {
+          document.removeEventListener('mousemove', onMove)
+          document.removeEventListener('mouseup', onUp)
+          document.body.style.cursor = bodyCursor
+          document.body.style.userSelect = bodySelect
+          if (rafId != null) cancelAnimationFrame(rafId)
+          apply()
+          setPlaygroundFrameHeight(frameEl.getBoundingClientRect().height)
+        }
+        document.addEventListener('mousemove', onMove)
+        document.addEventListener('mouseup', onUp)
+      })
+    }
     try {
       playgroundEditorRef = mountPlaygroundEditor(editorContainer, initialCode)
     } catch {
@@ -517,31 +684,100 @@ function render(progress, selected) {
       textarea.spellcheck = false
       textarea.value = initialCode
       editorContainer.appendChild(textarea)
-      playgroundEditorRef = { getValue: () => textarea.value, destroy: () => textarea.remove() }
+      playgroundEditorRef = { getValue: () => textarea.value, destroy: () => textarea.remove(), resize: () => {} }
     }
   }
 
-  // Quiz: Submit → score, show result, save passed if score >= 2/3
+  // Quiz: validation, submit → score + per-question feedback, Try again
   const quizForm = document.getElementById('quiz-form')
   const quizResult = document.getElementById('quiz-result')
+  const quizTryAgain = document.getElementById('quiz-try-again')
   if (quizForm && quizResult && selected && QUIZZES[selected.id]) {
     const quiz = QUIZZES[selected.id]
+    const total = quiz.questions.length
+    const passThreshold = Math.ceil(total * 2 / 3)
+
+    function clearQuizFeedback() {
+      quizForm.querySelectorAll('.quiz-question-feedback').forEach((el) => {
+        el.classList.add('hidden')
+        el.textContent = ''
+      })
+      quizForm.querySelectorAll('.quiz-correct, .quiz-wrong').forEach((label) => {
+        label.classList.remove('quiz-correct', 'quiz-wrong', 'bg-green-50', 'dark:bg-green-900/20', 'bg-red-50', 'dark:bg-red-900/20')
+        const icon = label.querySelector('.quiz-feedback-icon')
+        if (icon) icon.remove()
+      })
+      quizResult.textContent = ''
+      quizResult.className = 'text-sm text-gray-600 dark:text-gray-400'
+      quizTryAgain?.classList.add('hidden')
+    }
+
+    quizTryAgain?.addEventListener('click', () => {
+      quizForm.querySelectorAll('input[type="radio"]').forEach((input) => { input.checked = false })
+      clearQuizFeedback()
+    })
+
     quizForm.addEventListener('submit', (e) => {
       e.preventDefault()
+
+      const firstUnanswered = quiz.questions.findIndex((_, i) => !quizForm.querySelector(`input[name="q${i}"]:checked`))
+      if (firstUnanswered !== -1) {
+        clearQuizFeedback()
+        quizResult.textContent = 'Answer all questions'
+        quizResult.className = 'text-sm text-amber-600 dark:text-amber-400'
+        const questionEl = quizForm.querySelector(`.quiz-question[data-question-index="${firstUnanswered}"]`)
+        const firstRadio = questionEl?.querySelector('input[type="radio"]')
+        firstRadio?.focus()
+        questionEl?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        return
+      }
+
       let correct = 0
       quiz.questions.forEach((qu, i) => {
         const input = quizForm.querySelector(`input[name="q${i}"]:checked`)
-        if (input && Number(input.value) === qu.correctIndex) correct++
+        const value = input ? Number(input.value) : -1
+        if (value === qu.correctIndex) correct++
+        const feedbackEl = quizForm.querySelector(`.quiz-question-feedback[data-question-index="${i}"]`)
+        const isCorrect = value === qu.correctIndex
+        if (feedbackEl) {
+          feedbackEl.classList.remove('hidden')
+          if (isCorrect) {
+            feedbackEl.textContent = 'Correct'
+            feedbackEl.className = 'quiz-question-feedback mt-1 text-sm text-green-600 dark:text-green-400'
+          } else {
+            const correctText = qu.options[qu.correctIndex]
+            feedbackEl.textContent = `Wrong. Correct answer: ${correctText}`
+            feedbackEl.className = 'quiz-question-feedback mt-1 text-sm text-red-600 dark:text-red-400'
+          }
+        }
+        const label = input?.closest('.quiz-option-label')
+        if (label) {
+          label.querySelector('.quiz-feedback-icon')?.remove()
+          label.classList.add(isCorrect ? 'quiz-correct' : 'quiz-wrong', isCorrect ? 'bg-green-50 dark:bg-green-900/20' : 'bg-red-50 dark:bg-red-900/20')
+          const icon = document.createElement('span')
+          icon.className = 'quiz-feedback-icon ml-1'
+          icon.innerHTML = isCorrect ? checkSvg : crossSvg
+          icon.setAttribute('aria-hidden', 'true')
+          label.appendChild(icon)
+        }
       })
-      const total = quiz.questions.length
-      const passed = correct >= Math.ceil(total * 2 / 3)
-      quizResult.textContent = `Score: ${correct}/${total}${passed ? ' — Passed!' : ''}`
-      quizResult.className = `text-sm ${passed ? 'text-green-600 font-medium' : 'text-gray-600'}`
+
+      const wrong = total - correct
+      const passed = correct >= passThreshold
+      const detail = wrong === 0 ? `${correct} correct` : `${correct} correct, ${wrong} wrong`
+      quizResult.textContent = `Score: ${correct}/${total}${passed ? ' — Passed!' : ''} • ${detail}`
+      quizResult.className = `text-sm ${passed ? 'text-green-600 dark:text-green-400 font-medium' : 'text-gray-600 dark:text-gray-400'}`
       if (passed) {
+        quizTryAgain?.classList.add('hidden')
         const newQuizPassed = { ...progress.quizPassed, [selected.id]: true }
         setProgress(progress.completedIds, progress.lastLessonId, newQuizPassed, undefined)
         progress = { ...progress, quizPassed: newQuizPassed }
         render(progress, selected)
+      } else {
+        quizTryAgain?.classList.remove('hidden')
+        const needMore = passThreshold - correct
+        const hint = needMore === 1 ? '1 more correct answer to pass.' : `${needMore} more correct answers to pass.`
+        quizResult.textContent = `Score: ${correct}/${total} • ${detail} — ${hint}`
       }
     })
   }
