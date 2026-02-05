@@ -1,8 +1,28 @@
 import './style.css'
 import { COURSE, LESSONS_BASE } from './data/course.js'
 import { QUIZZES, PLAYGROUND_STARTER } from './data/quizzes.js'
+import { mountPlaygroundEditor } from './playground-editor.js'
 
 const STORAGE_KEY = 'learning-app-progress'
+const PLAYGROUND_STORAGE_KEY = 'learning-app-playground-code'
+
+/** Ace playground instance; destroyed before re-render. */
+let playgroundEditorRef = null
+
+function getPlaygroundCode() {
+  try {
+    const saved = localStorage.getItem(PLAYGROUND_STORAGE_KEY)
+    return typeof saved === 'string' && saved.length > 0 ? saved : PLAYGROUND_STARTER
+  } catch {
+    return PLAYGROUND_STARTER
+  }
+}
+
+function setPlaygroundCode(code) {
+  try {
+    if (typeof code === 'string') localStorage.setItem(PLAYGROUND_STORAGE_KEY, code)
+  } catch {}
+}
 
 function getProgress() {
   try {
@@ -158,7 +178,7 @@ function renderLessonView(selected, progress) {
     <section class="mt-8 border border-gray-200 rounded-lg overflow-hidden bg-white">
       <h2 class="px-4 py-2 bg-gray-50 border-b border-gray-200 font-semibold text-gray-800">Code playground</h2>
       <div class="p-4">
-        <textarea id="playground-code" class="w-full h-40 font-mono text-sm p-3 border border-gray-200 rounded resize-y focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" spellcheck="false">${escapeHtml(PLAYGROUND_STARTER)}</textarea>
+        <div id="playground-editor" class="w-full min-h-[10rem] border border-gray-200 rounded overflow-hidden focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500"></div>
         <div class="flex gap-2 mt-2">
           <button type="button" id="playground-run" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm">Run</button>
         </div>
@@ -219,7 +239,7 @@ function renderLessonView(selected, progress) {
           ${progress.bookmarks?.includes(selected.id) ? '★ Remove from bookmarks' : '☆ Add to bookmarks'}
         </button>
       </div>
-      <p class="text-sm text-gray-500 mt-4">Links open the lesson folder or first file in a new tab. For Run demo to work, serve the repo from its root (e.g. GitHub Pages or <code class="bg-gray-100 px-1 rounded">npx serve .</code>).</p>
+      <p class="text-sm text-gray-500 mt-4">Links open the lesson folder or first file in a new tab. When using <code class="bg-gray-100 px-1 rounded">npm run dev</code>, the dev server serves lesson files from the repo root.</p>
       ${playgroundHtml}
       ${quizHtml}
     </div>
@@ -227,6 +247,12 @@ function renderLessonView(selected, progress) {
 }
 
 function render(progress, selected) {
+  if (playgroundEditorRef) {
+    try {
+      playgroundEditorRef.destroy()
+    } catch {}
+    playgroundEditorRef = null
+  }
   const app = document.querySelector('#app')
   app.innerHTML = `
     <div class="flex h-screen bg-gray-50">
@@ -314,14 +340,28 @@ function render(progress, selected) {
     })
   }
 
-  // Playground: Run → set iframe srcdoc
+  // Playground: mount after layout (so container has size), Run → set iframe + persist
   const runBtn = document.getElementById('playground-run')
-  const codeEl = document.getElementById('playground-code')
+  const editorContainer = document.getElementById('playground-editor')
   const frameEl = document.getElementById('playground-frame')
-  if (runBtn && codeEl && frameEl) {
+  if (runBtn && editorContainer && frameEl) {
+    const initialCode = getPlaygroundCode()
     runBtn.addEventListener('click', () => {
-      frameEl.srcdoc = codeEl.value || ''
+      const code = playgroundEditorRef?.getValue() ?? ''
+      frameEl.srcdoc = code
+      setPlaygroundCode(code)
     })
+    try {
+      playgroundEditorRef = mountPlaygroundEditor(editorContainer, initialCode)
+    } catch {
+      const textarea = document.createElement('textarea')
+      textarea.id = 'playground-code-fallback'
+      textarea.className = 'w-full min-h-[10rem] font-mono text-sm p-3 border border-gray-200 rounded resize-y focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500'
+      textarea.spellcheck = false
+      textarea.value = initialCode
+      editorContainer.appendChild(textarea)
+      playgroundEditorRef = { getValue: () => textarea.value, destroy: () => textarea.remove() }
+    }
   }
 
   // Quiz: Submit → score, show result, save passed if score >= 2/3
