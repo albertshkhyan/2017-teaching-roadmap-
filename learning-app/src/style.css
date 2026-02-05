@@ -55,3 +55,44 @@
 #playground-editor .monaco-editor {
   min-height: 10rem;
 }
+
+/* Base font size (sidebar + main) */
+#app {
+  font-size: var(--app-font-size, 1rem);
+}
+
+/* Focus mode: hide sidebar and mobile header */
+.focus-mode #sidebar,
+.focus-mode .app-header-mobile {
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+.focus-mode #sidebar {
+  visibility: hidden;
+}
+.focus-mode main {
+  max-width: none;
+}
+
+/* Print: lesson view only or progress summary */
+@media print {
+  #sidebar,
+  .app-header-mobile,
+  #focus-mode-toggle,
+  #show-sidebar-btn,
+  #theme-toggle,
+  #sidebar-close,
+  #sidebar-open,
+  .no-print {
+    display: none !important;
+  }
+  body.print-progress #app-root {
+    display: none !important;
+  }
+  body.print-progress #print-progress-content {
+    display: block !important;
+  }
+  #print-progress-content {
+    display: none;
+  }
+}

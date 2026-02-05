@@ -1,8 +1,22 @@
-/* Minimal service worker — app shell can be cached for offline; lesson content stays network-first. */
-const CACHE_NAME = 'learning-app-v1'
+/* Service worker — precache app shell for offline; network-first with cache fallback. */
+const CACHE_NAME = 'learning-app-v2'
+
+const PRECACHE_URLS = [
+  '/',
+  '/index.html',
+  '/src/main.js',
+  '/src/style.css',
+  '/manifest.json',
+  '/vite.svg',
+]
 
 self.addEventListener('install', (event) => {
   self.skipWaiting()
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) =>
+      cache.addAll(PRECACHE_URLS).catch(() => {})
+    )
+  )
 })
 
 self.addEventListener('activate', (event) => {
@@ -19,13 +33,13 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url)
   if (url.origin !== self.location.origin) return
   event.respondWith(
-    caches.open(CACHE_NAME).then((cache) =>
-      fetch(event.request)
-        .then((res) => {
-          if (res.ok && res.type === 'basic') cache.put(event.request, res.clone())
-          return res
-        })
-        .catch(() => cache.match(event.request))
-    )
+    fetch(event.request)
+      .then((res) => {
+        if (res.ok && res.type === 'basic') {
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, res.clone()))
+        }
+        return res
+      })
+      .catch(() => caches.match(event.request))
   )
 })

@@ -31,8 +31,14 @@ export const clockSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><circle cx="1
 /** Grip horizontal (resize handle affordance). */
 export const gripHorizontalSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0 pointer-events-none"><path d="M6 8h12M6 12h12M6 16h12"/></svg>`
 
+/** Grip vertical (sidebar width resize). */
+export const gripVerticalSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0 pointer-events-none"><path d="M8 6v12M12 6v12M16 6v12"/></svg>`
+
 /** Check (correct answer). */
 export const checkSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>`
 
 /** Cross / X (wrong answer). */
 export const crossSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`
+
+/** Clipboard / list (quiz available, not passed). */
+export const quizSvg = `<svg ${svgAttrs} class="w-4 h-4 shrink-0"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>`
