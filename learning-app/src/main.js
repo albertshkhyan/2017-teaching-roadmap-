@@ -120,27 +120,64 @@ function setPlaygroundEditorHeight(px) {
 function getProgress() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return { completedIds: [], lastLessonId: null, quizPassed: {}, bookmarks: [] }
+    if (!raw) return { completedIds: [], lastLessonId: null, quizPassed: {}, bookmarks: [], lastAccessedAt: null, streak: 0 }
     const data = JSON.parse(raw)
     return {
       completedIds: Array.isArray(data.completedIds) ? data.completedIds : [],
       lastLessonId: data.lastLessonId ?? null,
       quizPassed: data.quizPassed && typeof data.quizPassed === 'object' ? data.quizPassed : {},
       bookmarks: Array.isArray(data.bookmarks) ? data.bookmarks : [],
+      lastAccessedAt: typeof data.lastAccessedAt === 'string' ? data.lastAccessedAt : null,
+      streak: typeof data.streak === 'number' && data.streak >= 0 ? data.streak : 0,
     }
   } catch {
-    return { completedIds: [], lastLessonId: null, quizPassed: {}, bookmarks: [] }
+    return { completedIds: [], lastLessonId: null, quizPassed: {}, bookmarks: [], lastAccessedAt: null, streak: 0 }
   }
 }
 
-function setProgress(completedIds, lastLessonId, quizPassed, bookmarks) {
+function setProgress(completedIds, lastLessonId, quizPassed, bookmarks, extra = {}) {
   const current = getProgress()
   localStorage.setItem(STORAGE_KEY, JSON.stringify({
     completedIds: completedIds ?? current.completedIds,
     lastLessonId: lastLessonId ?? current.lastLessonId,
     quizPassed: quizPassed ?? current.quizPassed,
     bookmarks: bookmarks ?? current.bookmarks,
+    lastAccessedAt: extra.lastAccessedAt ?? current.lastAccessedAt,
+    streak: extra.streak !== undefined ? extra.streak : current.streak,
   }))
+}
+
+const CORE_IDS = new Set(COURSE.core.items.map((i) => i.id))
+
+function getCoreProgress(progress) {
+  const completed = progress.completedIds.filter((id) => CORE_IDS.has(id)).length
+  const quizzesPassed = COURSE.core.items.filter((i) => QUIZZES[i.id] && progress.quizPassed?.[i.id]).length
+  const quizTotal = COURSE.core.items.filter((i) => QUIZZES[i.id]).length
+  return { completed, total: COURSE.core.items.length, quizzesPassed, quizTotal, bookmarks: (progress.bookmarks || []).length }
+}
+
+function updateProgressWithAccess(progress) {
+  const now = new Date()
+  const today = now.toISOString().slice(0, 10)
+  const last = progress.lastAccessedAt ? progress.lastAccessedAt.slice(0, 10) : null
+  let streak = progress.streak ?? 0
+  if (last !== today) {
+    const yesterday = new Date(now.getTime() - 864e5).toISOString().slice(0, 10)
+    streak = last === yesterday ? streak + 1 : 1
+  }
+  return { lastAccessedAt: now.toISOString(), streak }
+}
+
+function formatLastAccessed(iso) {
+  if (!iso) return null
+  const then = new Date(iso)
+  const now = new Date()
+  const days = Math.floor((now - then) / 864e5)
+  if (days === 0) return 'Today'
+  if (days === 1) return 'Yesterday'
+  if (days < 7) return `${days} days ago`
+  if (days < 30) return `${Math.floor(days / 7)} weeks ago`
+  return `${Math.floor(days / 30)} months ago`
 }
 
 function getAllCourseItems() {
@@ -213,6 +250,21 @@ function renderSidebar(progress, searchQuery, collapsedSections = {}) {
     }
     html += '</ul></div>'
   } else {
+    const coreProg = getCoreProgress(progress)
+    const lastText = formatLastAccessed(progress.lastAccessedAt)
+    const streak = progress.streak ?? 0
+    const pct = coreProg.total ? Math.round((coreProg.completed / coreProg.total) * 100) : 0
+    html += `<div class="sidebar-block">
+      <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Progress</h2>
+      <div class="space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
+        <div class="flex justify-between"><span>Core lessons</span><span>${coreProg.completed}/${coreProg.total}</span></div>
+        <div class="h-1.5 rounded-full bg-gray-200 dark:bg-gray-600 overflow-hidden" role="progressbar" aria-valuenow="${coreProg.completed}" aria-valuemin="0" aria-valuemax="${coreProg.total}"><div class="h-full bg-indigo-500 dark:bg-indigo-400 rounded-full transition-all" style="width:${pct}%"></div></div>
+        <div class="flex justify-between"><span>Quizzes passed</span><span>${coreProg.quizzesPassed}/${coreProg.quizTotal}</span></div>
+        <div class="flex justify-between"><span>Bookmarks</span><span>${coreProg.bookmarks}</span></div>
+        ${lastText ? `<p class="pt-0.5 text-gray-500 dark:text-gray-500">Last opened ${lastText}</p>` : ''}
+        ${streak > 0 ? `<p class="text-indigo-600 dark:text-indigo-400 font-medium">${streak}-day streak</p>` : ''}
+      </div>
+    </div>`
     if (bookmarks.length > 0) {
       const items = getAllCourseItems()
       html += '<div class="sidebar-block"><h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Bookmarks</h2><ul class="space-y-0.5">'
@@ -291,6 +343,12 @@ function renderLessonView(selected, progress) {
   const url = lessonUrl(selected.path)
   const quiz = QUIZZES[selected.id]
   const quizPassed = progress.quizPassed?.[selected.id]
+  const prereqs = selected.prereqs || []
+  const missingPrereqs = prereqs.filter((id) => !progress.completedIds.includes(id))
+  const prereqHint = missingPrereqs.length > 0 ? `Lesson ${missingPrereqs[0]}` : null
+  const coreItems = COURSE.core.items
+  const currentIndex = coreItems.findIndex((i) => i.id === selected.id)
+  const nextLesson = currentIndex >= 0 && currentIndex < coreItems.length - 1 ? coreItems[currentIndex + 1] : null
 
   let playgroundHtml = `
     <section class="mt-8 border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-gray-800">
@@ -359,6 +417,7 @@ function renderLessonView(selected, progress) {
 
   return `
     <div class="p-6 max-w-3xl">
+      ${prereqHint ? `<p class="mb-4 text-sm text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg px-3 py-2">Recommended: complete ${escapeHtml(prereqHint)} first.</p>` : ''}
       <div class="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">${escapeHtml(selected.title)}</h1>
@@ -367,6 +426,7 @@ function renderLessonView(selected, progress) {
         <span id="lesson-status-badge" class="lesson-status-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-sm ${done ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}">${done ? checkCircleSvg + ' Completed' : clockSvg + ' In progress'}</span>
       </div>
       <div class="mt-6 flex flex-wrap gap-3">
+        ${nextLesson ? `<button type="button" id="next-lesson-btn" data-next-id="${escapeHtml(nextLesson.id)}" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-sm">Next lesson →</button>` : ''}
         <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
           Open folder
         </a>
@@ -528,15 +588,16 @@ function render(progress, selected) {
         }
       }
     })
-    // Click lesson → show view + save last
+    // Click lesson → show view + save last + update access/streak
     container.querySelectorAll('.lesson-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         const id = btn.dataset.id
         const path = btn.dataset.path
         const topics = btn.dataset.topics
         const title = btn.dataset.title
-        setProgress(progress.completedIds, id, undefined, undefined)
-        progress = { ...progress, lastLessonId: id }
+        const access = updateProgressWithAccess(progress)
+        setProgress(progress.completedIds, id, undefined, undefined, access)
+        progress = { ...progress, lastLessonId: id, lastAccessedAt: access.lastAccessedAt, streak: access.streak }
         selected = { id, path, topics, title }
         searchQuery = ''
         document.getElementById('sidebar')?.classList.add('-translate-x-full')
@@ -565,6 +626,23 @@ function render(progress, selected) {
       progress = { ...progress, bookmarks }
       render(progress, selected)
     })
+  }
+
+  // Next lesson → navigate and update access/streak
+  const nextLessonBtn = document.getElementById('next-lesson-btn')
+  if (nextLessonBtn) {
+    const nextId = nextLessonBtn.dataset.nextId
+    if (nextId) {
+      nextLessonBtn.addEventListener('click', () => {
+        const item = getAllCourseItems().find((i) => i.id === nextId)
+        if (!item) return
+        const access = updateProgressWithAccess(progress)
+        setProgress(progress.completedIds, nextId, undefined, undefined, access)
+        progress = { ...progress, lastLessonId: nextId, lastAccessedAt: access.lastAccessedAt, streak: access.streak }
+        selected = item
+        render(progress, selected)
+      })
+    }
   }
 
   // Playground: mount after layout (so container has size), Run → set iframe + persist, resize handles
