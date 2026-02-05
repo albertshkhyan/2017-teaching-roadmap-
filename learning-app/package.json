@@ -16,6 +16,7 @@
     "vite": "^7.2.4"
   },
   "dependencies": {
-    "ace-builds": "^1.43.6"
+    "ace-builds": "^1.43.6",
+    "motion": "^12.31.0"
   }
 }

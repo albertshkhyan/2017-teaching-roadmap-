@@ -1,10 +1,51 @@
 @import "tailwindcss";
 
+/* Class-based dark mode so theme toggle works (default is prefers-color-scheme) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* App-specific overrides (optional) */
 @layer base {
   body {
     @apply antialiased text-gray-900 bg-gray-50;
   }
+  .dark body {
+    @apply text-gray-100 bg-gray-900;
+  }
+}
+
+/* Sidebar: visual separation between sections */
+.sidebar-block + .sidebar-block {
+  border-top: 1px solid #f3f4f6;
+  padding-top: 0.75rem;
+  margin-top: 0.25rem;
+}
+.dark .sidebar-block + .sidebar-block {
+  border-top-color: #374151;
+}
+
+/* Section expand: fade in via CSS (avoids Motion timing/cleanup bugs) */
+.sidebar-section-list {
+  transition: opacity 0.15s ease-out;
+}
+.sidebar-section-list.section-list-animating {
+  opacity: 0;
+}
+.sidebar-section-list.hidden {
+  transition: none;
+}
+
+/* Hide native search clear so only our custom clear button shows */
+#search-input::-webkit-search-cancel-button,
+#search-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+#search-input::-ms-clear {
+  display: none;
+}
+#search-clear svg,
+.search-icon-wrap svg {
+  display: block;
 }
 
 /* Monaco playground: ensure container has size */
